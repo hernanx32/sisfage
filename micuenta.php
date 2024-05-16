@@ -55,6 +55,11 @@ if (isset($_GET['scr'])){
 		echo 'Sucursal Modificado, ';
 	}
 	
+	
+	
+	
+	
+	
 	/*
 	$_POST['d_nombre'];
 	$_POST['d_clave'];
@@ -109,7 +114,7 @@ $mensaje_res=$resultado3;
 	  	<input type="text" class="focusNext form-control" id="d_nombre" name="d_nombre" value="<?php echo $dnombre;?>" tabindex="1" size="30" maxlength="30" onkeypress="return bajarEnter(this, event)" required>
 		</div>		
 	<div class="col-10">
-		<label for="d_clave" class="form-label">Clave(*)</label>
+		<label for="d_clave" class="form-label">Clave(* debe contener minimo 4 a 20 Caracteres)</label>
 		<input type="password" class="form-control focusNext" id="d_clave" name="d_clave" value="XXXXXXXXXXXXXXXXXXXX" tabindex="2" size="20" maxlength="20" required>
 		</div>		
 	<div class="col-10">
