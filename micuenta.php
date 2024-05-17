@@ -61,6 +61,7 @@ if (isset($_GET['scr'])){
 	
 	
 	/*
+    prueba de codigo 
 	$_POST['d_nombre'];
 	$_POST['d_clave'];
 	$_POST['d_email'];
