@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+$fecha=date('Y-m-d');
 $id_us=$_SESSION['id_usuario'];
 $usuario=$_SESSION['usuario'];
 $nro_cat=$_SESSION['id_acceso'];
@@ -26,82 +26,74 @@ $sql=$conn->query("SELECT * FROM `usuario` WHERE id_usuario ='$id_us' ");
             $demail=$row['email'];
             $dsuc=$row['id_sucursal'];
         }
+$resultado1=
+	"<div class='alert alert-success' role='alert'>Guardado Correctamente..</div>";
+	$resultado2=
+	"<div class='alert alert-danger' role='alert'> Error. No se actualizo.</div>";
+$resultado3="";	
 
 if (isset($_GET['scr'])){
     //VERIFICAMOS QUE LOS CAMPOS SEAN DIFERENTE AL QUE TENIAMOS
 	//CAMPO NOMBRE
+    
 	if($dnombre == $_POST['d_nombre']){
-		echo 'nombre igual, ';
+		//echo 'Nombre no Modificado, ';
 	}else {
-		echo 'nombre Modificado, ';
-	} 
+        $dnombre=$_POST['d_nombre'];
+		} 
 	//CAMPO CLAVE	
 	if($_POST['d_clave'] == 'XXXXXXXXXXXXXXXXXXXX'){
-		echo 'clave igual, ';
-		echo $_POST['d_clave'];
-	}else {
-		echo 'clave Modificado, ';
-	} 
+		//echo 'CLAVE no Modificada, ';
+	}else{
+		$dclave=$_POST['d_clave'];
+        $dclave=md5($dclave);
+        
+    } 
 		//CAMPO Email	
 	if($demail == $_POST['d_email']){
-		echo 'Correo igual, ';
+		//echo 'CORREO no Modificado, ';
 			}else {
-		echo 'Correo Modificado, ';
+		$demail=$_POST['d_email'];
 	}
 		//CAMPO Suc	
 	if($dsuc == $_POST['d_sucursal']){
-		echo 'Sucursal igual, ';
+		//echo 'SUCURSAL no Modificada, ';
 			}else {
-		echo 'Sucursal Modificado, ';
+		$dsuc=$_POST['d_sucursal'];
 	}
-	
-	
-	
-	
-	
-	
-	/*
-    prueba de codigo 
-	$_POST['d_nombre'];
-	$_POST['d_clave'];
-	$_POST['d_email'];
-	$_POST['d_sucursal'];
+	//MODIFICAMOS LOS VALORES 
+    //UPDATE `usuario` SET `nombre` = 'Carolina V. Britez ' WHERE `usuario`.`id_usuario` = 2;
+   //nombre , clave, email, id_suscursal
+$sql_a = "UPDATE usuario SET `usuario`.`nombre`='$dnombre',`usuario`.`clave`='$dclave',`usuario`.`email`='$demail',`usuario`.`id_sucursal`='$dsuc' ,`usuario`.`fec_act`='$fecha' WHERE `usuario`.`id_usuario` = $id_us";
+//    echo "<br>". $sql_a;
+   
+    
 
-	d_nombre
-	d_clave
-	d_email
-	d_sucursal	
-	*/
-	
-	
+if ($conn->query($sql_a) === TRUE) {
+   
+    $_SESSION['nombre']=$dnombre;
+    
+    echo $resultado1;
+} else {
+    echo $resultado2. " Error " . $conn->error;
 }
-
-
-
-
-
-
-$resultado1=
-	"<div class='row'><div class='col-10'>
-		<div class='alert alert-success' role='alert'>Guardado Correctamente..</div>
-	</div></div>";
-$resultado2=
-	"<div class='row'><div class='col-10'>
-		<div class='alert alert-danger' role='alert'> Error. No se actualizo.</div>
-	</div></div>";
-$resultado3="";	
-
+    
+}
+	
 $mensaje_res=$resultado3;	
 ?>
 
 <form action="/Sisfage/micuenta.php?scr=actuliza" method="post" name="form1" id="form1" accept-charset="UTF-8">
     
 <div class="container-fluid col-12 col-xxl-6 col-lg-6">
-	<?php echo $mensaje_res; ?>
-	
+	<div class="row">
+    <div class="col-10">
+        <?php echo $mensaje_res; ?>
+        </div>
+    </div>
 	<div class="row">
 	<div class="col-2">
-		<label for="d_id" class="form-label">ID</label>
+        <label for="d_id" class="form-label">ID</label>
     	<input name="d_id" type="text" class="form-control" id="d_id" value="<?php echo $id_us;?>" disabled>
     </div>
     <div class="col-8">
