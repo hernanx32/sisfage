@@ -17,67 +17,25 @@
  
     
     
+<table width="100" border="1" align="center">
+  <tbody>
+    <tr>
+      <th scope="col">&nbsp;</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
     
 <form action="/Sisfage/micuenta.php" method="post" name="form1" id="form1" accept-charset="UTF-8">
-    
-<div class="container-fluid col-12 col-xxl-6 col-lg-6">
-  	<div class="row">
-    <div class="col-2">
-		<label for="d_id" class="form-label">ID</label>
-    	<input name="d_id" type="text" class="form-control" id="d_id" value="1" disabled>
-    </div>
-    <div class="col-8">
-		<label for="d_usuario" class="form-label">Usuario</label>
-    	<input name="d_usuario" type="text" disabled class="form-control" id="d_usuario" value="1" >
-	</div>
-	</div>	
-    <div class="row">
-	<div class="col-10">
-		<label for="d_nombre" class="form-label">Apellido y Nombre (*)</label>
-	  	<input type="text" class="form-control" id="d_nombre" name="d_nombre" value="Hernan" tabindex="1" size="30" maxlength="30" required>
-		</div>		
-	<div class="col-10">
-		<label for="d_clave" class="form-label">Clave</label>
-		<input type="password" class="form-control" id="d_clave" name="d_clave" value="32499297" tabindex="2" size="20" maxlength="20" required>
-		</div>		
-	<div class="col-10">
-		<label for="d_email" class="form-label">Correo Electronico - Email</label>
-		<input type="email" class="form-control" id="d_email" name="d_email" value="aaaa@asda" tabindex="3" size="30" maxlength="30">
-		</div>
-	<div class="col-10">
-	<label for="d_sucursal" class="form-label">Sucursal</label>
-      <select class="form-control" name="d_sucursal" id="d_sucursal" tabindex="4">
-        <option value="javascript">JavaScript</option>
-        <option value="php" selected>PHP</option>
-        <option value="java">Java</option>
-        <option value="golang">Golang</option>
-        <option value="python">Python</option>
-        <option value="c#">C#</option>
-        <option value="C++">C++</option>
-        <option value="erlang">Erlang</option>
-      </select>
-    </div>	
-	<div class="col-10">
-		<label for="d_foto" class="form-label">Foto</label>
-		<input type="file" class="form-control-file" id="d_email" name="d_email" value="aaaa@asda" tabindex="3" size="30" maxlength="30" disabled>
-		</div>		
-		
-		<div class="col-12" align="center">
-		    <button class="btn btn-primary" type="submit">Guardar Cambios</button>
-  		</div>		
-				
-	</div>
-</div>
-<!--<div class="col-12 col-m-6 col-lg-8">-->	
 
-</form>
-        
     
     
     
-    
-    
-    
+</form>  
     
     
     

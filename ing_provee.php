@@ -26,8 +26,12 @@ $sql=$conn->query("SELECT * FROM `usuario` WHERE id_usuario ='$id_us' ");
             $demail=$row['email'];
             $dsuc=$row['id_sucursal'];
         }
-
 ?>
+
+
+
+</br>
+</br>
 </br>
 </br>
 </br>
