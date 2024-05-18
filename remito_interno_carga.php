@@ -28,13 +28,13 @@ $sql=$conn->query("SELECT * FROM `usuario` WHERE id_usuario ='$id_us' ");
         }
 ?>
 
-<form action="/Sisfage/remito_interno.php?scr=Buscar" method="post" name="form1" id="form1" accept-charset="UTF-8">
+<form action="/Sisfage/remito_interno_carga.php?scr=carga" method="post" name="form1" id="form1" accept-charset="UTF-8">
    
 <table width="790" border="1" align="center">
   <tbody>
     <tr>
-      <th colspan="5" scope="col">Buscar Remito</th>
-      <th width="214" colspan="4" rowspan="3" scope="col"><a href="remito_interno_carga.php">Agregar Remito</a></th>
+      <th colspan="5" scope="col">Ingresar Remito Remito</th>
+      <th width="214" colspan="4" rowspan="3" scope="col">&nbsp;</th>
       </tr>
     <tr>
       <td width="84" bgcolor="#A6A6A6"><label for="NroRem:">Nro. Rem:</label></td>
@@ -52,29 +52,6 @@ $sql=$conn->query("SELECT * FROM `usuario` WHERE id_usuario ='$id_us' ");
   </tbody>
 </table>
 </form>
-
-<table width="790" border="1" align="center">
-  <tbody>
-    <tr>
-      <th bgcolor="#BCDAF1" scope="col">Suc. Ori</th>
-      <th bgcolor="#BCDAF1" scope="col">Nro.Remito</th>
-      <th bgcolor="#BCDAF1" scope="col">Fecha</th>
-      <th bgcolor="#BCDAF1" scope="col">Destino</th>
-      <th bgcolor="#BCDAF1" scope="col">Usuario</th>
-      <th width="227" colspan="4" bgcolor="#BCDAF1" scope="col">&nbsp;</th>
-    </tr>
-    <tr>
-      <td width="70">&nbsp;</td>
-      <td width="165">&nbsp;</td>
-      <td width="67">&nbsp;</td>
-      <td width="78">&nbsp;</td>
-      <td width="143">&nbsp;</td>
-      <th colspan="4" scope="col">&nbsp;</th>
-      </tr>
-  </tbody>
-</table>
-
-
 <?php
 $focus='d_nombre';
 $conn->close();

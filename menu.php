@@ -53,8 +53,8 @@ function menu($nro_cat, $nom_completo)
 		<li class="nav-item dropdown"><!-- Menu2  -->
 		<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Stock</a>
 			<ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                <li><a href="ing_provee.php" class="dropdown-item">Ingresos</a></li>
-                <li><a href="#" class="dropdown-item">Salidas</a></li>
+                <li><a href="remito_provee.php" class="dropdown-item">Remitos Proveedores</a></li>
+                <li><a href="remito_interno.php" class="dropdown-item">Remitos Internos</a></li>
                 <li><a href="#" class="dropdown-item">Listados</a></li>
                 <li><a href="#" class="dropdown-item">Inventario</a></li>
                 <li><a href="#" class="dropdown-item">Historial</a></li>
