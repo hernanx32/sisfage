@@ -34,7 +34,7 @@ $sql=$conn->query("SELECT * FROM `usuario` WHERE id_usuario ='$id_us' ");
   <tbody>
     <tr>
       <th colspan="5" scope="col">Buscar Remito</th>
-      <th width="221" colspan="4" scope="col"><a class="btn btn-success btn-lg" href="remito_interno_carga.php">Agregar Remito</a></th>
+      <th width="221" colspan="4" scope="col"><a class="btn btn-success" href="remito_interno_carga.php">Agregar Remito</a></th>
       </tr>
     <tr>
       <td width="78" bgcolor="#A6A6A6"><label for="NroRem:">Nro. Rem:</label></td>
@@ -44,7 +44,7 @@ $sql=$conn->query("SELECT * FROM `usuario` WHERE id_usuario ='$id_us' ");
       <td colspan="5" rowspan="2" bgcolor="#A6A6A6"><input type="button"  class="btn btn-secondary" name="button" id="button" value="Buscar"></td>
       </tr>
     <tr>
-      <td bgcolor="#A6A6A6"><input name="NroRem:" type="text" id="NroRem:" size="10" maxlength="10"></td>
+      <td height="26" bgcolor="#A6A6A6"><input name="NroRem:" type="text" id="NroRem:" size="10" maxlength="10"></td>
       <td bgcolor="#A6A6A6"><input name="Origen" type="text" id="Origen" size="10" maxlength="15"></td>
       <td bgcolor="#A6A6A6"><input name="destino" type="text" id="destino" size="10" maxlength="15"></td>
       <td bgcolor="#A6A6A6"><input name="fecha" type="text" id="fecha" placeholder="<?PHP echo date('d-m-Y');?>"></td>
