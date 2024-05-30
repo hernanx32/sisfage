@@ -799,7 +799,7 @@ DataTable.ext.buttons.copyHtml5 = {
 	className: 'buttons-copy buttons-html5',
 
 	text: function ( dt ) {
-		return dt.i18n( 'buttons.copy', 'Copy' );
+		return dt.i18n( 'buttons.copy', 'Copiar' );
 	},
 
 	action: function ( e, dt, button, config ) {
@@ -852,10 +852,10 @@ DataTable.ext.buttons.copyHtml5 = {
 
 				if (successful) {
 					dt.buttons.info(
-						dt.i18n( 'buttons.copyTitle', 'Copy to clipboard' ),
+						dt.i18n( 'buttons.copyTitle', 'Copiado al Portapapel' ),
 						dt.i18n( 'buttons.copySuccess', {
-							1: 'Copied one row to clipboard',
-							_: 'Copied %d rows to clipboard'
+							1: 'Copiado una filas al portapapeles',
+							_: 'Copiado %d filas al portapapeles'
 						}, exportData.rows ),
 						2000
 					);
@@ -869,12 +869,12 @@ DataTable.ext.buttons.copyHtml5 = {
 
 		// Otherwise we show the text box and instruct the user to use it
 		var message = $('<span>'+dt.i18n( 'buttons.copyKeys',
-				'Press <i>ctrl</i> or <i>\u2318</i> + <i>C</i> to copy the table data<br>to your system clipboard.<br><br>'+
+				'Press <i>ctrl</i> or <i>\u2318</i> + <i>C</i> para copiar los datos de la tabla<br>al Porta papel del sistema.<br><br>'+
 				'To cancel, click this message or press escape.' )+'</span>'
 			)
 			.append( hiddenDiv );
 
-		dt.buttons.info( dt.i18n( 'buttons.copyTitle', 'Copy to clipboard' ), message, 0 );
+		dt.buttons.info( dt.i18n( 'buttons.copyTitle', 'Copy to clipboard222' ), message, 0 );
 
 		// Select the text so when the user activates their system clipboard
 		// it will copy that text

@@ -38,7 +38,7 @@ var DataTable = $.fn.dataTable;
 
 
 $.extend( DataTable.ext.buttons, {
-	// A collection of column visibility buttons
+	//Una colección de botones de visibilidad de columnas.
 	colvis: function ( dt, conf ) {
 		var node = null;
 		var buttonConf = {
@@ -47,7 +47,7 @@ $.extend( DataTable.ext.buttons, {
 				node = n;
 			},
 			text: function ( dt ) {
-				return dt.i18n( 'buttons.colvis', 'Column visibility' );
+				return dt.i18n( 'buttons.colvis', 'Ocultar Columnas' );
 			},
 			className: 'buttons-colvis',
 			closeButton: false,
@@ -72,7 +72,7 @@ $.extend( DataTable.ext.buttons, {
 		return buttonConf;
 	},
 
-	// Selected columns with individual buttons - toggle column visibility
+	// Columnas seleccionadas con botones individuales: alternar visibilidad de columna
 	columnsToggle: function ( dt, conf ) {
 		var columns = dt.columns( conf.columns ).indexes().map( function ( idx ) {
 			return {
@@ -85,7 +85,7 @@ $.extend( DataTable.ext.buttons, {
 		return columns;
 	},
 
-	// Single button to toggle column visibility
+	// Un solo botón para alternar la visibilidad de la columna
 	columnToggle: function ( dt, conf ) {
 		return {
 			extend: 'columnVisibility',

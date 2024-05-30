@@ -5,25 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pruebas de Complementos</title>
   <!-- Google Font: Source Sans Pro -->
- <!--  <link rel="stylesheet" href="comp/google.css">
   <!-- Font Awesome -->
- <!--  <link rel="stylesheet" href="comp/plugins/fontawesome-free/css/all.min.css">
+ 
   <!-- icheck bootstrap -->
- 	<link rel="stylesheet" href="comp/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+	<link rel="stylesheet" href="comp/google.css">
+  	<link rel="stylesheet" href="comp/plugins/fontawesome-free/css/all.min.css">
+	<link rel="stylesheet" href="comp/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 	<link rel="stylesheet" href="comp/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 	<link rel="stylesheet" href="comp/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-								
  	<link rel="stylesheet" href="comp/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-								
-  <!-- Theme style -->
-  <link rel="stylesheet" href="comp/dist/css/adminlte.min.css">
-  </head>
+	<link rel="stylesheet" href="comp/dist/css/adminlte.min.css">							
   
- <body class="hold-transition sidebar-mini">
-
-
-	 
-	 <div class="content-wrapper">
+  
+  </head>
+ 
+<div class="wrapper">
+  <!-- Preloader -->
+  <div class="preloader">
+    <img src="comp/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+  </div>
+</div> 
+	
+<body class="hold-transition sidebar-mini">
+ <div class="content">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -58,13 +62,13 @@
                   <thead>
                   <tr>
                     <th>Rendering engine</th>
-                    <th>Browser</th>
+                    <th>Navegador</th>
                     <th>Platform(s)</th>
                     <th>Engine version</th>
                     <th>CSS grade</th>
                   </tr>
                   </thead>
-                  <tbody>
+					<tbody>
                   <tr>
                     <td>Trident</td>
                     <td>Internet
@@ -472,11 +476,14 @@
                     <td>-</td>
                     <td>U</td>
                   </tr>
-                  </tbody>
+                 
+
+						
+					</tbody>
                   <tfoot>
                   <tr>
                     <th>Rendering engine</th>
-                    <th>Browser</th>
+                    <th>Navegador</th>
                     <th>Platform(s)</th>
                     <th>Engine version</th>
                     <th>CSS grade</th>
@@ -494,33 +501,27 @@
       </div>
       <!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
-  </d
-	 
 	 
 	 
 
-><!-- jQuery -->
-<script src="comp/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="comp/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables  & Plugins -->
-<script src="comp/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="comp/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="comp/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="comp/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="comp/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="comp/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="comp/plugins/jszip/jszip.min.js"></script>
-<script src="comp/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="comp/plugins/jquery/jquery.js"></script>
+<script src="comp/plugins/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="comp/plugins/datatables/jquery.dataTables.js"></script>
+<script src="comp/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="comp/plugins/datatables-responsive/js/dataTables.responsive.js"></script>
+<script src="comp/plugins/datatables-responsive/js/responsive.bootstrap4.js"></script>
+<script src="comp/plugins/datatables-buttons/js/dataTables.buttons.js"></script>
+<script src="comp/plugins/datatables-buttons/js/buttons.bootstrap4.js"></script>
+<script src="comp/plugins/jszip/jszip.js"></script>
+<script src="comp/plugins/pdfmake/pdfmake.js"></script>
 <script src="comp/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="comp/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="comp/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="comp/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- AdminLTE App -->
- <script src="comp/dist/js/adminlte.min.js"></script>
+<script src="comp/plugins/datatables-buttons/js/buttons.html5.js"></script>
+<script src="comp/plugins/datatables-buttons/js/buttons.print.js"></script>
+<script src="comp/plugins/datatables-buttons/js/buttons.colVis.js"></script>
+<script src="comp/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 
+	 
 <!-- Page specific script -->
 <script>
   $(function () {
