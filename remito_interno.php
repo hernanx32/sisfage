@@ -70,7 +70,24 @@ menu($nro_cat, $nom_completo);
                   </thead>
 					<tbody>
 <?PHP	
-$sql = "SELECT * FROM remito_int_enc";
+$sql = "
+SELECT 
+    remito_int_enc.id_rem_int,
+    remito_int_enc.fecha_rem,
+    remito_int_enc.suc_remito,
+    remito_int_enc.nro_remito,
+    remito_int_enc.fecha_env,
+    remito_int_enc.id_pedido,
+    remito_int_enc.estado,
+    origen.nomb_suc AS nombre_origen,
+    destino.nomb_suc AS nombre_destino
+FROM 
+    remito_int_enc
+JOIN 
+    sucursales AS origen ON remito_int_enc.origen = origen.id_sucursal
+JOIN 
+    sucursales AS destino ON remito_int_enc.destino = destino.id_sucursal;
+";
 $result = $conn->query($sql);
 						
    while($row = $result->fetch_assoc()) {
@@ -78,9 +95,9 @@ $result = $conn->query($sql);
                 <td>{$row['fecha_rem']}</td>
                 <td>{$row['suc_remito']}</td>
                 <td>{$row['nro_remito']}</td>
-                <td>{$row['origen']}</td>
-                <td>{$row['destino']}</td>
-				<td>{$row['fecha_env']}</td>
+                <td>{$row['nombre_origen']}</td>
+                <td>{$row['nombre_destino']}</td>
+				<td>{$row['estado']}</td>
               </tr>";
     }
 ?>                  
