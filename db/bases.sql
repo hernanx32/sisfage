@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-05-2024 a las 01:57:59
+-- Tiempo de generación: 05-06-2024 a las 01:41:36
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -156,7 +156,8 @@ CREATE TABLE `remito_int_enc` (
 --
 
 INSERT INTO `remito_int_enc` (`id_rem_int`, `suc_remito`, `nro_remito`, `fecha_rem`, `origen`, `destino`, `fecha_env`, `id_pedido`, `comentario`, `estado`) VALUES
-(1, '1', '1', '2024-05-28', 1, 3, '2024-05-28', 0, '', 1);
+(1, '1', '1', '2024-05-28', 1, 3, '2024-05-28', 0, '', 1),
+(2, '1', '2', '2024-06-04', 6, 4, '2024-06-04', 0, '', 1);
 
 -- --------------------------------------------------------
 
@@ -254,7 +255,8 @@ INSERT INTO `sucursales` (`id_sucursal`, `nro_suc`, `nomb_suc`, `domicilio`, `ot
 (2, 2, 'Italia', 'Av. Italia', 0),
 (3, 3, 'Moreno', 'Moreno', 0),
 (4, 4, 'Nva. Formosa', 'Av. kirchner', 0),
-(5, 5, 'Gutnisky', 'Gutnisky', 0);
+(5, 5, 'Gutnisky', 'Gutnisky', 0),
+(6, 10, 'Deposito Central', 'Av. J. D. Peron ', 0);
 
 -- --------------------------------------------------------
 
@@ -280,7 +282,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `usuario`, `clave`, `id_acceso`, `nombre`, `foto`, `email`, `editable`, `id_sucursal`, `fec_act`) VALUES
-(1, 'admin', '2ee91e657461d0ae505c020861efbec6', 1, 'Ayala Hernan', '', 'webfsa@gmail.com', 0, 1, '2024-05-28');
+(1, 'admin', '2ee91e657461d0ae505c020861efbec6', 1, 'Ayala Hernan', '', 'webfsa@gmail.com', 0, 1, '2024-05-30');
 
 --
 -- Índices para tablas volcadas
@@ -328,7 +330,9 @@ ALTER TABLE `proveedor`
 -- Indices de la tabla `remito_int_enc`
 --
 ALTER TABLE `remito_int_enc`
-  ADD PRIMARY KEY (`id_rem_int`);
+  ADD PRIMARY KEY (`id_rem_int`),
+  ADD UNIQUE KEY `origen` (`origen`,`destino`),
+  ADD KEY `destino` (`destino`);
 
 --
 -- Indices de la tabla `remito_int_linea`
@@ -406,7 +410,7 @@ ALTER TABLE `proveedor`
 -- AUTO_INCREMENT de la tabla `remito_int_enc`
 --
 ALTER TABLE `remito_int_enc`
-  MODIFY `id_rem_int` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_rem_int` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `remito_int_linea`
@@ -424,7 +428,7 @@ ALTER TABLE `remito_pedido_enc`
 -- AUTO_INCREMENT de la tabla `sucursales`
 --
 ALTER TABLE `sucursales`
-  MODIFY `id_sucursal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_sucursal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -441,6 +445,13 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `menu`
   ADD CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`id_acceso`) REFERENCES `acceso` (`id_acceso`);
+
+--
+-- Filtros para la tabla `remito_int_enc`
+--
+ALTER TABLE `remito_int_enc`
+  ADD CONSTRAINT `remito_int_enc_ibfk_1` FOREIGN KEY (`origen`) REFERENCES `sucursales` (`id_sucursal`),
+  ADD CONSTRAINT `remito_int_enc_ibfk_2` FOREIGN KEY (`destino`) REFERENCES `sucursales` (`id_sucursal`);
 
 --
 -- Filtros para la tabla `remito_pedido_linea`
