@@ -53,7 +53,7 @@ menu($nro_cat, $nom_completo);
                 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Nuevo Remito</h3>
+                <a href="remito_interno_carga.php" class="btn btn-outline-success">Nuevo Remito</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -86,7 +86,9 @@ FROM
 JOIN 
     sucursales AS origen ON remito_int_enc.origen = origen.id_sucursal
 JOIN 
-    sucursales AS destino ON remito_int_enc.destino = destino.id_sucursal;
+    sucursales AS destino ON remito_int_enc.destino = destino.id_sucursal 
+WHERE estado = '1' ORDER by remito_int_enc.id_rem_int DESC	
+	;
 ";
 $result = $conn->query($sql);
 						
@@ -125,7 +127,6 @@ $result = $conn->query($sql);
       </div>
       <!-- /.container-fluid -->
     </section>
-   
 
 <?php
 $focus='d_nombre';
@@ -134,4 +135,3 @@ $conn->close();
 pieprincipal($focus,$path);
 
 ?>
-

@@ -20,10 +20,10 @@
   </head>
  
 <div class="wrapper">
-  <!-- Preloader -->
+  <!-- Preloader 
   <div class="preloader">
     <img src="img/Cargando.png" alt="Cargando...." height="60" width="150">
-  </div>
+  </div> -->
 </div> 
 	
 <body class="hold-transition sidebar-mini">
