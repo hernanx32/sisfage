@@ -28,8 +28,14 @@ $sql=$conn->query("SELECT * FROM `usuario` WHERE id_usuario ='$id_us' ");
         }
 ?>
 
-<form action="/Sisfage/remito_interno_carga.php?scr=carga" method="post" name="form1" id="form1" accept-charset="UTF-8">
-</form>
+<div class="container-fluid col-12 col-xxl-6 col-lg-6">
+	<div class="row">
+    <div class="col-10">
+		<label for="d_nombre" class="form-label">Apellido y Nombre (*)</label>
+	  	<input type="text" class="focusNext form-control" id="d_nombre" name="d_nombre" value="<?php echo $dnombre;?>" tabindex="1" size="30" maxlength="30" onkeypress="return bajarEnter(this, event)" required>
+		</div>
+		</div>
+	</div>
 <?php
 $focus='d_nombre';
 $conn->close();

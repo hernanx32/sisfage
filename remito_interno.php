@@ -19,12 +19,7 @@ menu($nro_cat, $nom_completo);
 ?>
 
  
-<div class="wrapper">
-  <!-- Preloader -->
-  <div class="preloader">
-    <img src="img/Cargando.png" alt="Cargando...." height="60" width="150">
-  </div>
-</div> 
+ 
 	
 <body class="hold-transition sidebar-mini">
  <div class="content">
@@ -128,6 +123,13 @@ $result = $conn->query($sql);
       <!-- /.container-fluid -->
     </section>
 
+	 <script>
+    $(document).ready(function() {
+        $('#example1').DataTable({
+            "order": [[2, "desc"]]  // Ordenar por la primera columna (Nombre) en orden ascendente
+        });
+    });
+    </script>
 <?php
 $focus='d_nombre';
 $conn->close();

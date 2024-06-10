@@ -20,6 +20,13 @@ function cabeza($titulopag, $path)
 	<link rel="stylesheet" href="comp/dist/css/adminlte.min.css">	
 	
   </head>
+	  <!-- Preloader -->
+  <div class="preloader">
+   <a href="principal.php"> 
+	<img src="img/cargando.gif" alt="Cargando...." height="100" width="100">
+	<img  src="img/cargando.png" alt="Cargando...." height="100" width="180"></a>
+	 
+  </div>
 <?PHP }
 
 
