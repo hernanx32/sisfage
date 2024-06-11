@@ -14,6 +14,7 @@
 <table width="790" border="1" align="center">
   <caption>
     Remitos Internos
+      
   </caption>
   <tbody>
     <tr>
