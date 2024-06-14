@@ -2,7 +2,9 @@
 
 function cabeza($titulopag, $path)
 {
-   
+ 
+global $fecha_form;
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +29,12 @@ function cabeza($titulopag, $path)
 	<img  src="img/cargando.png" alt="Cargando...." height="100" width="180"></a>
 	 
   </div>
-<?PHP }
+<?PHP 
+date_default_timezone_set('America/Argentina/Buenos_Aires');
+
+	
+$fecha_form = date('Y-m-d');
+}
 
 
 function pieindex($focus,$path)
