@@ -17,15 +17,22 @@
 
 <body>
 
-<?php
-// Ruta completa al archivo .mdb
-$databasePath = 'D:\\New\\TRANSPORTE.mdb'; // Reemplaza con la ruta a tu archivo .mdb
+	<?php 
+	echo 'PHP Architecture: ' . PHP_INT_SIZE * 8 . ' bits' . PHP_EOL;
 
-// Cadena de conexión ODBC sin DSN
-$dsn = "DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=$databasePath;";
+
+// Configuración de la cadena de conexión ODBC sin DSN
+$driver = 'Driver={C:\Program Files (x86)\Sybase\SQL Anywhere 9\win32\dbodbc9.dll};Host=192.168.100.199:2638;ServerName=ServerAPA;DatabaseName=dba;UserID=dba;Password=gestion;}'; // Reemplaza con el nombre del controlador ODBC adecuado
+$server = '192.168.100.199'; // Reemplaza con el nombre de tu servidor
+$database = 'dba'; // Reemplaza con el nombre de tu base de datos
+$user = 'dba'; // Reemplaza con tu nombre de usuario
+$password = 'gestion'; // Reemplaza con tu contraseña
+
+// Crear la cadena de conexión
+$connectionString = "Driver=$driver;Server=$server;Database=$database;";
 
 // Intentar la conexión a la base de datos
-$connection = odbc_connect($dsn, '', '');
+$connection = odbc_connect($connectionString, $user, $password);
 
 if (!$connection) {
     die("Error de conexión: " . odbc_errormsg());
@@ -34,7 +41,7 @@ if (!$connection) {
 echo "Conexión exitosa a la base de datos.";
 
 // Ejemplo de consulta SELECT
-$sql = "SELECT * FROM articulo"; // Reemplaza 'your_table' con el nombre de tu tabla en Access
+$sql = "SELECT * FROM your_table"; // Reemplaza 'your_table' con el nombre de tu tabla
 $result = odbc_exec($connection, $sql);
 
 if (!$result) {
@@ -43,9 +50,16 @@ if (!$result) {
 
 // Obtener y mostrar los resultados
 while ($row = odbc_fetch_array($result)) {
-    echo "ID: " . $row['Cref'] . " - Nombre: " . $row['cDetalle'] . "<br>"; // Reemplaza con los nombres de tus columnas
+    echo "ID: " . $row['NroReg'] . " - Nombre: " . $row['cDetalle'] . "<br>";
 }
-?>
+
+// Cerrar la conexión
+odbc_close($connection);
+
+		
+		
+	?>
+
     <script>
     $(document).ready(function() {
         $('#example').DataTable({

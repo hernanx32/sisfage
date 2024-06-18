@@ -2,7 +2,9 @@
 
 function cabeza($titulopag, $path)
 {
-   
+ 
+global $fecha_form;
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,29 +12,49 @@ function cabeza($titulopag, $path)
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo $titulopag; ?></title>
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="<?php echo $path;?>comp/google.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?php echo $path;?>comp/plugins/fontawesome-free/css/all.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="<?php echo $path;?>comp/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo $path;?>comp/dist/css/adminlte.min.css">
-
+  
+	<link rel="stylesheet" href="comp/google.css">
+  	<link rel="stylesheet" href="comp/plugins/fontawesome-free/css/all.min.css">
+	<link rel="stylesheet" href="comp/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+	<link rel="stylesheet" href="comp/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="comp/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+ 	<link rel="stylesheet" href="comp/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+	<link rel="stylesheet" href="comp/dist/css/adminlte.min.css">	
+	
   </head>
-<?PHP }
+	  <!-- Preloader -->
+  <div class="preloader">
+   <a href="principal.php"> 
+	<img src="img/cargando.gif" alt="Cargando...." height="100" width="100">
+	<img  src="img/cargando.png" alt="Cargando...." height="100" width="180"></a>
+	 
+  </div>
+<?PHP 
+date_default_timezone_set('America/Argentina/Buenos_Aires');
+
+	
+$fecha_form = date('Y-m-d');
+}
 
 
 function pieindex($focus,$path)
 {
 ?>
-<!-- jQuery -->    
-<script src="<?php echo $path;?>comp/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="<?php echo $path;?>comp/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="<?php echo $path;?>comp/dist/js/adminlte.min.js"></script>
-
+<script src="comp/plugins/jquery/jquery.js"></script>
+<script src="comp/plugins/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="comp/plugins/datatables/jquery.dataTables.js"></script>
+<script src="comp/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="comp/plugins/datatables-responsive/js/dataTables.responsive.js"></script>
+<script src="comp/plugins/datatables-responsive/js/responsive.bootstrap4.js"></script>
+<script src="comp/plugins/datatables-buttons/js/dataTables.buttons.js"></script>
+<script src="comp/plugins/datatables-buttons/js/buttons.bootstrap4.js"></script>
+<script src="comp/plugins/jszip/jszip.js"></script>
+<script src="comp/plugins/pdfmake/pdfmake.js"></script>
+<script src="comp/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="comp/plugins/datatables-buttons/js/buttons.html5.js"></script>
+<script src="comp/plugins/datatables-buttons/js/buttons.print.js"></script>
+<script src="comp/plugins/datatables-buttons/js/buttons.colVis.js"></script>
+<script src="comp/dist/js/adminlte.min.js"></script>
 
 	
 </body>
@@ -43,11 +65,21 @@ function pieindex($focus,$path)
 function pieprincipal($focus,$path){
 ?>
 <!-- jQuery -->    
-<script src="<?php echo $path;?>comp/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="<?php echo $path;?>comp/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="<?php echo $path;?>comp/dist/js/adminlte.min.js"></script>
+<script src="comp/plugins/jquery/jquery.js"></script>
+<script src="comp/plugins/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="comp/plugins/datatables/jquery.dataTables.js"></script>
+<script src="comp/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="comp/plugins/datatables-responsive/js/dataTables.responsive.js"></script>
+<script src="comp/plugins/datatables-responsive/js/responsive.bootstrap4.js"></script>
+<script src="comp/plugins/datatables-buttons/js/dataTables.buttons.js"></script>
+<script src="comp/plugins/datatables-buttons/js/buttons.bootstrap4.js"></script>
+<script src="comp/plugins/jszip/jszip.js"></script>
+<script src="comp/plugins/pdfmake/pdfmake.js"></script>
+<script src="comp/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="comp/plugins/datatables-buttons/js/buttons.html5.js"></script>
+<script src="comp/plugins/datatables-buttons/js/buttons.print.js"></script>
+<script src="comp/plugins/datatables-buttons/js/buttons.colVis.js"></script>
+<script src="comp/dist/js/adminlte.min.js"></script>
 
 <script>
 
@@ -92,7 +124,23 @@ function bajarEnter (field, event) {
 	return true;
 	}*/
 </script>
-
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": false,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 
   <!-- Main Footer -->
   <footer class="main-footer">

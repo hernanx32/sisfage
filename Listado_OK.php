@@ -20,10 +20,10 @@
   </head>
  
 <div class="wrapper">
-  <!-- Preloader -->
+  <!-- Preloader 
   <div class="preloader">
-    <img src="comp/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-  </div>
+    <img src="img/Cargando.png" alt="Cargando...." height="60" width="150">
+  </div> -->
 </div> 
 	
 <body class="hold-transition sidebar-mini">
@@ -69,6 +69,7 @@
                   </tr>
                   </thead>
 					<tbody>
+						
                   <tr>
                     <td>Trident</td>
                     <td>Internet
@@ -477,8 +478,6 @@
                     <td>U</td>
                   </tr>
                  
-
-						
 					</tbody>
                   <tfoot>
                   <tr>

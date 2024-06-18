@@ -26,10 +26,24 @@ $sql=$conn->query("SELECT * FROM `usuario` WHERE id_usuario ='$id_us' ");
             $demail=$row['email'];
             $dsuc=$row['id_sucursal'];
         }
+//2024-06-13
+//echo $fecha_form;
 ?>
 
-<form action="/Sisfage/remito_interno_carga.php?scr=carga" method="post" name="form1" id="form1" accept-charset="UTF-8">
-</form>
+<div class="container-fluid col-12 col-xxl-12 col-lg-8">
+<div class="row">
+    <div class="col-3">
+		<label for="fec_remito" class="form-label">Fecha Remito</label>
+	  	<input name="fec_remito" type="date" required class="focusNext form-control" id="fec_remito" onkeypress="return bajarEnter(this, event)" value="<?php echo $fecha_form; ?>" >
+		</div>
+		</div>
+	<div class="row">
+    <div class="col-10">
+		<label for="d_nombre" class="form-label">Apellido y Nombre (*)</label>
+	  	<input type="text" class="focusNext form-control" id="d_nombre" name="d_nombre" value="<?php echo $dnombre;?>" tabindex="1" size="30" maxlength="30" onkeypress="return bajarEnter(this, event)" required>
+		</div>
+		</div>
+	</div>
 <?php
 $focus='d_nombre';
 $conn->close();

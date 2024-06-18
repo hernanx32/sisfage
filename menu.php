@@ -2,8 +2,6 @@
 
 function menu($nro_cat, $nom_completo)
 {
-
-
 ?>
 <!-- Navbar -->
   <nav class="navbar-expand-md navbar-light navbar" >
@@ -68,9 +66,4 @@ function menu($nro_cat, $nom_completo)
       </ul>
     </div>
   </nav>
-  
-
-
-
-
 <?PHP }
