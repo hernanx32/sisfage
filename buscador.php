@@ -53,7 +53,9 @@
             }
         });
     </script>	
-	
-	<div class='result-item'>ID: " . $row["id_usuario"]. " - Usuario: " . $row["usuario"]. "</div>"
+	</br>
+	</br>
+</br>
+	<a href="principal.php"><div class='result-item'>ID: " . $row["id_usuario"]. " - Usuario: " . $row["usuario"]. "</div></a>
 </body>
 </html>
