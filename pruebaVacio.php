@@ -12,46 +12,26 @@
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <!-- AdminLTE (opcional, si quieres usar estilos de AdminLTE) -->
     <link rel="stylesheet" href="path/to/adminlte.min.css">
+    <link rel="stylesheet" href="estilo.css">
 </head>
-
 
 <body>
 
-<?php
-// Ruta completa al archivo .mdb
-$databasePath = 'D:\\New\\TRANSPORTE.mdb'; // Reemplaza con la ruta a tu archivo .mdb
+<p>Da clic en el siguiente enlace para ver la alerta:</p>
+<a href="#" id="showAlert">Mostrar alerta</a>
 
-// Cadena de conexión ODBC sin DSN
-$dsn = "DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=$databasePath;";
+<div id="alertBox" class="alert-box">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>¡Alerta!</strong> Este es un mensaje tipo alerta.
+</div>
 
-// Intentar la conexión a la base de datos
-$connection = odbc_connect($dsn, '', '');
-
-if (!$connection) {
-    die("Error de conexión: " . odbc_errormsg());
-}
-
-echo "Conexión exitosa a la base de datos.";
-
-// Ejemplo de consulta SELECT
-$sql = "SELECT * FROM articulo"; // Reemplaza 'your_table' con el nombre de tu tabla en Access
-$result = odbc_exec($connection, $sql);
-
-if (!$result) {
-    die("Error al realizar la consulta: " . odbc_errormsg());
-}
-
-// Obtener y mostrar los resultados
-while ($row = odbc_fetch_array($result)) {
-    echo "ID: " . $row['Cref'] . " - Nombre: " . $row['cDetalle'] . "<br>"; // Reemplaza con los nombres de tus columnas
-}
-?>
-    <script>
-    $(document).ready(function() {
-        $('#example').DataTable({
-            "order": [[0, "desc"]]
-        });
-    });
-    </script>
+<script>
+document.getElementById("showAlert").addEventListener("click", function(event) {
+  event.preventDefault(); // Evitar que el enlace redireccione a otra página
+  
+  // Mostrar la alerta
+  document.getElementById("alertBox").style.display = "block";
+});
+</script>
 </body>
 </html>
