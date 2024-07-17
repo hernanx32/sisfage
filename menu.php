@@ -25,7 +25,7 @@ function menu($nro_cat, $nom_completo)
 		<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Archivos</a>
 			<ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <li><a href="micuenta.php" class="dropdown-item">Mi Cuenta</a></li>
-              <li><a href="principal.php?modulo=abmusuario" class="dropdown-item">Usuarios</a></li>
+              <li><a href="abmUsuario.php" class="dropdown-item">Usuarios</a></li>
 			  <li><a href="#" class="dropdown-item">Sucursales</a></li>
 			  <li><a href="#" class="dropdown-item">Proveedores</a></li>
 			  <li><a href="#" class="dropdown-item">Familias</a></li>                
