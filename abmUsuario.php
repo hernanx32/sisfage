@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 $fecha=date('Y-m-d');
@@ -20,7 +19,8 @@ menu($nro_cat, $nom_completo);
 
 
 if (isset($_GET['scr'])){
-    echo $_GET['scr'];    
+    //scr=agregar
+	echo $_GET['scr'];    
 }else{
     abm_Usuario($conn);
     

@@ -3,9 +3,6 @@ function abm_Usuario($conn)
 {
 ?>
 
-
-
-
 <form>
 <table width="650" border="1" align="center">
   <tbody>
@@ -68,4 +65,10 @@ if ($result->num_rows > 0) {
 </form>
 
 <?php 
+}
+
+function abm_Usuario($conn)
+{
+	
+	
 }
