@@ -1,27 +1,9 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 05-06-2024 a las 01:41:36
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Base de datos: `bases`
 --
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `acceso`
@@ -32,17 +14,6 @@ CREATE TABLE `acceso` (
   `nombre` varchar(30) NOT NULL,
   `id_menu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
-
---
--- Volcado de datos para la tabla `acceso`
---
-
-INSERT INTO `acceso` (`id_acceso`, `nombre`, `id_menu`) VALUES
-(1, 'Supervisor', 1),
-(2, 'Ventas', 2),
-(3, 'Deposito', 3);
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `articulo`
@@ -152,16 +123,6 @@ CREATE TABLE `remito_int_enc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `remito_int_enc`
---
-
-INSERT INTO `remito_int_enc` (`id_rem_int`, `suc_remito`, `nro_remito`, `fecha_rem`, `origen`, `destino`, `fecha_env`, `id_pedido`, `comentario`, `estado`) VALUES
-(1, '1', '1', '2024-05-28', 1, 3, '2024-05-28', 0, '', 1),
-(2, '1', '2', '2024-06-04', 6, 4, '2024-06-04', 0, '', 1);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `remito_int_linea`
 --
 
@@ -247,20 +208,6 @@ CREATE TABLE `sucursales` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `sucursales`
---
-
-INSERT INTO `sucursales` (`id_sucursal`, `nro_suc`, `nomb_suc`, `domicilio`, `otros`) VALUES
-(1, 1, 'Central', 'Av. J. D. Peron', 0),
-(2, 2, 'Italia', 'Av. Italia', 0),
-(3, 3, 'Moreno', 'Moreno', 0),
-(4, 4, 'Nva. Formosa', 'Av. kirchner', 0),
-(5, 5, 'Gutnisky', 'Gutnisky', 0),
-(6, 10, 'Deposito Central', 'Av. J. D. Peron ', 0);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `usuario`
 --
 
@@ -277,16 +224,6 @@ CREATE TABLE `usuario` (
   `fec_act` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`id_usuario`, `usuario`, `clave`, `id_acceso`, `nombre`, `foto`, `email`, `editable`, `id_sucursal`, `fec_act`) VALUES
-(1, 'admin', '2ee91e657461d0ae505c020861efbec6', 1, 'Ayala Hernan', '', 'webfsa@gmail.com', 0, 1, '2024-05-30');
-
---
--- Índices para tablas volcadas
---
 
 --
 -- Indices de la tabla `acceso`
@@ -363,8 +300,8 @@ ALTER TABLE `sucursales`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`),
-  ADD UNIQUE KEY `idacceso` (`id_acceso`),
-  ADD UNIQUE KEY `idsucursal` (`id_sucursal`);
+  ADD KEY `id_acceso` (`id_acceso`),
+  ADD KEY `id_sucursal` (`id_sucursal`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -434,7 +371,7 @@ ALTER TABLE `sucursales`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
@@ -463,9 +400,32 @@ ALTER TABLE `remito_pedido_linea`
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_sucursal`) REFERENCES `sucursales` (`id_sucursal`);
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_acceso`) REFERENCES `acceso` (`id_acceso`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `usuario`, `clave`, `id_acceso`, `nombre`, `foto`, `email`, `editable`, `id_sucursal`, `fec_act`) VALUES
+(1, 'admin', '2ee91e657461d0ae505c020861efbec6', 1, 'Ayala Hernan', '', 'webfsa@gmail.com', 0, 10, '2024-06-06');
+--
+-- Índices para tablas volcadas
+--
+
+
+--
+-- Volcado de datos para la tabla `acceso`
+--
+
+INSERT INTO `acceso` (`id_acceso`, `nombre`, `id_menu`) VALUES
+(1, 'Supervisor', 1),
+(2, 'Ventas', 2),
+(3, 'Deposito', 3);
+
+-- --------------------------------------------------------
+
