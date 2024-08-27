@@ -6,7 +6,7 @@ $usuario=$_SESSION['usuario'];
 $nro_cat=$_SESSION['id_acceso'];
 $nom_completo=$_SESSION['nombre'];
 
-$titulo='Sistema - Remitos Internos';
+$titulo='Sistema - ABM Usuarios';
 $path='';
 
 include("Modulos/html.php");
