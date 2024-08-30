@@ -12,10 +12,12 @@ $path='';
 include("Modulos/html.php");
 include("Modulos/conex.php");
 include("menu.php");
+include("Modulos/usuario/abmUsuario.php");
 
 cabeza($titulo,$path);
 menu($nro_cat, $nom_completo);
 
+abmUsuario($conn);
 
 
 

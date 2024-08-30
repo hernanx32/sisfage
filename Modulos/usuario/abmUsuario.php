@@ -1,5 +1,5 @@
 <?php
-function abm_Usuario($conn)
+function abmUsuario($conn)
 {
 ?>
 
@@ -11,15 +11,15 @@ function abm_Usuario($conn)
         <label for="buscar_us">Buscar:</label>
         <input type="text" name="buscar_us" id="buscar_us">
         <input type="button" name="button" id="button" value="Buscar"></th>
-      <th colspan="2" align="center" scope="col"><a href="../abmUsuario.php?scr=agregar">AGREGAR USUARIO</a></th>
+      <th colspan="2" align="center" scope="col"><div align="center"><a href="../abmUsuario.php?scr=agregar">AGREGAR USUARIO</a></div></th>
       </tr>
-    <tr align="center">
+    <tr align="center" bgcolor="#8E9EFD">
       <td width="40">ID</td>
       <td width="103">Usuario</td>
       <td width="184">Nombre</td>
       <td width="91">Sucursal</td>
       <td width="56">Acceso</td>
-      <td width="136">Acciones</td>
+      <td width="150">Acciones</td>
     </tr>
       
 <?PHP  
@@ -51,24 +51,13 @@ if ($result->num_rows > 0) {
         echo $row['nomb_suc'];
         echo "</td><td>";
         echo $row['acc_nombre'];
-        echo "</td><td>";
-        echo "<a href='abmUsuario.php?scr=modificar&id='>Modificar</a> - <a href='abmUsuario.php?scr=eliminar&id='>Eliminar</a></td></tr>"; 
+        echo "</td><td align='center'>";
+        echo "<a href='abmUsuario.php?scr=modificar&id=".$row['id_usuario']."'>Modificar</a> - <a href='abmUsuario.php?scr=eliminar&id=".$row['id_usuario']."'>Eliminar</a> </td></tr>"; 
     
     }
 } else {
     echo "0 resultados";
 }
-      
-      ?>      
-</tbody>
-</table>
-</form>
+echo "</tbody></table></form>";
 
-<?php 
-}
-
-function abm_Usuario($conn)
-{
-	
-	
-}
+} ?>
