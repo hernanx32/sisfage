@@ -15,17 +15,7 @@ include("menu.php");
 
 cabeza($titulo,$path);
 menu($nro_cat, $nom_completo);
-    include("Modulos/usuario/abmUsuario.php");
 
-
-if (isset($_GET['scr'])){
-    //scr=agregar
-	echo $_GET['scr'];    
-}else{
-    abm_Usuario($conn);
-    
-    
-}
 
 
 
