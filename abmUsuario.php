@@ -17,9 +17,22 @@ include("Modulos/usuario/abmUsuario.php");
 cabeza($titulo,$path);
 menu($nro_cat, $nom_completo);
 
-abmUsuario($conn);
+
+//Validamos si existe la Var SCR
+if (isset($_GET['scr'])){
+/* Pantallas
+	elimina
+	eliminado
+	edita
+	editado
+	agregar
+	agregado  */
+	
 
 
+}else{
+	abmUsuario($conn);
+}
 
 ?>
 
