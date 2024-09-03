@@ -11,7 +11,7 @@ function abmUsuario($conn)
         <label for="buscar_us">Buscar:</label>
         <input type="text" name="buscar_us" id="buscar_us">
         <input type="button" name="button" id="button" value="Buscar"></th>
-      <th colspan="2" align="center" scope="col"><div align="center"><a href="../abmUsuario.php?scr=agregar">AGREGAR USUARIO</a></div></th>
+      <th colspan="2" align="center" scope="col"><div align="center"><a href="abmUsuario.php?scr=agregar">AGREGAR USUARIO</a></div></th>
       </tr>
     <tr align="center" bgcolor="#8E9EFD">
       <td width="40">ID</td>
@@ -62,9 +62,13 @@ echo "</tbody></table></form>";
 
 } 
 	  
+function agregar($conn){
+  echo "agregar Usuario";
+ }
 	  
-	  
-	  
+function agregado($conn){
+ echo "agregar Usuario";
+}
 	  
 	  
 	  ?>

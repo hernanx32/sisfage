@@ -27,7 +27,10 @@ if (isset($_GET['scr'])){
 	editado
 	agregar
 	agregado  */
-	
+	$scr=$_GET['scr'];
+	if ($scr="agregar"){
+		echo "agregar";
+	}
 
 
 }else{
