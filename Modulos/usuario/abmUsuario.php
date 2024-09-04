@@ -71,7 +71,7 @@ if ($result->num_rows > 0) {
 echo "</tbody></table></form>";
 
 } 
-	  
+//AGREGAR FORMULARIO PARA AGREGAR USUARIO	  
 function agregar($conn){
 ?>
       <form action="abmUsuario.php" method="post" name="form1" id="form1">
@@ -137,7 +137,33 @@ function agregar($conn){
 </form>
 <?PHP
  }
-	  
+
+//FUNCION ELIMINA USUARIO
+function elimina_usu($conn, $id ){
+	//CODIGO DE CONSULTA DE ELIMINACION DEL REGISTRO
+	$sql = "DELETE FROM usuario WHERE `usuario`.`id_usuario` = '$id'";
+	//EJECUTANDO CODIGO DE ELIMINACION 
+	if ($conn->query($sql) === TRUE) {
+		//MENSAJE EN CASO QUE SEA CORRECTO	
+		echo "<div class='alert alert-success' role='alert'>Usuario Eliminado Correctamente.</div>";
+		//sleep(5);	
+		header("location:abmUsuario.php");
+	
+	} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+	echo "<div class='alert alert-danger' role='alert'>Error Al eliminar usuario.</div>";
+//sleep(5);	
+header("location:abmUsuario.php");
+
+	}
+	
+
+}
+
+
+
+
+
 function agregado($conn){
  echo "agregar Usuario";
 }

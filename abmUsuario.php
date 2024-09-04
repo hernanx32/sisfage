@@ -31,8 +31,8 @@ if (isset($_GET['scr'])){
 	if ($scr=="agregar"){
         agregar($conn);   
     }elseif($scr=="eliminar"){
-    echo "Eliminado usuario nro ";
-    echo $_GET['id'];
+		$id_el_us=$_GET['id'];
+    	elimina_usu($conn, $id_el_us);
     }
 
 
