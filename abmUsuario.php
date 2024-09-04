@@ -21,16 +21,19 @@ menu($nro_cat, $nom_completo);
 //Validamos si existe la Var SCR
 if (isset($_GET['scr'])){
 /* Pantallas
-	elimina
-	eliminado
+	eliminar
 	edita
 	editado
 	agregar
 	agregado  */
 	$scr=$_GET['scr'];
-	if ($scr="agregar"){
-		echo "agregar";
-	}
+    
+	if ($scr=="agregar"){
+        agregar($conn);   
+    }elseif($scr=="eliminar"){
+    echo "Eliminado usuario nro ";
+    echo $_GET['id'];
+    }
 
 
 }else{

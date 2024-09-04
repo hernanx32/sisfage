@@ -66,4 +66,5 @@ function menu($nro_cat, $nom_completo)
       </ul>
     </div>
   </nav>
+    
 <?PHP }
