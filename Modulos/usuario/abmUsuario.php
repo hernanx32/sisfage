@@ -13,7 +13,7 @@ function abmUsuario($conn)
         }
     </script>
 <form>
-<table width="650" border="1" align="center">
+<table width="750" border="1" align="center">
   <tbody>
     <tr>
       <th colspan="4" scope="col">
@@ -26,7 +26,7 @@ function abmUsuario($conn)
       <td width="40">ID</td>
       <td width="103">Usuario</td>
       <td width="184">Nombre</td>
-      <td width="91">Sucursal</td>
+      <td width="191">Sucursal</td>
       <td width="56">Acceso</td>
       <td width="150">Acciones</td>
     </tr>
@@ -74,7 +74,7 @@ echo "</tbody></table></form>";
 //AGREGAR FORMULARIO PARA AGREGAR USUARIO	  
 function agregar($conn){
 ?>
-      <form action="abmUsuario.php" method="post" name="form1" id="form1">
+      <form action="abmUsuario.php?scr=agregarnuevo" method="post" name="form1" id="form1">
   <table width="507" border="1" align="center">
     <tbody>
       <tr>
@@ -130,13 +130,14 @@ function agregar($conn){
       </tr>
       <tr>
         <td colspan="2" align="center"><a href="abmUsuario.php" class="btn btn-outline-secondary">Cancela</a> - 
-        <input class="btn btn-outline-success" type="submit" name="submit" id="submit" value="Agregar Nuevo Usuario"></td>
+        <input class="btn btn-outline-success" type="submit" name="scr" id="scr" value="agregado"></td>
       </tr>
     </tbody>
   </table>
 </form>
 <?PHP
  }
+//FUNCION INSERTAR NUEVO USUARIO
 
 //FUNCION ELIMINA USUARIO
 function elimina_usu($conn, $id ){
@@ -146,27 +147,31 @@ function elimina_usu($conn, $id ){
 	if ($conn->query($sql) === TRUE) {
 		//MENSAJE EN CASO QUE SEA CORRECTO	
 		echo "<div class='alert alert-success' role='alert'>Usuario Eliminado Correctamente.</div>";
-		//sleep(5);	
-		header("location:abmUsuario.php");
-	
+		echo "<td colspan='6' align='center'><a href='abmUsuario.php' class='btn btn-outline-secondary'>VOLVER</a>";
+	   
 	} else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 	echo "<div class='alert alert-danger' role='alert'>Error Al eliminar usuario.</div>";
-//sleep(5);	
-header("location:abmUsuario.php");
-
+    echo "<td colspan='6' align='center'><a href='abmUsuario.php' class='btn btn-outline-secondary'>VOLVER</a>";
 	}
-	
-
 }
 
 
 
 
 
-function agregado($conn){
- echo "agregar Usuario";
+function agregado($conn, $consulta){
+	$sql = $consulta;
+	//EJECUTANDO CODIGO DE ELIMINACION 
+	if ($conn->query($sql) === TRUE) {
+		//MENSAJE EN CASO QUE SEA CORRECTO	
+		echo "<div class='alert alert-success' role='alert'>Usuario Agregado Correctamente.</div>";
+		echo "<td colspan='6' align='center'><a href='abmUsuario.php' class='btn btn-outline-secondary'>VOLVER</a>";
+	   
+	} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+	echo "<div class='alert alert-danger' role='alert'>Error al agregar usuario.</div>";
+    echo "<td colspan='6' align='center'><a href='abmUsuario.php' class='btn btn-outline-secondary'>VOLVER</a>";
+	}
 }
-	  
-	  
-	  ?>
+?>
