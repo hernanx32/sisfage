@@ -5,13 +5,11 @@ function menu($nro_cat, $nom_completo)
 ?>
 <!-- Navbar -->
   <nav class="navbar-expand-md navbar-light navbar" >
-
     <div class="container-fluid">
       <a href="principal.php" class="navbar-brand">
       <h5><img src="img/LOGO.png" width="30" height="30" alt="<?PHP echo $nom_completo; ?>" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-light"><?PHP echo $nom_completo; ?></span> </h5>
       </a>
-
       <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -19,7 +17,6 @@ function menu($nro_cat, $nom_completo)
       <div class="collapse navbar-collapse order-3" id="navbarCollapse">
 		<ul class="navbar-nav">
 		</br>
-
 		<!-- Inicio Menu1 -->	
 		<li class="nav-item dropdown"><!-- Menu1  -->
 		<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Archivos</a>
@@ -35,18 +32,14 @@ function menu($nro_cat, $nom_completo)
 			  <li><a href="modulos/login/salir.php" class="dropdown-item">Salir</a></li>
 			</ul>
 		</li><!-- Fin Menu1  -->
-
-
 		<!-- Inicio Menu2 -->	
 		<li class="nav-item dropdown"><!-- Menu2  -->
 		<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Precios</a>
 			<ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="#" class="dropdown-item">Centro de Costos</a></li>
+              <li><a href="abmArticulo.php" class="dropdown-item">Centro de Costos</a></li>
               <li><a href="#" class="dropdown-item">Actualizacion Masiva</a></li>
 			</ul>
 		</li><!-- Fin Menu2  -->
-		
-	
         <!-- Inicio Menu3 -->	
 		<li class="nav-item dropdown"><!-- Menu2  -->
 		<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Stock</a>
@@ -58,13 +51,11 @@ function menu($nro_cat, $nom_completo)
                 <li><a href="#" class="dropdown-item">Historial</a></li>
 			</ul>
 		</li><!-- Fin Menu2  -->	
-			
-        </ul>
-
-        </div>
+    </ul>
+    </div>
 
       </ul>
-    </div>
+    </div><?PHP echo date('d\/m\/Y'); ?>
   </nav>
     
 <?PHP }
