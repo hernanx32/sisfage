@@ -11,7 +11,7 @@ $path='';
 
 include("Modulos/html.php");
 include("Modulos/conex.php");
-include("menu.php");
+include("Modulos/menu.php");
 include("Modulos/usuario/abmUsuario.php");
 
 cabeza($titulo,$path);

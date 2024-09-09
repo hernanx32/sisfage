@@ -13,7 +13,7 @@ $focus='';
 
 include($path."Modulos/html.php");
 include($path."Modulos/conex.php");
-include($path."menu.php");
+include($path."Modulos/menu.php");
 
 
 cabeza($titulo,$path);

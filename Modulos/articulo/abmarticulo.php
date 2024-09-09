@@ -17,7 +17,7 @@ function abmarticulo($conn)
     <tbody>
       <tr>
         <th colspan="3" scope="col">ABM ARTICULOS</th>
-        <th colspan="2" scope="col">Agregar Articulo</th>
+        <th colspan="2" scope="col"><div align="center"><a href="abmArticulo.php?scr=agregar">AGREGAR ARTICULO</a></div></th>
       </tr>
       <tr>
         <td width="162"><label for="BuscarArt">
@@ -29,7 +29,8 @@ function abmarticulo($conn)
         <td width="184" align="center"><input name="nomb_provee" type="text" disabled id="nomb_provee" size="30" maxlength="30"></td>
       </tr>
       <tr>
-        <td colspan="5" align="center"><table width="1000" border="1">
+        <td colspan="5" align="center">
+            <table width="100%" border="1">
           <tbody>
             <tr>
               <th scope="col">Ref.</th>
@@ -40,64 +41,36 @@ function abmarticulo($conn)
               <th scope="col">Precio 1</th>
               <th scope="col">Precio 2 </th>
               <th scope="col">Acciones</th>
-              
-                
-              </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>                
-            </tr>
-          </tbody>
-        </table></td>
-      </tr>
-    </tbody>
-  </table>
-</form>
-      
-<?PHP /* 
-$sql = "
-SELECT 
-usuario.id_usuario, usuario.usuario, usuario.nombre,
-sucu.nomb_suc AS nomb_suc,
-acc.nombre AS acc_nombre
-  FROM usuario
-JOIN sucursales AS sucu 
-	ON usuario.id_sucursal = sucu.id_sucursal
-JOIN acceso AS acc
-  ON usuario.id_acceso = acc.id_acceso
-    WHERE id_usuario != 1 
-";
-      
+          </tr>
+        <?PHP 
+$sql = "SELECT id_articulo, cod_prov, cod_bar, desc_larga, costo, precio1, precio2 FROM articulo WHERE estado = 1 LIMIT 20";
 $result = $conn->query($sql);      
-      
-
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         
         echo "<tr><td>";
-        echo $row['id_usuario'];
+        echo $row['id_articulo'];
         echo "</td><td>";
-        echo $row['usuario'];
+        echo $row['cod_prov'];
         echo "</td><td>";
-        echo $row['nombre'];
+        echo $row['cod_bar'];
         echo "</td><td>";
-        echo $row['nomb_suc'];
+        echo $row['desc_larga'];
         echo "</td><td>";
-        echo $row['acc_nombre'];
+        echo "$" . number_format($row['costo'], 2);
+        echo "</td><td>";
+        echo "$" . number_format($row['precio1'], 2);
+        echo "</td><td>";
+        echo "$" . number_format($row['precio2'], 2);
         echo "</td><td align='center'>";
-        echo "<a href='abmUsuario.php?scr=modificar&id=".$row['id_usuario']."'>Modificar</a> - <a  href='abmUsuario.php?scr=eliminar&id=".$row['id_usuario']."' onclick='confirmarEnlace(event)'>Eliminar</a> </td></tr>"; 
+        echo "<a href='abmArticulo.php?scr=modificar&id=".$row['id_articulo']."'>Modificar</a> - <a  href='abmArticulo.php?scr=eliminar&id=".$row['id_articulo']."' onclick='confirmarEnlace(event)'>Eliminar</a> </td></tr>"; 
     
     }
 } else {
-    echo "0 resultados";
+    echo "<td colspan='8'>No se Encontraron Resultados<td>";
 }
-echo "</tbody></table></form>";*/
+echo "</tbody></table></form>";
+
 
 } 
 //AGREGAR FORMULARIO PARA AGREGAR USUARIO	  
