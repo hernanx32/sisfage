@@ -17,6 +17,7 @@ include("Modulos/articulo/abmArticulo.php");
 cabeza($titulo,$path);
 menu($nro_cat, $nom_completo);
 
+?><script src="js/AltaArticulos.js"></script><?PHP
 
 //Validamos si existe la Var SCR
 if (isset($_GET['scr'])){
@@ -28,11 +29,15 @@ if (isset($_GET['scr'])){
 	agregado  */
 	$scr=$_GET['scr'];
     
-	if ($scr=="agregar"){
-        agregar($conn);   
+	if ($scr=="costos"){
+        $id_el_art=$_GET['id'];
+        costos($conn, $id_el_art); 
+    }elseif($scr=="agregar"){
+		agregar($conn);
+        
     }elseif($scr=="eliminar"){
-		$id_el_us=$_GET['id'];
-    	elimina_usu($conn, $id_el_us);
+		$id_el_art=$_GET['id'];
+    	elimina_art($conn, $id_el_art);
     }elseif($scr=="agregarnuevo"){
         //CARGAMOS LOS DATOS DEL POST
         $usuario=$_POST['usuario'];

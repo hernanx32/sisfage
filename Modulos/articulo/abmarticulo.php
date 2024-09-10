@@ -12,6 +12,9 @@ function abmarticulo($conn)
             }
         }
     </script>
+
+
+
 <form id="form1" name="form1" method="post">
   <table width="1010" border="1" align="center">
     <tbody>
@@ -43,7 +46,7 @@ function abmarticulo($conn)
               <th scope="col">Acciones</th>
           </tr>
         <?PHP 
-$sql = "SELECT id_articulo, cod_prov, cod_bar, desc_larga, costo, precio1, precio2 FROM articulo WHERE estado = 1 LIMIT 20";
+$sql = "SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo WHERE estado = 1 LIMIT 20";
 $result = $conn->query($sql);      
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
@@ -51,7 +54,7 @@ if ($result->num_rows > 0) {
         echo "<tr><td>";
         echo $row['id_articulo'];
         echo "</td><td>";
-        echo $row['cod_prov'];
+        echo $row['cod_bar_prov'];
         echo "</td><td>";
         echo $row['cod_bar'];
         echo "</td><td>";
@@ -63,7 +66,7 @@ if ($result->num_rows > 0) {
         echo "</td><td>";
         echo "$" . number_format($row['precio2'], 2);
         echo "</td><td align='center'>";
-        echo "<a href='abmArticulo.php?scr=modificar&id=".$row['id_articulo']."'>Modificar</a> - <a  href='abmArticulo.php?scr=eliminar&id=".$row['id_articulo']."' onclick='confirmarEnlace(event)'>Eliminar</a> </td></tr>"; 
+        echo "<a href='abmArticulo.php?scr=modificar&id=".$row['id_articulo']."'>Editar</a> - <a href='abmArticulo.php?scr=costos&id=".$row['id_articulo']."'>Costos</a> - <a  href='abmArticulo.php?scr=eliminar&id=".$row['id_articulo']."' onclick='confirmarEnlace(event)'>Eliminar</a> </td></tr>"; 
     
     }
 } else {
@@ -76,85 +79,95 @@ echo "</tbody></table></form>";
 //AGREGAR FORMULARIO PARA AGREGAR USUARIO	  
 function agregar($conn){
 ?>
-      <form action="abmUsuario.php?scr=agregarnuevo" method="post" name="form1" id="form1">
-  <table width="507" border="1" align="center">
+ <form action="abmArticulo.php?scr=agregardetalle" method="post" name="form1" id="form1">
+  <table width="1000" border="1" align="center">
     <tbody>
       <tr>
-        <th colspan="2" scope="col">Agregar Usuario</th>
+        <th colspan="4" scope="col">Agregar Datos del Articulo</th>
       </tr>
       <tr>
-        <td width="135"><label for="id_usu">Nro Id. Usuario:</label></td>
-        <td width="356"><input name="id_usu" type="text" disabled id="id_usu" size="5" maxlength="5"></td>
+        <td width="109"><label for="id_articulo">Nro Id.</label></td>
+        <td colspan="3"><input name="id_articulo" type="text" disabled id="id_articulo" size="5" maxlength="5"></td>
       </tr>
       <tr>
-        <td><label for="usuario">Usuario:</label></td>
-        <td><input name="usuario" type="text" id="usuario" size="10" maxlength="10" required> 
+        <td><label for="cod_bar">Codigo Barra:</label></td>
+        <td colspan="3"><input name="cod_bar" type="text" id="cod_bar" size="15" maxlength="15" required> 
           (*)</td>
       </tr>
       <tr>
-        <td><label for="clave">Clave:</label></td>
-        <td><input name="clave" type="password" id="clave" size="10" maxlength="10" required>
+        <td><label for="desc_corta">Desc. Corta:</label></td>
+        <td width="232"><input name="desc_corta" type="text" id="desc_corta" size="20" maxlength="20" required>
         (*)</td>
+        <td width="134" align="right"><label for="desc_larga">Desc. Larga:</label></td>
+        <td width="497"><input name="desc_larga" type="text" id="desc_larga" size="30" maxlength="30" required>
+(*)</td>
       </tr>
       <tr>
-        <td><label for="acceso">Sector/Acceso:</label></td>
-        <td><select name="acceso" id="acceso">
-          <option value="2">Administracion</option>
-          <option value="3">Ventas</option>
-          <option value="4">Deposito</option>
-          <option value="5">Rectificadora</option>
+        <td><label for="rubro">Rubro:</label></td>
+        <td><select name="rubro" id="rubro">
+          <option value="2">Repuesto</option>
+          <option value="1">Varios</option>
+        </select></td>
+        <td align="right"><label for="sub_rubro">Sub Rubro:</label></td>
+        <td><select name="sub_rubro" id="sub_rubro">
+            <option value="1">LUBRICANTES</option>
+            <option value="2">ACCESORIOS</option>
+            <option value="3">PEGAMENTOS</option>
+            <option value="4">MOTOR</option>
+            <option value="5">TRASMISION</option>
+            <option value="6">RODADOS</option>
+            <option value="7">VARIOS</option>
         </select></td>
       </tr>
       <tr>
-        <td><label for="nombre">Apellido y Nomb.:</label></td>
-        <td><input name="nombre" type="text" id="nombre" size="20" maxlength="20" required>
-          (*)</td>
+        <td><label for="medida">Medida:</label></td>
+        <td><select name="medida" id="medida">
+            <option value="Unidad">Unidad</option>
+            <option value="Litros">Litros</option>
+            <option value="Kilos">Kilos</option>
+            <option value="Metros">Metros</option>
+        </select></td>
+        <td align="right"><label for="unidadxbulto">Uni. x Bulto</label></td>
+        <td><input name="unidadxbulto" type="number" id="unidadxbulto" max="100" min="1" value="1"></td>
       </tr>
       <tr>
-        <td><label for="email">Email:</label></td>
-        <td><input name="email" type="text" id="email" size="20" maxlength="20"></td>
+        <td><label for="proveedor">Proveedor</label></td>
+        <td><input name="proveedor" type="text" id="proveedor" size="20" maxlength="20"></td>
+        <td align="right"><input name="id_provee" type="text" disabled="disabled" id="id_provee" size="5" maxlength="5"></td>
+        <td><input name="desc_proveedor" type="text" disabled="disabled" id="desc_proveedor" size="20" maxlength="20"></td>
       </tr>
       <tr>
-        <td><label for="sucursal">Sucursal:</label></td>
-        <td>
-         <select name="sucursal" id="sucursal">
-          <option value="1">Central</option>
-          <option value="2">Italia</option>
-          <option value="3">Moreno</option>
-          <option value="4">Nva. Formosa</option>
-          <option value="6">Deposito Central</option>
-        </select>
-      </td>
+        <td><label for="cod_bar_prov">Cod. Bar. Prov.</label></td>
+        <td colspan="3"><input name="cod_bar_prov" type="text" id="cod_bar_prov" size="20" maxlength="20"></td>
       </tr>
       <tr>
-        <td><label for="foto">Foto:</label></td>
-        <td><input name="foto" type="file" id="foto" disabled></td>
-      </tr>
-      <tr>
-        <td colspan="2" align="center"><a href="abmUsuario.php" class="btn btn-outline-secondary">Cancela</a> - 
-        <input class="btn btn-outline-success" type="submit" name="scr" id="scr" value="agregado"></td>
+        <td colspan="4" align="center"><a href="abmArticulo.php" class="btn btn-outline-secondary">Cancela</a> - 
+        <input name="guardar" type="submit" class="btn btn-outline-success" id="scr" formaction="abmArticulo.php?scr=agregar" value="Guardar y Volver"> - 
+        <input name="guardarycosto" type="submit" class="btn btn-outline-success" id="scr2" formaction="abmArticulo.php?scr=agregarycosto" value="Guardar y Cargar Costo">  
+        </td>
       </tr>
     </tbody>
   </table>
 </form>
+
 <?PHP
  }
 //FUNCION INSERTAR NUEVO USUARIO
 
 //FUNCION ELIMINA USUARIO
-function elimina_usu($conn, $id ){
+function elimina_art($conn, $id ){
 	//CODIGO DE CONSULTA DE ELIMINACION DEL REGISTRO
-	$sql = "DELETE FROM usuario WHERE `usuario`.`id_usuario` = '$id'";
+	$sql = "UPDATE `articulo` SET `estado` = '0' WHERE `articulo`.`id_articulo` = '$id'";
 	//EJECUTANDO CODIGO DE ELIMINACION 
 	if ($conn->query($sql) === TRUE) {
 		//MENSAJE EN CASO QUE SEA CORRECTO	
-		echo "<div class='alert alert-success' role='alert'>Usuario Eliminado Correctamente.</div>";
-		echo "<td colspan='6' align='center'><a href='abmUsuario.php' class='btn btn-outline-secondary'>VOLVER</a>";
+		echo "<div class='alert alert-success' role='alert'>Articulo deshabilitado Correctamente.</div>";
+		echo "<td colspan='6' align='center'><a href='abmArticulo.php' class='btn btn-outline-secondary'>VOLVER</a>";
 	   
 	} else {
     echo "Error: " . $sql . "<br>" . $conn->error;
-	echo "<div class='alert alert-danger' role='alert'>Error Al eliminar usuario.</div>";
-    echo "<td colspan='6' align='center'><a href='abmUsuario.php' class='btn btn-outline-secondary'>VOLVER</a>";
+	echo "<div class='alert alert-danger' role='alert'>Error al deshabilitar Articulo.</div>";
+    echo "<td colspan='6' align='center'><a href='abmArticulo.php' class='btn btn-outline-secondary'>VOLVER</a>";
 	}
 }
 
@@ -176,4 +189,171 @@ function agregado($conn, $consulta){
     echo "<td colspan='6' align='center'><a href='abmUsuario.php' class='btn btn-outline-secondary'>VOLVER</a>";
 	}
 }
+
+
+
+function costos($conn, $id){
+?>
+<form action="/ArticuloAlta2.php" method="post" id="form1">	
+<table width="780" border="1" align="center">
+  <caption>Alta Articulo</caption>
+	<tbody>
+    <tr>
+      <td>
+        <table width="770" border="0">
+          <tr>
+            <td width="126" align="right"><label for="cref">Cod.Referencia:</label></td>
+            <td width="220" align="left"><input name="cref" type="text" disabled="disabled" id="cref" tabindex="99" size="10"></td>
+            <td width="410">&nbsp;</td>
+            </tr>
+          <tr>
+            <td width="126" align="right"><label for="codbar">Cod.Barra:</label></td>
+            <td width="220" align="left"><input name="codbar" type="text" autofocus="autofocus" id="codbar" tabindex="1"></td>
+            <td width="410">&nbsp;</td>
+            </tr>
+          <tr>
+            <td width="126" align="right"><label for="Desc">Desc. Corta</label></td>
+            <td width="220" align="left"><input name="Desc" type="text" id="Desc" tabindex="2" size="25" maxlength="30" onkeyup="txtMayuscula('Desc')"></td>
+            <td width="410" align="left">Desc. Larga
+              <input name="Desl" type="text" id="Desl" tabindex="3" size="40" maxlength="50" onkeyup="txtMayuscula('Desl')"></td>
+            </tr>
+          </table>
+        </td>
+    </tr>
+    <tr>
+      <td>
+        
+        <table width="770" border="0">
+          <tbody>
+            <tr>
+              <td width="159" align="center" ><label for="ModIva">Modalidad de I.V.A.</label></td>
+              <td width="112" align="center" ><label for="TipoIva">Tipo</label></td>
+              <td align="center" ><label for="ImpInterno">Imp. Internos</label></td>
+              <td align="center" >&nbsp;</td>
+              </tr>
+            <tr>
+              <td align="center"><select name="ModIva" id="ModIva" tabindex="10">
+                <option value="1">Grabado</option>
+                <option value="2">Exento</option>
+                <option value="3">No Grabado</option>
+                </select></td>
+              <td align="center"><select name="TipoIva" id="TipoIva" tabindex="11" oninput="calcularResultado()">
+                <option value="21">21%</option>
+                <option value="0">0 %</option>
+                <option value="10.5">10.5%</option>
+                <option value="27">27%</option>
+                </select></td>
+              <td width="197" align="center">
+                <select name="ImpInterno" id="ImpInterno" tabindex="12">
+                  <option value="0">0 %</option>
+                  <option value="3">3 %</option>
+                  <option value="5">5 %</option>
+                  <option value="10">10 %</option>
+                  </select>
+                </td>
+              <td width="284" align="left">&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        
+        
+        
+        </td>
+    </tr>
+    <tr>
+      <td><table width="770" border="0">
+        <tr>
+          <td colspan="2"><label for="Costo">Costo Sin Iva: $</label>
+            <input name="Costo" type="number" id="Costo" tabindex="15" size="10" oninput="calcularResultado()"> 
+            X Unidad</td>
+          <td width="387"><label for="BonifPor">Bonificaciones</label>
+            %
+            <input name="BonifPor" type="text" id="BonifPor" max="2" min="2" tabindex="16" value="0" size="2" maxlength="2" oninput="calResPorBoni()">
+            $
+            <input name="BonifImp" type="text" id="BonifImp" max="2" min="2" tabindex="17" value="0" size="10" maxlength="10" oninput="calcularResultado()"></td>
+          </tr>
+        <tr>
+          <td width="182" align="center" bgcolor="#BEBEBE">Costo Neto</td>
+          <td width="187" align="center" bgcolor="#BEBEBE">Costo C/IVA</td>
+          <td><label for="FletePor">Flete o Gastos</label>
+            %
+            <input name="FletePor" type="text" id="FletePor" max="5" min="5" tabindex="19" value="0" size="2" maxlength="2" oninput="calResPorFlete()">
+            $
+  <input name="FleteImp" type="text" id="FleteImp" max="5" min="5" tabindex="20" value="0" size="10" maxlength="10" oninput="calcularResultado()"></td>
+          </tr>
+        <tr>
+          <td align="center" bgcolor="#BEBEBE"><input name="Cost_siva" type="text" disabled="disabled" id="Cost_siva" tabindex="18" size="10" maxlength="10"></td>
+          <td align="center" bgcolor="#BEBEBE"><input name="Cost_civa" type="text" disabled="disabled" id="Cost_civa" tabindex="18" size="10" maxlength="10"></td>
+          <td><label for="cargosFPor">Cargos Financ.</label>
+            %
+            <input name="cargosFPor" type="text" id="cargosFPor" max="5" min="5" tabindex="21" value="0" size="2" maxlength="2" oninput="calResPorCarFin()">
+            $
+            <input name="cargosFImp" type="text" id="cargosFImp" max="5" min="5" tabindex="22" value="0" size="10" maxlength="10" oninput="calcularResultado()"></td>
+          </tr>
+        
+        
+        </table></td>
+    </tr>
+    <tr>
+      <td><table width="770" border="0">
+        <tbody>
+          <tr>
+            <th colspan="3" align="left" scope="col">Precio de Venta</th>
+            <th align="left" scope="col">&nbsp;</th>
+            <th align="left" scope="col">&nbsp;</th>
+            </tr>
+          <tr>
+            <td width="66" align="right">&nbsp;</td>
+            <td colspan="2" align="center" bgcolor="#CACACA">Aumentos Por: </td>
+            <td width="137" align="center">Precio S/IVA</td>
+            <td width="292" align="center" bgcolor="#CACACA"> Precio de Venta  C/IVA Final</td>
+          </tr>
+          <tr>
+            <td align="right">Lista 1</td>
+            <td width="108" align="center" bgcolor="#CACACA">% 
+              <input name="LA1" type="text" id="LA1" tabindex="22" value="0" size="7" maxlength="7"  oninput="calcularPorc('A')"></td>
+            <td width="145" align="center" bgcolor="#CACACA">$
+              <input name="LA2" type="text" id="LA2" tabindex="22" value="0" size="10" maxlength="10" disabled="disabled"></td>
+            <td align="center"><input name="LA3" type="text" id="LA3" tabindex="22" size="10" maxlength="10" disabled="disabled"></td>
+            <td align="center" bgcolor="#CACACA"><input name="LA4" type="text" id="LA4" tabindex="22" size="15" maxlength="15" oninput="calcularImp('A')"></td>
+          </tr>
+    
+          <tr>
+            <td align="right">Lista 2</td>
+            <td align="center" bgcolor="#CACACA">% 
+              <input name="LB1" type="text" id="LB1" tabindex="22" value="0" size="7" maxlength="7"></td>
+            <td align="center" bgcolor="#CACACA">$ 
+              <input name="LB2" type="text" id="LB2" tabindex="22" value="0" size="10" maxlength="10"></td>
+            <td align="center"><input name="LB3" type="text" id="LB3" tabindex="22" size="10" maxlength="10"></td>
+            <td align="center" bgcolor="#CACACA"><input name="LB4" type="text" id="LB4" tabindex="22" size="15" maxlength="15"></td>
+          </tr>
+
+          <td align="right">Lista 3</td>
+            <td align="center" bgcolor="#CACACA">% 
+              <input name="LC1" type="text" id="LC1" tabindex="22" value="0" size="7" maxlength="7"></td>
+            <td align="center" bgcolor="#CACACA">$
+              <input name="LC2" type="text" id="LC2" tabindex="22" value="0" size="10" maxlength="10"></td>
+            <td align="center"><input name="LC3" type="text" id="LC3" tabindex="22" size="10" maxlength="10"></td>
+            <td align="center" bgcolor="#CACACA"><input name="LC4" type="text" id="LC4" tabindex="22" size="15" maxlength="15"></td>
+          </tr>
+       
+          <tr>
+            <td align="right">Lista 4</td>
+            <td align="center" bgcolor="#CACACA">% 
+              <input name="LD1" type="text" id="LD1" tabindex="22" value="0" size="7" maxlength="7"></td>
+            <td align="center" bgcolor="#CACACA">$ 
+              <input name="LD2" type="text" id="LD2" tabindex="22" value="0" size="10" maxlength="10"></td>
+            <td align="center"><input name="LD3" type="text" id="LD3" tabindex="22" size="10" maxlength="10"></td>
+            <td align="center" bgcolor="#CACACA"><input name="LD4" type="text" id="LD4" tabindex="22" size="15" maxlength="15"></td>
+          </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td align="center"><input type="submit" name="submit" id="submit" value="Guardar Articulo"></td>
+    </tr>
+  </tbody>
+</table>
+	  
+	</form>
+<?php }
 ?>
