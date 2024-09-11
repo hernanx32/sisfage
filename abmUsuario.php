@@ -75,7 +75,7 @@ if (isset($_GET['scr'])){
         //PANTALLA PRINCIPAL DE USUARIO
             abmUsuario($conn);
         }
-
+//actualizado
 $focus='buscar_us';
 $conn->close();
 pieprincipal($focus,$path);
