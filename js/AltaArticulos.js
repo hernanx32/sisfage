@@ -59,21 +59,21 @@ function ingCosto() {
 		   	
 		  
 			
-			var resultado1 = input2 - input4 + input7 + input8;
-			var resultado2 = (input2 * ((input1/100)+1))-input4 + input7 + input8;
+          var resultado1 = input2 - input4 + input7 + input8;
+          var resultado2 = (input2 * ((input1/100)+1))-input4 + input7 + input8;
 			
-			document.getElementById('Cost_siva').value = resultado1;
-			document.getElementById('Cost_civa').value = resultado2;
+          document.getElementById('Cost_siva').value = resultado1;
+          document.getElementById('Cost_civa').value = resultado2;
 
-			document.getElementById('LA1').value = '0';
-			document.getElementById('LB1').value = '0';
-			document.getElementById('LC1').value = '0';
-      document.getElementById('LD1').value = '0';
+          document.getElementById('LA1').value = '0';
+          document.getElementById('LB1').value = '0';
+          document.getElementById('LC1').value = '0';
+          document.getElementById('LD1').value = '0';
 
-			document.getElementById('LA2').value = '0';
-			document.getElementById('LB2').value = '0';
-			document.getElementById('LC2').value = '0';
-      document.getElementById('LD2').value = '0';
+          document.getElementById('LA2').value = '0';
+          document.getElementById('LB2').value = '0';
+          document.getElementById('LC2').value = '0';
+          document.getElementById('LD2').value = '0';
 
 			document.getElementById('LA3').value = resultado1;
 			document.getElementById('LB3').value = resultado1;
