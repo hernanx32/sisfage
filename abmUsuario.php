@@ -76,7 +76,7 @@ if (isset($_GET['scr'])){
             abmUsuario($conn);
         }
 
-
+//asdas
 $focus='buscar_us';
 $conn->close();
 pieprincipal($focus,$path);
