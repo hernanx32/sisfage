@@ -20,12 +20,6 @@ menu($nro_cat, $nom_completo);
 
 //Validamos si existe la Var SCR
 if (isset($_GET['scr'])){
-/* Pantallas
-	eliminar
-	edita
-	editado
-	agregar
-	agregado  */
 	$scr=$_GET['scr'];
     
 	if ($scr=="agregar"){
@@ -49,13 +43,13 @@ if (isset($_GET['scr'])){
         agregado($conn, $consulta);
         }
         
-        elseif($scr=="modificar"){
-            $id_usu=$_GET['id'];
-            form_modi_usu($conn, $id_usu );
+    elseif($scr=="modificar"){
+        $id_usu=$_GET['id'];
+        form_modi_usu($conn, $id_usu );
         }
     
     //MODIFICANDO DATOS 
-        elseif($scr=="modificando"){
+    elseif($scr=="modificando"){
        
         $id_usu=$_GET['id_usu'];
         $n_usuario=$_POST['usuario'];
@@ -66,62 +60,22 @@ if (isset($_GET['scr'])){
             
         $clave=$_POST['clave'];
         echo $fecha; 
-         echo "<br>"; 
-    echo  $id_usu;
-    echo "<br>";        
-    echo  $n_usuario;
-            echo "<br>";
-    echo  $id_acces;
-            echo "<br>";
-    echo  $nombre;
-            echo "<br>";
-    echo  $email;
-            echo "<br>";
-    echo  $id_sucursal;
-            echo "<br>";
-    echo  $clave; 
-           
-            
-            $query = "UPDATE `usuario` SET  `nombre` = '$nombre'  WHERE `id_usuario` = '$id_usu'";
-                if ($conn->query($query) === TRUE) {
-                echo "Registro actualizado exitosamente";
-            } else {
-                echo "Error al actualizar el registro: " . $conn->error;
-            }
-            
-            
-        /*if ($clave=='XXXXXXXXXXXXXXXX'){
-                $consulta= "UPDATE `usuario` SET `usuario` = $n_usuario, `id_acceso` = $id_acces, `nombre` = $nombre, `id_sucursal` = $id_sucursal WHERE `usuario`.`id_usuario` = $id_usu";
+        echo "<br>"; 
+  
+          
+      if ($clave=='XXXXXXXXXXXXXXXX'){
+                $consulta= "UPDATE `usuario` SET `usuario` = '$n_usuario', `id_acceso` = '$id_acces', `nombre` = '$nombre', `id_sucursal` = '$id_sucursal' WHERE `usuario`.`id_usuario` = '$id_usu'";
             }else{
                 $clave=md5($_POST['clave']);
-                $consulta= "UPDATE `usuario` SET `usuario` = $n_usuario, `clave` = $clave, `id_acceso` = $id_acces, `nombre` = $nombre, `id_sucursal` = $id_sucursal WHERE `usuario`.`id_usuario` = $id_usu";
-          }*/
-                        
-     //       $query = "UPDATE `usuario` SET  `nombre` = $nombre  WHERE `id_usuario` = $id_usu";
-            
-    //        if ($conn->query($query) === TRUE) {
-    //            echo "Registro actualizado exitosamente";
-    //        } else {
-    //            echo "Error al actualizar el registro: " . $conn->error;
-    //        }
-            
-            
-            //modificando($conn, $consulta );
-            
-            /*$query = "UPDATE `usuario` SET `nombre` = '$nombre', `email` = '$email', `id_sucursal` = $id_sucursal  WHERE `id_usuario` = $id_usu";
-
-            if ($conn->query($query) === TRUE) {
-                echo "Registro actualizado exitosamente";
-            } else {
-                echo "Error al actualizar el registro: " . $conn->error;
-            }*/
-        }
-    
-    
+                $consulta= "UPDATE `usuario` SET `usuario` = '$n_usuario', `clave` = '$clave', `id_acceso` = '$id_acces', `nombre` = '$nombre', `id_sucursal` = '$id_sucursal' WHERE `usuario`.`id_usuario` = '$id_usu'";
+         }
+			modificando($conn, $consulta);		
+		}
         }else{
         //PANTALLA PRINCIPAL DE USUARIO
             abmUsuario($conn);
         }
+
 
 $focus='buscar_us';
 $conn->close();

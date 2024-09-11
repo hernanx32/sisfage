@@ -12,7 +12,7 @@ function abmUsuario($conn)
             }
         }
     </script>
-<form>
+<form action="abmUsuario.php?scr=buscar">
 <table width="750" border="1" align="center">
   <tbody>
     <tr>
@@ -66,7 +66,7 @@ if ($result->num_rows > 0) {
     
     }
 } else {
-    echo "0 resultados";
+	  echo "<tr><td colspan='6'>0 resultados</td></tr>";
 }
 echo "</tbody></table></form>";
 
@@ -202,7 +202,7 @@ function form_modi_usu($conn, $id ){
     echo "<div class='alert alert-danger' role='alert'>Error al buscar al usuario .</div>";
     echo "<td colspan='6' align='center'><a href='abmUsuario.php' class='btn btn-outline-secondary'>VOLVER</a>";
     }
-    
+
     
 ?>    
 <form action="abmUsuario.php?scr=modificando&id_usu=<?php echo $id;?>" method="post" name="form1" id="form1">
@@ -287,7 +287,7 @@ function modificando($conn, $consulta){
 	echo "<div class='alert alert-danger' role='alert'>Error al Actualizar usuario.</div>";
     echo "<td colspan='6' align='center'><a href='abmUsuario.php' class='btn btn-outline-secondary'>VOLVER</a>";
 	}
-    $conn->close();
+
 }
 
 
