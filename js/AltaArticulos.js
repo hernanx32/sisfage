@@ -144,12 +144,31 @@ function ingCosto() {
       
       var impAumen = parseFloat(document.getElementById(fila).value);
      
-      document.getElementById('L'+valor+'1').value = (10 * impAumen)/ Cost_civa ;
+      document.getElementById('L'+valor+'1').value = (10 * impAumen)/Cost_civa ;
       document.getElementById('L'+valor+'2').value = (Cost_siva * porcAumen)/100 + Cost_siva;
       document.getElementById('L'+valor+'3').value = (Cost_civa * porcAumen)/100 + Cost_civa;
 /*
-      document.getElementById('L'+valor+'1').value = (Cost_civa * porcAumen)/100;
+      document.getElementById('L'+valor+'1').value = (10 * impAumen)/Cost_civa ;
       document.getElementById('L'+valor+'2').value = (Cost_siva * porcAumen)/100 + Cost_siva;
       document.getElementById('L'+valor+'3').value = (Cost_civa * porcAumen)/100 + Cost_civa;
 */
 	   }
+
+
+     function calcularImp2(valor) {
+      var fila = 'L'+valor+'1';
+      var Cost_siva = parseFloat(document.getElementById('Cost_siva').value);
+      var Cost_civa = parseFloat(document.getElementById('Cost_civa').value);
+      
+      var impAumen = parseFloat(document.getElementById(fila).value);
+     
+      document.getElementById('L'+valor+'4').value = (10 / impAumen)/Cost_civa ;
+      document.getElementById('L'+valor+'2').value = (Cost_siva * porcAumen)/100 + Cost_siva;
+      document.getElementById('L'+valor+'3').value = (Cost_civa * porcAumen)/100 + Cost_civa;
+/*
+      document.getElementById('L'+valor+'1').value = (10 * impAumen)/Cost_civa ;
+      document.getElementById('L'+valor+'2').value = (Cost_siva * porcAumen)/100 + Cost_siva;
+      document.getElementById('L'+valor+'3').value = (Cost_civa * porcAumen)/100 + Cost_civa;
+*/
+	   }
+

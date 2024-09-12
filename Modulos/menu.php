@@ -2,7 +2,12 @@
 
 function menu($nro_cat, $nom_completo)
 {
-?>
+ 
+   if (!isset($_SESSION['id_usuario'])) {
+    // Si no está logueado, redirigir a la página de inicio de sesión
+    header("Location:index.php");
+    exit(); // Asegúrate de que no se ejecute el resto del código
+} ?> 
 <!-- Navbar -->
   <nav class="navbar-expand-md navbar-light navbar" >
     <div class="container-fluid">
@@ -55,7 +60,7 @@ function menu($nro_cat, $nom_completo)
     </div>
 
       </ul>
-    </div><?PHP echo date('d\/m\/Y'); ?>
+    </div>Categoria:<?PHP echo $nro_cat."<br>"; echo date('d\/m\/Y'); ?>
   </nav>
     
 <?PHP }

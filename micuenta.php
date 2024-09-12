@@ -56,11 +56,7 @@ if (isset($_GET['scr'])){
 		$demail=$_POST['d_email'];
 	}
 		//CAMPO Suc	
-	if($dsuc == $_POST['d_sucursal']){
-		//echo 'SUCURSAL no Modificada, ';
-			}else {
-		$dsuc=$_POST['d_sucursal'];
-	}
+    
 	//MODIFICAMOS LOS VALORES 
     //UPDATE `usuario` SET `nombre` = 'Carolina V. Britez ' WHERE `usuario`.`id_usuario` = 2;
    //nombre , clave, email, id_suscursal
@@ -117,7 +113,7 @@ $mensaje_res=$resultado3;
 	<div class="col-10">
 	
 <label for="d_sucursal" class="form-label">Sucursal(*)</label>
-         <select class="form-control" name="d_sucursal" id="d_sucursal" tabindex="4" >
+         <select class="form-control" name="d_sucursal" id="d_sucursal" tabindex="4" disabled="disabled">
 <?php       
     $sql1=$conn->query("SELECT * FROM `SUCURSALES`");
 

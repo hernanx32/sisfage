@@ -15,10 +15,9 @@ include($path."Modulos/html.php");
 include($path."Modulos/conex.php");
 include($path."Modulos/menu.php");
 
-
 cabeza($titulo,$path);
 menu($nro_cat, $nom_completo);
-	
+echo $nro_cat;	
 
 echo "Pag. Principal en Construcción.";
 
