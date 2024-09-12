@@ -20,7 +20,7 @@ global $fecha_form;
 	<link rel="stylesheet" href="comp/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
  	<link rel="stylesheet" href="comp/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 	<link rel="stylesheet" href="comp/dist/css/adminlte.min.css">	
-    
+    <script src="js/formularios.js"></script>
   </head>
 	  <!-- Preloader -->
   <div class="preloader">

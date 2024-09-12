@@ -16,13 +16,11 @@ if (isset($_GET['msj']))
     $mensaje="<strong><span style='color: Green;'>Bienvenido..</span></strong>";  
 }
 
-
 if (!isset($_GET['scr'])){
     
     include("Modulos/Login/login.php");
     $focus='usuario';
 }else{
-
     $scr=$_GET['scr'];
 
     if ($scr=="ingresar"){
@@ -33,14 +31,9 @@ if (!isset($_GET['scr'])){
     include("Modulos/Login/olvidoclave.php");
     $focus='correo';
     }
-
 }
 
 echo "Estado de Conexión: ".$EstCon ;
-
-
 pieindex($focus,$path);
 
 ?>
-
-

@@ -23,20 +23,15 @@ menu($nro_cat, $nom_completo);
 <table width="650" border="1">
   <tbody>
     <tr>
-      <th scope="col">&nbsp;</th>
-      <th scope="col">&nbsp;</th>
-      <th scope="col">&nbsp;</th>
-      <th scope="col">&nbsp;</th>
-      <th scope="col">&nbsp;</th>
-      <th scope="col">&nbsp;</th>
-    </tr>
+      <th colspan="2" align="left" scope="col">Funciones JS de Formularios</th>
+      </tr>
     <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td width="176" align="left"><input type="text" id="nombre" onBlur="txtMayuscula('nombre')"></td>
+      <td width="458" align="left">Poner en Mayuscula cuando se sale del campo de texto</td>
+      </tr>
+    <tr>
+      <td align="left"><input type="text" id="nombre2" oninput="txtMayuscula('nombre2')"></td>
+      <td align="left">Siempre coloca en Mayusculas</td>
     </tr>
   </tbody>
 </table>
