@@ -1,34 +1,38 @@
 <?php
+// Conexión a la base de datos
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "bases";
+$database = "bases"; // Cambia por el nombre de tu base de datos
 
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $database);
 
-// Verificar conexión
+// Verificar la conexión
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Conexión fallida: " . $conn->connect_error);
 }
 
-if (isset($_GET['query'])) {
-    $query = $_GET['query'];
-    $stmt = $conn->prepare("SELECT * FROM usuario WHERE id_usuario LIKE ? OR usuario LIKE ?");
-    $searchTerm = "%$query%";
-    $stmt->bind_param("ss", $searchTerm, $searchTerm);
-    $stmt->execute();
-    $result = $stmt->get_result();
+// Obtener el término de búsqueda enviado desde el frontend
+$query = $_GET['query'];
 
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            echo "<div class='result-item'>ID: " . $row["id_usuario"]. " - Usuario: " . $row["usuario"]. "</div>";
-        }
-    } else {
-        echo "<div class='result-item'>0 results</div>";
-    }
-    $stmt->close();
+// Preparar y ejecutar la consulta SQL
+$sql = "SELECT id_usuario, nombre FROM usuario WHERE  id_usuario LIKE ? OR nombre LIKE ?";
+$stmt = $conn->prepare($sql);
+$searchTerm = '%' . $query . '%';
+$stmt->bind_param("ss", $searchTerm, $searchTerm);  // Se vincula para buscar tanto por id como por nombre
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Crear un array para almacenar los resultados
+$suggestions = [];
+
+while ($row = $result->fetch_assoc()) {
+    $suggestions[] = $row;
 }
 
+// Devolver los resultados en formato JSON
+echo json_encode($suggestions);
+
+// Cerrar la conexión
 $conn->close();
 ?>
