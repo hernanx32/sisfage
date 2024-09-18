@@ -17,9 +17,8 @@ function abmUsuario($conn)
   <tbody>
     <tr>
       <th colspan="4" scope="col">
-        <label for="buscar_us">Buscar:</label>
-        <input type="text" name="buscar_us" id="buscar_us">
-        <input type="button" name="button" id="button" value="Buscar"></th>
+        <label for="buscar_us">ABM Usuarios</label>
+       </th>
       <th colspan="2" align="center" scope="col"><div align="center"><a href="abmUsuario.php?scr=agregar">AGREGAR USUARIO</a></div></th>
       </tr>
     <tr align="center" bgcolor="#8E9EFD">
