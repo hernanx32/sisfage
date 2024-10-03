@@ -11,12 +11,10 @@ function abmarticulo($conn)
                 event.preventDefault();
             }
         }
-    </script>
-
-
+        </script>
 
 <form id="form1" name="form1" method="post">
-  <table width="1010" border="1" align="center">
+  <table width="1200" border="1" align="center">
     <tbody>
       <tr>
         <th colspan="3" scope="col">ABM ARTICULOS</th>
@@ -45,7 +43,7 @@ function abmarticulo($conn)
               <th scope="col">Precio 2 </th>
               <th scope="col">Acciones</th>
           </tr>
-        <?PHP 
+<?PHP 
 $sql = "SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo WHERE estado = 1 LIMIT 20";
 $result = $conn->query($sql);      
 if ($result->num_rows > 0) {
@@ -206,16 +204,17 @@ function costos($conn, $id){
 	<tbody>
     <tr>
       <td>
-        <table width="849" border="0">
+        <table width="849" border="1">
           <tr>
             <td width="126" align="right"><label for="cref">Cod.Referencia:</label></td>
             <td width="220" align="left"><input name="cref" type="text" id="cref" value="1" size="10" readonly="readonly"></td>
-            <td width="410"><p>Ultima Modificación: </p></td>
+            <td width="410"><label for="modificado">Ultima Modificación</label><input name="modificado" type="text" disabled="disabled" id="modificado"></td>
             </tr>
           <tr>
             <td width="126" align="right"><label for="codbar">Cod.Barra:</label></td>
             <td width="220" align="left"><input name="codbar" type="text" disabled="disabled" id="codbar"></td>
-            <td width="410">&nbsp;</td>
+            <td width="410"><label for="codbarprov">Cod.Provee:</label>
+              <input name="codbarprov" type="text" disabled="disabled" id="codbarprov"></td>
             </tr>
           <tr>
             <td colspan="3" align="left"><label for="desc_larga">Desc. Larga</label>
@@ -360,7 +359,6 @@ function costos($conn, $id){
     </tr>
   </tbody>
 </table>
-	  
-</form>
+
 <?php }
 ?>
