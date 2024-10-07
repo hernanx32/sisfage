@@ -9,10 +9,10 @@ $nom_completo=$_SESSION['nombre'];
 $titulo='Sistema - ABM Articulo';
 $path='';
 
-include("Modulos/html.php");
-include("Modulos/conex.php");
-include("Modulos/menu.php");
-include("Modulos/articulo/abmArticulo.php");
+include("/sisfage/Modulos/html.php");
+include("/sisfage/Modulos/conex.php");
+include("/sisfage/Modulos/menu.php");
+include("/sisfage/Modulos/articulo/abmArticulo.php");
 
 cabeza($titulo,$path);
 menu($nro_cat, $nom_completo);

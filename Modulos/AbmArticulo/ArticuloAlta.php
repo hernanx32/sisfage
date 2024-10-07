@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <title>Documento sin título</title>
  
-<script src="js/jquery-3.6.0.min.js">	</script>
-<script src="js/AltaArticulos.js"></script>
+<script src="../../js/jquery-3.6.0.min.js">	</script>
+<script src="../../js/AltaArticulos.js"></script>
 
 	</head>
 

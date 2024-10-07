@@ -1,0 +1,8 @@
+# Habilitar el uso de reescritura de URLs
+RewriteEngine On
+
+# Redirigir la URL http://localhost/sisfage/principal a http://localhost/sisfage/principal.php
+RewriteRule ^principal$ principal.php [L]
+
+# Opcional: Redirigir http://localhost/sisfage a principal.php
+RewriteRule ^$ principal.php [L]
