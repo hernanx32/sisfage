@@ -1,48 +1,28 @@
 <?php
+
 function abmarticulo($conn)
 {
 ?>
-    <script>
-        function confirmarEnlace(event) {
-            // Mostrar mensaje de confirmación
-            var confirmacion = confirm("¿Estás seguro que desea deshabilitar el Articulo?");
-            if (!confirmacion) {
-                // Si el usuario cancela, evitar que el enlace se abra
-                event.preventDefault();
-            }
-        }
-        </script>
-
-<form id="form1" name="form1" method="post">
-  <table width="1200" border="1" align="center">
-    <tbody>
-      <tr>
-        <th colspan="3" scope="col">ABM ARTICULOS</th>
-        <th colspan="2" scope="col"><div align="center"><a href="abmArticulo.php?scr=agregar">AGREGAR ARTICULO</a></div></th>
-      </tr>
-      <tr>
-        <td width="162"><label for="BuscarArt">
-          <input name="BuscarArt" type="text" id="BuscarArt" size="20" maxlength="20">
-        </label></td>
-        <td width="132"><input type="submit" name="submit" id="submit" value="Buscar"></td>
-        <td width="237" align="center"><a>Filtro por Proveedor</a></td>
-        <td width="61" align="center"><input name="cod_provee" type="text" disabled id="cod_provee" size="5" maxlength="5"></td>
-        <td width="184" align="center"><input name="nomb_provee" type="text" disabled id="nomb_provee" size="30" maxlength="30"></td>
-      </tr>
-      <tr>
-        <td colspan="5" align="center">
-            <table width="100%" border="1">
-          <tbody>
-            <tr>
-              <th scope="col">Ref.</th>
-              <th scope="col">C.Prov</th>
-              <th scope="col">Cod.Barra</th>
-              <th scope="col">Descripción </th>
-              <th scope="col">Costo</th>
-              <th scope="col">Precio 1</th>
-              <th scope="col">Precio 2 </th>
-              <th scope="col">Acciones</th>
-          </tr>
+<div class="card">
+              <div class="card-header">
+                <h3 class="card-title">ABM Articulos</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Cod.Ref</th>
+                    <th>Cod.Provee</th>
+                    <th>Cod.Barra</th>
+                    <th>Descripción</th>
+                    <th>Costo</th>
+                    <th>Precio1</th>
+                    <th>Precio2</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </thead>
+                  <tbody>
 <?PHP 
 $sql = "SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo WHERE estado = 1 LIMIT 20";
 $result = $conn->query($sql);      
@@ -70,10 +50,10 @@ if ($result->num_rows > 0) {
 } else {
     echo "<td colspan='8'>No se Encontraron Resultados<td>";
 }
-echo "</tbody></table></form>";
+echo "</tbody></table></form> </div>";
 
+}
 
-} 
 //AGREGAR FORMULARIO PARA AGREGAR USUARIO	  
 function agregar($conn){
 ?>

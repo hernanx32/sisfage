@@ -67,7 +67,9 @@ function pieprincipal($focus,$path){
 <!-- jQuery -->    
 <script src="comp/plugins/jquery/jquery.js"></script>
 <script src="comp/plugins/bootstrap/js/bootstrap.bundle.js"></script>
+
 <script src="comp/plugins/datatables/jquery.dataTables.js"></script>
+
 <script src="comp/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <script src="comp/plugins/datatables-responsive/js/dataTables.responsive.js"></script>
 <script src="comp/plugins/datatables-responsive/js/responsive.bootstrap4.js"></script>

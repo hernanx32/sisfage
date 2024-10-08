@@ -1,25 +1,25 @@
 <?php
 session_start();
-$fecha=date('Y-m-d');
+
 $id_us=$_SESSION['id_usuario'];
 $usuario=$_SESSION['usuario'];
 $nro_cat=$_SESSION['id_acceso'];
 $nom_completo=$_SESSION['nombre'];
 
-$titulo='Sistema - ABM Articulo';
+$titulo='Sistema - AbmArticulo';
 $path='';
+$focus='';
 
-include("/sisfage/Modulos/html.php");
-include("/sisfage/Modulos/conex.php");
-include("/sisfage/Modulos/menu.php");
-include("/sisfage/Modulos/articulo/abmArticulo.php");
+
+include($path."Modulos/html.php");
+include($path."Modulos/conex.php");
+include($path."Modulos/menu.php");
+
+include($path."Modulos/AbmArticulo/AbmArticulo.php");
 
 cabeza($titulo,$path);
 menu($nro_cat, $nom_completo);
 
-?><script src="js/AltaArticulos.js"></script><?PHP
-
-//Validamos si existe la Var SCR
 if (isset($_GET['scr'])){
 /* Pantallas
 	eliminar
@@ -58,11 +58,8 @@ if (isset($_GET['scr'])){
 	abmarticulo($conn);
 }
 
-?>
 
 
-<?PHP
-$focus='buscar_us';
-$conn->close();
 pieprincipal($focus,$path);
+
 ?>
