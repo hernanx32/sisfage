@@ -15343,6 +15343,4 @@
 
 	return DataTable;
     
-}))
-
-;
+}));

@@ -1,5 +1,4 @@
 <?PHP
-
 function cabeza($titulopag, $path)
 {
  
@@ -18,9 +17,14 @@ global $fecha_form;
 	<link rel="stylesheet" href="comp/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 	<link rel="stylesheet" href="comp/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 	<link rel="stylesheet" href="comp/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
- 	<link rel="stylesheet" href="comp/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-	<link rel="stylesheet" href="comp/dist/css/adminlte.min.css">	
+ 	<link rel="stylesheet" href="comp/dist/css/adminlte.min.css">	
     <script src="js/formularios.js"></script>
+	
+<!-- Link Anulados
+<link rel="stylesheet" href="comp/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+-->	
+	
   </head>
 	  <!-- Preloader -->
   <div class="preloader">
@@ -67,9 +71,7 @@ function pieprincipal($focus,$path){
 <!-- jQuery -->    
 <script src="comp/plugins/jquery/jquery.js"></script>
 <script src="comp/plugins/bootstrap/js/bootstrap.bundle.js"></script>
-
 <script src="comp/plugins/datatables/jquery.dataTables.js"></script>
-
 <script src="comp/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <script src="comp/plugins/datatables-responsive/js/dataTables.responsive.js"></script>
 <script src="comp/plugins/datatables-responsive/js/responsive.bootstrap4.js"></script>
@@ -142,6 +144,7 @@ function bajarEnter (field, event) {
       "responsive": true,
     });
   });
+	
 </script>
 
   <!-- Main Footer -->

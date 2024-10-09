@@ -58,7 +58,7 @@ echo "</tbody></table></form> </div>";
 function agregar($conn){
 ?>
  <form action="abmArticulo.php?scr=agregardetalle" method="post" name="form1" id="form1">
-  <table width="1000" border="1" align="center">
+  <table id="miTabla" width="1000" border="1" align="center">
     <tbody>
       <tr>
         <th colspan="4" scope="col">Agregar Datos del Articulo</th>
