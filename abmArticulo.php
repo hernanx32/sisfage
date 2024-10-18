@@ -63,4 +63,4 @@ if (isset($_GET['scr'])){
 pieprincipal($focus,$path);
 
 ?>
-<script src="comp/trad_datatable.js"></script> <!-- traducir Datatable -->
+
