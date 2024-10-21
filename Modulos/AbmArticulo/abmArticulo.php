@@ -13,8 +13,8 @@ function abmarticulo($conn)
                   <thead>
                   <tr>
                     <th>Cod.Ref</th>
-                    <th>Cod.Provee</th>
                     <th>Cod.Barra</th>
+                    <th>Cod.Prov.</th>
                     <th>Descripción</th>
                     <th>Costo</th>
                     <th>Precio1</th>
@@ -24,7 +24,7 @@ function abmarticulo($conn)
                   </thead>
                   <tbody>
 <?PHP 
-$sql = "SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo WHERE estado = 1 LIMIT 20";
+$sql = "SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo WHERE estado = 1";
 $result = $conn->query($sql);      
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
@@ -32,9 +32,9 @@ if ($result->num_rows > 0) {
         echo "<tr><td>";
         echo $row['id_articulo'];
         echo "</td><td>";
-        echo $row['cod_bar_prov'];
-        echo "</td><td>";
         echo $row['cod_bar'];
+        echo "</td><td>";
+        echo $row['cod_bar_prov'];
         echo "</td><td>";
         echo $row['desc_larga'];
         echo "</td><td>";
