@@ -1,50 +1,44 @@
 <?php
 
-function abmarticulo($conn)
+function abmaprov($conn)
 {
 ?>
 <div class="card">
             <div class="card-header">
-                <h3 class="card-title">ABM Articulos</h3>
+                <h3 class="card-title">ABM Proveedores</h3>
             </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Cod.Ref</th>
-                    <th>Cod.Barra</th>
-                    <th>Cod.Prov.</th>
-                    <th>Descripción</th>
-                    <th>Costo</th>
-                    <th>Precio1</th>
-                    <th>Precio2</th>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Direccion</th>
+                    <th>Localidad</th>
+                    <th>CUil/Cuit</th>
                     <th>Acciones</th>
                   </tr>
                   </thead>
                   <tbody>
 <?PHP 
-$sql = "SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo WHERE estado = 1";
+$sql = "SELECT `id_proveedor`,`nombre`, `direccion`, `localidad`, `nro_doc` FROM proveedor";
 $result = $conn->query($sql);      
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         
         echo "<tr><td>";
-        echo $row['id_articulo'];
+        echo $row['id_proveedor'];
         echo "</td><td>";
-        echo $row['cod_bar'];
+        echo $row['nombre'];
         echo "</td><td>";
-        echo $row['cod_bar_prov'];
+        echo $row['direccion'];
         echo "</td><td>";
-        echo $row['desc_larga'];
+        echo $row['localidad'];
         echo "</td><td>";
-        echo "$" . number_format($row['costo'], 2);
-        echo "</td><td>";
-        echo "$" . number_format($row['precio1'], 2);
-        echo "</td><td>";
-        echo "$" . number_format($row['precio2'], 2);
+        echo $row['nro_doc'];
         echo "</td><td align='center'>";
-        echo "<a href='abmArticulo.php?scr=modificar&id=".$row['id_articulo']."'>Editar</a> - <a href='abmArticulo.php?scr=costos&id=".$row['id_articulo']."'>Costos</a> - <a  href='abmArticulo.php?scr=eliminar&id=".$row['id_articulo']."' onclick='confirmarEnlace(event)'>Eliminar</a> </td></tr>"; 
+        echo "<a href='abmArticulo.php?scr=modificar&id=".$row['id_proveedor']."'>Editar</a> - <a  href='abmArticulo.php?scr=eliminar&id=".$row['id_proveedor']."' onclick='confirmarEnlace(event)'>Eliminar</a> </td></tr>"; 
     
     }
 } else {

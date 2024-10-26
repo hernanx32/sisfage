@@ -6,42 +6,33 @@ $usuario=$_SESSION['usuario'];
 $nro_cat=$_SESSION['id_acceso'];
 $nom_completo=$_SESSION['nombre'];
 
-$titulo='Sistema - AbmArticulo';
+$titulo='Sistema - AbmProveedores';
 $path='';
-$focus='';
-
+$focus='buscarPovee';
 
 include($path."Modulos/html.php");
 include($path."Modulos/conex.php");
 include($path."Modulos/menu.php");
 
-include($path."Modulos/AbmArticulo/AbmArticulo.php");
+include($path."Modulos/abmProv.php");
 
 cabeza($titulo,$path);
 menu($nro_cat, $nom_completo);
 
 if (isset($_GET['scr'])){
-/* Pantallas
-	eliminar
-	edita
-	editado
-	agregar
-	agregado  */
+
 	$scr=$_GET['scr'];
     
-	if ($scr=="costos"){
+	if ($scr=="agregar"){
         $id_el_art=$_GET['id'];
-        costos($conn, $id_el_art);
+        agregar($conn, $id_el_art);
      }elseif($scr=="modificar"){
 		$id_el_art=$_GET['id'];
-    	modificar_art($conn, $id_el_art);        
-        
-    }elseif($scr=="agregar"){
-		agregar($conn);
-       
+    	modificar_prov($conn, $id_el_art);        
     }elseif($scr=="eliminar"){
 		$id_el_art=$_GET['id'];
     	elimina_art($conn, $id_el_art);
+        
     }elseif($scr=="agregarnuevo"){
         //CARGAMOS LOS DATOS DEL POST
         $usuario=$_POST['usuario'];
@@ -59,7 +50,7 @@ if (isset($_GET['scr'])){
 
 
 }else{
-	abmarticulo($conn);
+	abmaprov($conn);
 }
 
 
@@ -67,4 +58,3 @@ if (isset($_GET['scr'])){
 pieprincipal($focus,$path);
 
 ?>
-
