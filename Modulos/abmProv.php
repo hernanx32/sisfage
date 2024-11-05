@@ -16,7 +16,7 @@ function abmaprov($conn)
                     <th>Nombre</th>
                     <th>Direccion</th>
                     <th>Localidad</th>
-                    <th>CUil/Cuit</th>
+                    <th>Cuil/Cuit</th>
                     <th>Acciones</th>
                   </tr>
                   </thead>
