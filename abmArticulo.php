@@ -31,10 +31,14 @@ if (isset($_GET['scr'])){
     
 	if ($scr=="costos"){
         $id_el_art=$_GET['id'];
-        costos($conn, $id_el_art); 
+        costos($conn, $id_el_art);
+     }elseif($scr=="modificar"){
+		$id_el_art=$_GET['id'];
+    	modificar_art($conn, $id_el_art);        
+        
     }elseif($scr=="agregar"){
 		agregar($conn);
-        
+       
     }elseif($scr=="eliminar"){
 		$id_el_art=$_GET['id'];
     	elimina_art($conn, $id_el_art);
@@ -63,4 +67,4 @@ if (isset($_GET['scr'])){
 pieprincipal($focus,$path);
 
 ?>
-<script src="comp/trad_datatable.js"></script> <!-- traducir Datatable -->
+

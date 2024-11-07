@@ -33,7 +33,7 @@ if ($nro_cat=='1'){
               <li><a href="/sisfage/micuenta.php" class="dropdown-item">Mi Cuenta</a></li>
               <li><a href="/sisfage/abmUsuario.php" class="dropdown-item">Usuarios</a></li>
 			  <li><a href="#" class="dropdown-item">Sucursales</a></li>
-			  <li><a href="#" class="dropdown-item">Proveedores</a></li>
+			  <li><a href="/sisfage/abmProveedores.php" class="dropdown-item">Proveedores</a></li>
 			  <li><a href="#" class="dropdown-item">Familias</a></li>                
 			  <li><a href="#" class="dropdown-item">Rubros - Sub-Rubros</a></li>
 			  <li><a href="#" class="dropdown-item">Opciones del Sistema</a></li>
