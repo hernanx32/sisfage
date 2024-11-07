@@ -54,7 +54,8 @@
       </tr>
       <tr>
         <td><label for="cp_prov2">Cod. Postal:</label>
-          <input name="cp_prov" type="text" id="cp_prov2" tabindex="5" size="5" maxlength="5"></td>
+          <input name="cp_prov" type="text" required="required" id="cp_prov2" tabindex="5" size="5" maxlength="5">
+          (*)</td>
         <td colspan="2"><label for="tel3_prov">Tel 3:</label>
           <input name="tel3_prov" type="text" id="tel3_prov" tabindex="8" size="20" maxlength="20">
         <label for="Nro_doc"></label></td>

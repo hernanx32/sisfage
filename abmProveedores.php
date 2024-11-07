@@ -31,13 +31,18 @@ if (isset($_GET['scr'])){
     }
     elseif($scr=="agregarnuevo"){
         //CARGAMOS LOS DATOS DEL POST
-        $usuario=$_POST['usuario'];
-        $clave=md5($_POST['clave']);
-        $id_acces=$_POST['acceso'];
-        $nombre=$_POST['nombre'];
-        $email=$_POST['email'];
-        $id_sucursal=$_POST['sucursal'];
-      
+$nombre=$_POST['nombre'];
+$dir_prov=$_POST['$dir_prov'];
+$prov_prove=$_POST['prov_prove'];
+$transporte=$_POST['$transporte'];
+$cp_prov=$_POST['cp_prov'];
+$tipo_doc=$_POST['$tipo_doc'];
+$Nro_doc=$_POST['Nro_doc'];
+$telprov1=$_POST['$telprov1'];
+$telprov2=$_POST['$telprov2'];
+$telprov3=$_POST['$telprov3'];
+$otros=$_POST['otros'];
+        
         $consulta="INSERT INTO `usuario` (`id_usuario`, `usuario`, `clave`, `id_acceso`, `nombre`, `email`, `editable`, `id_sucursal`, `fec_act`) VALUES (NULL, '$usuario', '$clave', '$id_acces', '$nombre', '$email', '1', '$id_sucursal', '$fecha')";
         
         agregado($conn, $consulta);
