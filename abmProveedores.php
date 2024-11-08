@@ -43,7 +43,9 @@ $telprov2=$_POST['$telprov2'];
 $telprov3=$_POST['$telprov3'];
 $otros=$_POST['otros'];
         
-        $consulta="INSERT INTO `usuario` (`id_usuario`, `usuario`, `clave`, `id_acceso`, `nombre`, `email`, `editable`, `id_sucursal`, `fec_act`) VALUES (NULL, '$usuario', '$clave', '$id_acces', '$nombre', '$email', '1', '$id_sucursal', '$fecha')";
+        $consulta="INSERT INTO `proveedor` 
+        (`id_proveedor `, `nombre`, `direccion`, `provincia`, `localidad`, `codPostal`, `tel1`, `tel2`, `tel3`,`id_transporte`, `id_doc`, `nro_doc`, `otros` , `fec_act`) 
+        VALUES (NULL, '$nombre', '$dir_prov', '$id_acces', '$nombre', '$email', '1', '$id_sucursal', '$fecha')";
         
         agregado($conn, $consulta);
         }
