@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Documento sin título</title>
 </head>
-
+	
 <body>
 	<section>
         <?php
