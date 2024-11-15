@@ -5,7 +5,7 @@ function abmproveedor($conn)
     <script>
         function confirmarEnlace(event) {
             // Mostrar mensaje de confirmación
-            var confirmacion = confirm("¿Estás seguro que desea Eliminar?");
+            var confirmacion = confirm("¿Estás seguro que desea Eliminar el Proveedor?");
             if (!confirmacion) {
                 // Si el usuario cancela, evitar que el enlace se abra
                 event.preventDefault();
@@ -122,8 +122,8 @@ function agregar($conn){
         <textarea name="otros" cols="30" rows="2" maxlength="60" id="otros" tabindex="12"></textarea></td>
       </tr>
       <tr>
-        <td colspan="2" align="right"><input type="button" name="button" id="button" value="Cancelar"></td>
-        <td colspan="3"><input name="submit" type="submit" id="submit" formaction="abmProveedores.php" tabindex="13" value="Enviar"></td>
+        <td colspan="2" align="right"><a href="abmProveedores.php" class="btn btn-outline-secondary">Cancela</a></td>
+        <td colspan="3"><input class="btn btn-outline-success" type="submit" name="scr" id="scr" value="agregado" tabindex="13"></td>
       </tr>
     </tbody>
   </table>
@@ -154,19 +154,19 @@ function agregado($conn, $consulta){
 }
 
 //FUNCION ELIMINA USUARIO
-function elimina_usu($conn, $id ){
+function elimina_prov($conn, $id ){
 	//CODIGO DE CONSULTA DE ELIMINACION DEL REGISTRO
-	$sql = "DELETE FROM usuario WHERE `usuario`.`id_usuario` = '$id'";
+	$sql = "DELETE FROM proveedor WHERE `proveedor`.`id_proveedor` = '$id'";
 	//EJECUTANDO CODIGO DE ELIMINACION 
 	if ($conn->query($sql) === TRUE) {
 		//MENSAJE EN CASO QUE SEA CORRECTO	
-		echo "<div class='alert alert-success' role='alert'>Usuario Eliminado Correctamente.</div>";
-		echo "<td colspan='6' align='center'><a href='abmUsuario.php' class='btn btn-outline-secondary'>VOLVER</a>";
+		echo "<div class='alert alert-success' role='alert'>Proveedor Eliminado Correctamente.</div>";
+		echo "<td colspan='6' align='center'><a href='abmProveedores.php' class='btn btn-outline-secondary'>VOLVER</a>";
 	   
 	} else {
     echo "Error: " . $sql . "<br>" . $conn->error;
-	echo "<div class='alert alert-danger' role='alert'>Error Al eliminar usuario.</div>";
-    echo "<td colspan='6' align='center'><a href='abmUsuario.php' class='btn btn-outline-secondary'>VOLVER</a>";
+	echo "<div class='alert alert-danger' role='alert'>Error Al eliminar el Proveedor.</div>";
+    echo "<td colspan='6' align='center'><a href='abmProveedores.php' class='btn btn-outline-secondary'>VOLVER</a>";
 	}
 }
 

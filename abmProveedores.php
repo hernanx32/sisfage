@@ -25,9 +25,9 @@ if (isset($_GET['scr'])){
 	if ($scr=="agregar"){
         agregar($conn);   
         }
-    elseif($scr=="eliminar"){
+    elseif($scr=="eliminar_prov"){
 		$id_el_us=$_GET['id'];
-    	elimina_usu($conn, $id_el_us);
+    	elimina_prov($conn, $id_el_us);
     }
     elseif($scr=="agregarnuevo"){
         //CARGAMOS LOS DATOS DEL POST
