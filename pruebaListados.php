@@ -58,8 +58,8 @@ $results_per_page = 15;
 $offset = ($page - 1) * $results_per_page;
 
 // Consulta SQL con límite y desplazamiento
-//$sql = "SELECT * FROM articulo LIMIT $offset, $results_per_page";
-$sql = "SELECT * FROM articulo where id_articulo = '2' LIMIT $offset, $results_per_page";
+//$sql = "SELECT * FROM articulo  LIMIT $offset, $results_per_page";
+$sql = "SELECT * FROM articulo  LIMIT $offset, $results_per_page";
 $result = $conn->query($sql);
       
 if ($result->num_rows > 0) {
@@ -80,7 +80,7 @@ if ($result->num_rows > 0) {
     
     }
 } else {
-    echo "<td colspan='8'>No se Encontraron Resultados<td>";
+    echo "<tr><td colspan='7'>No se Encontraron Resultados</td></tr>";
 }
 echo "</tbody></table></form> </div>";
 
@@ -99,7 +99,6 @@ if ($page > 1) {
 if ($page < $total_pages) {
     echo "<a href='?page=" . ($page + 1) . "'>Siguiente >>>>></a>";
 }
-      
       echo "<p>Página $page de $total_pages</p>";
 //actualizado
 $focus='buscar';
