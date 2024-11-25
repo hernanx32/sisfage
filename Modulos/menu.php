@@ -32,11 +32,11 @@ if ($nro_cat=='1'){
 			<ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <li><a href="/sisfage/micuenta.php" class="dropdown-item">Mi Cuenta</a></li>
               <li><a href="/sisfage/abmUsuario.php" class="dropdown-item">Usuarios</a></li>
-			  <li><a href="#" class="dropdown-item">Sucursales</a></li>
+			  <li><a href="/sisfage/abmSucursales.php" class="dropdown-item">Sucursales</a></li>
 			  <li><a href="/sisfage/abmProveedores.php" class="dropdown-item">Proveedores</a></li>
 			  <li><a href="#" class="dropdown-item">Familias</a></li>                
 			  <li><a href="#" class="dropdown-item">Rubros - Sub-Rubros</a></li>
-			  <li><a href="#" class="dropdown-item">Opciones del Sistema</a></li>
+			  <li><a href="/sisfage/prueba.php" class="dropdown-item">Opciones del Sistema</a></li>
 			  <li class="dropdown-divider"></li>
 			  <li><a href="/sisfage/Modulos/login/salir.php" class="dropdown-item">Salir</a></li>
 			</ul>
@@ -45,7 +45,7 @@ if ($nro_cat=='1'){
 		<li class="nav-item dropdown"><!-- Menu2  -->
 		<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Precios</a>
 			<ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="/sisfage/abmArticulo.php" class="dropdown-item">Centro de Costos</a></li>
+              <li><a href="/sisfage/Modulos/CentroCostos" class="dropdown-item">Centro de Costos</a></li>
               <li><a href="#" class="dropdown-item">Actualizacion Masiva</a></li>
 			</ul>
 		</li><!-- Fin Menu2  -->
@@ -104,7 +104,7 @@ if ($nro_cat=='1'){
 		<li class="nav-item dropdown"><!-- Menu2  -->
 		<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Precios</a>
 			<ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="/sisfage/abmArticulo.php" class="dropdown-item">Centro de Costos</a></li>
+              <li><a href="/sisfage/Modulos/CentroCostos" class="dropdown-item">Centro de Costos</a></li>
               <li><a href="#" class="dropdown-item">Actualizacion Masiva</a></li>
 			</ul>
 		</li><!-- Fin Menu2  -->

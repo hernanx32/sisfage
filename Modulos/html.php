@@ -31,7 +31,7 @@ global $fecha_form;
    <a href="principal.php"> 
 	<img src="img/cargando.gif" alt="Cargando...." height="100" width="100">
 	<img  src="img/cargando.png" alt="Cargando...." height="100" width="180"></a>
-	 
+	
   </div>-->
 <?PHP 
 date_default_timezone_set('America/Argentina/Buenos_Aires');

@@ -12,7 +12,9 @@ function abmproveedor($conn)
             }
         }
     </script>
-<form action="abmProveedor.php?scr=buscar">
+
+
+<form action="abmProveedores.php" method="get" id="Buscar">
 <table width="1200" border="1" align="center">
   <tbody>
     <tr>
@@ -21,6 +23,24 @@ function abmproveedor($conn)
        </th>
       <th colspan="2" align="center" scope="col"><div align="center"><a href="abmProveedores.php?scr=agregar">AGREGAR PROVEEDOR</a></div></th>
       </tr>
+    <tr>
+      <th colspan="6" scope="col">
+         
+  <input name="Buscar" type="text" autofocus="autofocus" id="Buscar">
+  Filtro de Busqueda 
+  <select name="select" id="select">
+    <option value="nombre" selected="selected">Nombre</option>
+    <option value="nrodoc">Nro Documento</option>
+  </select>
+  <input type="submit" value="Buscar">
+
+          
+          
+          
+       </th>
+      </tr>      
+      
+      
     <tr align="center" bgcolor="#8E9EFD">
       <td width="40">ID</td>
       <td width="200">Proveedor</td>
