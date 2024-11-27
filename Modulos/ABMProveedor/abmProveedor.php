@@ -76,8 +76,10 @@ if ($result->num_rows > 0) {
 echo "</tbody></table></form> </div>";
 
 }
+//--------------------------------
+//FORMULARIO AGREGAR PROVEEDORES
+//--------------------------------
 
-//AGREGAR FORMULARIO PARA AGREGAR USUARIO	  
 function agregar($conn){
 ?>
  <form action="abmProveedores.php?scr=agregarnuevo" method="post" name="form1" id="form1">
@@ -106,7 +108,7 @@ function agregar($conn){
         <input name="prov_prove" type="text" required="required" id="prov_prove" tabindex="3" size="15" maxlength="15">
         (*)</td>
         <td colspan="2"><label for="telprov1">Tel 1:</label>
-        <input name="telprov1" type="text" id="telprov1" tabindex="6" size="20" maxlength="20"></td>
+        <input name="telprov1" type="number" id="telprov1" tabindex="6" size="20" maxlength="20"></td>
         <td width="281" colspan="2"><label for="transporte">Transporte:</label>
         <select name="transporte" id="transporte" tabindex="9">
           <option value="1">Varios</option>
@@ -117,7 +119,7 @@ function agregar($conn){
           <input name="local_prov" type="text" required="required" id="local_prov2" tabindex="4" size="20" maxlength="20">
           (*)</td>
         <td colspan="2"><label for="telprov2">Tel 2:</label>
-        <input name="telprov2" type="text" id="telprov2" tabindex="7" size="20" maxlength="20"></td>
+        <input name="telprov2" type="number" id="telprov2" tabindex="7" size="20" maxlength="20"></td>
         <td colspan="2"><label for="tipo_doc">Tipo de Doc.:</label>
         <select name="tipo_doc" id="tipo_doc" tabindex="10">
           <option value="1">CUIT</option>
@@ -128,10 +130,10 @@ function agregar($conn){
       </tr>
       <tr>
         <td><label for="cp_prov">Cod. Postal:</label>
-          <input name="cp_prov" type="text" required="required" id="cp_prov" tabindex="5" size="5" maxlength="5">
+          <input name="cp_prov" type="number" required="required" id="cp_prov" tabindex="5" size="5" maxlength="5">
           (*)</td>
         <td colspan="2"><label for="telprov3">Tel 3:</label>
-          <input name="telprov3" type="text" id="telprov3" tabindex="8" size="20" maxlength="20">
+          <input name="telprov3" type="number" id="telprov3" tabindex="8" size="20" maxlength="20">
         </td>
         <td colspan="2"><label for="Nro_doc">Nro. Doc:</label>
         <input name="Nro_doc" type="number" id="Nro_doc" max="99999999999" tabindex="11" onkeypress="if (event.key < '0' || event.key > '9') event.preventDefault();" inputmode="numeric" oninput="if (this.value.length > 11) this.value = this.value.slice(0, 11);" />
@@ -154,24 +156,47 @@ function agregar($conn){
     document.getElementById("nombre").focus();
   };
 </script>   
-    
-<?PHP
- }
-//FUNCION INSERTAR NUEVO USUARIO
+<?PHP }
+
+//----------------------------------
+//FUNCION INSERTAR NUEVO PROVEEDOR
+//----------------------------------
 function agregado($conn, $consulta){
 	$sql = $consulta;
 	//EJECUTANDO CODIGO DE ELIMINACION 
 	if ($conn->query($sql) === TRUE) {
 		//MENSAJE EN CASO QUE SEA CORRECTO	
-		echo "<div class='alert alert-success' role='alert'>Usuario Agregado Correctamente.</div>";
-		echo "<td colspan='6' align='center'><a href='abmUsuario.php' class='btn btn-outline-secondary'>VOLVER</a>";
+		echo "<div class='alert alert-success' role='alert'>Proveedor Agregado Correctamente.</div>";
+		echo "<td colspan='6' align='center'><a href='abmProveedores.php' class='btn btn-outline-secondary'>VOLVER</a>";
 	   
 	} else {
     echo "Error: " . $sql . "<br>" . $conn->error;
-	echo "<div class='alert alert-danger' role='alert'>Error al agregar usuario.</div>";
-    echo "<td colspan='6' align='center'><a href='abmUsuario.php' class='btn btn-outline-secondary'>VOLVER</a>";
+	echo "<div class='alert alert-danger' role='alert'>Error al agregar Proveedor.</div>";
+    echo "<td colspan='6' align='center'><a href='abmProveedores.php' class='btn btn-outline-secondary'>VOLVER</a>";
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //FUNCION ELIMINA USUARIO
 function elimina_prov($conn, $id ){
