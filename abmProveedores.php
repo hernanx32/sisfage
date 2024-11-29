@@ -34,7 +34,8 @@ if (isset($_GET['scr'])){
 		$nombre=$_POST['nombre'];
 		$dir_prov=$_POST['dir_prov'];
 		$prov_prove=$_POST['prov_prove'];
-		$transporte=$_POST['transporte'];
+		$local_prov=$_POST['local_prov'];        
+        $transporte=$_POST['transporte'];
 		$cp_prov=$_POST['cp_prov'];
 		$tipo_doc=$_POST['tipo_doc'];
 		$Nro_doc=$_POST['Nro_doc'];
@@ -42,28 +43,16 @@ if (isset($_GET['scr'])){
 		$telprov2=$_POST['telprov2'];
 		$telprov3=$_POST['telprov3'];
 		$otros=$_POST['otros'];
+
+		
+        $consulta="INSERT INTO `proveedor` 
+        (`id_proveedor`, `nombre`, `direccion`, `provincia`, `localidad`, `codPostal`, `tel1`, `tel2`, `tel3`, `id_transporte`, `id_doc`, `nro_doc`, `otros`, `fec_act`) VALUES
+        (NULL, '$nombre', '$dir_prov', '$prov_prove', '$local_prov', '$cp_prov', '$telprov1', '$telprov2', '$telprov3', '$transporte', '$tipo_doc', '$Nro_doc', '$otros', '$fecha')";
         
-		echo $nombre.'<br>';
-		echo $dir_prov.'<br>';
-		echo $prov_prove.'<br>';
-		echo $transporte.'<br>';
-		echo $cp_prov.'<br>';
-		echo $tipo_doc.'<br>';
-		echo $Nro_doc.'<br>';
-		echo $telprov1.'<br>';
-		echo $telprov2.'<br>';
-		echo $telprov3.'<br>';
-		echo $otros.'<br>';
-		
-		
-		
-		
-		
-      /*  $consulta="INSERT INTO `proveedor` 
-        (`id_proveedor `, `nombre`, `direccion`, `provincia`, `localidad`, `codPostal`, `tel1`, `tel2`, `tel3`,`id_transporte`, `id_doc`, `nro_doc`, `otros` , `fec_act`) 
-        VALUES (NULL, '$nombre', '$dir_prov', '$id_acces', '$nombre', '$email', '1', '$id_sucursal', '$fecha')";
+      /*  $consulta="INSERT INTO `proveedor` (`id_sucursal`, `nro_suc`, `nomb_suc`, `domicilio`, `estado`) VALUES (NULL, '$Dato2', '$Dato3', '$Dato4', '$Dato5')";*/
         
-        agregado($conn, $consulta); */
+        
+        agregado($conn, $consulta); 
         }
         
 	

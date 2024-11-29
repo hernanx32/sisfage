@@ -33,14 +33,8 @@ function abmproveedor($conn)
     <option value="nrodoc">Nro Documento</option>
   </select>
   <input type="submit" value="Buscar">
-
-          
-          
-          
-       </th>
+     </th>
       </tr>      
-      
-      
     <tr align="center" bgcolor="#8E9EFD">
       <td width="40">ID</td>
       <td width="200">Proveedor</td>
@@ -150,7 +144,7 @@ function agregar($conn){
     </tbody>
   </table>
 </form>
-    
+
  <script>
   window.onload = function() {
     document.getElementById("nombre").focus();

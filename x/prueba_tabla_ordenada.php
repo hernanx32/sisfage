@@ -16,7 +16,7 @@
 
 
 <body>
-    <table id="example" class="display" style="width:100%">
+    <table border="1" id="example" class="display" style="width:1200px">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -51,7 +51,7 @@
     <script>
     $(document).ready(function() {
         $('#example').DataTable({
-            "order": [[0, "desc"]]
+            "order": [[3, "desc"]]
         });
     });
     </script>
