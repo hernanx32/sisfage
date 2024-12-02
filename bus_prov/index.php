@@ -1,70 +1,51 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buscar Proveedor</title>
-  <style>
-    .result-item {
-      cursor: pointer;
-      padding: 5px;
-      border: 1px solid #ccc;
-    }
-    .result-item:hover {
-      background-color: #f0f0f0;
-    }
-  </style>
-  <script>
-    function buscarProveedor() {
-      const buscarTermino = document.getElementById("Buscar_proveedor").value;
-
-      // Enviar la solicitud AJAX a PHP
-      if (buscarTermino) {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", "buscar.php?buscar=" + encodeURIComponent(buscarTermino), true);
-        xhr.onload = function () {
-          if (this.status === 200) {
-            const resultados = JSON.parse(this.responseText);
-            const resultadosDiv = document.getElementById("resultados");
-            resultadosDiv.innerHTML = ''; // Limpiar resultados anteriores
-
-            // Mostrar los resultados
-            resultados.forEach(proveedor => {
-              const div = document.createElement("div");
-              div.classList.add("result-item");
-              div.textContent = proveedor.nombre;
-              div.onclick = function () {
-                document.getElementById("id_proveedor").value = proveedor.id_acceso;
-                document.getElementById("nomb_proveedor").value = proveedor.nombre;
-                resultadosDiv.innerHTML = ''; // Limpiar resultados después de seleccionar
-              };
-              resultadosDiv.appendChild(div);
-            });
-          }
-        };
-        xhr.send();
-      }
-    }
-  </script>
+  <title>Mostrar Valor y Etiqueta con Select2</title>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 <body>
+  <label for="searchable-select2">Selecciona una opción:</label>
+  <select id="searchable-select2" style="width: 200px;">
+    <option value="1">Apple</option>
+    <option value="2">Banana</option>
+    <option value="3">Cherry</option>
+    <option value="4">Date</option>
+  </select>
+  <br><br>
+  <label for="result-input">Resultado:</label>
+    <input type="text" id="input" placeholder="Valor" readonly>
+    <input type="text" id="result" placeholder="Etiqueta" readonly>
 
-<form id="form1" name="form1" method="post">
-  <label for="Buscar_proveedor">Buscar Proveedor:</label>
-  <input type="text" name="Buscar_proveedor" id="Buscar_proveedor" oninput="buscarProveedor()">
-  
-  <div id="resultados"></div>
-  
-  <br>
-  
-  <label for="id_proveedor">ID Proveedor:</label>
-  <input type="text" name="id_proveedor" id="id_proveedor" readonly>
-  
-  <br>
-  
-  <label for="nomb_proveedor">Nombre proveedor:</label>
-  <input type="text" name="nomb_proveedor" id="nomb_proveedor" readonly>
-</form>
+  <script>
+    $(document).ready(function () {
+    const resultInput = $('#result');
+    const resultInput2 = $('#input');
+        
+      const select2Element = $('#searchable-select2');
 
+      select2Element.select2({
+        placeholder: "Buscar...",
+        allowClear: true
+      });
+
+      select2Element.on('select2:select', function (e) {
+        const data = e.params.data;
+          
+        resultInput.val(`${data.text}`);
+        resultInput2.val(`${data.id}`);  
+          
+      });
+
+      select2Element.on('select2:clear', function () {
+        resultInput.val('');
+        resultInput2.val('');
+      });
+    });
+  </script>
 </body>
 </html>

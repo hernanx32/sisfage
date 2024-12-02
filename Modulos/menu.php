@@ -29,17 +29,16 @@ if ($nro_cat=='1'){
 		<!-- Inicio Menu1 -->	
 		<li class="nav-item dropdown"><!-- Menu1  -->
 		<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Archivos</a>
-			<ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="/sisfage/micuenta.php" class="dropdown-item">Mi Cuenta</a></li>
-              <li><a href="/sisfage/abmUsuario.php" class="dropdown-item">Usuarios</a></li>
-			  <li><a href="/sisfage/abmSucursales.php" class="dropdown-item">Sucursales</a></li>
-			  <li><a href="/sisfage/abmProveedores.php" class="dropdown-item">Proveedores</a></li>
-			  <li><a href="#" class="dropdown-item">Familias</a></li>                
-			  <li><a href="#" class="dropdown-item">Rubros - Sub-Rubros</a></li>
-			  <li><a href="/sisfage/prueba.php" class="dropdown-item">Opciones del Sistema</a></li>
-			  <li class="dropdown-divider"></li>
-			  <li><a href="/sisfage/Modulos/login/salir.php" class="dropdown-item">Salir</a></li>
-			</ul>
+        <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+            <li><a href="/sisfage/micuenta.php" class="dropdown-item">Mi Cuenta</a></li>
+            <li><a href="/sisfage/abmUsuario.php" class="dropdown-item">Usuarios</a></li>
+			<li><a href="/sisfage/abmSucursales.php" class="dropdown-item">Sucursales</a></li>
+			<li><a href="/sisfage/abmProveedores.php" class="dropdown-item">Proveedores</a></li>
+            <li><a href="#" class="dropdown-item">Rubros - Sub-Rubros</a></li>
+			<li><a href="/sisfage/prueba.php" class="dropdown-item">Opciones del Sistema</a></li>
+			<li class="dropdown-divider"></li>
+			<li><a href="/sisfage/Modulos/login/salir.php" class="dropdown-item">Salir</a></li>
+		</ul>
 		</li><!-- Fin Menu1  -->
 		<!-- Inicio Menu2 -->	
 		<li class="nav-item dropdown"><!-- Menu2  -->
@@ -59,8 +58,20 @@ if ($nro_cat=='1'){
                 <li><a href="#" class="dropdown-item">Inventario</a></li>
                 <li><a href="#" class="dropdown-item">Historial</a></li>
 			</ul>
-		</li><!-- Fin Menu2  -->	
-    </ul>
+		</li><!-- Fin Menu3  -->	
+            <!-- Inicio Menu4 -->	
+		<li class="nav-item dropdown"><!-- Menu2  -->
+		<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Configuraciones</a>
+			<ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+               
+            <li><a href="/sisfage/iva.php" class="dropdown-item">IVA</a></li>
+            <li><a href="/sisfage/unimedida.php" class="dropdown-item">Unidad de Medida</a></li>
+            <li><a href="/sisfage/impinterno.php" class="dropdown-item">Impuesto Interno</a></li>
+            </ul>
+		</li><!-- Fin Menu4  -->
+          
+          
+     </ul>
     </div>
 
       </ul>
