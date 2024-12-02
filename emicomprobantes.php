@@ -12,7 +12,7 @@ $path='';
 include("Modulos/html.php");
 include("Modulos/conex.php");
 include("Modulos/menu.php");
-include("Modulos/abmArticulo/abmArticulo.php");
+include("Modulos/emicomprobantes/ecomprobantes.php");
 
 cabeza($titulo,$path);
 menu($nro_cat, $nom_completo);
@@ -87,7 +87,7 @@ if (isset($_GET['scr'])){
             
             }elseif($filtroBus=='prov'){
             $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo 
-            WHERE `id_proveedor` = '%$Busqueda%' ";    
+            WHERE `id_proveedor` LIKE '%$Busqueda%' ";    
             }
             
             abmArticulo($conn, $consulta);

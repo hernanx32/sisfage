@@ -12,14 +12,14 @@ global $fecha_form;
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo $titulopag; ?></title>
   
-	<link rel="stylesheet" href="comp/google.css">
-  	<link rel="stylesheet" href="comp/plugins/fontawesome-free/css/all.min.css">
-	<link rel="stylesheet" href="comp/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-	<link rel="stylesheet" href="comp/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-	<link rel="stylesheet" href="comp/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
- 	<link rel="stylesheet" href="comp/dist/css/adminlte.min.css">	
-    <link rel="stylesheet" href="comp/plugins/select2/css/select2.min.css">	
-    <script src="js/formularios.js"></script>
+	<link rel="stylesheet" href="<?PHP echo $path;?>comp/google.css">
+  	<link rel="stylesheet" href="<?PHP echo $path;?>comp/plugins/fontawesome-free/css/all.min.css">
+	<link rel="stylesheet" href="<?PHP echo $path;?>comp/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+	<link rel="stylesheet" href="<?PHP echo $path;?>comp/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="<?PHP echo $path;?>comp/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+ 	<link rel="stylesheet" href="<?PHP echo $path;?>comp/dist/css/adminlte.min.css">	
+    <link rel="stylesheet" href="<?PHP echo $path;?>comp/plugins/select2/css/select2.min.css">	
+    <script src="<?PHP echo $path;?>js/formularios.js"></script>
 	
 <!-- Link Anulados
 <link rel="stylesheet" href="comp/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
@@ -45,21 +45,21 @@ $fecha_form = date('Y-m-d');
 function pieindex($focus,$path)
 {
 ?>
-<script src="comp/plugins/jquery/jquery.js"></script>
-<script src="comp/plugins/bootstrap/js/bootstrap.bundle.js"></script>
-<script src="comp/plugins/datatables/jquery.dataTables.js"></script>
-<script src="comp/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<script src="comp/plugins/datatables-responsive/js/dataTables.responsive.js"></script>
-<script src="comp/plugins/datatables-responsive/js/responsive.bootstrap4.js"></script>
-<script src="comp/plugins/datatables-buttons/js/dataTables.buttons.js"></script>
-<script src="comp/plugins/datatables-buttons/js/buttons.bootstrap4.js"></script>
-<script src="comp/plugins/jszip/jszip.js"></script>
-<script src="comp/plugins/pdfmake/pdfmake.js"></script>
-<script src="comp/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="comp/plugins/datatables-buttons/js/buttons.html5.js"></script>
-<script src="comp/plugins/datatables-buttons/js/buttons.print.js"></script>
-<script src="comp/plugins/datatables-buttons/js/buttons.colVis.js"></script>
-<script src="comp/dist/js/adminlte.min.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/jquery/jquery.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/datatables-responsive/js/dataTables.responsive.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/datatables-responsive/js/responsive.bootstrap4.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/datatables-buttons/js/dataTables.buttons.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/datatables-buttons/js/buttons.bootstrap4.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/jszip/jszip.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/pdfmake/pdfmake.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/datatables-buttons/js/buttons.html5.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/datatables-buttons/js/buttons.print.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/datatables-buttons/js/buttons.colVis.js"></script>
+<script src="<?PHP echo $path;?>comp/dist/js/adminlte.min.js"></script>
 
 	
 </body>
@@ -70,21 +70,21 @@ function pieindex($focus,$path)
 function pieprincipal($focus,$path){
 ?>
 <!-- jQuery -->    
-<script src="comp/plugins/jquery/jquery.js"></script>
-<script src="comp/plugins/bootstrap/js/bootstrap.bundle.js"></script>
-<script src="comp/plugins/datatables/jquery.dataTables.js"></script>
-<script src="comp/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<script src="comp/plugins/datatables-responsive/js/dataTables.responsive.js"></script>
-<script src="comp/plugins/datatables-responsive/js/responsive.bootstrap4.js"></script>
-<script src="comp/plugins/datatables-buttons/js/dataTables.buttons.js"></script>
-<script src="comp/plugins/datatables-buttons/js/buttons.bootstrap4.js"></script>
-<script src="comp/plugins/jszip/jszip.js"></script>
-<script src="comp/plugins/pdfmake/pdfmake.js"></script>
-<script src="comp/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="comp/plugins/datatables-buttons/js/buttons.html5.js"></script>
-<script src="comp/plugins/datatables-buttons/js/buttons.print.js"></script>
-<script src="comp/plugins/datatables-buttons/js/buttons.colVis.js"></script>
-<script src="comp/dist/js/adminlte.min.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/jquery/jquery.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/datatables-responsive/js/dataTables.responsive.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/datatables-responsive/js/responsive.bootstrap4.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/datatables-buttons/js/dataTables.buttons.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/datatables-buttons/js/buttons.bootstrap4.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/jszip/jszip.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/pdfmake/pdfmake.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/datatables-buttons/js/buttons.html5.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/datatables-buttons/js/buttons.print.js"></script>
+<script src="<?PHP echo $path;?>comp/plugins/datatables-buttons/js/buttons.colVis.js"></script>
+<script src="<?PHP echo $path;?>comp/dist/js/adminlte.min.js"></script>
 
 <script>
 

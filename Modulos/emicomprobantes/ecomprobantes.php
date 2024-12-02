@@ -18,7 +18,7 @@ function abmarticulo($conn, $consulta)
             </div>
               <!-- /.card-header -->
             
-<form id="frm_articulo" method="get" action="abmArticulo.php">   
+<form id="frm_articulo" method="get" action="emicomprobantes.php">   
 <table id="example" class="display" border="1" width="1200px" align="center">
                   <thead>
                   <tr>
@@ -32,9 +32,9 @@ function abmarticulo($conn, $consulta)
                       <option value="prov">Cod. Proveedor</option>
                     </select>
                     </select>
-                    <input type="submit" name="scr" id="scr" value="Buscar"> - <a href="abmArticulo.php">LIMPIAR BUSQUEDA</a></th>
+                    <input type="submit" name="scr" id="scr" value="Buscar"> - <a href="emicomprobantes.php">LIMPIAR BUSQUEDA</a></th>
                     <th>&nbsp;</th>
-                    <th colspan="2"><div align="center"><a href="abmArticulo.php?scr=agregar">AGREGAR ARTICULO</a></div></th>
+                    <th colspan="2"><div align="center">.</div></th>
                     
                   </tr>
                   <tr>
@@ -42,10 +42,8 @@ function abmarticulo($conn, $consulta)
                     <th>Cod.Barra</th>
                     <th>Cod.Bar.Prov.</th>
                     <th>Descripción</th>
-                    <th>Costo</th>
                     <th>Precio1</th>
                     <th>Precio2</th>
-                    <th>Acciones</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -64,13 +62,10 @@ if ($result->num_rows > 0) {
         echo "</td><td>";
         echo $row['desc_larga'];
         echo "</td><td>";
-        echo "$" . number_format($row['costo'], 2);
-        echo "</td><td>";
         echo "$" . number_format($row['precio1'], 2);
         echo "</td><td>";
         echo "$" . number_format($row['precio2'], 2);
-        echo "</td><td align='center'>";
-        echo "<a href='abmArticulo.php?scr=modificar&id=".$row['id_articulo']."'>Editar</a> - <a href='abmArticulo.php?scr=costos&id=".$row['id_articulo']."'>Costos</a> - <a  href='abmArticulo.php?scr=eliminar&id=".$row['id_articulo']."' onclick='confirmarEnlace(event)'>Eliminar</a> </td></tr>"; 
+        echo "</td></tr>"; 
     
     }
 } else {
@@ -198,10 +193,10 @@ ABM Articulos - Agregar Nuevo Articulos</h3>
       </tr>  
       <tr>
         <td><label for="Proveedor">Proveedor:</label>
-        <input type="text" id="busca_prov" size="20" maxlength="35"  autocomplete="off"></td>
+        <input type="text" id="busqueda" size="20" maxlength="35"  autocomplete="off"></td>
         <td><label for="id_prov">Datos Prov.:</label>
-        <input type="text" id="id_proveedor" placeholder="ID" size="5" maxlength="30" readonly="readonly">
-        - <input type="text" id="nombre_proveedor" size="30" maxlength="30" readonly="readonly"><strong>(*)</strong>
+        <input type="text" id="id_seleccionado" placeholder="ID" size="5" maxlength="30" readonly="readonly">
+        - <input type="text" id="nombre_seleccionado" size="30" maxlength="30" readonly="readonly"><strong>(*)</strong>
        </td>
       </tr>
       <tr>
