@@ -197,8 +197,20 @@ ABM Articulos - Agregar Nuevo Articulos</h3>
         </select></td>
       </tr>  
       <tr>
-        <td><label for="Proveedor">Proveedor:</label>
-        <input type="text" id="busca_prov" size="20" maxlength="35"  autocomplete="off"></td>
+        <td><label for="BuscaProveedor">Proveedor:</label>
+         <select name="BuscaProveedor" id="BuscaProveedor" class="select2" autocomplete="off">>
+            <?PHP  
+            $sql = "SELECT * FROM proveedor";
+            $resultado = $conn->query($sql);
+            if ($resultado->num_rows > 0) {
+                while ($fila = $resultado->fetch_assoc()) {
+                    echo '<option value="' . $fila['id_proveedor'] . '">' . $fila['nombre'] . '</option>';
+                }
+            } else {
+                echo '<option value="">No hay datos disponibles</option>';
+            }
+            ?> 
+        </select></td>
         <td><label for="id_prov">Datos Prov.:</label>
         <input type="text" id="id_proveedor" placeholder="ID" size="5" maxlength="30" readonly="readonly">
         - <input type="text" id="nombre_proveedor" size="30" maxlength="30" readonly="readonly"><strong>(*)</strong>

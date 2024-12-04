@@ -1,31 +1,20 @@
 <?php
 header('Content-Type: application/json');
 
-if (isset($_GET['q'])) {
-    $q = $_GET['q'];
+$host = 'localhost';
+$dbname = 'bases';
+$user = 'root';
+$password = '';
 
-    // Conexión a la base de datos
-    $conn = new mysqli('localhost', 'usuario', 'contraseña', 'nombre_base_datos');
+$conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
 
-    if ($conn->connect_error) {
-        die(json_encode(['error' => 'Error de conexión']));
-    }
-
-    // Consulta para buscar proveedores
-    $stmt = $conn->prepare("SELECT id, nombre FROM proveedores WHERE nombre LIKE CONCAT('%', ?, '%') LIMIT 10");
-    $stmt->bind_param('s', $q);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    $proveedores = [];
-    while ($row = $result->fetch_assoc()) {
-        $proveedores[] = $row;
-    }
-
-    echo json_encode($proveedores);
-
-    $stmt->close();
-    $conn->close();
+$q = isset($_GET['q']) ? $_GET['q'] : '';
+if (!empty($q)) {
+    $stmt = $conn->prepare('SELECT id_proveedor, nombre FROM proveedor WHERE nombre LIKE :query LIMIT 10');
+    $stmt->execute(['query' => '%' . $q . '%']);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($result);
 } else {
     echo json_encode([]);
 }
+?>

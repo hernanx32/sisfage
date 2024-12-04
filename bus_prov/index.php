@@ -1,45 +1,108 @@
+<?php
+// Procesar búsqueda si se realiza una solicitud GET
+if (isset($_GET['q'])) {
+    header('Content-Type: application/json');
+
+    $host = 'localhost';
+    $dbname = 'bases'; // Cambiar por el nombre de tu base de datos
+    $user = 'roto';             // Cambiar por tu usuario de MySQL
+    $password = '';      // Cambiar por tu contraseña de MySQL
+
+    try {
+        $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
+        $q = $_GET['q'];
+        $stmt = $conn->prepare('SELECT id_proveedor, nombre FROM proveedor WHERE nombre LIKE :query LIMIT 10');
+        $stmt->execute(['query' => '%' . $q . '%']);
+        echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+    } catch (PDOException $e) {
+        echo json_encode([]);
+    }
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seleccionar y Mostrar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda de Proveedor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #resultados {
+            border: 1px solid #ddd;
+            max-height: 150px;
+            overflow-y: auto;
+            display: none;
+            position: absolute;
+            width: 200px;
+            background: #fff;
+            z-index: 1000;
+        }
+        .resultado-item {
+            padding: 5px;
+            cursor: pointer;
+        }
+        .resultado-item:hover {
+            background-color: #f0f0f0;
+        }
+        #buscar {
+            width: 200px;
+        }
+    </style>
 </head>
 <body>
-  <select name="imp_int" id="imp_int">
-    <option value="1" selected="selected">Formosa</option>
-    <option value="2">Chaco</option>
-    <option value="3">Salta</option>
-    <option value="4">Jujuy</option>
-    <option value="5">Mendoza</option>
-    <option value="6">SantaFe</option>
-    <option value="7">Buenos Aires</option>
-    <option value="8">Tucuman</option>
-    <option value="9">Corrientes</option>
-    <option value="10">Misiones</option>
-    <option value="11">Cordoba</option>
-  </select>
-  <input type="text" id="id_imp" placeholder="ID" size="5" maxlength="30" readonly="readonly">
-  <input type="text" id="id_nomb" placeholder="Nombre" size="5" maxlength="30" readonly="readonly">
+    <label for="buscar">Buscar Proveedor:</label>
+    <input type="text" id="buscar" placeholder="Buscar Proveedor" maxlength="30">
+    <div id="resultados"></div>
 
-  <script>
-    // Obtenemos las referencias de los elementos
-    const selectElement = document.getElementById('imp_int');
-    const idInput = document.getElementById('id_imp');
-    const nameInput = document.getElementById('id_nomb');
+    <input type="text" id="id_prov" placeholder="ID" size="5" maxlength="30" readonly="readonly">
+    <input type="text" id="prov_nomb" placeholder="Nombre" size="15" maxlength="30" readonly="readonly">
 
-    // Agregamos un evento para detectar cambios en el select
-    selectElement.addEventListener('change', function () {
-      // Actualizamos los valores en los inputs
-      idInput.value = selectElement.value; // El valor del <option>
-      nameInput.value = selectElement.options[selectElement.selectedIndex].text; // El texto del <option>
-    });
+    <script>
+        const buscarInput = document.getElementById('buscar');
+        const resultadosDiv = document.getElementById('resultados');
+        const idProvInput = document.getElementById('id_prov');
+        const nombreProvInput = document.getElementById('prov_nomb');
 
-    // Inicializamos con el valor seleccionado por defecto
-    window.onload = function () {
-      idInput.value = selectElement.value;
-      nameInput.value = selectElement.options[selectElement.selectedIndex].text;
-    };
-  </script>
+        buscarInput.addEventListener('input', () => {
+            const query = buscarInput.value.trim();
+            if (query.length > 0) {
+                fetch(`?q=${encodeURIComponent(query)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        resultadosDiv.innerHTML = '';
+                        resultadosDiv.style.display = data.length > 0 ? 'block' : 'none';
+                        data.forEach(item => {
+                            const div = document.createElement('div');
+                            div.classList.add('resultado-item');
+                            div.textContent = item.nombre;
+                            div.dataset.id = item.id;
+                            div.dataset.nombre = item.nombre;
+
+                            div.addEventListener('click', () => {
+                                idProvInput.value = div.dataset.id_proveedor;
+                                nombreProvInput.value = div.dataset.nombre;
+                                buscarInput.value = '';
+                                resultadosDiv.style.display = 'none';
+                            });
+
+                            resultadosDiv.appendChild(div);
+                        });
+                    });
+            } else {
+                resultadosDiv.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!resultadosDiv.contains(e.target) && e.target !== buscarInput) {
+                resultadosDiv.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
