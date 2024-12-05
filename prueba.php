@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax']) && $_POST['aj
                             if (respuesta.existe) {
                                 $('#mensaje_error').text('El código ya existe: ' + respuesta.detalle);
                             } else {
-                                $('#mensaje_ok').text('El Codigo es correcto');
+                                $('#mensaje_error').text('');
                             }
                         },
                         error: function () {

@@ -10,6 +10,7 @@ global $fecha_form;
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title><?php echo $titulopag; ?></title>
   
 	<link rel="stylesheet" href="<?PHP echo $path;?>comp/google.css">
@@ -20,6 +21,7 @@ global $fecha_form;
  	<link rel="stylesheet" href="<?PHP echo $path;?>comp/dist/css/adminlte.min.css">	
     <link rel="stylesheet" href="<?PHP echo $path;?>comp/plugins/select2/css/select2.min.css">	
     <script src="<?PHP echo $path;?>js/formularios.js"></script>
+    <script src="<?PHP echo $path;?>js/jquery-3.6.0.min.js"></script>
 	
 <!-- Link Anulados
 <link rel="stylesheet" href="comp/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">

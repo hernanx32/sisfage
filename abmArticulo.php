@@ -24,12 +24,37 @@ if (isset($_GET['scr'])){
  
     //AGREGAR FORMULARIO AGREGAR ARTICULO NVO
     if ($scr=="agregar"){
+        include("Modulos/abmArticulo/agregar.php");
         agregar($conn);   
+        $focus='cod_bar';
+
         }
     //VALIDAR FORMULARIO DE AGREGAR Y INSERTAR EN BASES DE DATOS EL NVO ART.
     elseif($scr=="agregarnuevo"){
-        agregado($conn, $consulta); 
-  
+        $focus='';
+   
+        
+        $dato1=$_POST['cod_bar'];
+        $dato2=$_POST['desc_corta'];
+        $dato3=$_POST['desc_larga'];
+        $dato4=$_POST['rubro'];
+        $dato5=$_POST['rubro_sub'];
+        $dato6=$_POST['unidad_med'];
+        $dato7=$_POST['unidadxbulto'];
+        $dato8=$_POST['stok_min'];
+        $dato9=$_POST['stok_max'];
+        $dato10=$_POST['iva'];
+        $dato11=$_POST['imp_int'];
+        $dato12=$_POST['BuscaProveedor'];
+        $dato13=$_POST['cod_bar_prov'];
+        $dato14=$_POST['estado'];
+        
+        echo "$dato1 - $dato2 - $dato3 - $dato4 - $dato5 - $dato6 - $dato7 - $dato8 - $dato9 - $dato10 - $dato11 - $dato12 - $dato13 - $dato14";
+        
+        
+        
+        // agregado($conn, $consulta); 
+        
     
     
     }
@@ -98,11 +123,11 @@ if (isset($_GET['scr'])){
             
             $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo WHERE estado = 1";
             abmArticulo($conn, $consulta);
-    
+            $focus='busqueda';
             
         }
 //actualizado
-$focus='buscar_us';
+
 $conn->close();
 pieprincipal($focus,$path);
 ?>
