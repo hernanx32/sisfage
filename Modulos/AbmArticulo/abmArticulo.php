@@ -90,10 +90,11 @@ if ($result->num_rows > 0) {
 function agregar($conn){
 //ESTILO PARA LA BUSQUEDA 
    
-?><div class="card-header">
+?>
+	<div class="card-header">
         <h3 class="card-title">
 ABM Articulos - Agregar Nuevo Articulos</h3>
-        </div>
+</div>
 <form action="abmArticulo.php?scr=agregarnuevo" method="post" name="form1" id="form1">
   <table width="800" border="0" align="center">
     <tbody>
@@ -108,19 +109,19 @@ ABM Articulos - Agregar Nuevo Articulos</h3>
         <input name="id_usuario" type="text" id="id_usuario" max="5" min="5" readonly="readonly"> - <input name="fecha_act" type="text" id="fecha_act" max="10" min="10" readonly="readonly"></td>
       </tr>
       <tr>
-        <td><label for="cod_bar">Cod. Barra:</label>
+        <td bgcolor="#E4E4E4"><label for="cod_bar">Cod. Barra:</label>
           <input name="cod_bar" type="text" required="required" id="cod_bar" size="20" maxlength="20">
         <strong>(*)</strong></td>
-        <td>Validar:</td>
+        <td bgcolor="#E4E4E4">Validar:</td>
       </tr>
       <tr>
-        <td><label for="desc_corta">Desc. Corta:</label>
+        <td bgcolor="#E4E4E4"><label for="desc_corta">Desc. Corta:</label>
         <input name="desc_corta" type="text" required="required" id="desc_corta" size="20" maxlength="20"><strong>(*)</strong></td>
-        <td><label for="desc_larga">Desc. Larga:</label>
+        <td bgcolor="#E4E4E4"><label for="desc_larga">Desc. Larga:</label>
         <input name="desc_larga" type="text" required="required" id="desc_larga" size="40" maxlength="40"><strong>(*)</strong></td>
       </tr>
       <tr>
-        <td><label for="id_rubro">Rubro:</label>
+        <td bgcolor="#E4E4E4"><label for="id_rubro">Rubro:</label>
           <select name="rubro" id="rubro">
             <?PHP  
             $sql = "SELECT * FROM rubro";
@@ -134,7 +135,7 @@ ABM Articulos - Agregar Nuevo Articulos</h3>
             }
             ?>
         </select></td>
-        <td><label for="id_rubro_sub">Sub Rubro:</label>
+        <td bgcolor="#E4E4E4"><label for="id_rubro_sub">Sub Rubro:</label>
             <select name="rubro_sub" id="rubro_sub">
             <?PHP  
             $sql = "SELECT * FROM rubro_sub";
@@ -148,26 +149,26 @@ ABM Articulos - Agregar Nuevo Articulos</h3>
             }
             ?>
             </select>
-            </td>
+        </td>
       </tr>
       <tr>
-        <td><label for="unidad_med">Unidad de Medida:</label>
+        <td bgcolor="#E4E4E4"><label for="unidad_med">Unidad de Medida:</label>
           <select name="unidad_med" id="unidad_med">
             <option value="1" selected="selected">Unidad</option>
             <option value="2">Litros</option>
             <option value="2">Metros</option>
         </select></td>
-        <td><label for="unidadxbulto">Unidad x Bulto:</label>
+        <td bgcolor="#E4E4E4"><label for="unidadxbulto">Unidad x Bulto:</label>
         <input name="unidadxbulto" type="number" id="unidadxbulto" max="1000" min="1" value="1"></td>
       </tr>
       <tr>
-        <td><label for="stok_min">Stock Minimo:</label>
+        <td bgcolor="#E4E4E4"><label for="stok_min">Stock Minimo:</label>
         <input name="stok_min" type="number" id="stok_min" max="9999999999" min="1" value="1"></td>
-        <td><label for="stok_max">Stock Maximo:</label>
+        <td bgcolor="#E4E4E4"><label for="stok_max">Stock Maximo:</label>
         <input name="stok_max" type="number" id="stok_max" max="9999999999" min="1" value="1"></td>
       </tr>
        <tr>
-        <td><label for="iva">I.V.A.:</label>
+        <td bgcolor="#E4E4E4"><label for="iva">I.V.A.:</label>
           <select name="iva" id="iva" class="select2">
             <?PHP  
             $sql = "SELECT * FROM iva";
@@ -181,7 +182,7 @@ ABM Articulos - Agregar Nuevo Articulos</h3>
             }
             ?> 
         </select></td>
-        <td><label for="imp_int">Imp. Interno:</label>
+        <td bgcolor="#E4E4E4"><label for="imp_int">Imp. Interno:</label>
           <select name="imp_int" id="imp_int">
             <?PHP  
             $sql = "SELECT * FROM imp_interno";
@@ -197,8 +198,8 @@ ABM Articulos - Agregar Nuevo Articulos</h3>
         </select></td>
       </tr>  
       <tr>
-        <td><label for="BuscaProveedor">Proveedor:</label>
-         <select name="BuscaProveedor" id="BuscaProveedor" class="select2" autocomplete="off">>
+        <td colspan="2" bgcolor="#E4E4E4"><label for="BuscaProveedor">Proveedor:</label>
+          <select name="BuscaProveedor" id="BuscaProveedor" class="Select2">
             <?PHP  
             $sql = "SELECT * FROM proveedor";
             $resultado = $conn->query($sql);
@@ -209,17 +210,17 @@ ABM Articulos - Agregar Nuevo Articulos</h3>
             } else {
                 echo '<option value="">No hay datos disponibles</option>';
             }
-            ?> 
-        </select></td>
-        <td><label for="id_prov">Datos Prov.:</label>
-        <input type="text" id="id_proveedor" placeholder="ID" size="5" maxlength="30" readonly="readonly">
-        - <input type="text" id="nombre_proveedor" size="30" maxlength="30" readonly="readonly"><strong>(*)</strong>
-       </td>
+            ?>			 
+          </select>
+          <label for="id_prov">ID.:</label>
+          <input type="text" id="id_proveedor" placeholder="ID" size="5" maxlength="30" readonly="readonly">
+          - <input type="text" id="nombre_proveedor" size="30" maxlength="30" readonly="readonly"><strong>(*)</strong>
+        </td>
       </tr>
       <tr>
-        <td><label for="cod_bar_prov">Cod. Bar. Prov.:</label>
+        <td bgcolor="#E4E4E4"><label for="cod_bar_prov">Cod. Bar. Prov.:</label>
         <input name="cod_bar_prov" type="text" id="cod_bar_prov" size="10" maxlength="10" readonly="readonly"></td>
-        <td><label for="estado">Estado Articulo:</label>
+        <td bgcolor="#E4E4E4"><label for="estado">Estado Articulo:</label>
           <select name="estado" id="estado">
             <option value="1" selected="selected">Activo</option>
             <option value="0">Inactivo</option>
@@ -236,12 +237,34 @@ ABM Articulos - Agregar Nuevo Articulos</h3>
     </tbody>
   </table>
 </form>
-</tbody></table></form> </div>  
+
  <script>
   window.onload = function() {
     document.getElementById("cod_bar").focus();
   };
-</script> 
+	 
+	 
+	 
+	 
+        // Referencia al elemento select y campos de texto
+        const selectElement = document.getElementById('BuscaProveedor');
+        const idField = document.getElementById('id_proveedor');
+        const nameField = document.getElementById('nombre_proveedor');
+
+        // Actualizar los campos de texto cuando cambia la selección
+        selectElement.addEventListener('change', () => {
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            idField.value = selectedOption.value; // Establecer el valor del ID
+            nameField.value = selectedOption.text; // Establecer el texto del nombre
+        });
+
+        // Inicialización: Mostrar los valores iniciales
+        window.onload = () => {
+            const initialOption = selectElement.options[selectElement.selectedIndex];
+            idField.value = initialOption.value;
+            nameField.value = initialOption.text;
+        };
+    </script>	 
  
 
 <?PHP

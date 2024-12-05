@@ -1,57 +1,86 @@
+<?php
+// Mostrar errores
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Conexión a la base de datos
+$conn = new mysqli('localhost', 'root', '', 'bases');
+if ($conn->connect_error) {
+    die('Error de conexión: ' . $conn->connect_error);
+}
+
+// Verificar si es una solicitud AJAX
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax']) && $_POST['ajax'] === '1') {
+    $codigo = $_POST['cod_bar'];
+
+    // Consulta en la base de datos
+    $sql = "SELECT * FROM articulo WHERE cod_bar = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('s', $codigo);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+
+    // Responder a la solicitud AJAX
+    if ($resultado->num_rows > 0) {
+        $fila = $resultado->fetch_assoc();
+        echo json_encode(['existe' => true, 'detalle' => $fila['desc_corta']]); // Ajusta la columna 'nombre'
+    } else {
+        echo json_encode(['existe' => false]);
+    }
+    $stmt->close();
+    $conn->close();
+    exit;
+}
+?>
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscador</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        #id_imp, #id_nomb {
-            margin-left: 10px;
-        }
-    </style>
+    <title>Validar Código de Barras</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <label for="imp_int">Selecciona una provincia:</label>
-    <select name="imp_int" id="imp_int">
-        <option value="1" selected="selected">Formosa</option>
-        <option value="2">Chaco</option>
-        <option value="3">Salta</option>
-        <option value="4">Jujuy</option>
-        <option value="5">Mendoza</option>
-        <option value="6">Santa Fe</option>
-        <option value="7">Buenos Aires</option>
-        <option value="8">Tucumán</option>
-        <option value="9">Corrientes</option>
-        <option value="10">Misiones</option>
-        <option value="11">Córdoba</option>
-    </select>
-
-    <input type="text" id="id_imp" placeholder="ID" size="5" maxlength="30" readonly="readonly">
-    <input type="text" id="id_nomb" placeholder="Nombre" size="15" maxlength="30" readonly="readonly">
+    <form id="form_codigo_barra" method="post">
+        <label for="cod_bar">Código de Barras:</label>
+        <input name="cod_bar" type="text" required="required" id="cod_bar" size="20" maxlength="20">
+        <div id="mensaje_error" style="color: red; font-weight: bold;"></div><div id="mensaje_ok" style="color: green; font-weight: bold;"></div>
+        <button type="submit">Enviar</button>
+    </form>
 
     <script>
-        // Referencia al elemento select y campos de texto
-        const selectElement = document.getElementById('imp_int');
-        const idField = document.getElementById('id_imp');
-        const nameField = document.getElementById('id_nomb');
+        $(document).ready(function () {
+            $('#cod_bar').on('blur', function () {
+                var codigo = $(this).val();
 
-        // Actualizar los campos de texto cuando cambia la selección
-        selectElement.addEventListener('change', () => {
-            const selectedOption = selectElement.options[selectElement.selectedIndex];
-            idField.value = selectedOption.value; // Establecer el valor del ID
-            nameField.value = selectedOption.text; // Establecer el texto del nombre
+                if (codigo !== "") {
+                    $.ajax({
+                        url: window.location.href, // Llamar al archivo actual
+                        method: 'POST',
+                        data: { ajax: 1, cod_bar: codigo },
+                        dataType: 'json',
+                        success: function (respuesta) {
+                            if (respuesta.existe) {
+                                $('#mensaje_error').text('El código ya existe: ' + respuesta.detalle);
+                            } else {
+                                $('#mensaje_ok').text('El Codigo es correcto');
+                            }
+                        },
+                        error: function () {
+                            $('#mensaje_error').text('Error al verificar el código.');
+                        }
+                    });
+                }
+            });
+
+            $('#form_codigo_barra').on('submit', function (e) {
+                if ($('#mensaje_error').text() !== "") {
+                    e.preventDefault();
+                    alert('Por favor corrige el código de barras antes de enviar.');
+                }
+            });
         });
-
-        // Inicialización: Mostrar los valores iniciales
-        window.onload = () => {
-            const initialOption = selectElement.options[selectElement.selectedIndex];
-            idField.value = initialOption.value;
-            nameField.value = initialOption.text;
-        };
     </script>
 </body>
 </html>
