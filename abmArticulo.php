@@ -49,10 +49,15 @@ if (isset($_GET['scr'])){
         $dato13=$_POST['cod_bar_prov'];
         $dato14=$_POST['estado'];
         
+            
         echo "$dato1 - $dato2 - $dato3 - $dato4 - $dato5 - $dato6 - $dato7 - $dato8 - $dato9 - $dato10 - $dato11 - $dato12 - $dato13 - $dato14";
         
+        $consulta="INSERT INTO `articulo` 
+        (`id_articulo`, `cod_bar`, `desc_corta`, `desc_larga`, `id_rubro`, `id_rubro_sub`, `uni_med`, `uni_bulto`, `estado`, `stockmin`, `stockmax`, `stocktotal`, `id_proveedor`, `cod_bar_prov`, `id_iva`, `iva`, `id_imp_int`, `porc_imp_int`, `costo`, `proc_bonific`, `porc_flete`, `porc_cargo_finan`, `proc_precio1`, `proc_precio2`, `proc_precio3`, `proc_precio4`, `precio1`, `precio2`, `precio3`, `precio4`, `id_usuario`, `fec_act`) 
+        VALUES (NULL, '$dato1', 'prueba1', 'prueba1 prueba1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1111111111', '1', '21', '11', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '$id_us', '$fecha')";
         
-        
+        /*
+         $consulta="INSERT INTO `usuario` (`id_usuario`, `usuario`, `clave`, `id_acceso`, `nombre`, `email`, `editable`, `id_sucursal`, `fec_act`) VALUES (NULL, '$usuario', '$clave', '$id_acces', '$nombre', '$email', '1', '$id_sucursal', '$fecha')"; */
         // agregado($conn, $consulta); 
         
     
