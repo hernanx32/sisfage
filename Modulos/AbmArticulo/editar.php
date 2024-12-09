@@ -18,6 +18,12 @@ function agregar($conn){
         </th>
       </tr>
       <tr>
+        <td width="296" bgcolor="#A1A1A1"><label for="id_arti">Cod.Ref.:</label>
+        <input name="id_arti" type="number" id="id_arti" max="99999999" min="0" readonly="readonly"></td>
+        <td width="488" align="right" bgcolor="#A1A1A1"><label for="id_usuario">Us. ID - F.Act.:</label>
+        <input name="id_usuario" type="text" id="id_usuario" max="5" min="5" readonly="readonly"> - <input name="fecha_act" type="text" id="fecha_act" max="10" min="10" readonly="readonly"></td>
+      </tr>
+      <tr>
         <td bgcolor="#E4E4E4"><label for="cod_bar">Cod. Barra:</label>
           <input name="cod_bar" type="text" required="required" id="cod_bar" size="20" maxlength="20">
         <strong>(*)</strong></td>
@@ -154,8 +160,8 @@ function agregar($conn){
             ?>			 
           </select>
           <label for="id_prov">ID.:</label>
-          <input type="text" disabled="disabled" id="id_proveedor" placeholder="ID" size="5" maxlength="30">
-          - <input type="text" disabled="disabled" id="nombre_proveedor" size="30" maxlength="30"><strong>(*)</strong>
+          <input type="text" id="id_proveedor" placeholder="ID" size="5" maxlength="30" readonly="readonly">
+          - <input type="text" id="nombre_proveedor" size="30" maxlength="30" readonly="readonly"><strong>(*)</strong>
         </td>
       </tr>
       <tr>
@@ -176,6 +182,7 @@ function agregar($conn){
         </td>
       </tr>
     </tbody>
+
   </table>
 </form>
 <?php
@@ -221,24 +228,9 @@ function agregar($conn){
             nameField.value = initialOption.text;
         };
      
-    
      
-     // Evento para el botón de envío
-        const form = document.getElementById('form1');
-        const input = document.getElementById('id_proveedor');
-        const submitBtn = document.getElementById('submit');
+     
 
-        // Evento al hacer clic en el botón de envío
-        submitBtn.addEventListener('click', function(event) {
-
-                        
-            // Enviar el formulario manualmente
-            form.submit();
-            
-            // Deshabilitar el botón de envío
-            submitBtn.disabled = true;
-
-        });
      
      
      

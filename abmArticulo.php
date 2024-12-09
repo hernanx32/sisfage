@@ -33,7 +33,7 @@ if (isset($_GET['scr'])){
     elseif($scr=="agregarnuevo"){
         $focus='';
 
-        
+ 
         $dato1=$_POST['cod_bar'];
         $dato2=$_POST['desc_corta'];
         $dato3=$_POST['desc_larga'];
@@ -77,7 +77,6 @@ $stmt = $conn->prepare($query);
 $stmt->execute();
 $stmt->bind_result($id_art);
 $stmt->fetch();
-echo $id_art;
 $stmt->close();
 
         
