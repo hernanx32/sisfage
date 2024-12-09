@@ -113,15 +113,15 @@ function elimina_art($conn, $id, $id_us, $fecha ){
 
 
 
-function agregado($conn, $consulta, $id_art){
+function agregado($conn, $consulta, $id){
 
     $sql = $consulta;
 	//EJECUTANDO CODIGO DE ELIMINACION 
 	if ($conn->query($sql) === TRUE) {
 		//MENSAJE EN CASO QUE SEA CORRECTO	
-		echo "<div class='alert alert-success' role='alert'>Articulo ID $id_art Agregado correctamente</div>";
+		echo "<div class='alert alert-success' role='alert'>Articulo ID $id Agregado correctamente</div>";
 		echo "<td colspan='6' align='center'><a href='abmArticulo.php' class='btn btn-outline-secondary'>VOLVER</a>";
-        echo "<td colspan='6' align='center'><a href='abmArticulo.php?scr=costos&id=$id_art' class='btn btn-outline-success'>Cargar Costo</a>";
+        echo "<td colspan='6' align='center'><a href='abmArticulo.php?scr=costos&id=$id' class='btn btn-outline-success'>Cargar Costo</a>";
 	   
 	} else {
     echo "Error: " . $sql . "<br>" . $conn->error;

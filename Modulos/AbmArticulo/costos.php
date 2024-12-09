@@ -10,7 +10,7 @@
 <?PHP    
 function costos($conn, $id){
 //TRAEMOS LOS DATOS DEL FORMULRIO
-
+	
 ?>   
 <form action="/ArticuloAlta2.php" method="post" id="form1">	
 <table width="780" border="1" align="center">
