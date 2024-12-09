@@ -1,86 +1,50 @@
 <?php
-// Mostrar errores
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+$conn = new mysqli("127.0.0.1", "root", "", "bases");
+$conn->set_charset("utf8");
 
-// Conexión a la base de datos
-$conn = new mysqli('localhost', 'root', '', 'bases');
 if ($conn->connect_error) {
-    die('Error de conexión: ' . $conn->connect_error);
+    die('Error de Conexión: ' . $conn->connect_error);
+    $EstCon = 'Error';
+} else {
+    $EstCon = 'OK';
 }
 
-// Verificar si es una solicitud AJAX
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax']) && $_POST['ajax'] === '1') {
-    $codigo = $_POST['cod_bar'];
 
-    // Consulta en la base de datos
-    $sql = "SELECT * FROM articulo WHERE cod_bar = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param('s', $codigo);
+$query = "SELECT MIN(t1.id_articulo + 1) AS next_id
+FROM articulo t1
+LEFT JOIN articulo t2
+ON t1.id_articulo + 1 = t2.id_articulo
+WHERE t2.id_articulo IS NULL";
+
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$stmt->bind_result($id_art);
+$stmt->fetch();
+echo $id_art;
+$stmt->close();
+        
+
+
+
+
+/*
+$query = "SELECT porcentaje FROM iva WHERE id_iva = '$dato10'";
+$stmt = $conn->prepare($query);
+if ($stmt) {
     $stmt->execute();
-    $resultado = $stmt->get_result();
+    $stmt->bind_result($valorIva);
 
-    // Responder a la solicitud AJAX
-    if ($resultado->num_rows > 0) {
-        $fila = $resultado->fetch_assoc();
-        echo json_encode(['existe' => true, 'detalle' => $fila['desc_corta']]); // Ajusta la columna 'nombre'
+    // Extrae el resultado
+    if ($stmt->fetch()) {
+        echo $valorIva; // Muestra el valor de porcentaje
     } else {
-        echo json_encode(['existe' => false]);
+        echo "No se encontró el registro.";
     }
-    $stmt->close();
-    $conn->close();
-    exit;
+
+    $stmt->close(); // Cierra el statement
+} else {
+    echo "Error en la preparación de la consulta: " . $conn->error;
 }
+
+$conn->close(); // Cierra la conexión */
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validar Código de Barras</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
-    <form id="form_codigo_barra" method="post">
-        <label for="cod_bar">Código de Barras:</label>
-        <input name="cod_bar" type="text" required="required" id="cod_bar" size="20" maxlength="20">
-        <div id="mensaje_error" style="color: red; font-weight: bold;"></div><div id="mensaje_ok" style="color: green; font-weight: bold;"></div>
-        <button type="submit">Enviar</button>
-    </form>
-
-    <script>
-        $(document).ready(function () {
-            $('#cod_bar').on('blur', function () {
-                var codigo = $(this).val();
-
-                if (codigo !== "") {
-                    $.ajax({
-                        url: window.location.href, // Llamar al archivo actual
-                        method: 'POST',
-                        data: { ajax: 1, cod_bar: codigo },
-                        dataType: 'json',
-                        success: function (respuesta) {
-                            if (respuesta.existe) {
-                                $('#mensaje_error').text('El código ya existe: ' + respuesta.detalle);
-                            } else {
-                                $('#mensaje_error').text('');
-                            }
-                        },
-                        error: function () {
-                            $('#mensaje_error').text('Error al verificar el código.');
-                        }
-                    });
-                }
-            });
-
-            $('#form_codigo_barra').on('submit', function (e) {
-                if ($('#mensaje_error').text() !== "") {
-                    e.preventDefault();
-                    alert('Por favor corrige el código de barras antes de enviar.');
-                }
-            });
-        });
-    </script>
-</body>
-</html>

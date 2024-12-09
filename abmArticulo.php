@@ -48,91 +48,76 @@ if (isset($_GET['scr'])){
         $dato12=$_POST['BuscaProveedor'];
         $dato13=$_POST['cod_bar_prov'];
         $dato14=$_POST['estado'];
+
+//TRAEMOS EL VALOR SEGUN EL ID DEL IVA        
+$query = "SELECT porcentaje FROM iva WHERE id_iva = '$dato10'";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$stmt->bind_result($valorIva);
+$stmt->fetch();
+$stmt->close();
+//VALOR RETORNADO $valorIva;
+
+//TRAEMOS EL VALOR SEGUN EL ID DEL IMP_INTERNO   
+$query = "SELECT porcen_imp_int FROM imp_interno WHERE id_imp_interno = '$dato11'";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$stmt->bind_result($porce_imp_int);
+$stmt->fetch();
+$stmt->close();
+//VALOR RETORNADO $porce_imp_int;
         
-            
-        echo "$dato1 - $dato2 - $dato3 - $dato4 - $dato5 - $dato6 - $dato7 - $dato8 - $dato9 - $dato10 - $dato11 - $dato12 - $dato13 - $dato14";
+//BUSCA UN ID NO TAN ALTO PARA POBLA NUMEROS BAJOS         
+$query = "SELECT MIN(t1.id_articulo + 1) AS next_id
+FROM articulo t1
+LEFT JOIN articulo t2
+ON t1.id_articulo + 1 = t2.id_articulo
+WHERE t2.id_articulo IS NULL";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$stmt->bind_result($id_art);
+$stmt->fetch();
+echo $id_art;
+$stmt->close();
+
         
         $consulta="INSERT INTO `articulo` 
-        (`id_articulo`, `cod_bar`, `desc_corta`, `desc_larga`, `id_rubro`, `id_rubro_sub`, `uni_med`, `uni_bulto`, `estado`, `stockmin`, `stockmax`, `stocktotal`, `id_proveedor`, `cod_bar_prov`, `id_iva`, `iva`, `id_imp_int`, `porc_imp_int`, `costo`, `proc_bonific`, `porc_flete`, `porc_cargo_finan`, `proc_precio1`, `proc_precio2`, `proc_precio3`, `proc_precio4`, `precio1`, `precio2`, `precio3`, `precio4`, `id_usuario`, `fec_act`) 
-        VALUES (NULL, '$dato1', 'prueba1', 'prueba1 prueba1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1111111111', '1', '21', '11', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '$id_us', '$fecha')";
+        (`id_articulo`, `cod_bar`, `desc_corta`, `desc_larga`, `id_rubro`, `id_rubro_sub`, 
+        `uni_med`, `uni_bulto`, `estado`, `stockmin`, `stockmax`, `stocktotal`, `id_proveedor`, 
+        `cod_bar_prov`, `id_iva`, `iva`, `id_imp_int`, `porc_imp_int`, `costo`, `proc_bonific`, `porc_flete`, `porc_cargo_finan`, `proc_precio1`, `proc_precio2`, `proc_precio3`, `proc_precio4`, `precio1`, `precio2`, `precio3`, `precio4`, `id_usuario`, `fec_act`) 
+        VALUES ('$id_art', '$dato1', '$dato2', '$dato3', '$dato4', '$dato5', '$dato6', '$dato7', '$dato14', '$dato8', 
+        '$dato9', '1', '$dato12', '$dato13', '$dato10', '$valorIva', '$dato11', '$porce_imp_int', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '$id_us', '$fecha')";
         
-        /*
-         $consulta="INSERT INTO `usuario` (`id_usuario`, `usuario`, `clave`, `id_acceso`, `nombre`, `email`, `editable`, `id_sucursal`, `fec_act`) VALUES (NULL, '$usuario', '$clave', '$id_acces', '$nombre', '$email', '1', '$id_sucursal', '$fecha')"; */
-        // agregado($conn, $consulta); 
-        
-    
+        agregado($conn, $consulta, $id_art);
     
     }
     
     //ELIMINAR 
     elseif($scr=="eliminar"){
 		$id_art=$_GET['id'];
-    	elimina_art($conn, $id_art, $id_us, $fecha);
+        $focus='';
+        elimina_art($conn, $id_art, $id_us, $fecha);
     }
 
         
 	//FORMULARIO DE EDICION
-    elseif($scr=="modificar"){
-        
-        
+    elseif($scr=="costos"){
+    include("Modulos/abmArticulo/costos.php");
+    $focus='Costo';
+    $id=$_GET['id'];    
+    costos($conn, $id);
     }     
     //MODIFICANDO DATOS 
     elseif($scr=="modificando"){
-       
-        $id_usu=$_GET['id_usu'];
-        $n_usuario=$_POST['usuario'];
-        $id_acces=$_POST['acceso'];
-        $nombre=$_POST['nombre'];
-        $email=$_POST['email'];
-        $id_sucursal=$_POST['sucursal'];
-            
-        $clave=$_POST['clave'];
-        echo $fecha; 
-        echo "<br>"; 
-  
-		modificando($conn, $consulta);
-        
-        }elseif($scr=="costo"){
-        costos($conn, $id);
-        
-        }elseif($scr=="mofifica_costo"){
-        modifica_costo($conn, $id);
-              
-        //BUSQUEDA Y FILTROS 
-		}elseif($scr=="Buscar"){
-            $filtroBus=$_GET['select'];
-            $Busqueda=$_GET['busqueda'];
-        
-            if($filtroBus=='desc'){
-            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo 
-            WHERE `desc_larga` LIKE '%$Busqueda%' OR `desc_corta` LIKE '%$Busqueda%' ";    
-                
-            }elseif($filtroBus=='cod_bar'){
-            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo 
-            WHERE `cod_bar` LIKE '%$Busqueda%' OR `cod_bar_prov` LIKE '%$Busqueda%' ";    
-                
-            }elseif($filtroBus=='cod_ref'){
-            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo 
-            WHERE `id_articulo` LIKE '%$Busqueda%' ";    
-            
-            }elseif($filtroBus=='prov'){
-            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo 
-            WHERE `id_proveedor` = '%$Busqueda%' ";    
-            }
-            
-            abmArticulo($conn, $consulta);
-        }
-        }else{
+    
+    }
+    }else{
         //PANTALLA PRINCIPAL DE USUARIO
-            
-            
-            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo WHERE estado = 1";
-            abmArticulo($conn, $consulta);
-            $focus='busqueda';
+    $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo WHERE estado = 1";
+    abmArticulo($conn, $consulta);
+    $focus='busqueda';
             
         }
-//actualizado
-
 $conn->close();
 pieprincipal($focus,$path);
 ?>

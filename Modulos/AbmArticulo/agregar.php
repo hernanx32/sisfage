@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
 <head>
@@ -30,7 +29,35 @@ function agregar($conn){
         <strong>(*)</strong></td>
         <td bgcolor="#E4E4E4">Validar:
             
-            <div id="mensaje_error" style="color: red; font-weight: bold;">
+        <span id="error-cod_bar" class="alert-danger"></span>
+
+
+            <script>
+        // Función para hacer la validación AJAX
+        document.getElementById("cod_bar").addEventListener("blur", function() {
+            let codigo = this.value;
+            
+            if (codigo.trim() === "") {
+                document.getElementById("error-cod_bar").textContent = "";
+                return;
+            }
+
+            // Realizamos una solicitud AJAX a un script PHP para comprobar si el código existe
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "validar_codigo.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    let respuesta = xhr.responseText;
+                    document.getElementById("error-cod_bar").textContent = respuesta;
+                } else {
+                    document.getElementById("error-cod_bar").textContent = "Error al validar el código.";
+                }
+            };
+            xhr.send("cod_bar=" + encodeURIComponent(codigo));
+        });
+    </script>
+
         </td>
       </tr>
       <tr>
@@ -74,9 +101,9 @@ function agregar($conn){
       <tr>
         <td bgcolor="#E4E4E4"><label for="unidad_med">Unidad de Medida:</label>
           <select name="unidad_med" id="unidad_med">
-            <option value="1" selected="selected">Unidad</option>
-            <option value="2">Litros</option>
-            <option value="2">Metros</option>
+            <option value="Unidad" selected="selected">Unidad</option>
+            <option value="Litros">Litros</option>
+            <option value="Metros">Metros</option>
         </select></td>
         <td bgcolor="#E4E4E4"><label for="unidadxbulto">Unidad x Bulto:</label>
         <input name="unidadxbulto" type="number" id="unidadxbulto" max="1000" min="1" value="1"></td>
