@@ -32,7 +32,7 @@ if (isset($_GET['scr'])){
     //VALIDAR FORMULARIO DE AGREGAR Y INSERTAR EN BASES DE DATOS EL NVO ART.
     elseif($scr=="agregarnuevo"){
         $focus='';
-   
+
         
         $dato1=$_POST['cod_bar'];
         $dato2=$_POST['desc_corta'];
@@ -117,7 +117,7 @@ $stmt->close();
     abmArticulo($conn, $consulta);
     $focus='busqueda';
             
-        }
+     }
 $conn->close();
 pieprincipal($focus,$path);
 ?>

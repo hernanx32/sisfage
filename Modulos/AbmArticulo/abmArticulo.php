@@ -119,9 +119,9 @@ function agregado($conn, $consulta, $id_art){
 	//EJECUTANDO CODIGO DE ELIMINACION 
 	if ($conn->query($sql) === TRUE) {
 		//MENSAJE EN CASO QUE SEA CORRECTO	
-		echo "<div class='alert alert-success' role='alert'>Usuario Agregado Correctamente.</div>";
+		echo "<div class='alert alert-success' role='alert'>Articulo ID $id_art Agregado correctamente</div>";
 		echo "<td colspan='6' align='center'><a href='abmArticulo.php' class='btn btn-outline-secondary'>VOLVER</a>";
-        echo "<td colspan='6' align='center'><a href='abmArticulo.php' class='btn btn-outline-secondary'>VOLVER</a>";
+        echo "<td colspan='6' align='center'><a href='abmArticulo.php?scr=costos&id=$id_art' class='btn btn-outline-success'>Cargar Costo</a>";
 	   
 	} else {
     echo "Error: " . $sql . "<br>" . $conn->error;
