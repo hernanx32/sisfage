@@ -68,7 +68,7 @@ if ($resultado->num_rows > 0) {
 			        <td width="113" align="left" bgcolor="#A1A1A1">Cod. Ref.:</td>
 			        <td width="310" align="left" bgcolor="#A1A1A1"><input name="cod_ref" type="number" disabled="disabled" id="cod_ref" value="<?PHP echo $id; ?>"></td>
 			        <td width="110" align="right" bgcolor="#A1A1A1">Ult. Mod.:</td>
-			        <td width="249" align="left" bgcolor="#A1A1A1"><input name="textfield4" type="text" disabled="disabled" id="textfield4" value="<?PHP echo $VAL5; ?>" size="10" maxlength="10">			          <input name="fec_mod" type="date" disabled="disabled" id="fec_mod" value="<?PHP echo $VAL4; ?>"></td>
+			        <td width="249" align="left" bgcolor="#A1A1A1"><input name="textfield4" type="text" disabled="disabled" id="textfield4" value="<?PHP echo $VAL5; ?>" size="10" maxlength="10"><input name="fec_mod" type="date" disabled="disabled" id="fec_mod" value="<?PHP echo $VAL4; ?>"></td>
 		          </tr>
 			      <tr>
 			        <td align="left" bgcolor="#A1A1A1">Descripción:</td>
