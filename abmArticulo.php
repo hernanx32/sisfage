@@ -27,8 +27,31 @@ if (isset($_GET['scr'])){
         include("Modulos/abmArticulo/agregar.php");
         agregar($conn);   
         $focus='cod_bar';
-
-        }
+    }
+    elseif($scr=="Buscar"){
+            $filtroBus=$_GET['select'];
+            $Busqueda=$_GET['busqueda'];
+        
+            if($filtroBus=='desc'){
+            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo 
+            WHERE `desc_larga` LIKE '%$Busqueda%' OR `desc_corta` LIKE '%$Busqueda%' ";    
+                
+            }elseif($filtroBus=='cod_bar'){
+            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo 
+            WHERE `cod_bar` LIKE '%$Busqueda%' OR `cod_bar_prov` LIKE '%$Busqueda%' ";    
+                
+            }elseif($filtroBus=='cod_ref'){
+            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo 
+            WHERE `id_articulo` LIKE '%$Busqueda%' ";    
+            
+            }elseif($filtroBus=='prov'){
+            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo 
+            WHERE `id_proveedor` = '%$Busqueda%' ";    
+            }
+            
+            abmArticulo($conn, $consulta);
+    }
+    
     //VALIDAR FORMULARIO DE AGREGAR Y INSERTAR EN BASES DE DATOS EL NVO ART.
     elseif($scr=="agregarnuevo"){
         $focus='';
@@ -90,26 +113,28 @@ $stmt->close();
         agregado($conn, $consulta, $id_art);
     
     }
-    
     //ELIMINAR 
     elseif($scr=="eliminar"){
 		$id_art=$_GET['id'];
         $focus='';
         elimina_art($conn, $id_art, $id_us, $fecha);
     }
-
-        
-	//FORMULARIO DE EDICION
+    //FORMULARIO DE EDICION
     elseif($scr=="costos"){
     include("Modulos/abmArticulo/costos.php");
     $focus='Costo';
     $id=$_GET['id'];    
     costos($conn, $id);
-    }     
+    } 
+    
+    
+    
+    
+    
     //MODIFICANDO DATOS 
     elseif($scr=="modificando"){
-    
     }
+    
     }else{
         //PANTALLA PRINCIPAL DE USUARIO
     $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo WHERE estado = 1";
@@ -117,6 +142,7 @@ $stmt->close();
     $focus='busqueda';
             
      }
+$focus='busqueda';
 $conn->close();
 pieprincipal($focus,$path);
 ?>

@@ -27,9 +27,10 @@ if (!empty($codigo)) {
 
     // Verificamos el resultado de la consulta
     if ($count > 0) {
-        echo "Este código de barras ya está registrado.";
-    } else {
-        echo ""; // No hay error si no se repite
+        echo "¡¡¡Este código de barras ya está registrado!!!";
+        } else {
+        echo "OK"; // No hay error si no se repite
+     
     }
 } else {
     echo "El código de barras no puede estar vacío.";

@@ -194,13 +194,10 @@ if ($resultado->num_rows > 0) {
         // Función para calcular el costo
         function calcularCosto() {
             // Obtener la cantidad del input
-            const cantidad = document.getElementById("cantidad").value;
-
-            // Calcular el costo total
-            const costoTotal = precio * iva;
+            const cantidad = document.getElementById("costoneto").value;
 
             // Colocar el resultado en el input con id="costo"
-            document.getElementById("costoneto").value = costoTotal.toFixed(2);
+            document.getElementById("costoneto").value = precio*iva;
         }
 
         // Llama automáticamente la función al cargar la página (opcional)

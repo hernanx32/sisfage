@@ -10,161 +10,201 @@
 <?PHP    
 function costos($conn, $id){
 //TRAEMOS LOS DATOS DEL FORMULRIO
-	
-?>   
-<form action="/ArticuloAlta2.php" method="post" id="form1">	
-<table width="780" border="1" align="center">
-  <caption>Alta Articulo</caption>
-	<tbody>
-    <tr>
-      <td>
-        <table width="880" border="0">
-          <tr>
-            <td width="126" align="right" bgcolor="#BEBEBE"><label for="cref">Cod.Referencia:</label></td>
-            <td width="220" align="left" bgcolor="#BEBEBE"><input name="cref" type="text" disabled="disabled" id="cref" tabindex="99" size="10"></td>
-            <td width="410" align="right" bgcolor="#BEBEBE"> 
-              <label for="fec_act">Fecha Actualización:</label>
-              <input name="fec_act" type="fec_act" id="fec_act" readonly="readonly"></td>
-            </tr>
-          <tr>
-            <td width="126" align="right" bgcolor="#BEBEBE"><label for="codbar">Cod.Barra:</label></td>
-            <td width="220" align="left" bgcolor="#BEBEBE"><input name="codbar" type="text" id="codbar" tabindex="1" readonly="readonly"></td>
-            <td width="410" bgcolor="#BEBEBE"><label for="cod_bar_prov">Cod. Bar. Prov:</label>
-              <input name="cod_bar_prov" type="text" id="cod_bar_prov" readonly="readonly"></td>
-            </tr>
-          <tr>
-            <td width="126" align="right" bgcolor="#BEBEBE"><label for="Desc_corta">Desc. Corta</label></td>
-            <td width="220" align="left" bgcolor="#BEBEBE"><input name="Desc_larga" type="text" id="Desc_larga" tabindex="2" onkeyup="txtMayuscula('Desc')" size="25" maxlength="30" readonly="readonly"></td>
-            <td width="410" align="left" bgcolor="#BEBEBE">&nbsp;</td>
-            </tr>
-          <tr>
-            <td align="right" bgcolor="#BEBEBE"><label for="Desc_corta">Desc. Corta</label></td>
-            <td align="left" bgcolor="#BEBEBE"><input name="Desl" type="text" id="Desl" tabindex="3" onKeyUp="txtMayuscula('Desl')" size="40" maxlength="50" readonly="readonly"></td>
-            <td align="left" bgcolor="#BEBEBE">&nbsp;</td>
-          </tr>
-          </table>
-        </td>
-    </tr>
-    <tr>
-      <td>
-        
-        <table width="770" border="0">
-          <tbody>
-            <tr>
-              <td width="159" align="center" ><label for="ModIva">Modalidad de I.V.A.</label></td>
-              <td width="112" align="center" ><label for="TipoIva">Tipo</label></td>
-              <td align="center" ><label for="ImpInterno">Imp. Internos</label></td>
-              <td align="center" >&nbsp;</td>
-              </tr>
-            <tr>
-              <td align="center">&nbsp;</td>
-              <td align="center">&nbsp;</td>
-              <td width="197" align="center">&nbsp;</td>
-              <td width="284" align="left">&nbsp;</td>
-              </tr>
-            </tbody>
-          </table>
-        
-        
-        
-        </td>
-    </tr>
-    <tr>
-      <td><table width="770" border="0">
-        <tr>
-          <td colspan="2"><label for="Costo">Costo Sin Iva: $</label>
-            <input name="Costo" type="number" id="Costo" tabindex="15" size="10" oninput="calcularResultado()"> 
-            X Unidad</td>
-          <td width="387"><label for="BonifPor">Bonificaciones</label>
-            %
-            <input name="BonifPor" type="text" id="BonifPor" max="2" min="2" tabindex="16" value="0" size="2" maxlength="2" oninput="calResPorBoni()">
-            $
-            <input name="BonifImp" type="text" id="BonifImp" max="2" min="2" tabindex="17" value="0" size="10" maxlength="10" oninput="calcularResultado()"></td>
-          </tr>
-        <tr>
-          <td width="182" align="center" bgcolor="#BEBEBE">Costo Neto</td>
-          <td width="187" align="center" bgcolor="#BEBEBE">Costo C/IVA</td>
-          <td><label for="FletePor">Flete o Gastos</label>
-            %
-            <input name="FletePor" type="text" id="FletePor" max="5" min="5" tabindex="19" value="0" size="2" maxlength="2" oninput="calResPorFlete()">
-            $
-  <input name="FleteImp" type="text" id="FleteImp" max="5" min="5" tabindex="20" value="0" size="10" maxlength="10" oninput="calcularResultado()"></td>
-          </tr>
-        <tr>
-          <td align="center" bgcolor="#BEBEBE"><input name="Cost_siva" type="text" disabled="disabled" id="Cost_siva" tabindex="18" size="10" maxlength="10"></td>
-          <td align="center" bgcolor="#BEBEBE"><input name="Cost_civa" type="text" disabled="disabled" id="Cost_civa" tabindex="18" size="10" maxlength="10"></td>
-          <td><label for="cargosFPor">Cargos Financ.</label>
-            %
-            <input name="cargosFPor" type="text" id="cargosFPor" max="5" min="5" tabindex="21" value="0" size="2" maxlength="2" oninput="calResPorCarFin()">
-            $
-            <input name="cargosFImp" type="text" id="cargosFImp" max="5" min="5" tabindex="22" value="0" size="10" maxlength="10" oninput="calcularResultado()"></td>
-          </tr>
-        
-        
-        </table></td>
-    </tr>
-    <tr>
-      <td><table width="770" border="0">
-        <tbody>
-          <tr>
-            <th colspan="3" align="left" scope="col">Precio de Venta</th>
-            <th align="left" scope="col">&nbsp;</th>
-            <th align="left" scope="col">&nbsp;</th>
-            </tr>
-          <tr>
-            <td width="66" align="right">&nbsp;</td>
-            <td colspan="2" align="center" bgcolor="#CACACA">Aumentos Por: </td>
-            <td width="137" align="center">Precio S/IVA</td>
-            <td width="292" align="center" bgcolor="#CACACA"> Precio de Venta  C/IVA Final</td>
-          </tr>
-          <tr>
-            <td align="right">Lista 1</td>
-            <td width="108" align="center" bgcolor="#CACACA">% 
-              <input name="LA1" type="text" id="LA1" tabindex="22" value="0" size="7" maxlength="7"  oninput="calcularPorc('A')"></td>
-            <td width="145" align="center" bgcolor="#CACACA">$
-              <input name="LA2" type="text" id="LA2" tabindex="22" value="0" size="10" maxlength="10" disabled="disabled"></td>
-            <td align="center"><input name="LA3" type="text" id="LA3" tabindex="22" size="10" maxlength="10" disabled="disabled"></td>
-            <td align="center" bgcolor="#CACACA"><input name="LA4" type="text" id="LA4" tabindex="22" size="15" maxlength="15" oninput="calcularImp('A')"></td>
-          </tr>
     
-          <tr>
-            <td align="right">Lista 2</td>
-            <td align="center" bgcolor="#CACACA">% 
-              <input name="LB1" type="text" id="LB1" tabindex="22" value="0" size="7" maxlength="7"></td>
-            <td align="center" bgcolor="#CACACA">$ 
-              <input name="LB2" type="text" id="LB2" tabindex="22" value="0" size="10" maxlength="10"></td>
-            <td align="center"><input name="LB3" type="text" id="LB3" tabindex="22" size="10" maxlength="10"></td>
-            <td align="center" bgcolor="#CACACA"><input name="LB4" type="text" id="LB4" tabindex="22" size="15" maxlength="15"></td>
-          </tr>
+$sql = "SELECT * FROM articulo WHERE id_articulo = $id";
+$resultado = $conn->query($sql);
+if ($resultado->num_rows > 0) {
+    while ($fila = $resultado->fetch_assoc()) {
+        $VAL1=$fila['desc_larga'];
+        $VAL2=$fila['cod_bar'];
+        $VAL3=$fila['iva'];
+        $VAL4=$fila['fec_act'];
+        $VAL5=$fila['id_usuario'];
+        $VAL6=$fila['id_proveedor'];
+        
+        $VAL20=$fila['cod_bar_prov'];
+        
+        $VAL7=$fila['porc_imp_int'];
+        $VAL8=$fila['costo'];
+        $VAL9=$fila['porc_bonific'];
+        $VAL10=$fila['porc_flete'];
+        $VAL11=$fila['porc_cargo_finan'];
+        $VAL12=$fila['porc_precio1'];
+        $VAL13=$fila['porc_precio2'];
+        $VAL14=$fila['porc_precio3'];
+        $VAL15=$fila['porc_precio4'];
+        $VAL16=$fila['precio1'];
+        $VAL17=$fila['precio2'];
+        $VAL18=$fila['precio3'];
+        $VAL19=$fila['precio4']; 
+        }
+    } else {
+    echo "Error al obtener el ID del Articulo";
+    sleep(10);    
+    header("location:abmArticulo.php");
+    }
+    ?>
+    
 
-          <td align="right">Lista 3</td>
-            <td align="center" bgcolor="#CACACA">% 
-              <input name="LC1" type="text" id="LC1" tabindex="22" value="0" size="7" maxlength="7"></td>
-            <td align="center" bgcolor="#CACACA">$
-              <input name="LC2" type="text" id="LC2" tabindex="22" value="0" size="10" maxlength="10"></td>
-            <td align="center"><input name="LC3" type="text" id="LC3" tabindex="22" size="10" maxlength="10"></td>
-            <td align="center" bgcolor="#CACACA"><input name="LC4" type="text" id="LC4" tabindex="22" size="15" maxlength="15"></td>
-          </tr>
-       
-          <tr>
-            <td align="right">Lista 4</td>
-            <td align="center" bgcolor="#CACACA">% 
-              <input name="LD1" type="text" id="LD1" tabindex="22" value="0" size="7" maxlength="7"></td>
-            <td align="center" bgcolor="#CACACA">$ 
-              <input name="LD2" type="text" id="LD2" tabindex="22" value="0" size="10" maxlength="10"></td>
-            <td align="center"><input name="LD3" type="text" id="LD3" tabindex="22" size="10" maxlength="10"></td>
-            <td align="center" bgcolor="#CACACA"><input name="LD4" type="text" id="LD4" tabindex="22" size="15" maxlength="15"></td>
-          </tr>
-      </table></td>
-    </tr>
-    <tr>
-      <td align="center"><input type="submit" name="submit" id="submit" value="Guardar Articulo"></td>
-    </tr>
-  </tbody>
-</table>
-</form> <?php         
-}
- ?>   
+    
+    
+    
+<form action="abmArticulo.php" method="post" id="form1" autocomplete="on" title="form1">
+	<table width="880" border="1" align="center">
+	  <caption>&nbsp;</caption>
+		  <tbody>
+			<tr>
+			  <th height="133"><table width="800" border="0" align="center">
+			    <tbody>
+			      <tr>
+			        <th colspan="4">Datos del Articulo</th>
+		          </tr>
+			      <tr>
+			        <td width="113" align="left" bgcolor="#A1A1A1">Cod. Ref.:</td>
+			        <td width="310" align="left" bgcolor="#A1A1A1"><input name="cod_ref" type="number" disabled="disabled" id="cod_ref" value="<?PHP echo $id; ?>"></td>
+			        <td width="110" align="right" bgcolor="#A1A1A1">Ult. Mod.:</td>
+			        <td width="249" align="left" bgcolor="#A1A1A1"><input name="textfield4" type="text" disabled="disabled" id="textfield4" value="<?PHP echo $VAL5; ?>" size="10" maxlength="10"><input name="fec_mod" type="date" disabled="disabled" id="fec_mod" value="<?PHP echo $VAL4; ?>"></td>
+		          </tr>
+			      <tr>
+			        <td align="left" bgcolor="#A1A1A1">Descripción:</td>
+			        <td align="left" bgcolor="#A1A1A1"><input name="desc_larga" type="text" disabled="disabled" id="desc_larga" value="<?PHP echo $VAL1; ?>" size="40" maxlength="40"></td>
+			        <td align="right" bgcolor="#A1A1A1">Proveedor</td>
+			        <td align="left" bgcolor="#A1A1A1"><input name="proveedor" type="text" disabled="disabled" id="proveedor" value="<?PHP echo $VAL6; ?>"></td>
+		          </tr>
+			      <tr>
+			        <td align="left" bgcolor="#A1A1A1">Cod. Barra:</td>
+			        <td align="left" bgcolor="#A1A1A1"><input name="cod_bar" type="text" disabled="disabled" id="cod_bar" value="<?PHP echo $VAL2; ?>"></td>
+			        <td align="right" bgcolor="#A1A1A1">Cod.Bar.Prov.</td>
+			        <td align="left" bgcolor="#A1A1A1"><input name="cod_prov" type="text" disabled="disabled" id="cod_prov" value="<?PHP echo $VAL20; ?>"></td>
+		          </tr>
+			      <tr>
+			        <td align="left" bgcolor="#A1A1A1">Tipo I.V.A.:</td>
+			        <td align="left" bgcolor="#A1A1A1"><input name="iva" type="text" disabled="disabled" id="iva" value="<?PHP echo $VAL3; ?>"></td>
+			        <td align="right" bgcolor="#A1A1A1">Imp. Interno:</td>
+			        <td align="left" bgcolor="#A1A1A1"><input name="imp_int" type="text" disabled="disabled" id="imp_int" value="<?PHP echo $VAL7; ?>"></td>
+		          </tr>
+		        </tbody>
+		      </table></th>
+		    </tr>
+			<tr>
+			  <td><table width="800" border="0" align="center">
+			    <tbody>
+			      <tr>
+			        <th colspan="4">Composición de Costos</th>
+		          </tr>
+			      <tr>
+			        <td colspan="2">Costo sin I.V.A. : 
+			          <input name="costo" type="number" id="costo" value="<?PHP echo $VAL8; ?>">
+		            x Unidad</td>
+			        <td width="123" align="right">Bonificaciones: </td>
+			        <td width="249">%
+			          <input name="bonif" type="number" id="bonif" value="<?PHP echo $VAL9; ?>"></td>
+		          </tr>
+			      <tr>
+			        <td width="205" align="center" bgcolor="#A1A1A1">Costo Neto</td>
+			        <td width="205" align="center" bgcolor="#A1A1A1">Costo c/IVA</td>
+			        <td align="right">Fletes o Gastos:</td>
+			        <td>%
+			          <input name="flete" type="number" id="flete" value="<?PHP echo $VAL10; ?>"></td>
+		          </tr>
+			      <tr>
+			        <td align="center" bgcolor="#A1A1A1"><input name="costoneto" type="text" disabled="disabled" id="costoneto"></td>
+			        <td align="center" bgcolor="#A1A1A1"><input name="costociva" type="text" disabled="disabled" id="costociva"></td>
+			        <td align="right">Cargos Financ.:</td>
+			        <td>%
+			          <input name="carg_finac" type="number" id="carg_finac" value="<?PHP echo $VAL11; ?>"></td>
+		          </tr>
+		        </tbody>
+		      </table></td>
+		    </tr>
+			<tr>
+			  <td><table width="800" border="0" align="center">
+			    <tbody>
+			      <tr>
+			        <th colspan="5" scope="col">Precio de Venta</th>
+		          </tr>
+			      <tr>
+			        <td width="56" height="21">&nbsp;</td>
+			        <td width="165" align="center">Aumento en Porc.</td>
+			        <td width="188" align="center">Importe de Aumento</td>
+			        <td width="169" align="center">Precios sin I.V.A.</td>
+			        <td width="200" align="center">Precio de Venta </td>
+		          </tr>
+			      <tr>
+			        <td height="21">Lista 1</td>
+			        <td height="21">%
+		            <input name="PA1" type="number" id="PA1" max="10000000" min="0" value="<?PHP echo $VAL12; ?>"></td>
+			        <td height="21" align="center" bgcolor="#A1A1A1">$
+		            <input name="IA1" type="number" disabled="disabled" id="IA1" max="1000000" min="0" value="0"></td>
+			        <td height="21" align="center" bgcolor="#A1A1A1"><input name="PSI1" type="number" disabled="disabled" id="PSI1" max="1000000" min="0" value="0"></td>
+			        <td height="21" align="center"><input type="number" name="PV1" id="PV1" value="<?PHP echo $VAL16; ?>"></td>
+		          </tr>
+			      <tr>
+			        <td height="21">Lista 2</td>
+			        <td height="21">%
+		            <input name="PA2" type="number" id="PA2" max="10000000" min="0" value="<?PHP echo $VAL13; ?>"></td>
+			        <td height="21" align="center" bgcolor="#A1A1A1">$
+		            <input name="IA2" type="number" disabled="disabled" id="IA2" max="1000000" min="0" value="0"></td>
+			        <td height="21" align="center" bgcolor="#A1A1A1"><input name="PSI2" type="number" disabled="disabled" id="PSI2" max="1000000" min="0" value="0"></td>
+			        <td height="21" align="center"><input type="number" name="PV2" id="PV2" value="<?PHP echo $VAL17; ?>"></td>
+		          </tr>
+			      <tr>
+			        <td height="21">Lista 3</td>
+			        <td height="21">%
+		            <input name="PA3" type="number" id="PA3" max="10000000" min="0" value="<?PHP echo $VAL14; ?>"></td>
+			        <td height="21" align="center" bgcolor="#A1A1A1">$
+		            <input name="IA3" type="number" disabled="disabled" id="IA3" max="1000000" min="0" value="0"></td>
+			        <td height="21" align="center" bgcolor="#A1A1A1"><input name="PSI3" type="number" disabled="disabled" id="PSI3" max="1000000" min="0" value="0"></td>
+			        <td height="21" align="center"><input type="number" name="PV3" id="PV3" value="<?PHP echo $VAL18; ?>"></td>
+		          </tr>
+			      <tr>
+			        <td height="21">Lista 4</td>
+			        <td height="21">%
+		            <input name="PA4" type="number" id="PA4" max="10000000" min="0" value="<?PHP echo $VAL15; ?>"></td>
+			        <td height="21" align="center" bgcolor="#A1A1A1">$
+		            <input name="IA4" type="number" disabled="disabled" id="IA4" max="1000000" min="0" value="0"></td>
+			        <td height="21" align="center" bgcolor="#A1A1A1"><input name="PSI4" type="number" disabled="disabled" id="PSI4" max="1000000" min="0" value="0"></td>
+			        <td height="21" align="center"><input type="number" name="PV4" id="PV4" value="<?PHP echo $VAL19; ?>"></td>
+		          </tr>
+			      <tr>
+			        <td height="26" colspan="5" align="center">&nbsp;</td>
+		          </tr>
+			      <tr>
+			        <td height="26" colspan="5" align="center"><a href="abmArticulo.php" class="btn btn-outline-secondary">Cancela</a> - 
+                <input type="submit" name="submit" id="submit" class="btn btn-outline-success" value="Agregar Costo"></td>
+		          </tr>
+		        </tbody>
+		      </table></td>
+		    </tr>
+		  </tbody>
+	</table>
+	</form>
+    
+        <script>
+        // Pasar variables PHP a JavaScript
+        const precio = <?php echo $VAL8; ?>;
+        const iva = <?php echo $VAL3; ?>;
+        
+
+        // Función para calcular el costo
+        function calcularGeneral() {
+            // Obtener la cantidad del input
+            const cantidad = document.getElementById("cantidad").value;
+
+            // Calcular el costo total
+            const costoTotal = precio * iva;
+
+            // Colocar el resultado en el input con id="costo"
+            document.getElementById("costoneto").value = costoTotal.toFixed(2);
+        }
+
+        // Llama automáticamente la función al cargar la página (opcional)
+        window.onload = calcularGeneral;
+    </script>	
+	  
+    
+    
+<?php } ?>   
     
     </body>
 </html>
