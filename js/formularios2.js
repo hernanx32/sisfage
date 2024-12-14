@@ -1,35 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cálculos Automáticos</title>
-    <style>
-        input {
-            font-size: 16px;
-            padding: 8px;
-            width: 80px;
-            text-align: right;
-            margin-bottom: 1px;
-            display: block;
-        }
-    </style>
-</head>
-<body>
-    <label for="currency1">Monto 1:</label>
-    <input type="text" id="currency1" placeholder="0" />
-
-    <label for="currency2">Monto 2:</label>
-    <input type="text" id="currency2" placeholder="0" />
-
-    <label for="currency3">Diferencia (Monto 3):</label>
-    <input type="text" id="currency3" placeholder="0.0000" readonly />
-
-    <label for="percentage">Porcentaje de diferencia:</label>
-    <input type="text" id="percentage" placeholder="0.00%" readonly />
-
-    <script>
-    document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const currency1Input = document.getElementById("currency1");
     const currency2Input = document.getElementById("currency2");
     const differenceInput = document.getElementById("currency3");
@@ -103,6 +72,3 @@
     // Inicializar cálculos
     calculateDifferenceAndPercentage();
 });
-    </script>
-</body>
-</html>

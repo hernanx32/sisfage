@@ -98,21 +98,21 @@ if ($resultado->num_rows > 0) {
 		            x Unidad</td>
 			        <td width="123" align="right">Bonificaciones: </td>
 			        <td width="249">%
-			          <input name="bonif" type="number" id="bonif" value="<?PHP echo $VAL9; ?>"></td>
+			          <input name="bonif" type="number" id="bonif" class="validar" max="100" min="0" value="<?PHP echo $VAL9; ?>"></td>
 		          </tr>
 			      <tr>
 			        <td width="205" align="center" bgcolor="#A1A1A1">Costo Neto</td>
 			        <td width="205" align="center" bgcolor="#A1A1A1">Costo c/IVA</td>
 			        <td align="right">Fletes o Gastos:</td>
 			        <td>%
-			          <input name="flete" type="number" id="flete" value="<?PHP echo $VAL10; ?>"></td>
+			          <input name="flete" type="number" id="flete" class="validar" max="100" min="0"  value="<?PHP echo $VAL10; ?>"></td>
 		          </tr>
 			      <tr>
 			        <td align="center" bgcolor="#A1A1A1"><input name="costoneto" type="text" disabled="disabled" id="costoneto"></td>
 			        <td align="center" bgcolor="#A1A1A1"><input name="costociva" type="text" disabled="disabled" id="costociva"></td>
 			        <td align="right">Cargos Financ.:</td>
 			        <td>%
-			          <input name="carg_finac" type="number" id="carg_finac" value="<?PHP echo $VAL11; ?>"></td>
+			          <input name="carg_finac" type="number" id="carg_finac" class="validar" max="100" min="0" value="<?PHP echo $VAL11; ?>"></td>
 		          </tr>
 		        </tbody>
 		      </table></td>
@@ -162,7 +162,7 @@ if ($resultado->num_rows > 0) {
 			        <td height="21">%
 		            <input name="PA4" type="number" id="PA4" max="10000000" min="0" value="<?PHP echo $VAL15; ?>"></td>
 			        <td height="21" align="center" bgcolor="#A1A1A1">$
-		            <input name="IA4" type="number" disabled="disabled" id="IA4" max="1000000" min="0" value="0"></td>
+		            <input name="IA4" type="number" disabled="disabled" id="IA4" class="validar" max="1000000" min="0" value="0"></td>
 			        <td height="21" align="center" bgcolor="#A1A1A1"><input name="PSI4" type="number" disabled="disabled" id="PSI4" max="1000000" min="0" value="0"></td>
 			        <td height="21" align="center"><input type="number" name="PV4" id="PV4" value="<?PHP echo $VAL19; ?>"></td>
 		          </tr>
@@ -181,26 +181,49 @@ if ($resultado->num_rows > 0) {
 	</form>
     
         <script>
-        // Pasar variables PHP a JavaScript
-        const precio = <?php echo $VAL8; ?>;
-        const iva = <?php echo $VAL3; ?>;
-        
 
-        // Función para calcular el costo
-        function calcularGeneral() {
-            // Obtener la cantidad del input
-            const cantidad = document.getElementById("cantidad").value;
+        // Seleccionar todos los inputs con la clase "validar"
+            const inputs = document.querySelectorAll('.validar');
 
-            // Calcular el costo total
-            const costoTotal = precio * iva;
+        // Función para validar el rango de un input
+        const validateRange = (inputElement) => {
+            const min = parseFloat(inputElement.min); // Obtener el mínimo como decimal
+            const max = parseFloat(inputElement.max); // Obtener el máximo como decimal
+            const value = parseFloat(inputElement.value); // Convertir el valor actual a decimal
 
-            // Colocar el resultado en el input con id="costo"
-            document.getElementById("costoneto").value = costoTotal.toFixed(2);
-        }
+            // Si el valor está vacío, establecer a "0"
+            if (isNaN(value) || inputElement.value.trim() === '') {
+                inputElement.value = '0';
+            } 
+            // Validar que el valor esté dentro del rango
+            else if (value < min) {
+                inputElement.value = min.toFixed(2); // Asigna el valor mínimo
+            } else if (value > max) {
+                inputElement.value = max.toFixed(2); // Asigna el valor máximo
+            }
+        };
 
-        // Llama automáticamente la función al cargar la página (opcional)
-        window.onload = calcularGeneral;
-    </script>	
+        // Agregar listeners a cada input
+        inputs.forEach(input => {
+            // Validar al perder el foco
+            input.addEventListener('blur', () => validateRange(input));
+
+            // Validar mientras el usuario escribe
+            input.addEventListener('input', () => {
+                // Permitir solo números, un punto y un signo negativo
+                input.value = input.value.replace(/[^0-9.-]/g, '');
+
+                // Evitar múltiples puntos o signos negativos
+                const parts = input.value.split('.');
+                if (parts.length > 2) {
+                    input.value = parts[0] + '.' + parts.slice(1).join(''); // Solo permite un punto
+                }
+                if (input.value.indexOf('-') > 0) {
+                    input.value = input.value.replace('-', ''); // Eliminar signos negativos en posiciones incorrectas
+                }
+            });
+        });
+    </script>
 	  
     
     
