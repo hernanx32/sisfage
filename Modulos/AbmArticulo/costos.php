@@ -153,7 +153,7 @@ if ($resultado->num_rows > 0) {
 			      <tr>
 			        <td height="21">Lista 2</td>
 			        <td height="21">%
-		            <input name="PA2" type="number" id="PA2" max="1000000" min="0" tabindex="7" value="<?PHP echo $VAL13; ?>"></td>
+		            <input name="PA2" type="number" id="PA2" max="1000" min="0" tabindex="7" value="<?PHP echo $VAL13; ?>"></td>
 			        <td height="21" align="center" bgcolor="#A1A1A1">$
 		            <input name="IA2" type="number" max="1000000" min="0" readonly id="IA2" value="0"></td>
 			        <td height="21" align="center" bgcolor="#A1A1A1">$<input name="PSI2" type="number" max="1000000" min="0" readonly id="PSI2" value="0"></td>
@@ -241,7 +241,6 @@ if ($resultado->num_rows > 0) {
             var PorcVtaFinal1=((PorcVta1/100)+1)*costoneto;
             PorcVtaFinal1=Number((parseFloat(PorcVtaFinal1).toFixed(2)).toString().split(". "));           
             document.getElementById("PV1").value = PorcVtaFinal1;
-
         }
         
         
@@ -250,15 +249,7 @@ if ($resultado->num_rows > 0) {
         
         
     }
-        function calcular2(){
             
-                alert('asdsdasdasd');
-        }        
-    
-        
-        
-        
-        
         
     window.onload=calcular();
         
