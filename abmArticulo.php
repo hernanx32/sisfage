@@ -122,7 +122,7 @@ $stmt->close();
     //FORMULARIO DE EDICION
     elseif($scr=="costos"){
     include("Modulos/abmArticulo/costos.php");
-    $focus='Costo';
+    
     $id=$_GET['id'];    
     costos($conn, $id);
     } 

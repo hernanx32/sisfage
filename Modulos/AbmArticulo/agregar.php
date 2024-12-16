@@ -58,7 +58,7 @@ function agregar($conn){
         <td bgcolor="#E4E4E4"><label for="desc_corta">Desc. Corta:</label>
         <input name="desc_corta" type="text" required="required" id="desc_corta" size="20" maxlength="20"><strong>(*)</strong></td>
         <td bgcolor="#E4E4E4"><label for="desc_larga">Desc. Larga:</label>
-        <input name="desc_larga" type="text" required="required" id="desc_larga" size="40" maxlength="40"><strong>(*)</strong></td>
+        <input name="desc_larga" type="text"  required="required" id="desc_larga" size="40" maxlength="40"><strong>(*)</strong></td>
       </tr>
       <tr>
         <td bgcolor="#E4E4E4"><label for="id_rubro">Rubro:</label>
