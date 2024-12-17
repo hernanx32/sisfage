@@ -198,19 +198,19 @@ if ($resultado->num_rows > 0) {
     function calcular(){
         //CARGAMOS LOS VALORES DEL FORMULARIO
 
-        const iva = Number(document.getElementById('iva').value);
-        const imp_int = Number(document.getElementById('imp_int').value);
-        const costo = Number(document.getElementById('costo').value);
+        var iva = Number(document.getElementById('iva').value);
+        var imp_int = Number(document.getElementById('imp_int').value);
+        var costo = Number(document.getElementById('costo').value);
         
-        const costociva = (((iva + imp_int) / 100)+1) * costo;
+        var costociva = (((iva + imp_int) / 100)+1) * costo;
         
         costociva =(parseFloat(costociva).toFixed(4)).toString().split(". ");
         document.getElementById("costociva").value = costociva;
     
         //LEEMOS VALORES DE LOS PORCENTAJES DE BONIF, FLETE, CARGO FINANC
-        const porc_bonif = Number(document.getElementById('porc_bonif').value);
-        const porc_flete = Number(document.getElementById('porc_flete').value);
-        const porc_cfin = Number(document.getElementById('porc_cfin').value);
+        var porc_bonif = Number(document.getElementById('porc_bonif').value);
+        var porc_flete = Number(document.getElementById('porc_flete').value);
+        var porc_cfin = Number(document.getElementById('porc_cfin').value);
         
         //CALCULAMOS EL BONIFICACION EN $
         var imp_bonif = (((porc_bonif / 100)+1)*costo) - costo;
@@ -242,17 +242,7 @@ if ($resultado->num_rows > 0) {
             PorcVtaFinal1=Number((parseFloat(PorcVtaFinal1).toFixed(2)).toString().split(". "));           
             document.getElementById("PV1").value = PorcVtaFinal1;
         }
-        
-        
-    if (PorcVta1 > 0) {
-        importe = costo + (costo * PorcVta1 / 100);
-        importeInput.value = importe.toFixed(2);
-    }
-    // Si se ha ingresado un importe, calcular el porcentaje
-    else if (importe > 0) {
-        porcentaje = ((importe - costo) / costo) * 100;
-        porcentajeInput.value = porcentaje.toFixed(2);
-    }
+
         
         
         
