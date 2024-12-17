@@ -121,11 +121,16 @@ $stmt->close();
     }
     //FORMULARIO DE EDICION
     elseif($scr=="costos"){
-    include("Modulos/abmArticulo/costos.php");
+        include("Modulos/abmArticulo/costos.php");
+        $id=$_GET['id'];   
+        costos($conn, $id);
+        $focus='costo';    
+    }elseif($scr=="costosmodif"){
+        echo $_POST['cod_ref'];
+        
     
-    $id=$_GET['id'];    
-    costos($conn, $id);
-    } 
+    
+    }
     
     
     

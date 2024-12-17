@@ -10,6 +10,7 @@
 <?PHP    
 function costos($conn, $id){
 //TRAEMOS LOS DATOS DEL FORMULRIO
+$focus='costo';    
     
 $sql = "SELECT * FROM articulo WHERE id_articulo = $id";
 $resultado = $conn->query($sql);
@@ -45,11 +46,18 @@ if ($resultado->num_rows > 0) {
     }
     ?>
     
-
+<style>
+  input[type="number"] {
+    width: 100px; /* Ajusta el ancho según tus necesidades */
+    height: 30px;
+    font-size: 16px;
+    box-sizing: border-box; /* Evita cambios de tamaño inesperados */
+  }
+</style>
     
     
     
-<form action="abmArticulo.php" method="post" name="form1" id="form1" autocomplete="on" title="form1">
+<form action="abmArticulo.php?scr=costosmodif" method="post" name="form1" id="form1" autocomplete="on" title="form1">
 	<table width="880" border="1" align="center">
 	  <caption>&nbsp;</caption>
 		  <tbody>
@@ -144,38 +152,38 @@ if ($resultado->num_rows > 0) {
 			      <tr>
 			        <td height="21">Lista 1</td>
 			        <td height="21">%
-		            <input name="PA1" type="number" id="PA1" max="1000" min="0" tabindex="5" onBlur="ponerCeroSiVacio(this,4), calcular()" value="<?PHP echo $VAL12; ?>"></td>
+		            <input name="PA1" type="number" id="PA1" max="10000000" min="0" tabindex="5" onBlur="ponerCeroSiVacio(this,4), calcular()" value="<?PHP echo $VAL12; ?>"></td>
 			        <td height="21" align="center" bgcolor="#A1A1A1">$
 		            <input name="IA1" type="number" max="1000000" min="0" readonly id="IA1" value="0"></td>
 			        <td height="21" align="center" bgcolor="#A1A1A1">$<input name="PSI1" type="number" max="1000000" min="0" readonly id="PSI1" value="0"></td>
-			        <td height="21" align="center">$<input type="number" name="PV1" id="PV1" tabindex="6" onBlur="ponerCeroSiVacio(this,4), calcular2()" value="<?PHP echo $VAL16; ?>"></td>
+			        <td height="21" align="center">$<input type="number" step="any" name="PV1" id="PV1" tabindex="6" onBlur="ponerCeroSiVacio(this,4), calcular2()" value="<?PHP echo $VAL16; ?>"></td>
 		          </tr>
 			      <tr>
 			        <td height="21">Lista 2</td>
 			        <td height="21">%
-		            <input name="PA2" type="number" id="PA2" max="1000" min="0" tabindex="7" value="<?PHP echo $VAL13; ?>"></td>
+		            <input name="PA2" type="number" id="PA2" max="10000000" min="0" tabindex="7" onBlur="ponerCeroSiVacio(this,4), calcular()" value="<?PHP echo $VAL13; ?>"></td>
 			        <td height="21" align="center" bgcolor="#A1A1A1">$
 		            <input name="IA2" type="number" max="1000000" min="0" readonly id="IA2" value="0"></td>
 			        <td height="21" align="center" bgcolor="#A1A1A1">$<input name="PSI2" type="number" max="1000000" min="0" readonly id="PSI2" value="0"></td>
-			        <td height="21" align="center">$<input type="number" name="PV2" id="PV2" tabindex="8" value="<?PHP echo $VAL17; ?>"></td>
+			        <td height="21" align="center">$<input type="number" name="PV2" id="PV2" tabindex="8" onBlur="ponerCeroSiVacio(this,4), calcular2()"  value="<?PHP echo $VAL17; ?>"></td>
 		          </tr>
 			      <tr>
 			        <td height="21">Lista 3</td>
 			        <td height="21">%
-		            <input name="PA3" type="number" id="PA3" max="1000" min="0" tabindex="9" value="<?PHP echo $VAL14; ?>"></td>
+		            <input name="PA3" type="number" id="PA3" max="10000000" min="0" tabindex="9" onBlur="ponerCeroSiVacio(this,4), calcular()" value="<?PHP echo $VAL14; ?>"></td>
 			        <td height="21" align="center" bgcolor="#A1A1A1">$
 		            <input name="IA3" type="number" readonly id="IA3" max="1000000" min="0" value="0"></td>
 			        <td height="21" align="center" bgcolor="#A1A1A1">$<input name="PSI3" type="number" readonly id="PSI3" max="1000000" min="0" value="0"></td>
-			        <td height="21" align="center">$<input type="number" name="PV3" id="PV3" tabindex="10" value="<?PHP echo $VAL18; ?>"></td>
+			        <td height="21" align="center">$<input type="number" name="PV3" id="PV3" tabindex="10" onBlur="ponerCeroSiVacio(this,4), calcular2()"  value="<?PHP echo $VAL18; ?>"></td>
 		          </tr>
 			      <tr>
 			        <td height="21">Lista 4</td>
 			        <td height="21">%
-		            <input name="PA4" type="number" id="PA4" max="1000" min="0" tabindex="11" value="<?PHP echo $VAL15; ?>"></td>
+		            <input name="PA4" type="number" id="PA4" max="10000000" min="0" tabindex="11" onBlur="ponerCeroSiVacio(this,4), calcular()" value="<?PHP echo $VAL15; ?>"></td>
 			        <td height="21" align="center" bgcolor="#A1A1A1">$
 		            <input name="IA4" type="number" readonly id="IA4" max="1000000" min="0" value="0"></td>
 			        <td height="21" align="center" bgcolor="#A1A1A1">$<input name="PSI4" type="number" readonly id="PSI4" max="1000000" min="0" value="0"></td>
-			        <td height="21" align="center">$<input type="number" name="PV4" id="PV4" tabindex="12" value="<?PHP echo $VAL19; ?>"></td>
+			        <td height="21" align="center">$<input type="number" name="PV4" id="PV4" tabindex="12" onBlur="ponerCeroSiVacio(this,4), calcular2()"  value="<?PHP echo $VAL19; ?>"></td>
 		          </tr>
 			      <tr>
 			        <td height="26" colspan="5" align="center">&nbsp;</td>
@@ -230,37 +238,141 @@ if ($resultado->num_rows > 0) {
         document.getElementById("costoneto").value = costoneto;
         
         
-        //CALCULAMOS EL PRECIO DE VENTA 
-        
+        //CALCULAMOS EL PRECIO DE VENTA 1
         var PorcVta1 = Number(document.getElementById('PA1').value);
         var PreVta1 = Number(document.getElementById('PV1').value);
+        var PorcVta2 = Number(document.getElementById('PA2').value);
+        var PreVta2 = Number(document.getElementById('PV2').value);
+        var PorcVta3 = Number(document.getElementById('PA3').value);
+        var PreVta3 = Number(document.getElementById('PV3').value);
+        var PorcVta4 = Number(document.getElementById('PA4').value);
+        var PreVta4 = Number(document.getElementById('PV4').value);
+        
         
         if (PorcVta1 <= 1) {
             document.getElementById("PV1").value = costoneto;
         } else  {
-            var PorcVtaFinal1=((PorcVta1/100)+1)*costoneto;
-            PorcVtaFinal1=Number((parseFloat(PorcVtaFinal1).toFixed(2)).toString().split(". "));           
-            document.getElementById("PV1").value = PorcVtaFinal1;
+        var PrecVtaFinal1=costoneto + ((PorcVta1 * costoneto) /100);
+        PrecVtaFinal1=Number((parseFloat(PrecVtaFinal1).toFixed(2)).toString().split(". "));           
+        document.getElementById("PV1").value = PrecVtaFinal1;
         }
+            
+        //CALCULAMOS EL PRECIO DE VENTA 2
+        if (PorcVta2 <= 1) {
+        document.getElementById("PV2").value = costoneto;
+        } else  {
+        var PrecVtaFinal2=costoneto + ((PorcVta2 * costoneto) /100);
+        PrecVtaFinal2=Number((parseFloat(PrecVtaFinal2).toFixed(2)).toString().split(". "));           
+        document.getElementById("PV2").value = PrecVtaFinal2;    
+        }
+        //CALCULAMOS EL PRECIO DE VENTA 3
+        if (PorcVta3 <= 1) {
+        document.getElementById("PV3").value = costoneto;
+        } else  {
+        var PrecVtaFinal3=costoneto + ((PorcVta3 * costoneto) /100);
+        PrecVtaFinal3=Number((parseFloat(PrecVtaFinal3).toFixed(2)).toString().split(". "));           
+        document.getElementById("PV3").value = PrecVtaFinal3;    
+        }
+        //CALCULAMOS EL PRECIO DE VENTA 4
+        if (PorcVta4 <= 1) {
+        document.getElementById("PV4").value = costoneto;
+        } else  {
+        var PrecVtaFinal4=costoneto + ((PorcVta4 * costoneto) /100);
+        PrecVtaFinal4=Number((parseFloat(PrecVtaFinal4).toFixed(2)).toString().split(". "));           
+        document.getElementById("PV4").value = PrecVtaFinal4;    
+        }
+        
+        
+        //CALCULAMOS Importe de Aumento 
+        var ImporAumento1 = PrecVtaFinal1 - costoneto; 
+        ImporAumento1=Number((parseFloat(ImporAumento1).toFixed(2)).toString().split(". "));  
+        document.getElementById("IA1").value = ImporAumento1;
 
+        var ImporAumento2 = PrecVtaFinal2 - costoneto; 
+        ImporAumento2=Number((parseFloat(ImporAumento2).toFixed(2)).toString().split(". "));  
+        document.getElementById("IA2").value = ImporAumento2;
         
+        var ImporAumento3 = PrecVtaFinal3 - costoneto; 
+        ImporAumento3=Number((parseFloat(ImporAumento3).toFixed(2)).toString().split(". "));  
+        document.getElementById("IA3").value = ImporAumento3;
         
+        var ImporAumento4 = PrecVtaFinal4 - costoneto; 
+        ImporAumento4=Number((parseFloat(ImporAumento4).toFixed(2)).toString().split(". "));  
+        document.getElementById("IA4").value = ImporAumento4;
+        
+        //CALCULAMOS PRECIO SIN IVA
+        
+        var PreSIva1 = PrecVtaFinal1-((iva/100)*PrecVtaFinal1);
+        PreSIva1=Number((parseFloat(PreSIva1).toFixed(2)).toString().split(". "));  
+        document.getElementById("PSI1").value = PreSIva1;        
+        
+        var PreSIva2 = PrecVtaFinal2-((iva/100)*PrecVtaFinal2);
+        PreSIva2=Number((parseFloat(PreSIva2).toFixed(2)).toString().split(". "));  
+        document.getElementById("PSI2").value = PreSIva2;        
+
+        var PreSIva3 = PrecVtaFinal3-((iva/100)*PrecVtaFinal3);
+        PreSIva3=Number((parseFloat(PreSIva3).toFixed(2)).toString().split(". "));  
+        document.getElementById("PSI3").value = PreSIva3;
+        
+        var PreSIva4 = PrecVtaFinal4-((iva/100)*PrecVtaFinal4);
+        PreSIva4=Number((parseFloat(PreSIva4).toFixed(2)).toString().split(". "));  
+        document.getElementById("PSI4").value = PreSIva4; 
         
     }
-            
+    function calcular2(){
+        var CosNeto = Number(document.getElementById('costoneto').value); //PORCENTAJE
+        var PorcVta1 = Number(document.getElementById('PA1').value); //PORCENTAJE
+        var PreVta1 = Number(document.getElementById('PV1').value);  //PRE VTA
+        var PorcVta2 = Number(document.getElementById('PA2').value); //PORCENTAJE
+        var PreVta2 = Number(document.getElementById('PV2').value);  //PRE VTA
+        var PorcVta3 = Number(document.getElementById('PA3').value); //PORCENTAJE
+        var PreVta3 = Number(document.getElementById('PV3').value);  //PRE VTA
+        var PorcVta4 = Number(document.getElementById('PA4').value); //PORCENTAJE
+        var PreVta4 = Number(document.getElementById('PV4').value);  //PRE VTA
+        
+        
+        
+        var PorcVtaFinal1=((PreVta1 - CosNeto) / CosNeto) * 100;
+        PorcVtaFinal1=Number((parseFloat(PorcVtaFinal1).toFixed(6)).toString().split(". "));           
+        document.getElementById("PA1").value = PorcVtaFinal1;
+
+        var PorcVtaFinal2=((PreVta2 - CosNeto) / CosNeto) * 100;
+        PorcVtaFinal2=Number((parseFloat(PorcVtaFinal2).toFixed(6)).toString().split(". "));           
+        document.getElementById("PA2").value = PorcVtaFinal2;
+        
+        var PorcVtaFinal3=((PreVta3 - CosNeto) / CosNeto) * 100;
+        PorcVtaFinal3=Number((parseFloat(PorcVtaFinal3).toFixed(6)).toString().split(". "));           
+        document.getElementById("PA3").value = PorcVtaFinal3;
+        
+        var PorcVtaFinal4=((PreVta4 - CosNeto) / CosNeto) * 100;
+        PorcVtaFinal4=Number((parseFloat(PorcVtaFinal4).toFixed(6)).toString().split(". "));           
+        document.getElementById("PA4").value = PorcVtaFinal4;
+        
+        calcular();
+        
+    }
         
     window.onload=calcular();
         
         
         
-        
- 
-        
-        
-        
-        
+//coloca el atributo step any para poder enviar con decimales        
+const numberInputs = document.querySelectorAll('input[type="number"]');
 
-    </script>
+  // Agregar step="any" a cada uno
+numberInputs.forEach(input => input.setAttribute('step', 'any'));
+        
+        
+        
+   document.form1.costo.focus();    
+        
+        
+        
+        
+        
+        
+        
+ </script>
 
     
     <?php } ?>   
