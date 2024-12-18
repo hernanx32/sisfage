@@ -90,7 +90,7 @@ $stmt->fetch();
 $stmt->close();
 //VALOR RETORNADO $porce_imp_int;
         
-//BUSCA UN ID NO TAN ALTO PARA POBLA NUMEROS BAJOS         
+//BUSCA UN ID NO TAN ALTO PARA POBLAR NUMEROS BAJOS         
 $query = "SELECT MIN(t1.id_articulo + 1) AS next_id
 FROM articulo t1
 LEFT JOIN articulo t2
@@ -106,9 +106,9 @@ $stmt->close();
         $consulta="INSERT INTO `articulo` 
         (`id_articulo`, `cod_bar`, `desc_corta`, `desc_larga`, `id_rubro`, `id_rubro_sub`, 
         `uni_med`, `uni_bulto`, `estado`, `stockmin`, `stockmax`, `stocktotal`, `id_proveedor`, 
-        `cod_bar_prov`, `id_iva`, `iva`, `id_imp_int`, `porc_imp_int`, `costo`, `proc_bonific`, `porc_flete`, `porc_cargo_finan`, `proc_precio1`, `proc_precio2`, `proc_precio3`, `proc_precio4`, `precio1`, `precio2`, `precio3`, `precio4`, `id_usuario`, `fec_act`) 
+        `cod_bar_prov`, `id_iva`, `iva`, `id_imp_int`, `porc_imp_int`, `costo`, `porc_bonific`, `porc_flete`, `porc_cargo_finan`, `porc_precio1`, `porc_precio2`, `porc_precio3`, `porc_precio4`, `precio1`, `precio2`, `precio3`, `precio4`, `id_usuario`, `fec_act`) 
         VALUES ('$id_art', '$dato1', '$dato2', '$dato3', '$dato4', '$dato5', '$dato6', '$dato7', '$dato14', '$dato8', 
-        '$dato9', '1', '$dato12', '$dato13', '$dato10', '$valorIva', '$dato11', '$porce_imp_int', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '$id_us', '$fecha')";
+        '$dato9', '1', '$dato12', '$dato13', '$dato10', '$valorIva', '$dato11', '$porce_imp_int', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '$id_us', '$fecha')";
         
         agregado($conn, $consulta, $id_art);
     
@@ -119,17 +119,50 @@ $stmt->close();
         $focus='';
         elimina_art($conn, $id_art, $id_us, $fecha);
     }
-    //FORMULARIO DE EDICION
+    //AGREGAR FORMULARIO DE MODIFICACION DE COSTOS
     elseif($scr=="costos"){
         include("Modulos/abmArticulo/costos.php");
         $id=$_GET['id'];   
         costos($conn, $id);
-        $focus='costo';    
+        $focus='costo';   
+
+		
     }elseif($scr=="costosmodif"){
-        echo $_POST['cod_ref'];
-        
-    
-    
+        $cost_id = $_POST['cod_ref'];
+		$cost_d_larga = $_POST['desc_larga'];
+		$cost_cost = $_POST['costo'];
+		$cost_p_bonif = $_POST['porc_bonif'];
+		$cost_p_flete = $_POST['porc_flete'];
+		$cost_p_cfin = $_POST['porc_cfin'];
+        $cost_pa1 = $_POST['PA1'];
+		$cost_pv1 = $_POST['PV1'];
+		$cost_pa2 = $_POST['PA2'];
+		$cost_pv2 = $_POST['PV2'];
+		$cost_pa3 = $_POST['PA3'];
+		$cost_pv3 = $_POST['PV3'];
+		$cost_pa4 = $_POST['PA4'];
+		$cost_pv4 = $_POST['PV4'];
+
+		$cost_consulta="UPDATE `articulo` SET 
+		`costo` = $cost_cost, 
+		`porc_bonific` = $cost_p_bonif, 
+		`porc_flete` = $cost_p_flete, 
+		`porc_cargo_finan` = $cost_p_cfin, 
+		`porc_precio1` = $cost_pa1, 
+		`porc_precio2` = $cost_pa2, 
+		`porc_precio3` = $cost_pa3, 
+		`porc_precio4` = $cost_pa4, 
+		`precio1` = $cost_pv1,
+		`precio2` = $cost_pv2,		
+		`precio3` = $cost_pv3,
+		`precio4` = $cost_pv4,
+		`id_usuario` = $id_us, 
+		`fec_act` = $fecha 
+		WHERE `articulo`.`id_articulo` = $cost_id";
+
+
+		modif_costo($conn, $cost_consulta, $cost_id, $cost_d_larga);
+
     }
     
     

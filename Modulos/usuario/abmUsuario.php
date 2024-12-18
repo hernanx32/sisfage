@@ -41,7 +41,7 @@ JOIN sucursales AS sucu
 	ON usuario.id_sucursal = sucu.id_sucursal
 JOIN acceso AS acc
   ON usuario.id_acceso = acc.id_acceso
-    WHERE id_usuario != 1 
+    WHERE id_usuario != 1 AND id_usuario != 2 
 ";
       
 $result = $conn->query($sql);      

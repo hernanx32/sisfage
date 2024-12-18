@@ -86,11 +86,8 @@ if ($result->num_rows > 0) {
 <?PHP
 }
 
-//AGREGAR FORMULARIO PARA AGREGAR ARTICULO	  
 
-//FUNCION INSERTAR NUEVO USUARIO
-
-//FUNCION ELIMINA USUARIO
+//FUNCION ELIMINA ARTICULO
 function elimina_art($conn, $id, $id_us, $fecha ){
 	//CODIGO DE CONSULTA DE ELIMINACION DEL REGISTRO
     
@@ -112,18 +109,18 @@ function elimina_art($conn, $id, $id_us, $fecha ){
 
 
 
-
+//FUNCION AGREGANDO ARTICULO  
 function agregado($conn, $consulta, $id){
-
     $sql = $consulta;
-	//EJECUTANDO CODIGO DE ELIMINACION 
+	//EJECUTANDO CODIGO  
 	if ($conn->query($sql) === TRUE) {
-		//MENSAJE EN CASO QUE SEA CORRECTO	
+		//MENSAJE GRABADO CORRECTO	
 		echo "<div class='alert alert-success' role='alert'>Articulo ID $id Agregado correctamente</div>";
 		echo "<td colspan='6' align='center'><a href='abmArticulo.php' class='btn btn-outline-secondary'>VOLVER</a>";
         echo "<td colspan='6' align='center'><a href='abmArticulo.php?scr=costos&id=$id' class='btn btn-outline-success'>Cargar Costo</a>";
 	   
 	} else {
+		//MENSAJE ERROR
     echo "Error: " . $sql . "<br>" . $conn->error;
 	echo "<div class='alert alert-danger' role='alert'>Error al agregar usuario.</div>";
     echo "<td colspan='6' align='center'><a href='abmArticulo.php' class='btn btn-outline-secondary'>VOLVER</a>";
@@ -133,5 +130,34 @@ function agregado($conn, $consulta, $id){
 function modificar_art($conn, $id){
     echo 'modificar '. $id;
 }
+
+
+
+
+
+
+
+
+
+//FUNCION RECIBE DATOS DE COSTO Y LOS GRABA
+function modif_costo($conn, $consulta, $id, $d_larga ){
+    $sql = $consulta;
+	//EJECUTANDO CODIGO  
+	if ($conn->query($sql) === TRUE) {
+		//MENSAJE GRABADO CORRECTO	
+		echo "<div class='alert alert-success' role='alert'>Articulo ID $id - $d_larga Se Actulizo Correctamente</div></br>";
+		echo "<td colspan='6' align='center'><a href='abmArticulo.php' class='btn btn-outline-secondary'>VOLVER</a>";
+        echo "<td colspan='6' align='center'><a href='abmArticulo.php?busqueda=$id&select=cod_ref&scr=Buscar' class='btn btn-outline-success'>Ver Articulo</a>";
+	   
+	} else {
+		//MENSAJE ERROR
+    echo "Error: " . $sql . "<br>" . $conn->error;
+	echo "<div class='alert alert-danger' role='alert'>Error al Actulizar el Costo.</div>";
+    echo "<td colspan='6' align='center'><a href='abmArticulo.php' class='btn btn-outline-secondary'>VOLVER</a>";
+	}
+	
+	
+}
+
 
 ?>
