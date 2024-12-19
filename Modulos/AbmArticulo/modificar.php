@@ -5,12 +5,42 @@
 </head>
     
 <?php
-function agregar($conn){
-?>
+function modificar($conn, $id){
+$sql = "SELECT * FROM articulo WHERE id_articulo = $id";
+$resultado = $conn->query($sql);
+if ($resultado->num_rows > 0) {
+    while ($fila = $resultado->fetch_assoc()) {
+        $VAL1=$fila['desc_larga'];
+        $VAL2=$fila['cod_bar'];
+        $VAL3=$fila['iva'];
+        $VAL4=$fila['fec_act'];
+        $VAL5=$fila['id_usuario'];
+        $VAL6=$fila['id_proveedor'];
+        $VAL7=$fila['cod_bar_prov'];
+        $VAL8=$fila['porc_imp_int'];
+        $VAL9=$fila['costo'];
+        $VAL10=$fila['porc_bonific'];
+        $VAL11=$fila['porc_flete'];
+        $VAL12=$fila['porc_cargo_finan'];
+        $VAL13=$fila['porc_precio1'];
+        $VAL14=$fila['porc_precio2'];
+        $VAL15=$fila['porc_precio3'];
+        $VAL16=$fila['porc_precio4'];
+        $VAL17=$fila['precio1'];
+        $VAL18=$fila['precio2'];
+        $VAL19=$fila['precio3'];
+        $VAL20=$fila['precio4']; 
+        }
+    } else {
+    echo "Error al obtener el ID del Articulo";
+    sleep(10);    
+    header("location:abmArticulo.php");
+    }
+	?>
 <div class="card-header">
-    <h3 class="card-title">ABM Articulos - Agregar Nuevo Articulos</h3>
+    <h3 class="card-title">ABM Articulos - Modificar Articulos</h3>
 </div>
-<form action="abmArticulo.php?scr=agregarnuevo" method="post" name="form1" id="form1">
+<form action="abmArticulo.php?scr=modificando" method="post" name="form1" id="form1">
   <table width="800" border="0" align="center">
     <tbody>
       <tr>
@@ -18,16 +48,16 @@ function agregar($conn){
         </th>
       </tr>
       <tr>
-        <td width="296" bgcolor="#A1A1A1"><label for="id_arti">Cod.Ref.:</label>
-        <input name="id_arti" type="number" id="id_arti" max="99999999" min="0" readonly="readonly"></td>
-        <td width="488" align="right" bgcolor="#A1A1A1"><label for="id_usuario">Us. ID - F.Act.:</label>
-        <input name="id_usuario" type="text" id="id_usuario" max="5" min="5" readonly="readonly"> - <input name="fecha_act" type="text" id="fecha_act" max="10" min="10" readonly="readonly"></td>
+        <td bgcolor="#E4E4E4"><label for="cod_ref">Cod. Ref:</label>
+        <input type="text" name="cod_ref" id="cod_ref" readonly></td>
+        <td bgcolor="#E4E4E4"><label for="fecha_act">Fecha Actualización</label>
+		  <input type="text" name="id_usuario" id="id_usuario" readonly><input type="date" name="fecha_act" id="fecha_act" readonly></td>
       </tr>
       <tr>
-        <td bgcolor="#E4E4E4"><label for="cod_bar">Cod. Barra:</label>
+        <td><label for="cod_bar">Cod. Barra:</label>
           <input name="cod_bar" type="text" required="required" id="cod_bar" size="20" maxlength="20">
         <strong>(*)</strong></td>
-        <td bgcolor="#E4E4E4">Validar:
+        <td>Validar:
             
         <span id="error-cod_bar" class="alert-danger"></span>
 
@@ -61,13 +91,13 @@ function agregar($conn){
         </td>
       </tr>
       <tr>
-        <td bgcolor="#E4E4E4"><label for="desc_corta">Desc. Corta:</label>
+        <td><label for="desc_corta">Desc. Corta:</label>
         <input name="desc_corta" type="text" required="required" id="desc_corta" size="20" maxlength="20"><strong>(*)</strong></td>
-        <td bgcolor="#E4E4E4"><label for="desc_larga">Desc. Larga:</label>
-        <input name="desc_larga" type="text" required="required" id="desc_larga" size="40" maxlength="40"><strong>(*)</strong></td>
+        <td><label for="desc_larga">Desc. Larga:</label>
+        <input name="desc_larga" type="text"  required="required" id="desc_larga" size="40" maxlength="40"><strong>(*)</strong></td>
       </tr>
       <tr>
-        <td bgcolor="#E4E4E4"><label for="id_rubro">Rubro:</label>
+        <td><label for="id_rubro">Rubro:</label>
           <select name="rubro" id="rubro">
             <?PHP  
             $sql = "SELECT * FROM rubro";
@@ -82,7 +112,7 @@ function agregar($conn){
             }
             ?>
         </select></td>
-        <td bgcolor="#E4E4E4"><label for="id_rubro_sub">Sub Rubro:</label>
+        <td><label for="id_rubro_sub">Sub Rubro:</label>
             <select name="rubro_sub" id="rubro_sub">
             <?PHP  
             $sql = "SELECT * FROM rubro_sub";
@@ -99,23 +129,23 @@ function agregar($conn){
         </td>
       </tr>
       <tr>
-        <td bgcolor="#E4E4E4"><label for="unidad_med">Unidad de Medida:</label>
+        <td><label for="unidad_med">Unidad de Medida:</label>
           <select name="unidad_med" id="unidad_med">
             <option value="Unidad" selected="selected">Unidad</option>
             <option value="Litros">Litros</option>
             <option value="Metros">Metros</option>
         </select></td>
-        <td bgcolor="#E4E4E4"><label for="unidadxbulto">Unidad x Bulto:</label>
+        <td><label for="unidadxbulto">Unidad x Bulto:</label>
         <input name="unidadxbulto" type="number" id="unidadxbulto" max="1000" min="1" value="1"></td>
       </tr>
       <tr>
-        <td bgcolor="#E4E4E4"><label for="stok_min">Stock Minimo:</label>
+        <td><label for="stok_min">Stock Minimo:</label>
         <input name="stok_min" type="number" id="stok_min" max="9999999999" min="1" value="1"></td>
-        <td bgcolor="#E4E4E4"><label for="stok_max">Stock Maximo:</label>
+        <td><label for="stok_max">Stock Maximo:</label>
         <input name="stok_max" type="number" id="stok_max" max="9999999999" min="1" value="1"></td>
       </tr>
        <tr>
-        <td bgcolor="#E4E4E4"><label for="iva">I.V.A.:</label>
+        <td><label for="iva">I.V.A.:</label>
           <select name="iva" id="iva" class="select2">
             <?PHP  
             $sql = "SELECT * FROM iva";
@@ -129,7 +159,7 @@ function agregar($conn){
             }
             ?> 
         </select></td>
-        <td bgcolor="#E4E4E4"><label for="imp_int">Imp. Interno:</label>
+        <td><label for="imp_int">Imp. Interno:</label>
           <select name="imp_int" id="imp_int">
             <?PHP  
             $sql = "SELECT * FROM imp_interno";
@@ -145,7 +175,7 @@ function agregar($conn){
         </select></td>
       </tr>  
       <tr>
-        <td colspan="2" bgcolor="#E4E4E4"><label for="BuscaProveedor">Proveedor:</label>
+        <td colspan="2"><label for="BuscaProveedor">Proveedor:</label>
           <select name="BuscaProveedor" id="BuscaProveedor" class="Select2">
             <?PHP  
             $sql = "SELECT * FROM proveedor";
@@ -160,14 +190,14 @@ function agregar($conn){
             ?>			 
           </select>
           <label for="id_prov">ID.:</label>
-          <input type="text" id="id_proveedor" placeholder="ID" size="5" maxlength="30" readonly="readonly">
-          - <input type="text" id="nombre_proveedor" size="30" maxlength="30" readonly="readonly"><strong>(*)</strong>
+          <input type="text" disabled="disabled" id="id_proveedor" placeholder="ID" size="5" maxlength="30">
+          - <input type="text" disabled="disabled" id="nombre_proveedor" size="30" maxlength="30"><strong>(*)</strong>
         </td>
       </tr>
       <tr>
-        <td bgcolor="#E4E4E4"><label for="cod_bar_prov">Cod. Bar. Prov.:</label>
+        <td><label for="cod_bar_prov">Cod. Bar. Prov.:</label>
         <input name="cod_bar_prov" type="text" id="cod_bar_prov" size="10" maxlength="10"></td>
-        <td bgcolor="#E4E4E4"><label for="estado">Estado Articulo:</label>
+        <td><label for="estado">Estado Articulo:</label>
           <select name="estado" id="estado">
             <option value="1" selected="selected">Activo</option>
             <option value="0">Inactivo</option>
@@ -182,7 +212,6 @@ function agregar($conn){
         </td>
       </tr>
     </tbody>
-
   </table>
 </form>
 <?php
@@ -228,9 +257,24 @@ function agregar($conn){
             nameField.value = initialOption.text;
         };
      
+    
      
-     
+     // Evento para el botón de envío
+        const form = document.getElementById('form1');
+        const input = document.getElementById('id_proveedor');
+        const submitBtn = document.getElementById('submit');
 
+        // Evento al hacer clic en el botón de envío
+        submitBtn.addEventListener('click', function(event) {
+
+                        
+            // Enviar el formulario manualmente
+            form.submit();
+            
+            // Deshabilitar el botón de envío
+            submitBtn.disabled = true;
+
+        });
      
      
      

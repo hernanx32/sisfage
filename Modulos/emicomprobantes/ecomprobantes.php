@@ -19,7 +19,7 @@ function abmarticulo($conn, $consulta)
               <!-- /.card-header -->
             
 <form id="frm_articulo" method="get" action="emicomprobantes.php">   
-<table id="example" class="display" border="1" width="1200px" align="center">
+<table id="example" class="display" border="1" width="1000px" align="center">
                   <thead>
                   <tr>
                     <th colspan="5"><label for="busqueda">Buscar:</label>
@@ -43,7 +43,7 @@ function abmarticulo($conn, $consulta)
                     <th>Cod.Bar.Prov.</th>
                     <th>Descripción</th>
                     <th>Precio1</th>
-                    <th>Precio2</th>
+                    
                   </tr>
                   </thead>
                   <tbody>
@@ -64,9 +64,7 @@ if ($result->num_rows > 0) {
         echo "</td><td>";
         echo "$" . number_format($row['precio1'], 2);
         echo "</td><td>";
-        echo "$" . number_format($row['precio2'], 2);
-        echo "</td></tr>"; 
-    
+        
     }
 } else {
     echo "<td colspan='8'>No se Encontraron Resultados<td>";

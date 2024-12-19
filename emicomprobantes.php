@@ -96,7 +96,7 @@ if (isset($_GET['scr'])){
         //PANTALLA PRINCIPAL DE USUARIO
             
             
-            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo WHERE estado = 1";
+            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo WHERE estado = 1 LIMIT 100";
             abmArticulo($conn, $consulta);
     
             

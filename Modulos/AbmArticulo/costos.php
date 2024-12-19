@@ -10,7 +10,7 @@
 <?PHP    
 function costos($conn, $id){
 //TRAEMOS LOS DATOS DEL FORMULRIO
-$focus='costo';    
+
     
 $sql = "SELECT * FROM articulo WHERE id_articulo = $id";
 $resultado = $conn->query($sql);
