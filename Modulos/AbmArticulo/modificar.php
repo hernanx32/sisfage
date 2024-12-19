@@ -10,26 +10,23 @@ $sql = "SELECT * FROM articulo WHERE id_articulo = $id";
 $resultado = $conn->query($sql);
 if ($resultado->num_rows > 0) {
     while ($fila = $resultado->fetch_assoc()) {
-        $VAL1=$fila['desc_larga'];
-        $VAL2=$fila['cod_bar'];
-        $VAL3=$fila['iva'];
-        $VAL4=$fila['fec_act'];
-        $VAL5=$fila['id_usuario'];
-        $VAL6=$fila['id_proveedor'];
-        $VAL7=$fila['cod_bar_prov'];
-        $VAL8=$fila['porc_imp_int'];
-        $VAL9=$fila['costo'];
-        $VAL10=$fila['porc_bonific'];
-        $VAL11=$fila['porc_flete'];
-        $VAL12=$fila['porc_cargo_finan'];
-        $VAL13=$fila['porc_precio1'];
-        $VAL14=$fila['porc_precio2'];
-        $VAL15=$fila['porc_precio3'];
-        $VAL16=$fila['porc_precio4'];
-        $VAL17=$fila['precio1'];
-        $VAL18=$fila['precio2'];
-        $VAL19=$fila['precio3'];
-        $VAL20=$fila['precio4']; 
+        $VAL1=$fila['cod_ref'];
+        $VAL2=$fila['id_usuario'];
+        $VAL3=$fila['fec:act'];
+        $VAL4=$fila['cod_bar'];
+        $VAL5=$fila['desc_corta'];
+        $VAL6=$fila['desc_larga'];
+        $VAL7=$fila['id_rubro'];
+        $VAL8=$fila['id_rubro_sub'];
+        $VAL9=$fila['uni_med'];
+        $VAL10=$fila['uni_bulto'];
+        $VAL11=$fila['stockmin'];
+        $VAL12=$fila['stockmax'];
+        $VAL13=$fila['id_iva'];
+        $VAL14=$fila['id_imp_int'];
+        $VAL15=$fila['id_proveedor'];
+        $VAL16=$fila['cod_bar_prov'];
+        $VAL17=$fila['estado'];
         }
     } else {
     echo "Error al obtener el ID del Articulo";
@@ -49,9 +46,9 @@ if ($resultado->num_rows > 0) {
       </tr>
       <tr>
         <td bgcolor="#E4E4E4"><label for="cod_ref">Cod. Ref:</label>
-        <input type="text" name="cod_ref" id="cod_ref" readonly></td>
+        <input name="cod_ref" type="text" id="cod_ref" value="<?PHP echo $VAL1; ?>" readonly></td>
         <td bgcolor="#E4E4E4"><label for="fecha_act">Fecha Actualización</label>
-		  <input type="text" name="id_usuario" id="id_usuario" readonly><input type="date" name="fecha_act" id="fecha_act" readonly></td>
+	    <input name="id_usuario" type="text" id="id_usuario" value="<?PHP echo $VAL2; ?>" readonly><input name="fecha_act" type="date" id="fecha_act" value="<?PHP echo $VAL2; ?>" readonly></td>
       </tr>
       <tr>
         <td><label for="cod_bar">Cod. Barra:</label>
@@ -135,14 +132,14 @@ if ($resultado->num_rows > 0) {
             <option value="Litros">Litros</option>
             <option value="Metros">Metros</option>
         </select></td>
-        <td><label for="unidadxbulto">Unidad x Bulto:</label>
-        <input name="unidadxbulto" type="number" id="unidadxbulto" max="1000" min="1" value="1"></td>
+        <td><label for="uni_bulto">Unidad x Bulto:</label>
+        <input name="uni_bulto" type="number" id="uni_bulto" max="1000" min="1" ></td>
       </tr>
       <tr>
         <td><label for="stok_min">Stock Minimo:</label>
-        <input name="stok_min" type="number" id="stok_min" max="9999999999" min="1" value="1"></td>
+        <input name="stok_min" type="number" id="stok_min" max="9999999999" min="1"></td>
         <td><label for="stok_max">Stock Maximo:</label>
-        <input name="stok_max" type="number" id="stok_max" max="9999999999" min="1" value="1"></td>
+        <input name="stok_max" type="number" id="stok_max" max="9999999999" min="1"></td>
       </tr>
        <tr>
         <td><label for="iva">I.V.A.:</label>
