@@ -180,7 +180,7 @@ $stmt->close();
         $dato4=$_POST['rubro'];
         $dato5=$_POST['rubro_sub'];
         $dato6=$_POST['unidad_med'];
-        $dato7=$_POST['unidadxbulto'];
+        $dato7=$_POST['uni_bulto'];
         $dato8=$_POST['stok_min'];
         $dato9=$_POST['stok_max'];
         $dato10=$_POST['iva'];
@@ -206,23 +206,29 @@ $stmt->bind_result($porce_imp_int);
 $stmt->fetch();
 $stmt->close();
 //VALOR RETORNADO $porce_imp_int;
-        
-        $consulta="UPDATE `articulo` 
-        `cod_bar`, 
-        `desc_corta`, 
-        `desc_larga`, 
-        `id_rubro`, 
-        `id_rubro_sub`, 
-        `uni_med`, 
-        `uni_bulto`, 
-        `estado`, 
-        `stockmin`, 
-        `stockmax`, `stocktotal`, `id_proveedor`, 
-        `cod_bar_prov`, `id_iva`, `iva`, `id_imp_int`, `porc_imp_int`, `costo`, `porc_bonific`, `porc_flete`, `porc_cargo_finan`, `porc_precio1`, `porc_precio2`, `porc_precio3`, `porc_precio4`, `precio1`, `precio2`, `precio3`, `precio4`, `id_usuario`, `fec_act`) 
-        VALUES ('$id_art', '$dato1', '$dato2', '$dato3', '$dato4', '$dato5', '$dato6', '$dato7', '$dato14', '$dato8', 
-        '$dato9', '1', '$dato12', '$dato13', '$dato10', '$valorIva', '$dato11', '$porce_imp_int', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '$id_us', '$fecha')";
-        
-        agregado($conn, $consulta, $id_art);
+           
+		 $consulta="UPDATE `articulo` SET 
+		`cod_bar` = '$dato1',
+        `desc_corta`= '$dato2',
+        `desc_larga`= '$dato3',
+        `id_rubro`= '$dato4',
+        `id_rubro_sub`= '$dato5',
+        `uni_med`= '$dato6',
+        `uni_bulto`= '$dato7',
+        `estado`= '$dato14',
+        `stockmin`= '$dato8',
+        `stockmax`= '$dato9',
+		`id_proveedor`= '$dato12',
+        `cod_bar_prov`= '$dato13',
+		`id_iva`= '$dato10',
+		`iva`= '$valorIva',
+		`id_imp_int`= '$dato11',
+		`porc_imp_int`= '$porce_imp_int',
+		`id_usuario`= '$id_us',
+		`fec_act`= '$fecha'
+		 WHERE `articulo`.`id_articulo` = $dato0";
+		
+        agregado($conn, $consulta, $dato0);
     }
     }else{
         //PANTALLA PRINCIPAL DE USUARIO

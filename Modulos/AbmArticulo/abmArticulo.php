@@ -115,14 +115,14 @@ function agregado($conn, $consulta, $id){
 	//EJECUTANDO CODIGO  
 	if ($conn->query($sql) === TRUE) {
 		//MENSAJE GRABADO CORRECTO	
-		echo "<div class='alert alert-success' role='alert'>Articulo ID $id Agregado correctamente</div>";
-		echo "<td colspan='6' align='center'><a href='abmArticulo.php' class='btn btn-outline-secondary'>VOLVER</a>";
-        echo "<td colspan='6' align='center'><a href='abmArticulo.php?scr=costos&id=$id' class='btn btn-outline-success'>Cargar Costo</a>";
+		echo "<div class='alert alert-success' role='alert'>Articulo ID $id Agregado correctamente los Datos</div>";
+		echo "<td colspan='6' align='center'><a align='center' href='abmArticulo.php' class='btn btn-outline-secondary'>VOLVER</a>";
+        echo "<td colspan='6' align='center'><a align='center' href='abmArticulo.php?scr=costos&id=$id' class='btn btn-outline-success'>Cargar Costo</a>";
 	   
 	} else {
 		//MENSAJE ERROR
     echo "Error: " . $sql . "<br>" . $conn->error;
-	echo "<div class='alert alert-danger' role='alert'>Error al agregar usuario.</div>";
+	echo "<div class='alert alert-danger' role='alert'>Error al agregar Articulo.</div>";
     echo "<td colspan='6' align='center'><a href='abmArticulo.php' class='btn btn-outline-secondary'>VOLVER</a>";
 	}
 }
@@ -160,4 +160,4 @@ function modif_costo($conn, $consulta, $id, $d_larga ){
 }
 
 
-?>
+?> 
