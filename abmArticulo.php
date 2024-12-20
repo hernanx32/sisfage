@@ -168,10 +168,62 @@ $stmt->close();
     elseif($scr=="modificar"){
             include("Modulos/abmArticulo/modificar.php");
 			$id=$_GET['id']; 
-			modificar($conn, $id);
-	
-	}
-    
+            $focus='desc_corta';
+            modificar($conn, $id);
+	}elseif($scr=="modificando"){
+    $focus='desc_corta';
+    echo 'modificando';
+        $dato0=$_POST['cod_ref'];
+        $dato1=$_POST['cod_bar'];
+        $dato2=$_POST['desc_corta'];
+        $dato3=$_POST['desc_larga'];
+        $dato4=$_POST['rubro'];
+        $dato5=$_POST['rubro_sub'];
+        $dato6=$_POST['unidad_med'];
+        $dato7=$_POST['unidadxbulto'];
+        $dato8=$_POST['stok_min'];
+        $dato9=$_POST['stok_max'];
+        $dato10=$_POST['iva'];
+        $dato11=$_POST['imp_int'];
+        $dato12=$_POST['BuscaProveedor'];
+        $dato13=$_POST['cod_bar_prov'];
+        $dato14=$_POST['estado'];
+        
+        //TRAEMOS EL VALOR SEGUN EL ID DEL IVA        
+$query = "SELECT porcentaje FROM iva WHERE id_iva = '$dato10'";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$stmt->bind_result($valorIva);
+$stmt->fetch();
+$stmt->close();
+//VALOR RETORNADO $valorIva;
+
+//TRAEMOS EL VALOR SEGUN EL ID DEL IMP_INTERNO   
+$query = "SELECT porcen_imp_int FROM imp_interno WHERE id_imp_interno = '$dato11'";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$stmt->bind_result($porce_imp_int);
+$stmt->fetch();
+$stmt->close();
+//VALOR RETORNADO $porce_imp_int;
+        
+        $consulta="UPDATE `articulo` 
+        `cod_bar`, 
+        `desc_corta`, 
+        `desc_larga`, 
+        `id_rubro`, 
+        `id_rubro_sub`, 
+        `uni_med`, 
+        `uni_bulto`, 
+        `estado`, 
+        `stockmin`, 
+        `stockmax`, `stocktotal`, `id_proveedor`, 
+        `cod_bar_prov`, `id_iva`, `iva`, `id_imp_int`, `porc_imp_int`, `costo`, `porc_bonific`, `porc_flete`, `porc_cargo_finan`, `porc_precio1`, `porc_precio2`, `porc_precio3`, `porc_precio4`, `precio1`, `precio2`, `precio3`, `precio4`, `id_usuario`, `fec_act`) 
+        VALUES ('$id_art', '$dato1', '$dato2', '$dato3', '$dato4', '$dato5', '$dato6', '$dato7', '$dato14', '$dato8', 
+        '$dato9', '1', '$dato12', '$dato13', '$dato10', '$valorIva', '$dato11', '$porce_imp_int', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '$id_us', '$fecha')";
+        
+        agregado($conn, $consulta, $id_art);
+    }
     }else{
         //PANTALLA PRINCIPAL DE USUARIO
     $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo WHERE estado = 1 LIMIT 100";
@@ -179,7 +231,7 @@ $stmt->close();
     $focus='busqueda';
             
      }
-$focus='busqueda';
+
 $conn->close();
 pieprincipal($focus,$path);
 ?>
