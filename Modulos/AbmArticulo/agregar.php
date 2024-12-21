@@ -19,7 +19,7 @@ function agregar($conn){
       </tr>
       <tr>
         <td bgcolor="#E4E4E4"><label for="cod_bar">Cod. Barra:</label>
-          <input name="cod_bar" type="text" required="required" id="cod_bar" size="20" maxlength="20">
+          <input name="cod_bar" type="text" required="required" id="cod_bar" tabindex="1" size="20" maxlength="20">
         <strong>(*)</strong></td>
         <td bgcolor="#E4E4E4">Validar:
             
@@ -56,13 +56,13 @@ function agregar($conn){
       </tr>
       <tr>
         <td bgcolor="#E4E4E4"><label for="desc_corta">Desc. Corta:</label>
-        <input name="desc_corta" type="text" required="required" id="desc_corta" size="20" maxlength="20"><strong>(*)</strong></td>
+        <input name="desc_corta" type="text" required="required" id="desc_corta" tabindex="2" size="20" onBlur="CopiaDesc()" maxlength="20"><strong>(*)</strong></td>
         <td bgcolor="#E4E4E4"><label for="desc_larga">Desc. Larga:</label>
-        <input name="desc_larga" type="text"  required="required" id="desc_larga" size="40" maxlength="40"><strong>(*)</strong></td>
+        <input name="desc_larga" type="text"  required="required" id="desc_larga" tabindex="3" size="40" maxlength="40"><strong>(*)</strong></td>
       </tr>
       <tr>
         <td bgcolor="#E4E4E4"><label for="id_rubro">Rubro:</label>
-          <select name="rubro" id="rubro">
+          <select name="rubro" id="rubro" tabindex="4">
             <?PHP  
             $sql = "SELECT * FROM rubro";
             $resultado = $conn->query($sql);
@@ -77,7 +77,7 @@ function agregar($conn){
             ?>
         </select></td>
         <td bgcolor="#E4E4E4"><label for="id_rubro_sub">Sub Rubro:</label>
-            <select name="rubro_sub" id="rubro_sub">
+            <select name="rubro_sub" id="rubro_sub" tabindex="5">
             <?PHP  
             $sql = "SELECT * FROM rubro_sub";
             $resultado = $conn->query($sql);
@@ -94,23 +94,23 @@ function agregar($conn){
       </tr>
       <tr>
         <td bgcolor="#E4E4E4"><label for="unidad_med">Unidad de Medida:</label>
-          <select name="unidad_med" id="unidad_med">
+          <select name="unidad_med" id="unidad_med" tabindex="6">
             <option value="Unidad" selected="selected">Unidad</option>
             <option value="Litros">Litros</option>
             <option value="Metros">Metros</option>
         </select></td>
         <td bgcolor="#E4E4E4"><label for="unidadxbulto">Unidad x Bulto:</label>
-        <input name="unidadxbulto" type="number" id="unidadxbulto" max="1000" min="1" value="1"></td>
+        <input name="unidadxbulto" type="number" id="unidadxbulto" max="1000" min="1" tabindex="7" value="1"></td>
       </tr>
       <tr>
         <td bgcolor="#E4E4E4"><label for="stok_min">Stock Minimo:</label>
-        <input name="stok_min" type="number" id="stok_min" max="9999999999" min="1" value="1"></td>
+        <input name="stok_min" type="number" id="stok_min" max="9999999999" min="1" tabindex="8" value="1"></td>
         <td bgcolor="#E4E4E4"><label for="stok_max">Stock Maximo:</label>
-        <input name="stok_max" type="number" id="stok_max" max="9999999999" min="1" value="1"></td>
+        <input name="stok_max" type="number" id="stok_max" max="9999999999" min="1" tabindex="9" value="1"></td>
       </tr>
        <tr>
         <td bgcolor="#E4E4E4"><label for="iva">I.V.A.:</label>
-          <select name="iva" id="iva" class="select2">
+          <select name="iva" class="select2" id="iva" tabindex="10">
             <?PHP  
             $sql = "SELECT * FROM iva";
             $resultado = $conn->query($sql);
@@ -124,7 +124,7 @@ function agregar($conn){
             ?> 
         </select></td>
         <td bgcolor="#E4E4E4"><label for="imp_int">Imp. Interno:</label>
-          <select name="imp_int" id="imp_int">
+          <select name="imp_int" id="imp_int" tabindex="11">
             <?PHP  
             $sql = "SELECT * FROM imp_interno";
             $resultado = $conn->query($sql);
@@ -140,7 +140,7 @@ function agregar($conn){
       </tr>  
       <tr>
         <td colspan="2" bgcolor="#E4E4E4"><label for="BuscaProveedor">Proveedor:</label>
-          <select name="BuscaProveedor" id="BuscaProveedor" class="Select2">
+          <select name="BuscaProveedor" class="Select2" id="BuscaProveedor" tabindex="12">
             <?PHP  
             $sql = "SELECT * FROM proveedor";
             $resultado = $conn->query($sql);
@@ -160,9 +160,9 @@ function agregar($conn){
       </tr>
       <tr>
         <td bgcolor="#E4E4E4"><label for="cod_bar_prov">Cod. Bar. Prov.:</label>
-        <input name="cod_bar_prov" type="text" id="cod_bar_prov" size="10" maxlength="10"></td>
+        <input name="cod_bar_prov" type="text" id="cod_bar_prov" tabindex="13" size="10" maxlength="10"></td>
         <td bgcolor="#E4E4E4"><label for="estado">Estado Articulo:</label>
-          <select name="estado" id="estado">
+          <select name="estado" id="estado" tabindex="14">
             <option value="1" selected="selected">Activo</option>
             <option value="0">Inactivo</option>
         </select></td>
@@ -240,9 +240,40 @@ function agregar($conn){
 
         });
      
-     
-     
-     
+     //COPIAMOS LOS DATOS DE DESC CORTA A DESC LARGA CUANDO NOS PASAMOS AL SIGUIENTE CAMPO
+    document.getElementById('desc_corta').addEventListener('blur', function () {
+        const descLargaField = document.getElementById('desc_larga');
+        if (!descLargaField.value) { // Verifica si desc_larga está vacío
+            descLargaField.value = this.value;
+        }
+    });
+
+	 
+	 
+	 
+	 
+	 
+	 document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Evita el comportamiento predeterminado
+
+        // Obtén el elemento actual con el foco
+        const currentElement = document.activeElement;
+        if (!currentElement) return;
+
+        // Encuentra el siguiente elemento según el tabindex
+        const tabindex = parseInt(currentElement.getAttribute('tabindex'), 10);
+        if (!isNaN(tabindex)) {
+            const nextElement = document.querySelector(`[tabindex="${tabindex + 1}"]`);
+            if (nextElement) {
+                nextElement.focus();
+                if (typeof nextElement.select === 'function') {
+                    nextElement.select(); // Selecciona el contenido si es posible
+                }
+            }
+        }
+    }
+});
      </script>
 <?PHP
 }
