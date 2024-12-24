@@ -2,6 +2,7 @@
 
 function abmarticulo($conn, $consulta)
 {
+    global $fecha;
 ?>    <script>
         function confirmarEnlace(event) {
             // Mostrar mensaje de confirmación
@@ -44,7 +45,7 @@ function abmarticulo($conn, $consulta)
                     <th>Descripción</th>
                     <th>Costo</th>
                     <th>Precio1</th>
-                    <th>Precio2</th>
+                    <th>Fec. Actul.</th>
                     <th>Acciones</th>
                   </tr>
                   </thead>
@@ -67,8 +68,20 @@ if ($result->num_rows > 0) {
         echo "$" . number_format($row['costo'], 2);
         echo "</td><td>";
         echo "$" . number_format($row['precio1'], 2);
-        echo "</td><td>";
-        echo "$" . number_format($row['precio2'], 2);
+        
+  
+        $fec_modifica =$row['fec_act'];
+        if($fecha==$fec_modifica){
+        echo "</td><td bgcolor='#09D320'>";    
+        }else{
+        echo "</td><td>";    
+        }
+        
+        $fechaOriginal = $fec_modifica; // Fecha en formato ISO
+        $timestamp = strtotime($fechaOriginal);
+        echo date("d/m/Y", $timestamp);
+        
+                
         echo "</td><td align='center'>";
         echo "<a href='abmArticulo.php?scr=modificar&id=".$row['id_articulo']."'>Editar</a> - <a href='abmArticulo.php?scr=costos&id=".$row['id_articulo']."'>Costos</a> - <a  href='abmArticulo.php?scr=eliminar&id=".$row['id_articulo']."' onclick='confirmarEnlace(event)'>Eliminar</a> </td></tr>"; 
     
@@ -142,6 +155,7 @@ function modificar_art($conn, $id){
 //FUNCION RECIBE DATOS DE COSTO Y LOS GRABA
 function modif_costo($conn, $consulta, $id, $d_larga ){
     $sql = $consulta;
+    
 	//EJECUTANDO CODIGO  
 	if ($conn->query($sql) === TRUE) {
 		//MENSAJE GRABADO CORRECTO	

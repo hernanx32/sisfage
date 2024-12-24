@@ -33,19 +33,19 @@ if (isset($_GET['scr'])){
             $Busqueda=$_GET['busqueda'];
         
             if($filtroBus=='desc'){
-            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo 
+            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `fec_act` FROM articulo 
             WHERE `desc_larga` LIKE '%$Busqueda%' OR `desc_corta` LIKE '%$Busqueda%' ";    
                 
             }elseif($filtroBus=='cod_bar'){
-            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo 
+            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `fec_act` FROM articulo 
             WHERE `cod_bar` LIKE '%$Busqueda%' OR `cod_bar_prov` LIKE '%$Busqueda%' ";    
                 
             }elseif($filtroBus=='cod_ref'){
-            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo 
+            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `fec_act` FROM articulo 
             WHERE `id_articulo` LIKE '%$Busqueda%' ";    
             
             }elseif($filtroBus=='prov'){
-            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo 
+            $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `fec_act` FROM articulo 
             WHERE `id_proveedor` = '%$Busqueda%' ";    
             }
             
@@ -143,6 +143,8 @@ $stmt->close();
 		$cost_pa4 = $_POST['PA4'];
 		$cost_pv4 = $_POST['PV4'];
 
+        
+        $fecha_costo="2024-12-23";
 		$cost_consulta="UPDATE `articulo` SET 
 		`costo` = $cost_cost, 
 		`porc_bonific` = $cost_p_bonif, 
@@ -156,9 +158,9 @@ $stmt->close();
 		`precio2` = $cost_pv2,		
 		`precio3` = $cost_pv3,
 		`precio4` = $cost_pv4,
-		`id_usuario` = $id_us, 
-		`fec_act` = $fecha 
-		WHERE `articulo`.`id_articulo` = $cost_id";
+        `fec_act` =  '$fecha',
+        `id_usuario` = $id_us 
+		 WHERE `articulo`.`id_articulo` = $cost_id";
 
 
 		modif_costo($conn, $cost_consulta, $cost_id, $cost_d_larga);
@@ -232,11 +234,15 @@ $stmt->close();
     }
     }else{
         //PANTALLA PRINCIPAL DE USUARIO
-    $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `precio2` FROM articulo WHERE estado = 1 LIMIT 100";
+    $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `fec_act` FROM articulo WHERE estado = 1 LIMIT 100";
     abmArticulo($conn, $consulta);
     $focus='busqueda';
             
      }
+
+if (!isset($focus)){
+    $focus='';
+}
 
 $conn->close();
 pieprincipal($focus,$path);
