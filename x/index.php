@@ -1,5 +1,5 @@
 <?PHP
-include("Modulos/conex.php");
+include("../Modulos/conex.php");
 ?>
 
 <!doctype html>
@@ -10,11 +10,13 @@ include("Modulos/conex.php");
 </head>
 
 <body>
-<form id="form1" name="form1" method="post">
+
+	
+<form id="form1" name="form1" action="buscar.php"A method="get">
   <p>
     <label for="buscar">Buscar:</label>
     <input type="search" name="buscar" id="buscar">
-    <input name="btnBuscar" type="button" id="btnBuscar" value="Buscar">
+    <input name="btnBuscar" type="button" id="btnBuscar" onclick="abrirVentanaBusqueda()" value="Buscar">
   </p>
   
 
@@ -25,3 +27,6 @@ include("Modulos/conex.php");
 </form>
 </body>
 </html>
+
+
+
