@@ -18,7 +18,7 @@ function abmarticulo($conn, $consulta)
                 <h3 class="card-title">ABM Articulos</h3>
             </div>
               <!-- /.card-header -->
-            
+ 
 <form id="form1" method="get" action="abmArticulo.php">   
 <table id="example" class="display" border="1" width="1200px" align="center">
                   <thead>
