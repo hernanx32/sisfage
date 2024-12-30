@@ -19,6 +19,8 @@ include("../Modulos/conex.php");
     <input name="btnBuscar" type="button" id="btnBuscar" onclick="abrirVentanaBusqueda()" value="Buscar">
   </p>
   
+	
+	
 
 	<script>
 	document.form1.buscar.focus();
