@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<form action="index.php" id="form1" name="form1" method="post">
+<form action="buscarArt.php" id="form1" name="form1" method="post">
 <table width="500" border="0" align="center" summary="Buscador de Artiulos Avanzado para facturador y remitos">
   <caption>
     Buscador Articulo
@@ -32,7 +32,15 @@
 
 </form>
 <script>
+	//COLOCA EL FOUS EN EL CAMPOR BuscaArt
 	document.form1.BuscaArt.focus();
+	
+	//AL PRESIONAR F2 BUSQUE EL ARTICULO
+	document.addEventListener('keydown', function(event) {
+            if (event.key === 'F2') {
+                event.preventDefault(); 
+               form1.submit();			}});
+	
 	
 	
 	</script>	

@@ -59,8 +59,8 @@
 <table id="selectedProductsTable">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Nombre</th>
+            <th>Cod. Barra</th>
+            <th>Detalle</th>
             <th>Cantidad</th>
             <th>Acciones</th>
         </tr>
@@ -75,7 +75,8 @@ function searchDatabase(query) {
     const suggestionBox = document.getElementById("suggestions");
     suggestionBox.innerHTML = ""; // Limpiar sugerencias previas
 
-    if (!query) {
+    // Si la consulta tiene menos de 3 caracteres, no realizar la búsqueda
+    if (query.length < 3) {
         return;
     }
 
@@ -91,11 +92,11 @@ function searchDatabase(query) {
                 const suggestionItem = document.createElement("div");
                 
                 // Mostrar el ID y el nombre en la sugerencia
-                suggestionItem.textContent = `ID: ${item.id_usuario} - Nombre: ${item.nombre}`;
+                suggestionItem.textContent = `Cod.Barra: ${item.cod_bar} - Detalle: ${item.des_larga} - Precio: ${item.precio1}`;
 
                 // Al hacer clic en un elemento, agregarlo a la tabla de productos seleccionados
                 suggestionItem.addEventListener("click", () => {
-                    addProductToTable(item.id_usuario, item.nombre);
+                    addProductToTable(item.cod_bar, item.des_larga);
                     document.getElementById("searchInput").value = ""; // Limpiar el campo de búsqueda
                     suggestionBox.innerHTML = ""; // Limpiar las sugerencias
                 });

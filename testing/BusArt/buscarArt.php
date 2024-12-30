@@ -6,5 +6,13 @@
 </head>
 
 <body>
+<?PHP
+	$Busqueda = $_POST['BuscaArt'];
+	echo $Busqueda;
+	
+	
+	?>
+	
+	
 </body>
 </html>
