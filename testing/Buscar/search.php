@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 $query = $_GET['query'];
 
 // Preparar y ejecutar la consulta SQL
-$sql = "SELECT id_usuario, nombre FROM usuario WHERE nombre LIKE ? OR id_usuario LIKE ?";
+$sql = "SELECT cod_bar, desc_larga, precio1 FROM articulo WHERE cod_bar LIKE ? OR desc_larga LIKE ?";
 $stmt = $conn->prepare($sql);
 $searchTerm = '%' . $query . '%';
 $stmt->bind_param("ss", $searchTerm, $searchTerm);  // Se vincula para buscar tanto por id como por nombre

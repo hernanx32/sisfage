@@ -15,12 +15,12 @@
             border-top: none;
             z-index: 99;
             position: absolute;
-            max-height: 150px;
+            max-height: 1500px;
             overflow-y: auto;
             width: 100%;
         }
         .autocomplete-items div {
-            padding: 10px;
+            padding: 5px;
             cursor: pointer;
             background-color: #fff;
             border-bottom: 1px solid #d4d4d4;
@@ -51,7 +51,7 @@
 <h2>Buscar productos y agregarlos con cantidades</h2>
 
 <!-- Campo de búsqueda -->
-<input id="searchInput" type="text" placeholder="Buscar por ID o Nombre..." oninput="searchDatabase(this.value)">
+<input type="text" id="searchInput" placeholder="Buscar por Cod.Barra o Nombre..." size="30" maxlength="30" oninput="searchDatabase(this.value)">
 <!-- Contenedor para las sugerencias -->
 <div id="suggestions" class="autocomplete-items"></div>
 
@@ -59,8 +59,8 @@
 <table id="selectedProductsTable">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Nombre</th>
+            <th>Cod. Barra</th>
+            <th>Detalle</th>
             <th>Cantidad</th>
             <th>Acciones</th>
         </tr>
@@ -75,7 +75,8 @@ function searchDatabase(query) {
     const suggestionBox = document.getElementById("suggestions");
     suggestionBox.innerHTML = ""; // Limpiar sugerencias previas
 
-    if (!query) {
+    // Si la consulta tiene menos de 3 caracteres, no realizar la búsqueda
+    if (query.length < 3) {
         return;
     }
 
@@ -91,11 +92,13 @@ function searchDatabase(query) {
                 const suggestionItem = document.createElement("div");
                 
                 // Mostrar el ID y el nombre en la sugerencia
-                suggestionItem.textContent = `ID: ${item.id_usuario} - Nombre: ${item.nombre}`;
+                suggestionItem.innerHTML = `Cod.Barra: ${item.cod_bar} -|- Detalle: ${item.desc_larga} -|- Precio: ${item.precio1}`;
+					
+					 
 
                 // Al hacer clic en un elemento, agregarlo a la tabla de productos seleccionados
                 suggestionItem.addEventListener("click", () => {
-                    addProductToTable(item.id_usuario, item.nombre);
+                    addProductToTable(item.cod_bar, item.desc_larga);
                     document.getElementById("searchInput").value = ""; // Limpiar el campo de búsqueda
                     suggestionBox.innerHTML = ""; // Limpiar las sugerencias
                 });
