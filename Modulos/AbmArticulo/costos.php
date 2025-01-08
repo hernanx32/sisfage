@@ -114,8 +114,8 @@ if ($resultado->num_rows > 0) {
                       </td>
 		          </tr>
 			      <tr>
+			        <td width="205" align="center" bgcolor="#A1A1A1">Costo Neto + IVA</td>
 			        <td width="205" align="center" bgcolor="#A1A1A1">Costo Neto</td>
-			        <td width="205" align="center" bgcolor="#A1A1A1">Costo c/IVA</td>
 			        <td align="right">Fletes o Gastos:</td>
 			        <td>%
 			          <input name="porc_flete" type="number" id="porc_flete" onBlur="ponerCeroSiVacio(this,2), calcular()"id="porc_bonif" tabindex="3" max="1000" min="0"  value="<?PHP echo $VAL10; ?>">
@@ -210,11 +210,7 @@ if ($resultado->num_rows > 0) {
         var imp_int = Number(document.getElementById('imp_int').value);
         var costo = Number(document.getElementById('costo').value);
         
-        var costociva = (((iva + imp_int) / 100)+1) * costo;
         
-        costociva =(parseFloat(costociva).toFixed(4)).toString().split(". ");
-        document.getElementById("costociva").value = costociva;
-    
         //LEEMOS VALORES DE LOS PORCENTAJES DE BONIF, FLETE, CARGO FINANC
         var porc_bonif = Number(document.getElementById('porc_bonif').value);
         var porc_flete = Number(document.getElementById('porc_flete').value);
@@ -233,9 +229,17 @@ if ($resultado->num_rows > 0) {
         imp_cfin=Number((parseFloat(imp_cfin).toFixed(4)).toString().split(". "));
         document.getElementById("imp_cfin").value = imp_cfin;
         
-        var costoneto = costociva - imp_bonif + imp_flete + imp_cfin ;
-        costoneto=Number((parseFloat(costoneto).toFixed(4)).toString().split(". "));
-        document.getElementById("costoneto").value = costoneto;
+        //CALCULAR COSTO 
+		var costociva = costo - imp_bonif + imp_flete + imp_cfin;
+        var costoneto = (((iva + imp_int) / 100)+1) * costociva;
+       
+		//TRANSFORMAMOS EN VALORES NUMERICO CON 4 DECIMALES
+		costoneto=Number((parseFloat(costoneto).toFixed(4)).toString().split(". "));
+       	costociva =(parseFloat(costociva).toFixed(4)).toString().split(". ");
+		
+		//COLOCAMOS LOS VALORES
+		document.getElementById("costociva").value = costociva;
+		document.getElementById("costoneto").value = costoneto;
         
         
         //CALCULAMOS EL PRECIO DE VENTA 1

@@ -1,0 +1,28 @@
+.alert-box {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px;
+  background-color: #f44336; /* Color de fondo del mensaje */
+  color: white; /* Color del texto */
+  border-radius: 10px; /* Borde redondeado */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+  z-index: 1; /* Asegura que esté sobre otros elementos */
+  max-width: 300px; /* Ancho máximo del mensaje */
+}
+
+.closebtn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: white; /* Color del ícono de cierre */
+  font-weight: bold; /* Texto del ícono de cierre */
+  font-size: 22px; /* Tamaño del ícono de cierre */
+  cursor: pointer; /* Cursor de puntero al pasar por encima */
+}
+
+.closebtn:hover {
+  color: black; /* Cambia el color del ícono de cierre al pasar el mouse */
+}

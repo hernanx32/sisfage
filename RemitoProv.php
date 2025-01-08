@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 $fecha=date('Y-m-d');
 $id_us=$_SESSION['id_usuario'];
@@ -15,9 +16,9 @@ include("Modulos/RemitoProv/editar.php");
 
 cabeza($titulo,$path);
 menu($nro_cat, $nom_completo);
+echo 'Prueba';
 
-
-$focus='';
+$focus='s';
 $conn->close();
-pieprincipal($focus,$path);
+pieprincipal($<<<<<<<<<<ccvbnm -][_ñ.,mnb z,$path);
 ?>
