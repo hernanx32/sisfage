@@ -1,58 +1,26 @@
 <?php
-// Conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tienda";
+$conexion = new mysqli('localhost', 'root', '', 'bases');
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
+if ($conexion->connect_error) {
+    die('Error de conexión: ' . $conexion->connect_error);
 }
 
-// Verificar si se ha enviado un término de búsqueda
-$searchTerm = isset($_GET['buscar']) ? $_GET['buscar'] : '';
-
-$sql = "SELECT * FROM Articulo WHERE nombre LIKE ? OR codigo LIKE ?";
-$stmt = $conn->prepare($sql);
-
-// Preparamos las variables para evitar inyecciones SQL
-$searchTermWithWildcard = "%$searchTerm%";
-$stmt->bind_param("ss", $searchTermWithWildcard, $searchTermWithWildcard);
-
-// Ejecutar la consulta
+$query = $_POST['query'] ?? '';
+$sql = "SELECT id_proveedor, nombre FROM proveedor WHERE nombre LIKE ? LIMIT 10";
+$stmt = $conexion->prepare($sql);
+$param = "%$query%";
+$stmt->bind_param('s', $param);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Mostrar los resultados
-if ($result->num_rows > 0) {
-    echo "<table border='1'>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Código</th>
-                    <th>Precio</th>
-                </tr>
-            </thead>
-            <tbody>";
-
-    while ($row = $result->fetch_assoc()) {
-        echo "<tr>
-                <td>" . $row["id"] . "</td>
-                <td>" . $row["nombre"] . "</td>
-                <td>" . $row["codigo"] . "</td>
-                <td>" . $row["precio"] . "</td>
-              </tr>";
-    }
-
-    echo "</tbody></table>";
-} else {
-    echo "No se encontraron resultados.";
+while ($row = $result->fetch_assoc()) {
+    echo '<tr>';
+    echo '<td>' . htmlspecialchars($row['id_proveedor']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['nombre']) . '</td>';
+    echo '<td><button class="btn btn-sm btn-success seleccionar" data-dato="' . htmlspecialchars($row['nombre']) . '">Seleccionar</button></td>';
+    echo '</tr>';
 }
 
 $stmt->close();
-$conn->close();
+$conexion->close();
 ?>
