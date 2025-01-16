@@ -9,13 +9,14 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-    <div class="container mt-5">
-        <label for="dato" class="form-label">Buscar dato</label>
-        <div class="input-group">
-            <input type="text" id="dato"  placeholder="Selecciona un dato" readonly>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#buscadorModal">Buscar</button>
-        </div>
-    </div>
+<div class="container mt-5 w-50">
+    <div class="input-group">
+        <h5 class="modal-title">Proveedor</h5>
+        <input type="text" class="form-control mb-5 w-25" id="dato-id" placeholder="ID seleccionado"  readonly>
+        <input type="text" id="dato-nombre" class="form-control mb-5 w-50" placeholder="Nombre seleccionado" readonly>
+      <button class="btn btn-primary mb-5" data-bs-toggle="modal" data-bs-target="#buscadorModal">Buscar</button>
+  </div>
+</div>
 
     <!-- Modal -->
     <div class="modal fade" id="buscadorModal" tabindex="-1" aria-labelledby="buscadorLabel" aria-hidden="true">
@@ -45,25 +46,27 @@
     </div>
 
     <script>
-        $(document).ready(function() {
-            $('#buscar').on('input', function() {
-                let query = $(this).val();
-                $.ajax({
-                    url: 'buscar.php',
-                    method: 'POST',
-                    data: { query: query },
-                    success: function(data) {
-                        $('#resultados').html(data);
-                    }
-                });
-            });
-
-            $(document).on('click', '.seleccionar', function() {
-                let dato = $(this).data('dato');
-                $('#dato').val(dato);
-                $('#buscadorModal').modal('hide');
-            });
+$(document).ready(function() {
+    $('#buscar').on('input', function() {
+        let query = $(this).val();
+        $.ajax({
+            url: 'buscar.php',
+            method: 'POST',
+            data: { query: query },
+            success: function(data) {
+                $('#resultados').html(data);
+            }
         });
+    });
+
+    $(document).on('click', '.seleccionar', function() {
+        let id = $(this).data('id');
+        let nombre = $(this).data('nombre');
+        $('#dato-id').val(id);
+        $('#dato-nombre').val(nombre);
+        $('#buscadorModal').modal('hide');
+    });
+});
     </script>
 </body>
 </html>

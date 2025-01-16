@@ -241,7 +241,7 @@ if ($resultado->num_rows > 0) {
       </tr>
       <tr>
         <td><label for="cod_bar_prov">Cod. Bar. Prov.:</label>
-        <input name="cod_bar_prov" type="text" id="cod_bar_prov" tabindex="12" value="<?PHP echo $VAL14?>" size="10" maxlength="10"></td>
+        <input name="cod_bar_prov" type="text" id="cod_bar_prov" tabindex="12" value="<?PHP echo $VAL16?>" size="10" maxlength="10"></td>
         <td><label for="estado">Estado Articulo:</label>
           <select name="estado" id="estado" tabindex="13">
               

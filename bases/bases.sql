@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-12-2024 a las 19:57:04
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Tiempo de generación: 15-01-2025 a las 03:39:46
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -8328,123 +8328,41 @@ INSERT INTO `proveedor` (`id_proveedor`, `nombre`, `direccion`, `provincia`, `lo
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `remito_int_enc`
+-- Estructura de tabla para la tabla `rem_ing_prov_enc`
 --
 
-CREATE TABLE `remito_int_enc` (
-  `id_rem_int` int(10) UNSIGNED NOT NULL,
-  `suc_remito` char(4) NOT NULL,
-  `nro_remito` char(10) NOT NULL,
-  `fecha_rem` date NOT NULL,
-  `origen` int(10) NOT NULL,
-  `destino` int(10) NOT NULL,
-  `fecha_env` date NOT NULL,
-  `id_pedido` int(100) NOT NULL,
-  `comentario` text NOT NULL,
-  `estado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
-
---
--- Volcado de datos para la tabla `remito_int_enc`
---
-
-INSERT INTO `remito_int_enc` (`id_rem_int`, `suc_remito`, `nro_remito`, `fecha_rem`, `origen`, `destino`, `fecha_env`, `id_pedido`, `comentario`, `estado`) VALUES
-(1, '1', '1', '2024-05-28', 1, 3, '2024-05-28', 0, '', 1),
-(2, '1', '2', '2024-06-04', 6, 4, '2024-06-04', 0, '', 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `remito_int_linea`
---
-
-CREATE TABLE `remito_int_linea` (
-  `id_rem_int` int(10) UNSIGNED NOT NULL,
-  `nro_linea` int(10) NOT NULL,
-  `id_articulo` int(11) NOT NULL,
-  `codbar` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `unidadxbulto` int(11) NOT NULL,
-  `costo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
-
---
--- Volcado de datos para la tabla `remito_int_linea`
---
-
-INSERT INTO `remito_int_linea` (`id_rem_int`, `nro_linea`, `id_articulo`, `codbar`, `cantidad`, `unidadxbulto`, `costo`) VALUES
-(1, 1, 1, 32499297, 10, 1, 100);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `remito_pedido_enc`
---
-
-CREATE TABLE `remito_pedido_enc` (
-  `id_pedido` int(11) NOT NULL,
-  `fecha_pedido` date NOT NULL,
-  `origen` int(10) NOT NULL,
-  `destino` int(10) NOT NULL,
-  `estado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `remito_pedido_linea`
---
-
-CREATE TABLE `remito_pedido_linea` (
-  `id_pedido` int(11) NOT NULL,
-  `nro_linea` int(11) NOT NULL,
-  `id_articulo` int(11) NOT NULL,
-  `cod_barra` int(11) NOT NULL,
-  `cantidad` decimal(10,4) NOT NULL,
-  `unidadxbulto` int(11) NOT NULL,
-  `stock_act` decimal(10,4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `rtoprovenc`
---
-
-CREATE TABLE `rtoprovenc` (
-  `id_RtoProvEnc` int(11) NOT NULL,
-  `Fecha_RP` date NOT NULL,
-  `id_Prov` int(11) NOT NULL,
-  `id_suc` int(11) NOT NULL,
-  `SuNroPed1` varchar(2) NOT NULL,
-  `SuNroPed2` int(10) NOT NULL,
-  `SuNroPed3` int(20) NOT NULL,
-  `Fecha_ent_RP` date NOT NULL,
-  `Observaciones` varchar(50) NOT NULL,
-  `Total_Lineas` int(10) NOT NULL,
-  `Total_unidades` int(100) NOT NULL,
-  `Total_Importe` float(13,4) NOT NULL,
+CREATE TABLE `rem_ing_prov_enc` (
+  `id_ripe` int(10) UNSIGNED NOT NULL,
+  `id_sucursal` int(10) NOT NULL,
+  `id_proveedor` int(10) NOT NULL,
+  `nomb_proveedor` varchar(30) NOT NULL,
+  `fec_ing` date NOT NULL,
+  `fec_comp` date NOT NULL,
+  `nro_comp1` varchar(10) NOT NULL,
+  `nro_comp2` varchar(20) NOT NULL,
+  `nro_comp3` varchar(40) NOT NULL,
+  `id_transporte` int(10) NOT NULL,
+  `observacion` text NOT NULL,
   `id_usuario` int(10) NOT NULL,
-  `Fecha_act` date NOT NULL
+  `usu_act` int(10) NOT NULL,
+  `fec_act` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `rtoprovlin`
+-- Estructura de tabla para la tabla `rem_ing_prov_lin`
 --
 
-CREATE TABLE `rtoprovlin` (
-  `id_RtoProvLin` int(11) NOT NULL,
-  `Id_RtoProvEnc` int(100) NOT NULL,
-  `Nro_linea` int(100) NOT NULL,
-  `cod_bar` varchar(100) NOT NULL,
-  `detalle` varchar(100) NOT NULL,
-  `Cantidad` int(10) NOT NULL,
-  `costo` float(13,4) NOT NULL,
-  `Porce_desc` int(10) NOT NULL,
-  `Comentario` varchar(50) NOT NULL,
-  `Importe` float(13,4) NOT NULL
+CREATE TABLE `rem_ing_prov_lin` (
+  `id_ripl` int(10) UNSIGNED NOT NULL,
+  `id_ripe` int(10) NOT NULL,
+  `nro_linea` int(10) NOT NULL,
+  `id_articulo` int(10) NOT NULL,
+  `cod_bar` int(30) NOT NULL,
+  `deltalle` varchar(40) NOT NULL,
+  `cantidad` int(50) NOT NULL,
+  `costo` float(13,4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 -- --------------------------------------------------------
@@ -8502,15 +8420,29 @@ INSERT INTO `rubro_sub` (`id_rubro_sub`, `desc_rubro_sub`, `id_rubro`, `ref_rubr
 CREATE TABLE `stock` (
   `id_sucursal` int(11) NOT NULL,
   `id_articulo` int(11) NOT NULL,
-  `unidadxbulto` int(11) NOT NULL,
-  `unidad` double NOT NULL,
-  `desc_corta` varchar(20) NOT NULL,
-  `desc_larga` varchar(30) NOT NULL,
-  `stock_inicial` double NOT NULL,
-  `entrada` double NOT NULL,
-  `salida` double NOT NULL,
-  `stock_final` double NOT NULL,
-  `fec_act` date NOT NULL
+  `cod_bar` varchar(30) NOT NULL,
+  `detalle` varchar(50) NOT NULL,
+  `cantidad` int(100) NOT NULL,
+  `fec_mov` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `stock_mov`
+--
+
+CREATE TABLE `stock_mov` (
+  `id_mov_stk` int(10) UNSIGNED NOT NULL,
+  `tipo_mov` varchar(10) NOT NULL,
+  `nro_mov` int(100) NOT NULL,
+  `id_articulo` int(30) NOT NULL,
+  `cod_bar` varchar(30) NOT NULL,
+  `detalle` varchar(50) NOT NULL,
+  `cantidad` int(100) NOT NULL,
+  `suc_origen` varchar(30) NOT NULL,
+  `suc_destino` varchar(30) NOT NULL,
+  `fec_mov` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 -- --------------------------------------------------------
@@ -8618,42 +8550,16 @@ ALTER TABLE `proveedor`
   ADD PRIMARY KEY (`id_proveedor`);
 
 --
--- Indices de la tabla `remito_int_enc`
+-- Indices de la tabla `rem_ing_prov_enc`
 --
-ALTER TABLE `remito_int_enc`
-  ADD PRIMARY KEY (`id_rem_int`),
-  ADD UNIQUE KEY `origen` (`origen`,`destino`),
-  ADD KEY `destino` (`destino`);
+ALTER TABLE `rem_ing_prov_enc`
+  ADD PRIMARY KEY (`id_ripe`);
 
 --
--- Indices de la tabla `remito_int_linea`
+-- Indices de la tabla `rem_ing_prov_lin`
 --
-ALTER TABLE `remito_int_linea`
-  ADD PRIMARY KEY (`id_rem_int`);
-
---
--- Indices de la tabla `remito_pedido_enc`
---
-ALTER TABLE `remito_pedido_enc`
-  ADD PRIMARY KEY (`id_pedido`);
-
---
--- Indices de la tabla `remito_pedido_linea`
---
-ALTER TABLE `remito_pedido_linea`
-  ADD UNIQUE KEY `id_articulo` (`id_articulo`);
-
---
--- Indices de la tabla `rtoprovenc`
---
-ALTER TABLE `rtoprovenc`
-  ADD PRIMARY KEY (`id_RtoProvEnc`);
-
---
--- Indices de la tabla `rtoprovlin`
---
-ALTER TABLE `rtoprovlin`
-  ADD PRIMARY KEY (`id_RtoProvLin`);
+ALTER TABLE `rem_ing_prov_lin`
+  ADD PRIMARY KEY (`id_ripl`);
 
 --
 -- Indices de la tabla `rubro`
@@ -8666,6 +8572,12 @@ ALTER TABLE `rubro`
 --
 ALTER TABLE `rubro_sub`
   ADD PRIMARY KEY (`id_rubro_sub`);
+
+--
+-- Indices de la tabla `stock_mov`
+--
+ALTER TABLE `stock_mov`
+  ADD PRIMARY KEY (`id_mov_stk`);
 
 --
 -- Indices de la tabla `sucursales`
@@ -8728,34 +8640,10 @@ ALTER TABLE `proveedor`
   MODIFY `id_proveedor` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
--- AUTO_INCREMENT de la tabla `remito_int_enc`
+-- AUTO_INCREMENT de la tabla `rem_ing_prov_enc`
 --
-ALTER TABLE `remito_int_enc`
-  MODIFY `id_rem_int` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `remito_int_linea`
---
-ALTER TABLE `remito_int_linea`
-  MODIFY `id_rem_int` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `remito_pedido_enc`
---
-ALTER TABLE `remito_pedido_enc`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `rtoprovenc`
---
-ALTER TABLE `rtoprovenc`
-  MODIFY `id_RtoProvEnc` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `rtoprovlin`
---
-ALTER TABLE `rtoprovlin`
-  MODIFY `id_RtoProvLin` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `rem_ing_prov_enc`
+  MODIFY `id_ripe` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `rubro`
@@ -8768,6 +8656,12 @@ ALTER TABLE `rubro`
 --
 ALTER TABLE `rubro_sub`
   MODIFY `id_rubro_sub` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `stock_mov`
+--
+ALTER TABLE `stock_mov`
+  MODIFY `id_mov_stk` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `sucursales`
@@ -8790,19 +8684,6 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `menu`
   ADD CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`id_acceso`) REFERENCES `acceso` (`id_acceso`);
-
---
--- Filtros para la tabla `remito_int_enc`
---
-ALTER TABLE `remito_int_enc`
-  ADD CONSTRAINT `remito_int_enc_ibfk_1` FOREIGN KEY (`origen`) REFERENCES `sucursales` (`id_sucursal`),
-  ADD CONSTRAINT `remito_int_enc_ibfk_2` FOREIGN KEY (`destino`) REFERENCES `sucursales` (`id_sucursal`);
-
---
--- Filtros para la tabla `remito_pedido_linea`
---
-ALTER TABLE `remito_pedido_linea`
-  ADD CONSTRAINT `remito_pedido_linea_ibfk_1` FOREIGN KEY (`id_articulo`) REFERENCES `articulo` (`id_articulo`);
 
 --
 -- Filtros para la tabla `usuario`

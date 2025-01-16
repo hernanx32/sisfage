@@ -46,7 +46,7 @@ if (isset($_GET['scr'])){
             
             }elseif($filtroBus=='prov'){
             $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `fec_act` FROM articulo 
-            WHERE `id_proveedor` = '%$Busqueda%' ";    
+            WHERE `id_proveedor` LIKE '%$Busqueda%' ";    
             }
             
             abmArticulo($conn, $consulta);

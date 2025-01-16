@@ -17,7 +17,7 @@ while ($row = $result->fetch_assoc()) {
     echo '<tr>';
     echo '<td>' . htmlspecialchars($row['id_proveedor']) . '</td>';
     echo '<td>' . htmlspecialchars($row['nombre']) . '</td>';
-    echo '<td><button class="btn btn-sm btn-success seleccionar" data-dato="' . htmlspecialchars($row['nombre']) . '">Seleccionar</button></td>';
+    echo '<td><button class="btn btn-sm btn-success seleccionar" data-id="' . htmlspecialchars($row['id_proveedor']) . '" data-nombre="' . htmlspecialchars($row['nombre']) . '">Seleccionar</button></td>';
     echo '</tr>';
 }
 
