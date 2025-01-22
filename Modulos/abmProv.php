@@ -22,7 +22,7 @@ function abmaprov($conn)
                   </thead>
                   <tbody>
 <?PHP 
-$sql = "SELECT `id_proveedor`,`nombre`, `direccion`, `localidad`, `nro_doc` FROM proveedor";
+$sql = "SELECT `id_proveedor`,`nombre`, `direccion`, `localidad`, `nro_doc` FROM proveedor where estado = '1'";
 $result = $conn->query($sql);      
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
@@ -38,108 +38,37 @@ if ($result->num_rows > 0) {
         echo "</td><td>";
         echo $row['nro_doc'];
         echo "</td><td align='center'>";
-        echo "<a href='abmArticulo.php?scr=modificar&id=".$row['id_proveedor']."'>Editar</a> - <a  href='abmArticulo.php?scr=eliminar&id=".$row['id_proveedor']."' onclick='confirmarEnlace(event)'>Eliminar</a> </td></tr>"; 
+        echo "<a href='abmProveedores.php?scr=modificar&id=".$row['id_proveedor']."'>Editar</a> - <a  href='abmProveedores.php?scr=eliminar&id=".$row['id_proveedor']."' onclick='confirmarEnlace(event)'>Eliminar</a> </td></tr>"; 
     
     }
 } else {
     echo "<td colspan='8'>No se Encontraron Resultados<td>";
 }
-echo "</tbody></table></form> </div>";
+echo "</tbody></table></form> </div></div>";
 
 }
 
 //AGREGAR FORMULARIO PARA AGREGAR USUARIO	  
 function agregar($conn){
-?>
- <form action="abmArticulo.php?scr=agregardetalle" method="post" name="form1" id="form1">
-  <table id="miTabla" width="1000" border="1" align="center">
-    <tbody>
-      <tr>
-        <th colspan="4" scope="col">Agregar Datos del Articulo</th>
-      </tr>
-      <tr>
-        <td width="109"><label for="id_articulo">Nro Id.</label></td>
-        <td colspan="3"><input name="id_articulo" type="text" disabled id="id_articulo" size="5" maxlength="5"></td>
-      </tr>
-      <tr>
-        <td><label for="cod_bar">Codigo Barra:</label></td>
-        <td colspan="3"><input name="cod_bar" type="text" id="cod_bar" size="15" maxlength="15" required> 
-          (*)</td>
-      </tr>
-      <tr>
-        <td><label for="desc_corta">Desc. Corta:</label></td>
-        <td width="232"><input name="desc_corta" type="text" id="desc_corta" size="20" maxlength="20" required>
-        (*)</td>
-        <td width="134" align="right"><label for="desc_larga">Desc. Larga:</label></td>
-        <td width="497"><input name="desc_larga" type="text" id="desc_larga" size="30" maxlength="30" required>
-(*)</td>
-      </tr>
-      <tr>
-        <td><label for="rubro">Rubro:</label></td>
-        <td><select name="rubro" id="rubro">
-          <option value="2">Repuesto</option>
-          <option value="1">Varios</option>
-        </select></td>
-        <td align="right"><label for="sub_rubro">Sub Rubro:</label></td>
-        <td><select name="sub_rubro" id="sub_rubro">
-            <option value="1">LUBRICANTES</option>
-            <option value="2">ACCESORIOS</option>
-            <option value="3">PEGAMENTOS</option>
-            <option value="4">MOTOR</option>
-            <option value="5">TRASMISION</option>
-            <option value="6">RODADOS</option>
-            <option value="7">VARIOS</option>
-        </select></td>
-      </tr>
-      <tr>
-        <td><label for="medida">Medida:</label></td>
-        <td><select name="medida" id="medida">
-            <option value="Unidad">Unidad</option>
-            <option value="Litros">Litros</option>
-            <option value="Kilos">Kilos</option>
-            <option value="Metros">Metros</option>
-        </select></td>
-        <td align="right"><label for="unidadxbulto">Uni. x Bulto</label></td>
-        <td><input name="unidadxbulto" type="number" id="unidadxbulto" max="100" min="1" value="1"></td>
-      </tr>
-      <tr>
-        <td><label for="proveedor">Proveedor</label></td>
-        <td><input name="proveedor" type="text" id="proveedor" size="20" maxlength="20"></td>
-        <td align="right"><input name="id_provee" type="text" disabled="disabled" id="id_provee" size="5" maxlength="5"></td>
-        <td><input name="desc_proveedor" type="text" disabled="disabled" id="desc_proveedor" size="20" maxlength="20"></td>
-      </tr>
-      <tr>
-        <td><label for="cod_bar_prov">Cod. Bar. Prov.</label></td>
-        <td colspan="3"><input name="cod_bar_prov" type="text" id="cod_bar_prov" size="20" maxlength="20"></td>
-      </tr>
-      <tr>
-        <td colspan="4" align="center"><a href="abmArticulo.php" class="btn btn-outline-secondary">Cancela</a> - 
-        <input name="guardar" type="submit" class="btn btn-outline-success" id="scr" formaction="abmArticulo.php?scr=agregar" value="Guardar y Volver"> - 
-        <input name="guardarycosto" type="submit" class="btn btn-outline-success" id="scr2" formaction="abmArticulo.php?scr=agregarycosto" value="Guardar y Cargar Costo">  
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</form>
 
-<?PHP
- }
+    echo 'Agregar Proveedor';
+}
 //FUNCION INSERTAR NUEVO USUARIO
 
 //FUNCION ELIMINA USUARIO
-function elimina_art($conn, $id ){
+function elimina_prov($conn, $id ){
 	//CODIGO DE CONSULTA DE ELIMINACION DEL REGISTRO
-	$sql = "UPDATE `articulo` SET `estado` = '0' WHERE `articulo`.`id_articulo` = '$id'";
+	$sql = "UPDATE `proveedor` SET `estado` = '0' WHERE `proveedor`.`id_proveedor` = '$id'";
 	//EJECUTANDO CODIGO DE ELIMINACION 
 	if ($conn->query($sql) === TRUE) {
 		//MENSAJE EN CASO QUE SEA CORRECTO	
-		echo "<div class='alert alert-success' role='alert'>Articulo deshabilitado Correctamente.</div>";
-		echo "<td colspan='6' align='center'><a href='abmArticulo.php' class='btn btn-outline-secondary'>VOLVER</a>";
+		echo "<div class='alert alert-success' role='alert'>Proveedores deshabilitado Correctamente.</div>";
+		echo "<td colspan='6' align='center'><a href='abmProveedores.php' class='btn btn-outline-secondary'>VOLVER</a>";
 	   
 	} else {
     echo "Error: " . $sql . "<br>" . $conn->error;
-	echo "<div class='alert alert-danger' role='alert'>Error al deshabilitar Articulo.</div>";
-    echo "<td colspan='6' align='center'><a href='abmArticulo.php' class='btn btn-outline-secondary'>VOLVER</a>";
+	echo "<div class='alert alert-danger' role='alert'>Error al deshabilitar Proveedores.</div>";
+    echo "<td colspan='6' align='center'><a href='abmProveedores.php' class='btn btn-outline-secondary'>VOLVER</a>";
 	}
 }
 

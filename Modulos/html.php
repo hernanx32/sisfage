@@ -3,25 +3,27 @@ function cabeza($titulopag, $path)
 {
  
 global $fecha_form;
-	
+
+/*
+<link rel="stylesheet" href="<?PHP echo $path;?>comp/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="<?PHP echo $path;?>comp/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+*/
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title><?php echo $titulopag; ?></title>
-  
-	<link rel="stylesheet" href="<?PHP echo $path;?>comp/google.css">
+  	<link rel="stylesheet" href="<?PHP echo $path;?>comp/google.css">
   	<link rel="stylesheet" href="<?PHP echo $path;?>comp/plugins/fontawesome-free/css/all.min.css">
-	<link rel="stylesheet" href="<?PHP echo $path;?>comp/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 	<link rel="stylesheet" href="<?PHP echo $path;?>comp/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-	<link rel="stylesheet" href="<?PHP echo $path;?>comp/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
- 	<link rel="stylesheet" href="<?PHP echo $path;?>comp/dist/css/adminlte.min.css">	
+    <link rel="stylesheet" href="<?PHP echo $path;?>comp/dist/css/adminlte.min.css">	
     <link rel="stylesheet" href="<?PHP echo $path;?>comp/plugins/select2/css/select2.min.css">	
     <script src="<?PHP echo $path;?>js/formularios.js"></script>
     <script src="<?PHP echo $path;?>js/jquery-3.6.0.min.js"></script>
+  <title><?php echo $titulopag; ?></title>
+
 	
 <!-- Link Anulados
 <link rel="stylesheet" href="comp/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
@@ -85,7 +87,9 @@ function pieprincipal($focus,$path){
 <script src="<?PHP echo $path;?>comp/plugins/pdfmake/vfs_fonts.js"></script>
 <script src="<?PHP echo $path;?>comp/plugins/datatables-buttons/js/buttons.html5.js"></script>
 <script src="<?PHP echo $path;?>comp/plugins/datatables-buttons/js/buttons.print.js"></script>
+
 <script src="<?PHP echo $path;?>comp/plugins/datatables-buttons/js/buttons.colVis.js"></script>
+
 <script src="<?PHP echo $path;?>comp/dist/js/adminlte.min.js"></script>
 
 <script>
