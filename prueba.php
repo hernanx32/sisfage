@@ -54,21 +54,29 @@ $total_pages = ceil($total_rows / $limit);
   <!-- Formulario con filtro de búsqueda y límite de registros -->
   <form method="GET" action="prueba.php">
     <div>
-      <label for="limit">Registros por página:</label>
-      <select name="limit" id="limit" onchange="this.form.submit()">
-        <option value="20" <?php if ($limit == 20) echo 'selected'; ?>>20</option>  
-        <option value="50" <?php if ($limit == 50) echo 'selected'; ?>>50</option>
-        <option value="100" <?php if ($limit == 100) echo 'selected'; ?>>100</option>
-        <option value="200" <?php if ($limit == 200) echo 'selected'; ?>>200</option>
-        <option value="1000" <?php if ($limit == 1000) echo 'selected'; ?>>1000</option>
-        <option value="999999" <?php if ($limit == 100000) echo 'selected'; ?>>TODO</option>
-      </select>
-      - <input name="Buscar" type="search" id="Buscar" value="<?php echo htmlspecialchars($search); ?>" placeholder="Buscar">
+      <table width="1200" border="0" align="center">
+        <tbody>
+          <tr>
+            <th align="left" scope="col"><label for="limit">Registros por página:</label>
+              <select name="limit" id="limit" onChange="this.form.submit()">
+                <option value="20" <?php if ($limit == 20) echo 'selected'; ?>>20</option>
+                <option value="50" <?php if ($limit == 50) echo 'selected'; ?>>50</option>
+                <option value="100" <?php if ($limit == 100) echo 'selected'; ?>>100</option>
+                <option value="200" <?php if ($limit == 200) echo 'selected'; ?>>200</option>
+                <option value="1000" <?php if ($limit == 1000) echo 'selected'; ?>>1000</option>
+                <option value="999999" <?php if ($limit == 100000) echo 'selected'; ?>>TODO</option>
+              </select>
+-
+<input name="Buscar" type="search" id="Buscar" value="<?php echo htmlspecialchars($search); ?>" placeholder="Buscar"></th>
+            <th scope="col">Agregar Proveedor</th>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </form>
 
   <!-- Tabla de proveedores -->
-  <table class="table table-bordered table-striped" width="1200" border="1">
+  <table width="1200" border="1" align="center" class="table table-bordered table-striped">
     <thead>
       <tr>
         <th>ID</th>
@@ -101,28 +109,28 @@ $total_pages = ceil($total_rows / $limit);
   </table>
 
   <!-- Paginación -->
-<?php
+<table width="1200" border="0" align="center">
+    <tbody>
+      <tr>
+        <th width="486" scope="col">&nbsp;</th>
+        <th width="704" scope="col"><?php
 if ($page == 1){
       echo "Principio";  
         }else{
-        ?>    
-        <li class="page-item <?php if ($page == 1) echo 'disabled'; ?>">
-        <a class="page-link" href="?page=1&limit=<?php echo $limit; ?>">Primera</a> - <a class="page-link"  href="?page=<?php echo $page - 1;?>&limit=<?php echo $limit; ?>">Anterior</a>  
-        <?PHP } 
+        ?>
+          <a class="page-link" href="?page=1&limit=<?php echo $limit; ?>">Primera</a> - <a class="page-link"  href="?page=<?php echo $page - 1;?>&limit=<?php echo $limit; ?>">Anterior</a>
+          <?PHP } 
         
         echo "- Paginas ". $page. ' de '. $total_pages ." - ";
-    
     
         if ($page == $total_pages){
           echo "Final de Registros";  
         }elseif($total_pages==0){
             echo "Final de Registros";
         }else{ ?>
-            <a class="page-link" href="?page=<?php echo $page + 1; ?>&limit=<?php echo $limit; ?>">Siguiente</a> - <a class="page-link" href="?page=<?php echo $total_pages; ?>&limit=<?php echo $limit; ?>">Última</a></li>
-        <?PHP }?>        
- 
-               
-       
-
+          <a class="page-link" href="?page=<?php echo $page + 1; ?>&limit=<?php echo $limit; ?>">Siguiente</a> - <a class="page-link" href="?page=<?php echo $total_pages; ?>&limit=<?php echo $limit; ?>">Última</a>          <?PHP }?>        </th>
+      </tr>
+    </tbody>
+</table>
 </body>
 </html>
