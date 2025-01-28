@@ -6,7 +6,7 @@ $usuario=$_SESSION['usuario'];
 $nro_cat=$_SESSION['id_acceso'];
 $nom_completo=$_SESSION['nombre'];
 
-$titulo='Sistema - ABM Sucursales';
+$titulo='Sistema - Ventas';
 $path='';
 
 include("Modulos/html.php");
@@ -18,75 +18,7 @@ cabeza($titulo,$path);
 menu($nro_cat, $nom_completo);
 
 
-//Validamos si existe la Var SCR
-if (isset($_GET['scr'])){
-	$scr=$_GET['scr'];
-    
-	if ($scr=="agregar"){
-        agregar($conn);   
-        }
-
-    elseif($scr=="agregarnuevo"){
-        //CARGAMOS LOS DATOS DEL POST
-        $Dato2=$_POST['nombre'];
-        $Dato3=$_POST['prov_prove'];
-        $Dato4=$_POST['local_prov'];
-        $Dato5=$_POST['cp_prov'];
-        $Dato6=$_POST['telprov1'];
-        $Dato7=$_POST['telprov2'];
-        $Dato8=$_POST['telprov3'];
-        $Dato9=$_POST['fec_prov'];
-        $Dato10=$_POST['dir_prov'];
-        $Dato11=$_POST['transporte'];
-        $Dato12=$_POST['tipo_doc'];
-        $Dato13=$_POST['nro_doc'];
-        $Dato14=$_POST['otros'];
-        
-        
-        
-        $consulta="INSERT INTO `proveedor`
-        (`id_proveedor`,`nombre`,`direccion`,`provincia`,`localidad`,`codPostal`,`tel1`,`tel2`,`tel3`,`id_transporte`,`id_doc`,`nro_doc`,`otros`,`estado`,`fec_act`) VALUES 
-        (NULL,          '$Dato2', '$Dato10', '$Dato3', '$Dato4',    '$Dato5',    '$Dato6', '$Dato7', '$Dato8', '$Dato11', '$Dato12', '$Dato13', '$Dato14', '1', '$fecha')";
-        
-        agregado($conn, $consulta);
-        }
-        
-    elseif($scr=="modificar"){
-        $id_prov=$_GET['id'];
-        form_modi_prov($conn, $id_prov );
-        }
-    
-    //MODIFICANDO DATOS 
-    elseif($scr=="modificando"){
-        $Dato1=$_POST['id_prov'];
-        $Dato2=$_POST['nombre'];
-        $Dato3=$_POST['prov_prove'];
-        $Dato4=$_POST['local_prov'];
-        $Dato5=$_POST['cp_prov'];
-        $Dato6=$_POST['telprov1'];
-        $Dato7=$_POST['telprov2'];
-        $Dato8=$_POST['telprov3'];
-
-        $Dato10=$_POST['dir_prov'];
-        $Dato11=$_POST['transporte'];
-        $Dato12=$_POST['tipo_doc'];
-        $Dato13=$_POST['nro_doc'];
-        $Dato14=$_POST['otros'];
-        
-        $consulta= "       
-        UPDATE `proveedor` SET `nombre` = '$Dato2', `provincia` = '$Dato3', `localidad` = '$Dato4', `codPostal` = '$Dato5', `tel1` = '$Dato6', `tel2` = '$Dato7', `tel3` = '$Dato8', `fec_act` = '$fecha', `direccion` = '$Dato10', `id_transporte` = '$Dato11', `id_doc` = '$Dato12', `nro_doc` = '$Dato13', `otros` = '$Dato14'  WHERE `id_proveedor` = '$Dato1'";
-    
-         
-			modificando($conn, $consulta);		
-		}
-        //ELIMINA REGISTRO 
-        elseif($scr=="eliminar"){
-		$id_elim_prov=$_GET['id'];
-    	elimina_prov($conn, $id_elim_prov, $fecha);
-        }
-    
-        }else{
-        //PANTALLA PRINCIPAL DE USUARIO
+//PANTALLA PRINCIPAL DE USUARIO
            
     // Definir el número de registros por página (por defecto, 20)
 $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 20;
@@ -101,26 +33,24 @@ $search = isset($_GET['Buscar']) ? $_GET['Buscar'] : '';
 $offset = ($page - 1) * $limit;
 
 // Modificar la consulta SQL con filtro de búsqueda
-$sql = "SELECT `id_proveedor`, `nombre`, `direccion`, `localidad`, `nro_doc` 
-        FROM proveedor 
+$sql = "SELECT `id_articulo`, `cod_bar`, `desc_larga`, `precio1` 
+        FROM articulo 
         WHERE estado = '1' AND 
-              (nombre LIKE '%$search%' OR 
-               direccion LIKE '%$search%' OR 
-               id_proveedor LIKE '%$search%' OR 
-               nro_doc LIKE '%$search%')
-        ORDER BY `nombre` ASC
+              (id_articulo LIKE '%$search%' OR 
+               cod_bar LIKE '%$search%' OR 
+               desc_larga LIKE '%$search%')
+        ORDER BY `desc_larga` ASC
         LIMIT $limit OFFSET $offset";
 
 $result = $conn->query($sql);
 
 // Contar el total de registros para la paginación considerando el filtro de búsqueda
 $count_sql = "SELECT COUNT(*) as total 
-              FROM proveedor 
+              FROM articulo 
               WHERE estado = '1' AND 
-                    (nombre LIKE '%$search%' OR 
-                     direccion LIKE '%$search%' OR 
-                     id_proveedor LIKE '%$search%' OR 
-                     nro_doc LIKE '%$search%')";
+                    (id_articulo LIKE '%$search%' OR 
+                     cod_bar LIKE '%$search%' OR 
+                     desc_larga LIKE '%$search%')";
 $count_result = $conn->query($count_sql);
 $total_rows = $count_result->fetch_assoc()['total'];
 
@@ -143,12 +73,12 @@ $total_pages = ceil($total_rows / $limit);
 
   <!-- Formulario con filtro de búsqueda y límite de registros  
     clase quitada class="table table-bordered table-striped" -->
-  <form id="form_prov" method="GET" action="abmProveedores.php">
+  <form id="form_prov" method="GET" action="ventas.php">
     <div>
       <table width="1200" border="0" align="center" >
         <tbody>
           <tr>
-              <th><label for="limit"><h2>ABM Proveedores</h2></label></th>
+              <th><label for="limit"><h2>Articulos</h2></label></th>
             </tr>
             <tr>
             <th align="left" scope="col"><label for="limit">Registros:</label>
@@ -162,7 +92,7 @@ $total_pages = ceil($total_rows / $limit);
               </select>
 -
 <input type="text" name="Buscar" id="Buscar" value="<?php echo htmlspecialchars($search); ?>" placeholder="Buscar"></th>
-            <th scope="col" ><a class="btn btn-primary" href="abmProveedores.php?scr=agregar">Agregar Proveedor</a></th>
+            <th scope="col" >-</th>
           </tr>
         </tbody>
       </table>
@@ -170,30 +100,26 @@ $total_pages = ceil($total_rows / $limit);
   </form>
 
   <!-- Tabla de proveedores -->
-  <table width="1200" border="1" align="center" >
+  <table width="1000" border="1" align="center" >
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Dirección</th>
-        <th>Localidad</th>
-        <th>Cuil/Cuit</th>
-        <th>Acciones</th>
+        <th>COD.INT</th>
+        <th>Cod.Barra</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Stock</th>  
       </tr>
     </thead>
     <tbody>
       <?PHP 
       if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-          echo "<tr><td>" . $row['id_proveedor'] . "</td>";
-          echo "<td>" . $row['nombre'] . "</td>";
-          echo "<td>" . $row['direccion'] . "</td>";
-          echo "<td>" . $row['localidad'] . "</td>";
-          echo "<td>" . $row['nro_doc'] . "</td>";
-          echo "<td align='center'>";
-          echo "<a href='abmProveedores.php?scr=modificar&id=" . $row['id_proveedor'] . "'>Editar</a> - ";
-          echo "<a href='abmProveedores.php?scr=eliminar&id=" . $row['id_proveedor'] . "' onclick='confirmarEnlace(event)'>Eliminar</a>";
-          echo "</td></tr>";
+          echo "<tr><td>" . $row['id_articulo'] . "</td>";
+          echo "<td>" . $row['cod_bar'] . "</td>";
+          echo "<td>" . $row['desc_larga'] . "</td>";
+          echo "<td  align='right'>$" . number_format($row['precio1'], 2). "</td>";
+          echo "<td></td>";
+          echo "</tr>";
         }
       } else {
         echo "<tr><td colspan='6'>No se encontraron resultados</td></tr>";
@@ -203,10 +129,10 @@ $total_pages = ceil($total_rows / $limit);
   </table>
 
   <!-- Paginación -->
-<table width="1200" border="0" align="center" >
-    <tbody>
+<table width="1200" border="0" >
+    <tbody align="center">
       <tr>
-        <th align="right" scope="col"><?php
+        <th align="center"><?php
 if ($page == 1){
       echo "Principio";  
         }else{
@@ -227,7 +153,7 @@ if ($page == 1){
     </table> 
 
 <?PHP
-}
+
 
 //actualizado
 $focus='Buscar';
