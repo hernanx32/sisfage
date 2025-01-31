@@ -233,12 +233,237 @@ $stmt->close();
         agregado($conn, $consulta, $dato0);
     }
     }else{
-        //PANTALLA PRINCIPAL DE USUARIO
+ //PANTALLA PRINCIPAL DE USUARIO
+
+// Definir el número de registros por página (por defecto, 20)
+$limit = isset($_GET['limit']) ? intval($_GET['limit']) : 20;
+
+// Obtener el número de la página actual (por defecto, la página 1)
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+
+// Obtener el término de búsqueda (si existe)
+$search = isset($_GET['Buscar']) ? $_GET['Buscar'] : '';
+    
+// Obtener el término de búsqueda (si existe)
+$proveedor = isset($_GET['proveedor']) ? $_GET['proveedor'] : '';    
+
+// Calcular el offset basado en la página y el límite
+$offset = ($page - 1) * $limit;
+
+// Modificar la consulta SQL con filtro de búsqueda
+
+if($proveedor > 0){
+$sql = "SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `fec_act`
+        FROM articulo 
+        WHERE estado = '1' AND 
+              id_proveedor = '$proveedor' AND	   
+              (desc_larga LIKE '%$search%' OR 
+               id_articulo LIKE '%$search%' OR 
+               cod_bar_prov LIKE '%$search%' OR 
+               cod_bar LIKE '%$search%')
+        ORDER BY `desc_larga` ASC
+        LIMIT $limit OFFSET $offset";
+
+$result = $conn->query($sql);
+
+// Contar el total de registros para la paginación considerando el filtro de búsqueda
+$count_sql = "SELECT COUNT(*) as total 
+              FROM articulo 
+              WHERE estado = '1' AND 
+                    id_proveedor = '$proveedor' AND
+              (desc_larga LIKE '%$search%' OR 
+                     id_articulo LIKE '%$search%' OR 
+                     cod_bar_prov LIKE '%$search%' OR 
+                     cod_bar LIKE '%$search%')";
+$count_result = $conn->query($count_sql);
+$total_rows = $count_result->fetch_assoc()['total'];
+
+// Calcular el número total de páginas
+$total_pages = ceil($total_rows / $limit);}else{
+    
+ $sql = "SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `fec_act`
+        FROM articulo 
+        WHERE estado = '1' AND 
+              (desc_larga LIKE '%$search%' OR 
+               id_articulo LIKE '%$search%' OR 
+               cod_bar_prov LIKE '%$search%' OR 
+               cod_bar LIKE '%$search%')
+        ORDER BY `desc_larga` ASC
+        LIMIT $limit OFFSET $offset";
+
+$result = $conn->query($sql);
+
+// Contar el total de registros para la paginación considerando el filtro de búsqueda
+$count_sql = "SELECT COUNT(*) as total 
+              FROM articulo 
+              WHERE estado = '1' AND 
+                    (desc_larga LIKE '%$search%' OR 
+                     id_articulo LIKE '%$search%' OR 
+                     cod_bar_prov LIKE '%$search%' OR 
+                     cod_bar LIKE '%$search%')";
+$count_result = $conn->query($count_sql);
+$total_rows = $count_result->fetch_assoc()['total'];
+
+// Calcular el número total de páginas
+$total_pages = ceil($total_rows / $limit);   
+}    
+    
+
+?>
+    <script>
+        function confirmarEnlace(event) {
+            // Mostrar mensaje de confirmación
+            var confirmacion = confirm("¿Estás seguro que desea Eliminar el Articulo?");
+            if (!confirmacion) {
+                // Si el usuario cancela, evitar que el enlace se abra
+                event.preventDefault();
+            }
+        }
+    </script>
+  <div class="card-header">
+    <h3 class="card-title"></h3>
+  </div>
+
+  <!-- Formulario con filtro de búsqueda y límite de registros  
+    clase quitada class="table table-bordered table-striped" -->
+  <form id="form_prov" method="GET" action="abmArticulo.php">
+    <div>
+      <table width="1200" border="0" align="center" >
+        <tbody>
+          <tr>
+              <th><label for="limit"><h2>ABM Articulo</h2></label></th>
+            </tr>
+            <tr>
+            <th align="left" scope="col"><input type="text" name="Buscar" id="Buscar" value="<?php echo htmlspecialchars($search); ?>" placeholder="Buscar"> 
+- 
+                
+<label for="select">Filtro: Proveedor:</label>
+  <select name="proveedor" id="proveedor" onChange="this.form.submit()">      
+      <option value="0" <?php if ($proveedor == 0) echo 'selected'; ?>>Todos</option>      
+      <?PHP
+            $sql_prov = "SELECT * FROM proveedor ORDER BY nombre ";
+            $resultado = $conn->query($sql_prov);
+            if ($resultado->num_rows > 0) {
+                while ($fila = $resultado->fetch_assoc()) {
+                    echo '<option value="'; 
+                    echo $fila['id_proveedor'];
+                    echo '" ';
+                    if ($proveedor == $fila['id_proveedor']) echo 'selected'; 
+                    echo '>' . $fila['nombre'] . '</option>';
+                }
+            } else {
+                echo '<option value="">No hay datos disponibles</option>';
+            }
+            ?>			 
+          </select>
+-
+<label for="limit">Registros:</label>
+<select name="limit" id="limit" onChange="this.form.submit()">
+  <option value="20" <?php if ($limit == 20) echo 'selected'; ?>>20</option>
+  <option value="50" <?php if ($limit == 50) echo 'selected'; ?>>50</option>
+  <option value="100" <?php if ($limit == 100) echo 'selected'; ?>>100</option>
+  <option value="200" <?php if ($limit == 200) echo 'selected'; ?>>200</option>
+  <option value="1000" <?php if ($limit == 1000) echo 'selected'; ?>>1000</option>
+  <option value="999999" <?php if ($limit == 100000) echo 'selected'; ?>>TODO</option>
+</select></th>
+            <th scope="col" ><a class="btn btn-primary" href="abmArticulo.php?scr=agregar">Agregar Articulo</a></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </form>
+
+  <!-- Tabla de Articulos -->
+  <table width="1200" border="1" align="center" >
+    <thead>
+      <tr>
+        <th>Cod.Ref</th>
+        <th>Cod.Barra</th>
+        <th>Cod.Provee</th>
+        <th>Descripción</th>
+        <th>Costo</th>
+        <th>Precio1</th>
+        <th>Fec. Actul.</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?PHP 
+    //    $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `fec_act` FROM articulo WHERE estado = 1 LIMIT 100";
+
+      if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+        echo "<tr><td>" . $row['id_articulo'] . "</td>";
+        echo "<td>" . $row['cod_bar'] . "</td>";
+        echo "<td>" . $row['cod_bar_prov'] . "</td>";
+        echo "<td>" . $row['desc_larga'] . "</td>";
+        echo "<td>$" . number_format($row['costo'], 2) ."</td>";
+        echo "<td>$" . number_format($row['precio1'], 2)."</td>";
+        
+  
+        $fec_modifica =$row['fec_act'];
+        if($fecha==$fec_modifica){
+        echo "<td bgcolor='#09D320'>";    
+        }else{
+        echo "<td>";    
+        }
+        
+        $fechaOriginal = $fec_modifica; // Fecha en formato ISO
+        $timestamp = strtotime($fechaOriginal);
+        echo date("d/m/Y", $timestamp) ."</td>";
+            
+            
+        echo "<td align='center'>";
+        echo "<a href='abmArticulo.php?scr=modificar&id=" . $row['id_articulo'] . "'>Editar</a> - ";
+        echo "<a href='abmArticulo.php?scr=modificar&id=" . $row['id_articulo'] . "'>Costos</a> - ";
+        echo "<a href='abmArticulo.php?scr=eliminar&id=" . $row['id_articulo'] . "' onclick='confirmarEnlace(event)'>Eliminar</a>";
+        echo "</td></tr>";
+        }
+      } else {
+        echo "<tr><td colspan='8'>No se encontraron resultados</td></tr>";
+      }
+      ?>
+    </tbody>
+  </table>
+
+  <!-- Paginación -->
+<table width="1200" border="0" align="center" >
+    <tbody>
+      <tr>
+        <th align="right" scope="col"><?php
+if ($page == 1){
+      echo "Principio";  
+        }else{
+        ?>
+          <a href="?page=1&limit=<?php echo $limit; ?>">Primera</a> - <a  href="?page=<?php echo $page - 1;?>&limit=<?php echo $limit; ?>">Anterior</a>
+          <?PHP } 
+        
+        echo "- Paginas ". $page. ' de '. $total_pages ." - ";
+    
+        if ($page == $total_pages){
+          echo "Final de Registros";  
+        }elseif($total_pages==0){
+            echo "Final de Registros";
+        }else{ ?>
+        <a href="?page=<?php echo $page + 1; ?>&limit=<?php echo $limit; ?>">Siguiente</a> - <a href="?page=<?php echo $total_pages; ?>&limit=<?php echo $limit; ?>">Última</a>          <?PHP }?>        </th>
+      </tr>
+    </tbody>
+    </table> 
+
+<?PHP    
+    
+    
+    
+    
+    
+    
+/*  BKP_PANTALLA PRINCIPAL    
     $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `fec_act` FROM articulo WHERE estado = 1 LIMIT 100";
     abmArticulo($conn, $consulta);
     $focus='busqueda';
-            
-     }
+  */          
+  
+}
 
 if (!isset($focus)){
     $focus='';

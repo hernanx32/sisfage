@@ -88,7 +88,7 @@ if (isset($_GET['scr'])){
         }else{
         //PANTALLA PRINCIPAL DE USUARIO
            
-    // Definir el número de registros por página (por defecto, 20)
+// Definir el número de registros por página (por defecto, 20)
 $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 20;
 
 // Obtener el número de la página actual (por defecto, la página 1)

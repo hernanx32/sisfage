@@ -177,7 +177,7 @@ if ($nro_cat=='1'){
 		<li class="nav-item dropdown"><!-- Menu2  -->
 		<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Ventas</a>
 			<ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="/sisfage/emicomprobantes.php" class="dropdown-item">Emision de Comprobantes</a></li>
+              <li><a href="/sisfage/ventas.php" class="dropdown-item">Emision de Comprobantes</a></li>
               <li><a href="#" class="dropdown-item">Rectificados</a></li>
               <li><a href="#" class="dropdown-item">Cierre de Caja</a></li>        
 			</ul>
