@@ -234,7 +234,8 @@ $stmt->close();
     }
     }else{
  //PANTALLA PRINCIPAL DE USUARIO
-
+// Si hay datos en GET, guardarlos en sesión
+    
 // Definir el número de registros por página (por defecto, 20)
 $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 20;
 
@@ -250,6 +251,21 @@ $proveedor = isset($_GET['proveedor']) ? $_GET['proveedor'] : '';
 // Calcular el offset basado en la página y el límite
 $offset = ($page - 1) * $limit;
 
+
+//CARGAMOS LOS VALORES ALMACENADO EN LAS SESSIONES
+if (!empty($_GET)) {
+    $_SESSION['Buscar'] = $_GET['Buscar'] ?? '';
+    $_SESSION['proveedor'] = $_GET['proveedor'] ?? '';
+    $_SESSION['limit'] = $_GET['limit'] ?? 10;
+}
+
+// Obtener valores desde sesión si existen
+$search = $_SESSION['Buscar'] ?? '';
+$proveedor = $_SESSION['proveedor'] ?? '';
+$limit = $_SESSION['limit'] ?? 10;
+    
+    
+    
 // Modificar la consulta SQL con filtro de búsqueda
 
 if($proveedor > 0){
@@ -365,7 +381,8 @@ $total_pages = ceil($total_rows / $limit);
   <option value="200" <?php if ($limit == 200) echo 'selected'; ?>>200</option>
   <option value="1000" <?php if ($limit == 1000) echo 'selected'; ?>>1000</option>
   <option value="999999" <?php if ($limit == 100000) echo 'selected'; ?>>TODO</option>
-</select></th>
+</select> 
+- <a href="http://localhost/sisfage/abmArticulo.php?Buscar=&proveedor=0&limit=20">Borrar Filtros</a></th>
             <th scope="col" ><a class="btn btn-primary" href="abmArticulo.php?scr=agregar">Agregar Articulo</a></th>
           </tr>
         </tbody>
@@ -415,7 +432,7 @@ $total_pages = ceil($total_rows / $limit);
             
         echo "<td align='center'>";
         echo "<a href='abmArticulo.php?scr=modificar&id=" . $row['id_articulo'] . "'>Editar</a> - ";
-        echo "<a href='abmArticulo.php?scr=modificar&id=" . $row['id_articulo'] . "'>Costos</a> - ";
+        echo "<a href='abmArticulo.php?scr=costos&id=" . $row['id_articulo'] . "'>Costos</a> - ";
         echo "<a href='abmArticulo.php?scr=eliminar&id=" . $row['id_articulo'] . "' onclick='confirmarEnlace(event)'>Eliminar</a>";
         echo "</td></tr>";
         }
@@ -449,6 +466,11 @@ if ($page == 1){
       </tr>
     </tbody>
     </table> 
+
+
+
+
+
 
 <?PHP    
     

@@ -33,7 +33,7 @@ $search = isset($_GET['Buscar']) ? $_GET['Buscar'] : '';
 $offset = ($page - 1) * $limit;
 
 // Modificar la consulta SQL con filtro de búsqueda
-$sql = "SELECT `id_articulo`, `cod_bar`, `desc_larga`, `precio1` 
+$sql = "SELECT `id_articulo`, `cod_bar`, `desc_larga`, `precio1`, `fec_act` 
         FROM articulo 
         WHERE estado = '1' AND 
               (id_articulo LIKE '%$search%' OR 
@@ -107,6 +107,7 @@ $total_pages = ceil($total_rows / $limit);
         <th>Cod.Barra</th>
         <th>Descripción</th>
         <th>Precio</th>
+        <th>Fec. Act</th>
         <th>Stock</th>  
       </tr>
     </thead>
@@ -118,11 +119,15 @@ $total_pages = ceil($total_rows / $limit);
           echo "<td>" . $row['cod_bar'] . "</td>";
           echo "<td>" . $row['desc_larga'] . "</td>";
           echo "<td  align='right'>$" . number_format($row['precio1'], 2). "</td>";
+            $fechaOriginal=$row['fec_act'];
+            $timestamp = strtotime($fechaOriginal);
+            $fecha_mostrar = date("d/m/Y", $timestamp);
+          echo "<td align='center'>" . $fecha_mostrar . "</td>";
           echo "<td></td>";
           echo "</tr>";
         }
       } else {
-        echo "<tr><td colspan='6'>No se encontraron resultados</td></tr>";
+        echo "<tr><td colspan='7'>No se encontraron resultados</td></tr>";
       }
       ?>
     </tbody>

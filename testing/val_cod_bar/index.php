@@ -42,7 +42,7 @@
             xhr.onload = function() {
                 if (xhr.status === 200) {
                     let respuesta = xhr.responseText;
-                    document.getElementById("error-cod_bar").textContent = respuesta;
+                    document.getElementById("error-cod_bar").textContent =respuesta;
                 } else {
                     document.getElementById("error-cod_bar").textContent = "Error al validar el código.";
                 }
