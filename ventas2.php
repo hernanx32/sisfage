@@ -6,7 +6,7 @@
 </head>
 
 <body>
-	<table width="1200" border="1">
+	<table width="1200" border="1" align="center">
   <tbody>
     <tr>
       <td>&nbsp;</td>
