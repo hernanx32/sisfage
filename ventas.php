@@ -37,7 +37,7 @@ $sql = "SELECT `id_articulo`, `cod_bar`, `desc_larga`, `precio1`, `fec_act`
         FROM articulo 
         WHERE estado = '1' AND 
               (id_articulo LIKE '%$search%' OR 
-               cod_bar LIKE '%$search%' OR 
+               cod_bar = '%$search%' OR 
                desc_larga LIKE '%$search%')
         ORDER BY `desc_larga` ASC
         LIMIT $limit OFFSET $offset";
@@ -49,7 +49,7 @@ $count_sql = "SELECT COUNT(*) as total
               FROM articulo 
               WHERE estado = '1' AND 
                     (id_articulo LIKE '%$search%' OR 
-                     cod_bar LIKE '%$search%' OR 
+                     cod_bar = '%$search%' OR 
                      desc_larga LIKE '%$search%')";
 $count_result = $conn->query($count_sql);
 $total_rows = $count_result->fetch_assoc()['total'];
