@@ -415,7 +415,7 @@ $total_pages = ceil($total_rows / $limit);
             
         echo "<td align='center'>";
         echo "<a href='abmArticulo.php?scr=modificar&id=" . $row['id_articulo'] . "'>Editar</a> - ";
-        echo "<a href='abmArticulo.php?scr=modificar&id=" . $row['id_articulo'] . "'>Costos</a> - ";
+        echo "<a href='abmArticulo.php?scr=costos&id=" . $row['id_articulo'] . "'>Costos</a> - ";
         echo "<a href='abmArticulo.php?scr=eliminar&id=" . $row['id_articulo'] . "' onclick='confirmarEnlace(event)'>Eliminar</a>";
         echo "</td></tr>";
         }

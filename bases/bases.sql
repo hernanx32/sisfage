@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-01-2025 a las 03:39:46
+-- Tiempo de generación: 20-02-2025 a las 12:56:48
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -91,7 +91,7 @@ CREATE TABLE `articulo` (
 
 INSERT INTO `articulo` (`id_articulo`, `cod_bar`, `desc_corta`, `desc_larga`, `id_rubro`, `id_rubro_sub`, `uni_med`, `uni_bulto`, `estado`, `stockmin`, `stockmax`, `stocktotal`, `id_proveedor`, `cod_bar_prov`, `id_iva`, `iva`, `id_imp_int`, `porc_imp_int`, `costo`, `porc_bonific`, `porc_flete`, `porc_cargo_finan`, `porc_precio1`, `porc_precio2`, `porc_precio3`, `porc_precio4`, `precio1`, `precio2`, `precio3`, `precio4`, `id_usuario`, `fec_act`) VALUES
 (2, '7798090220851', 'ACE.WANDE.SEM.SINT.1', 'ACEITE WANDER 15W50 X 1L.', 2, 1, 'UNIDAD', 12, 0, 0, 0, 0, 2, 0, 2, 10.5, 1, 0.00, 6082.7, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 10700, 0, 0, 0, 1, '2024-10-15'),
-(3, '3374650303123', 'ACE.MOTUL.5000.20w50', 'ACEITE MOTUL 1L 5000.20w50', 2, 1, 'UNIDAD', 1, 1, 0, 0, 0, 1, 0, 1, 21, 1, 0.00, 8130.04, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 14300, 0, 0, 0, 1, '2024-11-30'),
+(3, '3374650303123', 'ACE.MOTUL.5000.20w50', 'ACEITE MOTUL 1L 5000.20w50', 2, 1, 'Unidad', 1, 1, 0, 0, 0, 9, 0, 1, 21, 11, 0.00, 8130.04, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 14300, 0, 0, 0, 1, '2025-01-24'),
 (4, '7798090220844', 'ACEITE WANDER 4T 20W', 'ACEITE WANDER 4T MINERAL 1L 20', 2, 1, 'UNIDAD', 1, 1, 0, 0, 0, 2, 0, 1, 21, 1, 0.00, 3119.33, 0.0000, 0.0000, 0.0000, 45.718937, 0.000000, 0.000000, 0.000000, 5500, 0, 0, 0, 1, '2024-10-21'),
 (5, '7791797831269', 'ACE.AMA.4T.METAL5.20', 'ACEITE AMA 4T 1L METAL5 20W50', 2, 1, 'UNIDAD', 12, 1, 0, 0, 0, 1, 0, 1, 21, 1, 0.00, 3595.04, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 6300, 0, 0, 0, 1, '2024-10-21'),
 (6, '7798090220561', 'ACE.WAN.2T.MINERAL50', 'ACEITE WANDER 2T MINERAL 500cm', 2, 1, 'UNIDAD', 12, 1, 0, 0, 0, 2, 0, 1, 21, 1, 0.00, 2139.3, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 3750, 0, 0, 0, 1, '2024-10-21'),
@@ -145,7 +145,7 @@ INSERT INTO `articulo` (`id_articulo`, `cod_bar`, `desc_corta`, `desc_larga`, `i
 (56, 'ZL021', 'LLAVE.CONTAC.YAMAH.C', 'LLAVE.CONTAC.YAMAH.CRIPT', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 6, 0, 1, 21, 1, 0.00, 7548, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 15881.7, 0, 0, 0, 1, '2024-10-21'),
 (57, 'ZW057', 'SOPORT.RESOR.CABALL.', 'SOPORT.RESOR.CABALL.WAVE', 2, 2, 'UNIDAD', 5, 1, 0, 0, 0, 6, 0, 1, 21, 1, 0.00, 125.17, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 775.74, 0, 0, 0, 1, '2024-10-21'),
 (58, 'ZJ255', 'JUNT.TOP.GILER.SMA52', 'JUNT.TOP.GILER.SMA52.5MM', 2, 4, 'UNIDAD', 1, 1, 0, 0, 0, 6, 0, 1, 21, 1, 0.00, 132.15, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 964.3, 0, 0, 0, 1, '2024-10-21'),
-(59, 'ec013', 'ESTIRA CADENA XR250 ', 'ESTIRA CADENA HD TORNADO XR250', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 6, 0, 1, 21, 1, 0.00, 2886.84, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 5803.62, 0, 0, 0, 1, '2024-10-21'),
+(59, 'ec013', 'ESTIRA CADENA XR250 ', 'ESTIRA CADENA HD TORNADO XR250', 2, 2, 'UNIDAD', 1, 0, 0, 0, 0, 6, 0, 1, 21, 1, 0.00, 2886.84, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 5803.62, 0, 0, 0, 1, '2025-01-21'),
 (60, 'ZM005', 'GOMA MASA C90-SAMSH ', 'GOMA MASA C90-SAMSH /TRIP', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 6, 0, 1, 21, 1, 0.00, 1303.24, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 2600, 0, 0, 0, 1, '2024-10-21'),
 (61, 'ZZ129', 'SPRT.RESORT.CABALL.R', 'SPRT.RESORT.CABALL.ZANELLA.RX1', 2, 2, 'UNIDAD', 5, 1, 0, 0, 0, 6, 0, 1, 21, 1, 0.00, 31.99, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 201.12, 0, 0, 0, 1, '2024-10-21'),
 (62, 'ZZ111', 'SPRT.PEDALIN.TRAS.IZ', 'SPRT.PEDALIN.TRAS.IZ.RX150/ZAN', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 6, 0, 1, 21, 1, 0.00, 3460.77, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 20973.7, 0, 0, 0, 1, '2024-10-21'),
@@ -911,7 +911,7 @@ INSERT INTO `articulo` (`id_articulo`, `cod_bar`, `desc_corta`, `desc_larga`, `i
 (909, 'MPI35N', 'GUI?O CG CORTO CROMA', 'GUI?O CG CORTO CROMADO', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 69.15, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 204.99, 0, 0, 0, 1, '2024-10-21'),
 (910, 'MPI09H', 'GUI?O CG CORTO ', 'GUI?O CG CORTO ', 2, 2, 'UNIDAD', 4, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 69.15, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 204.99, 0, 0, 0, 1, '2024-10-21'),
 (911, 'TNBU005575', 'BUJIA IRIDIUM D8T-IR', 'BUJIA IRIDIUM D8T-IR', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 10, 0, 1, 21, 1, 0.00, 333.23, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 2245.01, 0, 0, 0, 1, '2024-10-21'),
-(912, 'TNBU002405', 'BUJIA IRIDIUM C7HS-I', 'BUJIA IRIDIUM C7HS-IR', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 10, 0, 1, 21, 1, 0.00, 333.23, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 2283.07, 0, 0, 0, 1, '2024-10-21'),
+(912, 'TNBU002405', 'BUJIA IRIDIUM C7HS-I', 'BUJIA IRIDIUM C7HS-IR', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 10, 0, 1, 21, 1, 0.00, 333.23, 0.0000, 0.0000, 0.0000, 48.806461, 0.000000, 0.000000, 0.000000, 600, 403.208, 403.208, 403.208, 1, '2025-02-01'),
 (913, 'ES003', 'ESTATOR HD TITAN 150', 'ESTATOR HD TITAN 150', 2, 4, 'UNIDAD', 1, 1, 0, 0, 0, 6, 0, 1, 21, 1, 0.00, 21260, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 44609.6, 0, 0, 0, 1, '2024-10-21'),
 (914, '4713170274170', 'KIT PIS CG125/1.00 C', 'KIT PIS CG125/1.00 COPILLAR', 2, 4, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 521.69, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 1557.92, 0, 0, 0, 1, '2024-10-21'),
 (915, '4713170270697', 'KIT PIS CG125/0.25 C', 'KIT PISTON  CG125 COPILLAR 0.2', 2, 4, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 1265.24, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 3792.29, 0, 0, 0, 1, '2024-10-21'),
@@ -1061,7 +1061,7 @@ INSERT INTO `articulo` (`id_articulo`, `cod_bar`, `desc_corta`, `desc_larga`, `i
 (1072, '107512020016', 'BATERIA YTX 5L-BS NS', 'BATERIA YTX 5L-BS NSU', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 39, 0, 2, 10.5, 1, 0.00, 12645.9, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 33018, 0, 0, 0, 1, '2024-10-21'),
 (1073, '107512010016', 'BATERIA YTX 4L BS NS', 'BATERIA YTX 4L BS NSU', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 39, 0, 2, 10.5, 1, 0.00, 11275.7, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 29480.3, 0, 0, 0, 1, '2024-10-21'),
 (1074, '107912007138', 'BATERIA YT6.5-3 MAHL', 'BATERIA YT6.5-3 MAHLI', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 39, 0, 8, 0, 1, 0.00, 21514.1, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 27916.8, 0, 0, 0, 1, '2024-10-21'),
-(1075, 'ZV514', 'LLAVE GIRO ZB110', 'LLAVE GIRO ZB100', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 6, 0, 1, 21, 1, 0.00, 750, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 1626.11, 0, 0, 0, 1, '2024-10-21'),
+(1075, 'ZV514', 'LLAVE GIRO ZB110', 'LLAVE GIRO ZB100', 2, 2, 'Unidad', 1, 1, 0, 0, 0, 7, 0, 1, 21, 11, 0.00, 750, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 1626.11, 0, 0, 0, 1, '2025-02-01'),
 (1077, 'ZV218', 'CUBRE CADENA SMASH', 'CUBRE CADENA SMASH', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 6, 0, 1, 21, 1, 0.00, 2991.3, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 5900, 0, 0, 0, 1, '2024-10-21'),
 (1078, 'ZV208', 'SET SILENT BLOCK Y P', 'SET SILENT BLOCK Y PERNO CORON', 2, 4, 'UNIDAD', 1, 1, 0, 0, 0, 6, 0, 1, 21, 1, 0.00, 2481.95, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 4900, 0, 0, 0, 1, '2024-10-21'),
 (1079, 'ZV302', 'VARILL?FRENO?OREJA?S', 'VARILLA?FRENO?OREJA?SMASH', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 6, 0, 1, 21, 1, 0.00, 1988.74, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 3942.08, 0, 0, 0, 1, '2024-10-21'),
@@ -1105,7 +1105,7 @@ INSERT INTO `articulo` (`id_articulo`, `cod_bar`, `desc_corta`, `desc_larga`, `i
 (1119, 'TY204', 'LINGA CABEZA METAL P', 'LINGA CABEZA METAL PLASTIF 2 L', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 6, 0, 1, 21, 1, 0.00, 14241.6, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 28142.1, 0, 0, 0, 1, '2024-10-21'),
 (1120, 'TY302', 'TRABA U 190X320mm ', 'TRABA U 190X320mm ', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 6, 0, 1, 21, 1, 0.00, 7343.46, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 22578.1, 0, 0, 0, 1, '2024-10-21'),
 (1121, 'CAM1121', 'CAMARA ATLANTIC 2.25', 'CAMARA ATLANTIC 2.25/2.50-17', 2, 6, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 1, 21, 1, 0.00, 1549.58, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 3300, 0, 0, 0, 1, '2024-10-21'),
-(1122, '1122', 'BATERIA YBR5L-B PROT', 'BATERIA YBR5L-B PROTORK', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 11250, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 19800, 0, 0, 0, 1, '2024-10-21'),
+(1122, '1122', 'BATERIA YBR5L-B PROT', 'BATERIA YBR5L-B PROTORK', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 3211250, 0.0000, 0.0000, 0.0000, 40.000000, 0.000000, 0.000000, 0.000000, 4495750, 3211250, 3211250, 3211250, 1, '2025-02-01'),
 (1182, 'DP0-464', 'SALIDA ESCAPE UNIVER', 'SALIDA ESCAPE UNIVERSAL 110', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 9, 0, 1, 21, 1, 0.00, 689.79, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 3119.12, 0, 0, 0, 1, '2024-10-21'),
 (1183, 'IB0235', 'CAMPANA EMBRAGUE YH ', 'CAMPANA EMBRAGUE YH 125 CHINA', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 9, 0, 1, 21, 1, 0.00, 4247.1, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 18753.2, 0, 0, 0, 1, '2024-10-21'),
 (1184, 'CM3817', 'PUNO WESTER HD C125 ', 'PUNO WESTER HD C125 BIZ NGRO', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 9, 0, 1, 21, 1, 0.00, 262.19, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 1158.37, 0, 0, 0, 1, '2024-10-21'),
@@ -1302,7 +1302,7 @@ INSERT INTO `articulo` (`id_articulo`, `cod_bar`, `desc_corta`, `desc_larga`, `i
 (1702, 'R8E10', 'ORING TAPP ADJ', 'ORING TAPP ADJ', 2, 4, 'UNIDAD', 1, 1, 0, 0, 0, 9, 0, 1, 21, 1, 0.00, 148.57, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 806.83, 0, 0, 0, 1, '2024-10-21'),
 (1703, 'SP07140', 'CADENA DISTR 404HX10', 'CADENA DISTR 404HX102L WSTD RX', 2, 4, 'UNIDAD', 1, 1, 0, 0, 0, 9, 0, 1, 21, 1, 0.00, 1425.96, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 6315.26, 0, 0, 0, 1, '2024-10-21'),
 (1704, 'SP07138', 'CADENA DISTR 404HX92', 'CADENA DISTR 404HX92L WSTD BIZ', 2, 4, 'UNIDAD', 1, 1, 0, 0, 0, 9, 0, 1, 21, 1, 0.00, 1334.03, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 5893.9, 0, 0, 0, 1, '2024-10-21'),
-(1706, 'P16070099', 'CADENA DISTR 404HX96', ' CADENA DISTR 404HX96L WSTD FZ', 2, 4, 'UNIDAD', 1, 1, 0, 0, 0, 9, 0, 1, 21, 1, 0.00, 793.5, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 4466.89, 0, 0, 0, 1, '2024-10-21'),
+(1706, 'P16070099', 'CADENA DISTR 404HX96', ' CADENA DISTR 404HX96L WSTD FZ', 2, 4, 'UNIDAD', 1, 0, 0, 0, 0, 9, 0, 1, 21, 1, 0.00, 793.5, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 4466.89, 0, 0, 0, 1, '2025-01-31'),
 (1707, '305CD2590', 'CADENA DISTRIBUCION ', 'CADENA DISTRIBUCION 25X90 STM', 2, 4, 'UNIDAD', 1, 1, 0, 0, 0, 10, 0, 1, 21, 1, 0.00, 95.63, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 543.59, 0, 0, 0, 1, '2024-10-21'),
 (1708, '251CD40490', 'CADENA DISTR 404X90', 'CADENA DISTR 404X90 STM', 2, 4, 'UNIDAD', 1, 1, 0, 0, 0, 10, 0, 1, 21, 1, 0.00, 157.11, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 905.98, 0, 0, 0, 1, '2024-10-21'),
 (1709, 'SM00341', 'CADENA DISTRIB 404X8', 'CADENA DISTRIB 404X86 STM', 2, 4, 'UNIDAD', 1, 1, 0, 0, 0, 10, 0, 1, 21, 1, 0.00, 157.11, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 869.74, 0, 0, 0, 1, '2024-10-21'),
@@ -2961,7 +2961,7 @@ INSERT INTO `articulo` (`id_articulo`, `cod_bar`, `desc_corta`, `desc_larga`, `i
 (3677, 'ESA5004', 'JUNTA LADO EMBR C110', 'JUNTA LADO EMBR C110', 2, 4, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 29.86, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 97.61, 0, 0, 0, 1, '2024-10-21'),
 (3678, 'C1105240MM', 'JUEGO DE AROS 110 ST', 'JUEGO DE AROS 110 STD', 2, 4, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 123.22, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 331.89, 0, 0, 0, 1, '2024-10-21'),
 (3679, 'ESA8027', 'PLAQUETA VOLANTE IBI', 'PLAQUETA VOLANTE IBIZA', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 533.23, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 1522.77, 0, 0, 0, 1, '2024-10-21'),
-(3680, 'ESA8024B', 'PLAQUETA VOLANTE 2 B', 'PLAQUETA VOLANTE 2 BOB  C110', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 883.17, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 2342.73, 0, 0, 0, 1, '2024-10-21'),
+(3680, 'ESA8024B', 'PLAQUETA VOLANTE 2 B', 'PLAQUETA VOLANTE 2 BOB  C110', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 883.17, 0.0000, 0.0000, 0.0000, 47.197029, 0.000000, 0.000000, 0.000000, 1300, 883.17, 883.17, 883.17, 1, '2025-02-01'),
 (3682, 'ESA7009', 'REGULADOR DE VLTAJE ', 'REGULADOR DE VLTAJE 6 CABLES ', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 349.15, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 995.66, 0, 0, 0, 1, '2024-10-21'),
 (3683, 'ZS371000C16', 'REGULADOR DE VOL 4 C', 'REGULADOR DE VOLTAJE  4 CABLES', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 225.92, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 663.77, 0, 0, 0, 1, '2024-10-21'),
 (3684, 'CD100C100', 'VALVULA DE ADMIS Y E', 'VALVULA DE ADMIS Y ESCAPE ', 2, 4, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 82.15, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 234.27, 0, 0, 0, 1, '2024-10-21'),
@@ -3327,7 +3327,7 @@ INSERT INTO `articulo` (`id_articulo`, `cod_bar`, `desc_corta`, `desc_larga`, `i
 (20863, 'W02131', 'DISCO DE EMBRAGUE C1', 'DISCO DE EMBRAGUE C100 BIZ/WAV', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 57, 0, 8, 0, 1, 0.00, 5270.61, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 8613, 0, 0, 0, 1, '2024-10-21'),
 (20864, 'W11131', 'DISCO DE EMBRAGUE H ', 'DISCO DE EMBRAGUE H C90 SMASH', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 57, 0, 8, 0, 1, 0.00, 4659.94, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 7722, 0, 0, 0, 1, '2024-10-21'),
 (20865, 'W63020', 'CADENA DISTRIBUCION ', 'CADENA DISTRIB 409H-126L TWIST', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 57, 0, 8, 0, 1, 0.00, 12029.8, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 19701, 0, 0, 0, 1, '2024-10-21'),
-(20866, 'W63014', 'CADENA DISTRIBUCION ', 'CADENA DISTRIB 404H-86L CRYPTO', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 57, 0, 8, 0, 1, 0.00, 7914.38, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 12969, 0, 0, 0, 1, '2024-10-21'),
+(20866, 'W63014', 'CADENA DISTRIBUCION ', 'CADENA DISTRIB 404H-86L CRYPTO', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 57, 0, 8, 0, 1, 0.00, 7914.38, 0.0000, 0.0000, 0.0000, 45.305126, 0.000000, 0.000000, 0.000000, 11500, 7914.38, 7914.38, 7914.38, 1, '2025-02-01'),
 (20867, 'W63002', 'CADENA DE DISTRIBUCI', 'CADENA DE DISTRIB 25H-84L SMAS', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 57, 0, 8, 0, 1, 0.00, 4491.46, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 7335.9, 0, 0, 0, 1, '2024-10-21'),
 (20868, 'NL013RS', 'FUNDA HONDA WAVE110S', 'FUNDA HONDA WAVE110S NE/ROSA', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 56, 0, 1, 21, 1, 0.00, 2750, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 7875.57, 0, 0, 0, 1, '2024-10-21'),
 (20869, '156400130627', 'JUNTA CAB CILINDRO E', 'JUNTA CAB CILINDRO ECO DAX70', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 39, 0, 1, 21, 1, 0.00, 2558, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 4257, 0, 0, 0, 1, '2024-10-21'),
@@ -7981,7 +7981,7 @@ INSERT INTO `articulo` (`id_articulo`, `cod_bar`, `desc_corta`, `desc_larga`, `i
 (32499143, '4ET1444', 'FILTRO DE AIRE FZ 16', 'FILTRO DE AIRE FZ 16 ETERNUM', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 2487.85, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 5060, 0, 0, 0, 1, '2024-10-21'),
 (32499144, '4ET1354', 'CIGUENAL COMPLETO C1', 'CIGUENAL COMPLETO C100/C110 ET', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 14985, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 30580, 0, 0, 0, 1, '2024-10-21'),
 (32499145, '61020', 'CADENA CHOHO 428X118', 'CADENA CHOHO 428X118 GOLD', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 17917.4, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 31500, 0, 0, 0, 1, '2024-10-21'),
-(32499146, '61019', 'CADENA CHOHO  428X11', 'CADENA CHOHO  428X116 GOLD ', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 17603.6, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 30900, 0, 0, 0, 1, '2024-10-21'),
+(32499146, '61019', 'CADENA CHOHO  428X11', 'CADENA CHOHO  428X116 GOLD ', 2, 2, 'Unidad', 1, 1, 0, 0, 0, 8, 0, 8, 0, 1, 2.00, 17603.6, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 30900, 0, 0, 0, 1, '2025-01-31'),
 (32499147, '12053', 'CUBIERTA YUANXING 90', 'CUBIERTA YUANXING 90/90-18 P39', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 22440.7, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 39100, 0, 0, 0, 1, '2024-10-21'),
 (32499148, '12027', 'CUBIERTA YUANXING 11', 'CUBIERTA YUANXING 110/90-17 P1', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 34874.7, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 60700, 0, 0, 0, 1, '2024-10-21'),
 (32499149, '12025', 'CUBIERTA YUANXING 90', 'CUBIERTA YUANXING 90/90-17 P11', 2, 2, 'UNIDAD', 1, 1, 0, 0, 0, 7, 0, 8, 0, 1, 0.00, 11963.3, 0.0000, 0.0000, 0.0000, 0.000000, 0.000000, 0.000000, 0.000000, 24420, 0, 0, 0, 1, '2024-10-21'),
@@ -8255,6 +8255,7 @@ CREATE TABLE `proveedor` (
   `id_doc` int(11) NOT NULL,
   `nro_doc` varchar(20) NOT NULL,
   `otros` varchar(30) NOT NULL,
+  `estado` int(11) NOT NULL,
   `fec_act` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
@@ -8262,68 +8263,72 @@ CREATE TABLE `proveedor` (
 -- Volcado de datos para la tabla `proveedor`
 --
 
-INSERT INTO `proveedor` (`id_proveedor`, `nombre`, `direccion`, `provincia`, `localidad`, `codPostal`, `tel1`, `tel2`, `tel3`, `id_transporte`, `id_doc`, `nro_doc`, `otros`, `fec_act`) VALUES
-(1, 'Varios', '-', 'Formosa', 'Formosa', 3600, 0, 0, 0, 0, 1, '11111111111', '', '2024-09-07'),
-(2, 'MAC LUBRICANTES SRL ', 'AV CASTELLI 2602', '1', '1', 0, 2147483647, 0, 0, 1, 1, '30708233869', '', '2024-12-02'),
-(3, 'NORTE REPUESTOS SRL', 'J C ORSETTI 854', '1', '1', 0, 341, 0, 0, 1, 1, '30703564492', '', '2024-12-02'),
-(4, 'INTERCAP SRL ', 'SANTA FE ', '1', '1', 0, 0, 0, 0, 1, 1, '30644372045', '', '2024-12-02'),
-(5, 'DISTRIBUIDORA RACER S.R.L ', 'AV 25 DEMAYO 956', '1', '1', 0, 0, 0, 0, 1, 1, '30560917752', '', '2024-12-02'),
-(6, 'DISTRIBUDORA MA GA FLA SRL', 'ENTRE RIOS 300 ', '1', '1', 0, 345, 0, 0, 1, 1, '33712352529', '', '2024-12-02'),
-(7, 'MERCOMAX S.A. ', 'GENERAL MOSCONI 553', '1', '1', 0, 11, 0, 0, 1, 1, '30688322274', '', '2024-12-02'),
-(8, 'CICLOFOR ', 'AV JUAN D PERON 1699', '1', '1', 0, 2147483647, 0, 0, 1, 1, '30710054629', '', '2024-12-02'),
-(9, 'MOTOMEL S.A. ', 'TUCUMAN 3550', '1', '1', 0, 11, 0, 0, 1, 1, '30661534164', '', '2024-12-02'),
-(10, 'CORDOBA MOTOS S.R.L ', 'ALBERDI 165 SAN FRANCISCO ', '1', '1', 0, 3564, 0, 0, 1, 1, '30640451331', '', '2024-12-02'),
-(11, 'INTEGRAL MOTOS ', 'JUJUY 384', '1', '1', 0, 0, 0, 0, 1, 1, '30711790671', '', '2024-12-02'),
-(12, 'MERCADO LIBRE', 'BUENOS AIRES', '1', '1', 0, 0, 0, 0, 1, 1, '11111111111', '', '2024-12-02'),
-(13, 'NEO REP SRL', 'CAMAROONES 2150', '1', '1', 0, 0, 0, 0, 1, 1, '30707992626', '', '2024-12-02'),
-(14, 'GRIEVAS S.R.L.', 'FONROUGE 1390', '1', '1', 0, 0, 0, 0, 1, 1, '30651350774', '', '2024-12-02'),
-(15, 'LED SRL MOTO PARTS', 'CALLE PUBLICA 6700', '1', '1', 0, 0, 0, 0, 1, 1, '30714873470', '', '2024-12-02'),
-(16, 'MYLES TROQUELADOS S.A. ', 'FRUCTUOSA RIVERA ', '1', '1', 0, 0, 0, 0, 1, 1, '30710291175', '', '2024-12-02'),
-(17, '\"NICO\" LUIS N PAPANICOLAU ', 'B POETA LUGONES ', '1', '1', 0, 0, 0, 0, 1, 1, '27271718755', '', '2024-12-02'),
-(18, 'ABRIL DISTRIBUIDORA DE ARAUS M', 'RUTA 11 KM1009', '1', '1', 0, 2147483647, 0, 0, 1, 1, '27138571942', '', '2024-12-02'),
-(19, 'KS ALTO IMPACTO', 'CORDOBA', '1', '1', 0, 0, 0, 0, 1, 1, '11111111111', '', '2024-12-02'),
-(20, 'TRENDS TEAM SRL ', 'DOMINGO ZAPOLI 371', '1', '1', 0, 0, 0, 0, 1, 1, '30715041223', '', '2024-12-02'),
-(21, 'REFRIGERACION YPACARAI GOETZ E', 'MAIPU 1086', '1', '1', 0, 0, 0, 0, 1, 1, '20177743950', '', '2024-12-02'),
-(22, 'ALL TRADE COMPANY S.A.', 'VIDAL 3686 3º 7 CPA ', '1', '1', 0, 11, 0, 0, 1, 1, '33710471849', '', '2024-12-02'),
-(23, 'ALI ART. DEL HOGAR ', 'TUCUMAN 427', '1', '1', 0, 0, 0, 0, 1, 1, '27262215941', '', '2024-12-02'),
-(24, 'CRAGNOLINI DIEGO ADRIAN ', 'ALGARROBO 30', '1', '1', 0, 0, 0, 0, 1, 1, '24323388047', '', '2024-12-02'),
-(25, 'REFSA', 'H.Gorleri 580', '1', '1', 0, 0, 0, 0, 1, 1, '30709668753', '', '2024-12-02'),
-(26, 'FILCOR SRL ', 'RUTA 11 1001', '1', '1', 0, 0, 0, 0, 1, 1, '30715806866', '', '2024-12-02'),
-(27, 'INTERBRIKE SRL', 'JUJUY 446 -LANUS', '1', '1', 0, 11, 0, 0, 1, 1, '30712127909', '', '2024-12-02'),
-(28, 'TRANSPORTE RAOSA SRL', 'RUTA 12 KM 1028 ', '1', '1', 0, 2147483647, 0, 0, 1, 1, '30633413629', '', '2024-12-02'),
-(29, 'CONSULTORA PARINO Y ASOCIADOS ', 'JULIO A ROCA 541', '1', '1', 0, 2147483647, 0, 0, 1, 1, '30710268335', '', '2024-12-02'),
-(30, 'PIANO FERNANDO ANDRES', 'DEAN FUNES 742 ', '1', '1', 0, 0, 0, 0, 1, 1, '20239292756', '', '2024-12-02'),
-(31, 'CERIMELE FERNANDO OSCAR ', 'RIVADAVIA 166', '1', '1', 0, 0, 0, 0, 1, 1, '20104080112', '', '2024-12-02'),
-(32, 'LH SOCIEDAD ANONIMA (LOPEZ HNO', 'RUTA NAC KM 1000', '1', '1', 0, 0, 0, 0, 1, 1, '30709949701', '', '2024-12-02'),
-(33, 'DISTRIBUIDORA BULONES COIRO S.', 'AV HIPOLITO YRIGOYEN 9820', '1', '1', 0, 0, 0, 0, 1, 1, '30708725842', '', '2024-12-02'),
-(34, 'MATEO GERARDO DANEL ', 'AV ITALIA 1647', '1', '1', 0, 0, 0, 0, 1, 1, '20738009615', '', '2024-12-02'),
-(35, 'ROSA MARTIN JAVIER ', 'AV SAN MARTIN 56', '1', '1', 0, 0, 0, 0, 1, 1, '20289702904', '', '2024-12-02'),
-(36, 'ROMERO NADIA VIVIANA', 'JOSE MARIA GOMEZ 396', '1', '1', 0, 0, 0, 0, 1, 1, '27370655741', '', '2024-12-02'),
-(37, 'ORGANIZACION COORD  ARGENTINA ', 'SAVEEDRA 518', '1', '1', 0, 0, 0, 0, 1, 1, '30536259194', '', '2024-12-02'),
-(38, 'PINTURERIA MULTICOLOR SRL', 'AV JUAN DOMINGO PERON 265', '1', '1', 0, 0, 0, 0, 1, 1, '30710447728', '', '2024-12-02'),
-(39, 'CHIAPERO Y ASOCIADOS SRL', 'PQUE IND RAFAELA RUTA 34 LOTE ', '1', '1', 0, 2147483647, 0, 0, 1, 1, '30506113535', '', '2024-12-02'),
-(40, 'NASER NESTOR AMADO', 'AV NESTOR KIRCHNER 955', '1', '1', 0, 0, 0, 0, 1, 1, '20123833571', '', '2024-12-02'),
-(41, 'BIOQUIMICA SRL', 'ESPAÑA 1685', '1', '1', 0, 0, 0, 0, 1, 1, '30708323469', '', '2024-12-02'),
-(42, 'TERCOM S.R.L.', 'CALLE 115 (EX GUEMES) 856  SAN', '1', '1', 0, 47125151, 0, 0, 1, 1, '30679211222', '', '2024-12-02'),
-(43, 'GIMENEZ CARLOS ENRIQUE ', 'ESPAÑA 317', '1', '1', 0, 0, 0, 0, 1, 1, '23082260889', '', '2024-12-02'),
-(44, 'MAINUMBY S.A.', 'AV ITALIA S.A.', '1', '1', 0, 0, 0, 0, 1, 1, '30716674165', '', '2024-12-02'),
-(45, 'CASA MIA SRL ', 'AV 25 DE MAYO 333', '1', '1', 0, 0, 0, 0, 1, 1, '33707874479', '', '2024-12-02'),
-(46, 'ACHITTE MIGUEL ANGEL ', 'MITRE 674', '1', '1', 0, 0, 0, 0, 1, 1, '20104979034', '', '2024-12-02'),
-(47, 'GIMENEZ ALFREDO EMILIO ', 'LUIS ZAMBRINI ', '1', '1', 0, 0, 0, 0, 1, 1, '20237306490', '', '2024-12-02'),
-(48, 'KOERTH GABRIEL CLAUDIO ', 'AV GENDARMERIA NACIONAL 365', '1', '1', 0, 0, 0, 0, 1, 1, '20313287549', '', '2024-12-02'),
-(49, 'ZUAREZ WALTER OSCAR ', 'ROMULO AMADEY 1565', '1', '1', 0, 0, 0, 0, 1, 1, '30230023329', '', '2024-12-02'),
-(50, 'FRAVEGA S.A.C.I.EI', 'AV 25 DE MAYO FORMOSA', '1', '1', 0, 0, 0, 0, 1, 1, '30526874249', '', '2024-12-02'),
-(51, 'WORLD WALKER TRADING', 'VIDAL 3686 PISO 3 OF 7', '1', '1', 0, 0, 0, 0, 1, 1, '30714846112', '', '2024-12-02'),
-(52, 'CRISMI COMBUSTIBLES SRL', 'RUTA 16KM ', '1', '1', 0, 0, 0, 0, 1, 1, '30632767907', '', '2024-12-02'),
-(53, 'REARTES CELIA LORENA ', 'LA PAZ 680', '1', '1', 0, 0, 0, 0, 1, 1, '27309862185', '', '2024-12-02'),
-(54, 'ALTO IMPACTO SRL', 'JUAN XXIII 3195', '1', '1', 0, 0, 0, 0, 1, 1, '30710338627', '', '2024-12-02'),
-(55, 'DISTRIBUIDORA MAC DONALD ', 'PUERTO RICO ', '1', '1', 0, 0, 0, 0, 1, 1, '30714336475', '', '2024-12-02'),
-(56, 'BOTTA HILARIO MIGUEL ', 'INGENIEROS 1188- SAN FRANCISCO', '1', '1', 0, 0, 0, 0, 1, 1, '2006315602', '', '2024-12-02'),
-(57, 'BERTONA JOSE ALFREDO ', 'SAN FRENCISCO ', '1', '1', 0, 0, 0, 0, 1, 1, '20229535774', '', '2024-12-02'),
-(58, 'GIOVE CARLOS ENRIQUE ', 'MARTIN FIERRO 724', '1', '1', 0, 0, 0, 0, 1, 1, '20273446169', '', '2024-12-02'),
-(59, 'PRODUCTOS DOAR S.A.', 'LAS HERAS 1011', '1', '1', 0, 0, 0, 0, 1, 1, '30709526525', '', '2024-12-02'),
-(60, 'ITKIN ', 'HIRIGOYEN 1680', '1', '1', 0, 0, 0, 0, 1, 1, '20264321663', '', '2024-12-02'),
-(61, 'NORTE COMBUSTIBLES SA', 'AV ITALIA 2088', '1', '1', 0, 0, 0, 0, 1, 1, '33703971259', '', '2024-12-02');
+INSERT INTO `proveedor` (`id_proveedor`, `nombre`, `direccion`, `provincia`, `localidad`, `codPostal`, `tel1`, `tel2`, `tel3`, `id_transporte`, `id_doc`, `nro_doc`, `otros`, `estado`, `fec_act`) VALUES
+(1, 'Varios', '-', 'Formosa', 'Formosa', 3600, 0, 0, 0, 0, 1, '11111111111', '', 0, '2024-09-07'),
+(2, 'MAC LUBRICANTES SRL ', 'AV CASTELLI 2602', '1', '1', 0, 2147483647, 0, 0, 1, 1, '30708233869', '', 1, '2025-01-24'),
+(3, 'NORTE REPUESTOS SRL', 'J C ORSETTI 854', '1', '1', 0, 341, 0, 0, 1, 1, '30703564492', '', 1, '2024-12-02'),
+(4, 'INTERCAP SRL ', 'SANTA FE ', '1', '1', 0, 0, 0, 0, 1, 1, '30644372045', '', 1, '2024-12-02'),
+(5, 'DISTRIBUIDORA RACER S.R.L ', 'AV 25 DEMAYO 956', '1', '1', 0, 0, 0, 0, 1, 1, '30560917752', '', 1, '2024-12-02'),
+(6, 'DISTRIBUDORA MA GA FLA SRL', 'ENTRE RIOS 300 ', '1', '1', 0, 345, 0, 0, 1, 1, '33712352529', '', 1, '2024-12-02'),
+(7, 'MERCOMAX S.A. ', 'GENERAL MOSCONI 553', '1', '1', 0, 11, 0, 0, 1, 1, '30688322274', '', 1, '2024-12-02'),
+(8, 'CICLOFOR ', 'AV JUAN D PERON 1699', 'FORMOSA', 'FORMOSA', 3600, 2147483647, 0, 0, 1, 1, '30710054629', '', 1, '2025-01-25'),
+(9, 'MOTOMEL S.A. ', 'TUCUMAN 3550', '1', '1', 0, 11, 0, 0, 1, 1, '30661534164', '', 1, '2024-12-02'),
+(10, 'CORDOBA MOTOS S.R.L ', 'ALBERDI 165 SAN FRANCISCO ', '1', '1', 0, 3564, 0, 0, 1, 1, '30640451331', '', 1, '2024-12-02'),
+(11, 'INTEGRAL MOTOS ', 'JUJUY 384', '1', '1', 0, 0, 0, 0, 1, 1, '30711790671', '', 1, '2024-12-02'),
+(12, 'MERCADO LIBRE', 'BUENOS AIRES', '1', '1', 0, 0, 0, 0, 1, 1, '11111111111', '', 1, '2024-12-02'),
+(13, 'NEO REP SRL', 'CAMAROONES 2150', '1', '1', 0, 0, 0, 0, 1, 1, '30707992626', '', 1, '2024-12-02'),
+(14, 'GRIEVAS S.R.L.', 'FONROUGE 1390', '1', '1', 0, 0, 0, 0, 1, 1, '30651350774', '', 1, '2024-12-02'),
+(15, 'LED SRL MOTO PARTS', 'CALLE PUBLICA 6700', '1', '1', 0, 0, 0, 0, 1, 1, '30714873470', '', 1, '2024-12-02'),
+(16, 'MYLES TROQUELADOS S.A. ', 'FRUCTUOSA RIVERA ', '1', '1', 0, 0, 0, 0, 1, 1, '30710291175', '', 0, '2025-01-24'),
+(17, '\"NICO\" LUIS N PAPANICOLAU ', 'B POETA LUGONES ', '1', '1', 0, 0, 0, 0, 1, 1, '27271718755', '', 0, '2025-01-24'),
+(18, 'ABRIL DISTRIBUIDORA DE ARAUS M', 'RUTA 11 KM1009', '1', '1', 0, 2147483647, 0, 0, 1, 1, '27138571942', '', 1, '2024-12-02'),
+(19, 'KS ALTO IMPACTO', 'CORDOBA', '1', '1', 0, 0, 0, 0, 1, 1, '11111111111', '', 0, '2025-01-24'),
+(20, 'TRENDS TEAM SRL ', 'DOMINGO ZAPOLI 371', '1', '1', 0, 0, 0, 0, 1, 1, '30715041223', '', 1, '2024-12-02'),
+(21, 'REFRIGERACION YPACARAI GOETZ E', 'MAIPU 1086', '1', '1', 0, 0, 0, 0, 1, 1, '20177743950', '', 1, '2024-12-02'),
+(22, 'ALL TRADE COMPANY S.A.', 'VIDAL 3686 3º 7 CPA ', '1', '1', 0, 11, 0, 0, 1, 1, '33710471849', '', 1, '2024-12-02'),
+(23, 'ALI ART. DEL HOGAR ', 'TUCUMAN 427', '1', '1', 0, 0, 0, 0, 1, 1, '27262215941', '', 1, '2024-12-02'),
+(24, 'CRAGNOLINI DIEGO ADRIAN ', 'ALGARROBO 30', '1', '1', 0, 0, 0, 0, 1, 1, '24323388047', '', 1, '2024-12-02'),
+(25, 'REFSA', 'H.Gorleri 580', '1', '1', 0, 0, 0, 0, 1, 1, '30709668753', '', 1, '2024-12-02'),
+(26, 'FILCOR SRL ', 'RUTA 11 1001', '1', '1', 0, 0, 0, 0, 1, 1, '30715806866', '', 1, '2024-12-02'),
+(27, 'INTERBRIKE SRL', 'JUJUY 446 -LANUS', '1', '1', 0, 11, 0, 0, 1, 1, '30712127909', '', 1, '2024-12-02'),
+(28, 'TRANSPORTE RAOSA SRL', 'RUTA 12 KM 1028 ', '1', '1', 0, 2147483647, 0, 0, 1, 1, '30633413629', '', 1, '2024-12-02'),
+(29, 'CONSULTORA PARINO Y ASOCIADOS ', 'JULIO A ROCA 541', '1', '1', 0, 2147483647, 0, 0, 1, 1, '30710268335', '', 1, '2024-12-02'),
+(30, 'PIANO FERNANDO ANDRES', 'DEAN FUNES 742 ', '1', '1', 0, 0, 0, 0, 1, 1, '20239292756', '', 1, '2024-12-02'),
+(31, 'CERIMELE FERNANDO OSCAR ', 'RIVADAVIA 166', '1', '1', 0, 0, 0, 0, 1, 1, '20104080112', '', 1, '2024-12-02'),
+(32, 'LH SOCIEDAD ANONIMA (LOPEZ HNO', 'RUTA NAC KM 1000', '1', '1', 0, 0, 0, 0, 1, 1, '30709949701', '', 1, '2024-12-02'),
+(33, 'DISTRIBUIDORA BULONES COIRO S.', 'AV HIPOLITO YRIGOYEN 9820', '1', '1', 0, 0, 0, 0, 1, 1, '30708725842', '', 1, '2024-12-02'),
+(34, 'MATEO GERARDO DANEL ', 'AV ITALIA 1647', '1', '1', 0, 0, 0, 0, 1, 1, '20738009615', '', 1, '2024-12-02'),
+(35, 'ROSA MARTIN JAVIER ', 'AV SAN MARTIN 56', '1', '1', 0, 0, 0, 0, 1, 1, '20289702904', '', 1, '2024-12-02'),
+(36, 'ROMERO NADIA VIVIANA', 'JOSE MARIA GOMEZ 396', '1', '1', 0, 0, 0, 0, 1, 1, '27370655741', '', 1, '2024-12-02'),
+(37, 'ORGANIZACION COORD  ARGENTINA ', 'SAVEEDRA 518', '1', '1', 0, 0, 0, 0, 1, 1, '30536259194', '', 1, '2024-12-02'),
+(38, 'PINTURERIA MULTICOLOR SRL', 'AV JUAN DOMINGO PERON 265', '1', '1', 0, 0, 0, 0, 1, 1, '30710447728', '', 1, '2024-12-02'),
+(39, 'CHIAPERO Y ASOCIADOS SRL', 'PQUE IND RAFAELA RUTA 34 LOTE ', '1', '1', 0, 2147483647, 0, 0, 1, 1, '30506113535', '', 1, '2024-12-02'),
+(40, 'NASER NESTOR AMADO', 'AV NESTOR KIRCHNER 955', '1', '1', 0, 0, 0, 0, 1, 1, '20123833571', '', 1, '2024-12-02'),
+(41, 'BIOQUIMICA SRL', 'ESPAÑA 1685', '1', '1', 0, 0, 0, 0, 1, 1, '30708323469', '', 1, '2024-12-02'),
+(42, 'TERCOM S.R.L.', 'CALLE 115 (EX GUEMES) 856  SAN', '1', '1', 0, 47125151, 0, 0, 1, 1, '30679211222', '', 1, '2024-12-02'),
+(43, 'GIMENEZ CARLOS ENRIQUE ', 'ESPAÑA 317', '1', '1', 0, 0, 0, 0, 1, 1, '23082260889', '', 1, '2024-12-02'),
+(44, 'MAINUMBY S.A.', 'AV ITALIA S.A.', '1', '1', 0, 0, 0, 0, 1, 1, '30716674165', '', 1, '2024-12-02'),
+(45, 'CASA MIA SRL ', 'AV 25 DE MAYO 333', '1', '1', 0, 0, 0, 0, 1, 1, '33707874479', '', 1, '2024-12-02'),
+(46, 'ACHITTE MIGUEL ANGEL ', 'MITRE 674', '1', '1', 0, 0, 0, 0, 1, 1, '20104979034', '', 1, '2024-12-02'),
+(47, 'GIMENEZ ALFREDO EMILIO ', 'LUIS ZAMBRINI ', '1', '1', 0, 0, 0, 0, 1, 1, '20237306490', '', 1, '2024-12-02'),
+(48, 'KOERTH GABRIEL CLAUDIO ', 'AV GENDARMERIA NACIONAL 365', '1', '1', 0, 0, 0, 0, 1, 1, '20313287549', '', 1, '2024-12-02'),
+(49, 'ZUAREZ WALTER OSCAR ', 'ROMULO AMADEY 1565', '1', '1', 0, 0, 0, 0, 1, 1, '30230023329', '', 1, '2024-12-02'),
+(50, 'FRAVEGA S.A.C.I.EI', 'AV 25 DE MAYO FORMOSA', '1', '1', 0, 0, 0, 0, 1, 1, '30526874249', '', 1, '2024-12-02'),
+(51, 'WORLD WALKER TRADING', 'VIDAL 3686 PISO 3 OF 7', '1', '1', 0, 0, 0, 0, 1, 1, '30714846112', '', 1, '2024-12-02'),
+(52, 'CRISMI COMBUSTIBLES SRL', 'RUTA 16KM ', '1', '1', 0, 0, 0, 0, 1, 1, '30632767907', '', 1, '2024-12-02'),
+(53, 'REARTES CELIA LORENA ', 'LA PAZ 680', '1', '1', 0, 0, 0, 0, 1, 1, '27309862185', '', 1, '2024-12-02'),
+(54, 'ALTO IMPACTO SRL', 'JUAN XXIII 3195', '1', '1', 0, 0, 0, 0, 1, 1, '30710338627', '', 1, '2024-12-02'),
+(55, 'DISTRIBUIDORA MAC DONALD ', 'PUERTO RICO ', '1', '1', 0, 0, 0, 0, 1, 1, '30714336475', '', 1, '2024-12-02'),
+(56, 'BOTTA HILARIO MIGUEL ', 'INGENIEROS 1188- SAN FRANCISCO', '1', '1', 0, 0, 0, 0, 1, 1, '2006315602', '', 1, '2024-12-02'),
+(57, 'BERTONA JOSE ALFREDO ', 'SAN FRENCISCO ', '1', '1', 0, 0, 0, 0, 1, 1, '20229535774', '', 1, '2024-12-02'),
+(58, 'GIOVE CARLOS ENRIQUE ', 'MARTIN FIERRO 724', '1', '1', 0, 0, 0, 0, 1, 1, '20273446169', '', 1, '2024-12-02'),
+(59, 'PRODUCTOS DOAR S.A.', 'LAS HERAS 1011', '1', '1', 0, 0, 0, 0, 1, 1, '30709526525', '', 1, '2024-12-02'),
+(60, 'ITKIN ', 'HIRIGOYEN 1680', '1', '1', 0, 0, 0, 0, 1, 1, '20264321663', '', 1, '2024-12-02'),
+(61, 'NORTE COMBUSTIBLES SA', 'AV ITALIA 2088', '1', '1', 0, 0, 0, 0, 1, 1, '33703971259', '', 1, '2024-12-02'),
+(62, 'Prueba', 'Direccion', 'Formosa', 'Formosa', 36000, 2147483647, 2147483647, 0, 1, 1, '', '', 1, '2025-01-24'),
+(63, 'PRUEBA 2', 'POR AHI ', 'BUENOS AIR', 'CAPITAL', 1115, 0, 0, 0, 1, 1, '23324992999', '', 1, '2025-01-24'),
+(64, 'caro ', '20de julio ', 'for', 'fo', 3600, 370485858, 0, 0, 1, 1, '279220779', '', 0, '2025-01-24'),
+(65, 'CICLOFOR ', 'AV JUAN D PERON 1699', 'FORMOSA', 'FORMOSA', 0, 2147483647, 0, 0, 1, 1, '30710054629', '', 0, '2025-01-25');
 
 -- --------------------------------------------------------
 
@@ -8474,6 +8479,78 @@ INSERT INTO `sucursales` (`id_sucursal`, `nro_suc`, `nomb_suc`, `domicilio`, `ot
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `talonario`
+--
+
+CREATE TABLE `talonario` (
+  `id_talonario` int(11) NOT NULL,
+  `cod_talonario` varchar(20) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `descrip` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `talonario`
+--
+
+INSERT INTO `talonario` (`id_talonario`, `cod_talonario`, `nombre`, `descrip`) VALUES
+(1, 'RIP', 'Remito Ingreso Proveedor', 'Remito donde se da ingresos de las compras de proveedor esto incrementa el stock'),
+(2, 'RDP', 'Remito Dev. Proveedor', 'Se da de baja la mercaderia que se encuentra rota o en mal estado esto hace que el stock se disminuy'),
+(3, 'RED', 'Remito Entre Depositos', 'es el movimiento de mercaderia que se realiza entre sucursales o depositos'),
+(4, 'RDD', 'Remito de Dev. de Depositos', 'es la devolución que se realiza en caso de mercaderia rota o en mal estado'),
+(5, 'RVX', 'Remito de Venta X', 'Este movimiento no tiene validez fiscal si no que se usa para dar de baja del stock y dar ingreso a '),
+(6, 'FA', 'Factura A', 'Factura A con validez fiscal la misma tiene descuento de stock e ingreso de caja o reemplaza un RVX'),
+(7, 'FB', 'Factura B', 'Factura B con validez fiscal la misma tiene descuento de stock e ingreso de caja o reemplaza un RVX'),
+(8, 'FC', 'Factura A', 'Factura C con validez fiscal la misma tiene descuento de stock e ingreso de caja o reemplaza un RVX'),
+(9, 'NCA', 'NOTA DE CREDITO A', 'NOTA DE CREDITO A ANULA UNA FACTURA A DEVOLVIENDO EL STOCK '),
+(10, 'NCB', 'NOTA DE CREDITO B', 'NOTA DE CREDITO B ANULA UNA FACTURA B DEVOLVIENDO EL STOCK '),
+(11, 'NCC', 'NOTA DE CREDITO C', 'NOTA DE CREDITO C ANULA UNA FACTURA C DEVOLVIENDO EL STOCK ');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tal_nro`
+--
+
+CREATE TABLE `tal_nro` (
+  `id_sucursal` int(10) NOT NULL,
+  `nomb_suc` varchar(30) NOT NULL,
+  `id_talon` int(10) NOT NULL,
+  `nomb_talon` varchar(30) NOT NULL,
+  `numero` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `tal_nro`
+--
+
+INSERT INTO `tal_nro` (`id_sucursal`, `nomb_suc`, `id_talon`, `nomb_talon`, `numero`) VALUES
+(1, 'Central', 1, 'RIP', 1),
+(1, 'Central', 2, 'RDP', 1),
+(1, 'Central', 3, 'RED', 1),
+(1, 'Central', 4, 'RDD', 1),
+(1, 'Central', 5, 'RVX', 1),
+(1, 'Central', 6, 'FA', 1),
+(1, 'Central', 7, 'FB', 1),
+(1, 'Central', 8, 'FC', 1),
+(1, 'Central', 9, 'NCA', 1),
+(1, 'Central', 10, 'NCB', 1),
+(1, 'Central', 11, 'NCC', 1),
+(2, 'Italia', 1, 'RIP', 1),
+(2, 'Italia', 2, 'RDP', 1),
+(2, 'Italia', 3, 'RED', 1),
+(2, 'Italia', 4, 'RDD', 1),
+(2, 'Italia', 5, 'RVX', 1),
+(2, 'Italia', 6, 'FA', 1),
+(2, 'Italia', 7, 'FB', 1),
+(2, 'Italia', 8, 'FC', 1),
+(2, 'Italia', 9, 'NCA', 1),
+(2, 'Italia', 10, 'NCB', 1),
+(2, 'Italia', 11, 'NCC', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuario`
 --
 
@@ -8586,6 +8663,12 @@ ALTER TABLE `sucursales`
   ADD PRIMARY KEY (`id_sucursal`);
 
 --
+-- Indices de la tabla `talonario`
+--
+ALTER TABLE `talonario`
+  ADD PRIMARY KEY (`id_talonario`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -8637,7 +8720,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `id_proveedor` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_proveedor` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de la tabla `rem_ing_prov_enc`
@@ -8668,6 +8751,12 @@ ALTER TABLE `stock_mov`
 --
 ALTER TABLE `sucursales`
   MODIFY `id_sucursal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `talonario`
+--
+ALTER TABLE `talonario`
+  MODIFY `id_talonario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`

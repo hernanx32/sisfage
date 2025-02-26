@@ -52,7 +52,7 @@ if ($nro_cat=='1'){
 		<li class="nav-item dropdown"><!-- Menu2  -->
 		<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Stock</a>
 			<ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                <li><a href="/sisfage/remito_provee.php" class="dropdown-item">Remitos Proveedores</a></li>
+                <li><a href="/sisfage/abmRem_ing_prov.php" class="dropdown-item">Remitos Proveedores</a></li>
                 <li><a href="/sisfage/remito_interno.php" class="dropdown-item">Remitos Internos</a></li>
                 <li><a href="#" class="dropdown-item">Listados</a></li>
                 <li><a href="#" class="dropdown-item">Inventario</a></li>
