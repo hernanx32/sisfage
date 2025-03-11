@@ -389,8 +389,7 @@ $total_pages = ceil($total_rows / $limit);
     </thead>
     <tbody>
       <?PHP 
-    //    $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `fec_act` FROM articulo WHERE estado = 1 LIMIT 100";
-
+    
       if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
         echo "<tr><td>" . $row['id_articulo'] . "</td>";
@@ -453,16 +452,6 @@ if ($page == 1){
 <?PHP    
     
     
-    
-    
-    
-    
-/*  BKP_PANTALLA PRINCIPAL    
-    $consulta="SELECT `id_articulo`,`cod_bar_prov`, `cod_bar`, `desc_larga`, `costo`, `precio1`, `fec_act` FROM articulo WHERE estado = 1 LIMIT 100";
-    abmArticulo($conn, $consulta);
-    $focus='busqueda';
-  */          
-  
 }
 
 if (!isset($focus)){
