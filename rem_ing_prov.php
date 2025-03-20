@@ -18,7 +18,7 @@ cabeza($titulo,$path);
 menu($nro_cat, $nom_completo);
 
 ?>
-<form action="rto_ing_prov.php" method="post">
+<form action="rem_ing_prov.php" method="post">
 <table border="1">
     <tr>
         <td>

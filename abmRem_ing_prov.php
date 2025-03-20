@@ -106,13 +106,13 @@ $total_pages = ceil($total_rows / $limit);
             if (!confirmacion) {
                 // Si el usuario cancela, evitar que el enlace se abra
                 event.preventDefault();
-            }
+            } 
         }
     </script>    
 <form id="form1" name="form1" method="post">
 
 <table width="1200" border="0" align="center">
-      <tbody>
+      <tbody>0
         <tr>
           <th colspan="2" scope="col">ABM Ingreso de Proveedor</th>
         </tr>
