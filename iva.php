@@ -6,6 +6,7 @@ $fecha=date('Y-m-d');
 @ $nro_cat=$_SESSION['id_acceso'];
 @ $nom_completo=$_SESSION['nombre'];
 
+
 $titulo='Sistema - ABM IVA';
 $path='';
 
@@ -23,7 +24,9 @@ if (isset($_GET['scr'])){
     $scr=$_GET['scr'];
 
     if($scr=="agregar"){
-    
+		agregar();
+		$focus='desc_iva';	
+		
     }elseif($scr=="agregando"){    
         
     }elseif($scr=="modificar"){
@@ -88,6 +91,7 @@ echo "</tbody></table></form>";
 if (!isset($focus)){
     $focus='texto2';
 }
+
 $conn->close();
 pieprincipal($focus,$path);
 ?>

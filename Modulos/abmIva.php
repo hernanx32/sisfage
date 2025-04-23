@@ -3,10 +3,12 @@
 <head>
 <meta charset="utf-8">
 </head>
-
+<body>
 <?php
 function agregar(){
-?>    <form action="iva.php">
+?>
+	
+<form action="iva.php?scr=agregando">
 <table width="323" border="1" align="center">
   <tbody>
     <tr>
@@ -30,13 +32,18 @@ function agregar(){
       <td colspan="2" bgcolor="#FFFFFF">&nbsp;</td>
       </tr>
     <tr align="center" bgcolor="#8E9EFD">
-      <td colspan="2" bgcolor="#FFFFFF">&nbsp;</td>
+      <td colspan="2" bgcolor="#FFFFFF">
+		<a href="iva.php" class="btn btn-outline-secondary">Cancela</a> - 
+        <input type="submit" name="submit" id="submit" class="btn btn-outline-success" value="agregarIva">
+		</td>
     </tr>
     </tbody>
     </table>
 </form>
 
-<?php    
+<?php  
+$GLOBALS['focus']='desc_iva';
+
 }
     
 function agregando($conn){
@@ -56,6 +63,6 @@ function eliminando($conn){
 
     
 ?>
-<body>
+
 </body>
 </html>
