@@ -1,11 +1,5 @@
 <?php
 session_start();
-
-// Guardar y recuperar filtros desde sesión
-
-// Search (busqueda)
-
-
 $fecha=date('Y-m-d');
 $id_us=$_SESSION['id_usuario'];
 $usuario=$_SESSION['usuario'];
@@ -240,15 +234,9 @@ $stmt->close();
     }
     }else{
  //PANTALLA PRINCIPAL DE USUARIO
-///////////////////////////////////////////////////////////////////////
-// Definir el número de registros por página (por defecto, 20)
-if (isset($_SESSION['limit'])){
-	$limit=$_SESSION['limit'];
-}else{
-	$limit = isset($_GET['limit']) ? intval($_GET['limit']) : 20;	
-	$_SESSION['limit']=$limit;
-}	
 
+// Definir el número de registros por página (por defecto, 20)
+$limit = isset($_GET['limit']) ? intval($_GET['limit']) : 20;
 
 // Obtener el número de la página actual (por defecto, la página 1)
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -319,7 +307,8 @@ $total_rows = $count_result->fetch_assoc()['total'];
 // Calcular el número total de páginas
 $total_pages = ceil($total_rows / $limit);   
 }    
-	
+ 
+
 ?>
     <script>
         function confirmarEnlace(event) {
