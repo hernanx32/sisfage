@@ -361,7 +361,7 @@ $total_pages = ceil($total_rows / $limit);
   <select name="proveedor" id="proveedor" onChange="this.form.submit()">      
       <option value="0" <?php if ($proveedor == 0) echo 'selected'; ?>>Todos</option>      
       <?PHP
-            $sql_prov = "SELECT * FROM proveedor ORDER BY nombre ";
+            $sql_prov = "SELECT * FROM proveedor where estado = '1' ORDER BY nombre ";
             $resultado = $conn->query($sql_prov);
             if ($resultado->num_rows > 0) {
                 while ($fila = $resultado->fetch_assoc()) {
