@@ -250,7 +250,7 @@ $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $search = isset($_GET['Buscar']) ? $_GET['Buscar'] : $_SESSION['search'];
     
 // Obtener el término de búsqueda (si existe)
-$proveedor = isset($_GET['proveedor']) ? $_GET['proveedor'] : '';    
+$proveedor = isset($_GET['proveedor']) ? $_GET['proveedor'] : $_SESSION['proveedor'];    
 
 // Calcular el offset basado en la página y el límite
 $offset = ($page - 1) * $limit;
@@ -263,11 +263,13 @@ $_SESSION['search'] = '';
 	
 if (!empty($search)){   
     $_SESSION['search'] = $search;
-}else{
-
-	
 }
 
+$_SESSION['proveedor'] = '';
+	
+if (!empty($proveedor)){   
+    $_SESSION['proveedor'] = $proveedor;
+}	
 	
     
 // Modificar la consulta SQL con filtro de búsqueda
