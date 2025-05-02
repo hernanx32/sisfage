@@ -2,7 +2,7 @@
 // Configuración de la base de datos
 $host = "localhost";
 $usuario = "root";
-$clave = "";
+$clave = "LauLukLulu477!";
 $baseDeDatos = "bases";
 
 // Conexión a la base de datos

@@ -12,7 +12,7 @@ $path='';
 include("Modulos/html.php");
 include("Modulos/conex.php");
 include("Modulos/menu.php");
-include("Modulos/abmProv/abmProv.php");
+//include("Modulos/abmProv/abmProv.php");
 
 cabeza($titulo,$path);
 menu($nro_cat, $nom_completo);
@@ -33,11 +33,11 @@ $search = isset($_GET['Buscar']) ? $_GET['Buscar'] : '';
 $offset = ($page - 1) * $limit;
 
 // Modificar la consulta SQL con filtro de búsqueda
-$sql = "SELECT `id_articulo`, `cod_bar`, `desc_larga`, `precio1` 
-        FROM articulo 
+$sql = "SELECT `id_articulo`, `cod_bar`, `desc_larga`, `precio1`, fec_act 
+        FROM `articulo`
         WHERE estado = '1' AND 
               (id_articulo LIKE '%$search%' OR 
-               cod_bar = '%$search%' OR 
+               cod_bar LIKE '%$search%' OR 
                desc_larga LIKE '%$search%')
         ORDER BY `desc_larga` ASC
         LIMIT $limit OFFSET $offset";
@@ -46,7 +46,7 @@ $result = $conn->query($sql);
 
 // Contar el total de registros para la paginación considerando el filtro de búsqueda
 $count_sql = "SELECT COUNT(*) as total 
-              FROM articulo 
+              FROM `articulo` 
               WHERE estado = '1' AND 
                     (id_articulo LIKE '%$search%' OR 
                      cod_bar = '%$search%' OR 
@@ -91,7 +91,7 @@ $total_pages = ceil($total_rows / $limit);
                 <option value="999999" <?php if ($limit == 100000) echo 'selected'; ?>>TODO</option>
               </select>
 -
-<input type="text" name="Buscar" id="Buscar" value="<?php echo htmlspecialchars($search); ?>" placeholder="Buscar"></th>
+<input name="Buscar" type="search" id="Buscar" placeholder="Buscar" autocomplete="on" value="<?php echo htmlspecialchars($search); ?>"></th>
             <th scope="col" >-</th>
           </tr>
         </tbody>
@@ -107,7 +107,7 @@ $total_pages = ceil($total_rows / $limit);
         <th>Cod.Barra</th>
         <th>Descripción</th>
         <th>Precio</th>
-        <th>Stock</th>  
+        <th>Fec. Act.</th>  
       </tr>
     </thead>
     <tbody>
@@ -118,8 +118,22 @@ $total_pages = ceil($total_rows / $limit);
           echo "<td>" . $row['cod_bar'] . "</td>";
           echo "<td>" . $row['desc_larga'] . "</td>";
           echo "<td  align='right'>$" . number_format($row['precio1'], 2). "</td>";
-          echo "<td></td>";
-          echo "</tr>";
+        
+        $fec_modifica =$row['fec_act'];
+        if($fecha==$fec_modifica){
+        echo "<td align='right' bgcolor='#09D320'>";    
+        }else{
+        echo "<td align='right'>";    
+        }
+        
+        $fechaOriginal = $fec_modifica; // Fecha en formato ISO
+        $timestamp = strtotime($fechaOriginal);
+        echo date("d/m/Y", $timestamp) ."</td>";
+                     
+        //echo "<td align='right'>" . $row['fec_act'] . "</td>";
+    
+        
+            echo "</tr>";
         }
       } else {
         echo "<tr><td colspan='6'>No se encontraron resultados</td></tr>";

@@ -1,7 +1,7 @@
 <?php
 global $EstCon, $conn;
 
-$conn= new mysqli("127.0.0.1", "root", "", "bases");
+$conn= new mysqli("127.0.0.1", "root", "LauLukLulu477!", "bases");
 $conn->set_charset("utf8");
 
 

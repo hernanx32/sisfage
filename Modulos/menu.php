@@ -2,7 +2,7 @@
 
 function menu($nro_cat, $nom_completo)
 {
-
+ 
    if (!isset($_SESSION['id_usuario'])) {
     // Si no está logueado, redirigir a la página de inicio de sesión
     header("Location:index.php");
