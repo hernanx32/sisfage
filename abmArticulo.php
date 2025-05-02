@@ -259,13 +259,16 @@ $offset = ($page - 1) * $limit;
     
   // Guardar si vienen por GET o POST
 
- if (!empty($search)){   
+if (!empty($search)){   
     $_SESSION['search'] = $search;
-
- }else{
-   
-
- }
+}else{
+// DESDE AQUI ME QUEDE EN APA PARA SEGUIR TRABAJANDO EN CASA 
+	
+	
+	
+	
+	
+}
 
     
 // Modificar la consulta SQL con filtro de búsqueda
