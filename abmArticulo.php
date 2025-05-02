@@ -247,18 +247,16 @@ $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 20;   //Intval devuelv
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
 // Obtener el término de búsqueda (si existe)
-$search = isset($_GET['Buscar']) ? $_GET['Buscar'] : $_SESSION['search'];
+@ $search = isset($_GET['Buscar']) ? $_GET['Buscar'] : $_SESSION['search'];
     
 // Obtener el término de búsqueda (si existe)
-$proveedor = isset($_GET['proveedor']) ? $_GET['proveedor'] : $_SESSION['proveedor'];    
+@ $proveedor = isset($_GET['proveedor']) ? $_GET['proveedor'] : $_SESSION['proveedor'];    
 
 // Calcular el offset basado en la página y el límite
 $offset = ($page - 1) * $limit;
 
 // Guardamos las nuevas Busquedas que se realiza en el form    
     
-  // Guardar si vienen por GET o POST
-
 $_SESSION['search'] = '';
 	
 if (!empty($search)){   
