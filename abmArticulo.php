@@ -241,13 +241,13 @@ $stmt->close();
     
     
 // Definir el número de registros por página (por defecto, 20)
-$limit = isset($_GET['limit']) ? intval($_GET['limit']) : 20;
+$limit = isset($_GET['limit']) ? intval($_GET['limit']) : 20;   //Intval devuelve valor entero sin decimal 
 
 // Obtener el número de la página actual (por defecto, la página 1)
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
 // Obtener el término de búsqueda (si existe)
-$search = isset($_GET['Buscar']) ? $_GET['Buscar'] : '';
+$search = isset($_GET['Buscar']) ? $_GET['Buscar'] : $_SESSION['search'];
     
 // Obtener el término de búsqueda (si existe)
 $proveedor = isset($_GET['proveedor']) ? $_GET['proveedor'] : '';    
@@ -259,17 +259,16 @@ $offset = ($page - 1) * $limit;
     
   // Guardar si vienen por GET o POST
 
+$_SESSION['search'] = '';
+	
 if (!empty($search)){   
     $_SESSION['search'] = $search;
 }else{
-// DESDE AQUI ME QUEDE EN APA PARA SEGUIR TRABAJANDO EN CASA 
-	
-	
-	
-	
+
 	
 }
 
+	
     
 // Modificar la consulta SQL con filtro de búsqueda
 
