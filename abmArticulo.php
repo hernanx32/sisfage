@@ -18,6 +18,8 @@ cabeza($titulo,$path);
 menu($nro_cat, $nom_completo);
 
 
+
+
 //Validamos si existe la Var SCR
 if (isset($_GET['scr'])){
 	$scr=$_GET['scr'];
@@ -235,6 +237,9 @@ $stmt->close();
     }else{
  //PANTALLA PRINCIPAL DE USUARIO
 
+    
+    
+    
 // Definir el número de registros por página (por defecto, 20)
 $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 20;
 
@@ -250,6 +255,19 @@ $proveedor = isset($_GET['proveedor']) ? $_GET['proveedor'] : '';
 // Calcular el offset basado en la página y el límite
 $offset = ($page - 1) * $limit;
 
+// Guardamos las nuevas Busquedas que se realiza en el form    
+    
+  // Guardar si vienen por GET o POST
+
+ if (!empty($search)){   
+    $_SESSION['search'] = $search;
+
+ }else{
+   
+
+ }
+
+    
 // Modificar la consulta SQL con filtro de búsqueda
 
 if($proveedor > 0){
