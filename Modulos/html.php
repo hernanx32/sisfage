@@ -19,10 +19,13 @@ global $fecha_form;
   	<link rel="stylesheet" href="<?PHP echo $path;?>comp/plugins/fontawesome-free/css/all.min.css">
 	<link rel="stylesheet" href="<?PHP echo $path;?>comp/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="<?PHP echo $path;?>comp/dist/css/adminlte.min.css">	
-    <link rel="stylesheet" href="<?PHP echo $path;?>comp/plugins/select2/css/select2.min.css">	
-    <script src="<?PHP echo $path;?>js/formularios.js"></script>
+    <link rel="stylesheet" href="<?PHP echo $path;?>comp/plugins/select2/css/select2.min.css">
+	<script src="<?PHP echo $path;?>js/formularios.js"></script>
     <script src="<?PHP echo $path;?>js/jquery-3.6.0.min.js"></script>
-  <title><?php echo $titulopag; ?></title>
+
+    <link href="../comp/plugins/bootstrap/js/bootstrap.bundle.min.js.css" rel="stylesheet" type="text/css" media="screen">
+	
+	<title><?php echo $titulopag; ?></title>
 
 	
 <!-- Link Anulados
