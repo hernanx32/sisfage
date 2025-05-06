@@ -11,29 +11,23 @@
 
 <h2>Formulario de Cliente</h2>
 <form>
-  <label for="id_cliente">ID Cliente:</label>
-    <input name="id_cliente" type="number" id="id_cliente" max="10" min="10" value="1" readonly="readonly">
-	<button type="button" onclick="abrirPopupBusqueda()">Buscar</button>
+    <label for="id_cliente">ID Cliente:</label>
+    <input type="text" id="id_cliente" name="id_cliente">
     <br>
+
     <label for="nombre_cliente">Nombre:</label>
-      <input name="nombre_cliente" type="text" id="nombre_cliente" value="Consumidor Final" readonly>
+    <input type="text" id="nombre_cliente" name="nombre_cliente" readonly>
     <br>
-    <label for="direccion">Domicilio:</label><input name="direccion" type="text" id="direccion" value="Sin Domicilio" readonly>
-      <br>
-    
+
+    <label for="direccion_cliente">Dirección:</label>
+    <input type="text" id="direccion_cliente" name="direccion_cliente" readonly>
+    <br>
+
+    <button type="button" onclick="abrirPopupBusqueda()">Buscar</button>
 </form>
 
-<!-- Popup para búsqueda      white --> 
-<div id="popupBusqueda" 
-	 style="display:none; 
-			position:fixed; 
-			top:5%; 
-			left:30%; 
-			background:#eaeded; 
-			border:3px solid black; 
-			padding:30px; 
-			z-index:10;">
-	
+<!-- Popup para búsqueda -->
+<div id="popupBusqueda" style="display:none; position:fixed; top:20%; left:30%; background:white; border:1px solid black; padding:20px; z-index:1000;">
     <h3>Buscar Cliente</h3>
     <input type="text" id="busquedaCliente" placeholder="Ingrese nombre, dirección o ID">
     <button onclick="buscarCliente()">Buscar</button>
@@ -41,7 +35,6 @@
     <div id="resultadosCliente" style="margin-top:10px;"></div>
 </div>
 
-	
 <script>
 function abrirPopupBusqueda() {
     document.getElementById('popupBusqueda').style.display = 'block';
@@ -71,7 +64,7 @@ function buscarCliente() {
 function seleccionarCliente(id, nombre, direccion) {
     document.getElementById('id_cliente').value = id;
     document.getElementById('nombre_cliente').value = nombre;
-	 document.getElementById('direccion').value = direccion;
+    document.getElementById('direccion_cliente').value = direccion;
     cerrarPopup();
 }
 </script>
