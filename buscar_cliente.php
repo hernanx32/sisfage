@@ -26,8 +26,10 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 while ($row = $result->fetch_assoc()) {
+	
+	
     echo "<div onclick=\"seleccionarCliente(" . $row['id_cliente'] . ", '" . htmlspecialchars($row['razon_social']) . "', " . $row['direccion'] . ")\">";
-    echo "ID: " . $row['id_cliente'] . " - " . $row['razon_social'] . " - " . $row['direccion'];
+    echo "ID: " . $row['id_cliente'] . " - " . $row['razon_social'] . " - " . $row['direccion'] ;
     echo "</div>";
 }
 
