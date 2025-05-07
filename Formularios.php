@@ -1,6 +1,4 @@
-<?php
-// Suponiendo que esto forma parte del archivo Formularios.php
-?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
