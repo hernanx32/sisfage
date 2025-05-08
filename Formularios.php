@@ -41,10 +41,10 @@ function abrirPopupBusqueda() {
 	 setTimeout(() => inputBusqueda.focus(), 100); // Establece el foco al campo
     document.getElementById('resultadosCliente').innerHTML = '';
     const id = document.getElementById('id_cliente').value;
+	
 	const inputBusqueda = document.getElementById('busquedaCliente');
-		
-	document.getElementById('busquedaCliente').value = '';
-
+	
+	inputBusqueda.value = '';
 	setTimeout(() => inputBusqueda.focus(), 100);
 	
 

@@ -237,11 +237,21 @@ $stmt->close();
     }else{
  //PANTALLA PRINCIPAL DE USUARIO
 
-    
-    
-    
+$limit = isset($_GET['limit']) ? intval($_GET['limit']) : 20;   //Intval devuelve valor entero sin decimal 		
+
+// La variable existe y tiene un valor no vacío
+if (isset($_SESSION['limit']) && !empty($_SESSION['limit'])) {
 // Definir el número de registros por página (por defecto, 20)
-$limit = isset($_GET['limit']) ? intval($_GET['limit']) : 20;   //Intval devuelve valor entero sin decimal 
+$limit=$_SESSION['limit'];
+}else{
+
+}	   
+/* FRAGMENTO TEMPORAL DE ARCHIVO
+// Definir el número de registros por página (por defecto, 20)
+	$limit = isset($_GET['limit']) ? intval($_GET['limit']) : 20;   //Intval devuelve valor entero sin decima
+*/
+
+
 
 // Obtener el número de la página actual (por defecto, la página 1)
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -258,17 +268,18 @@ $offset = ($page - 1) * $limit;
 // Guardamos las nuevas Busquedas que se realiza en el form    
     
 $_SESSION['search'] = '';
-	
 if (!empty($search)){   
     $_SESSION['search'] = $search;
 }
 
 $_SESSION['proveedor'] = '';
-	
 if (!empty($proveedor)){   
     $_SESSION['proveedor'] = $proveedor;
-}	
-	
+}
+//GUARDAMOS LA PAGINACION Y LOS LIMITES
+$_SESSION['$limit'] = $limit;	
+$_SESSION['$paginas'] = $page;	
+echo $limit;
     
 // Modificar la consulta SQL con filtro de búsqueda
 
@@ -470,9 +481,8 @@ if ($page == 1){
     </table> 
 
 <?PHP    
-    
-    
 }
+
 
 if (!isset($focus)){
     $focus='';

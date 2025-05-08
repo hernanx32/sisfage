@@ -19,6 +19,7 @@ menu($nro_cat, $nom_completo);
 
 
 
+
 $focus='Buscar';
 $conn->close();
 pieprincipal($focus,$path);
