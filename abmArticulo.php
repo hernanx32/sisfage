@@ -237,28 +237,26 @@ $stmt->close();
     }else{
  //PANTALLA PRINCIPAL DE USUARIO
 
-$limit = isset($_GET['limit']) ? intval($_GET['limit']) : 20;   //Intval devuelve valor entero sin decimal 		
+	
+if (isset($_SESSION['limit'])) {
+ 	$val_limit = $_SESSION['limit'];
+}	else {
+	$val_limit=20;
+}
 
-// La variable existe y tiene un valor no vacío
-if (isset($_SESSION['limit']) && !empty($_SESSION['limit'])) {
+if (isset($_SESSION['page'])) {
+ 	$val_page = $_SESSION['page'];
+}	else {
+	$val_page=1;
+}
+	
+	//$_SESSION['limit']
 // Definir el número de registros por página (por defecto, 20)
-$limit=$_SESSION['limit'];
-}else{
-
-}	   
-/* FRAGMENTO TEMPORAL DE ARCHIVO
-// Definir el número de registros por página (por defecto, 20)
-	$limit = isset($_GET['limit']) ? intval($_GET['limit']) : 20;   //Intval devuelve valor entero sin decima
-*/
-
-
-
+@ $limit = isset($_GET['limit']) ? intval($_GET['limit']) : $val_limit ;
 // Obtener el número de la página actual (por defecto, la página 1)
-$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-
+@ $page = isset($_GET['page']) ? intval($_GET['page']) : $val_page ;
 // Obtener el término de búsqueda (si existe)
 @ $search = isset($_GET['Buscar']) ? $_GET['Buscar'] : $_SESSION['search'];
-    
 // Obtener el término de búsqueda (si existe)
 @ $proveedor = isset($_GET['proveedor']) ? $_GET['proveedor'] : $_SESSION['proveedor'];    
 
@@ -276,10 +274,16 @@ $_SESSION['proveedor'] = '';
 if (!empty($proveedor)){   
     $_SESSION['proveedor'] = $proveedor;
 }
-//GUARDAMOS LA PAGINACION Y LOS LIMITES
-$_SESSION['$limit'] = $limit;	
-$_SESSION['$paginas'] = $page;	
-echo $limit;
+
+$_SESSION['limit'] = '';
+if (!empty($limit)){   
+    $_SESSION['limit'] = $limit;
+}
+	
+$_SESSION['page'] = '';
+if (!empty($page)){   
+    $_SESSION['page'] = $page;
+}	
     
 // Modificar la consulta SQL con filtro de búsqueda
 
