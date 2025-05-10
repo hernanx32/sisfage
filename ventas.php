@@ -12,11 +12,11 @@ $path='';
 include("Modulos/html.php");
 include("Modulos/conex.php");
 include("Modulos/menu.php");
-//include("Modulos/abmProv/abmProv.php");
+//include("Modulos/Ventas/ventas.php");
 
 cabeza($titulo,$path);
 menu($nro_cat, $nom_completo);
-
+//
 
 
 $focus='Buscar';
