@@ -61,7 +61,7 @@ $data = array(
 	)
 );
 
-$afip = new Afip(array('CUIT' => 20111111112));
+$afip = new Afip(array('CUIT' => 23324992979));
 
 $afip->ElectronicBilling->CreateVoucher($data);
 
