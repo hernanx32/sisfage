@@ -9,92 +9,75 @@
 </head>
 
 <body>
-<form id="frm_ventas" action="ventas2.php" method="GET">
-  <table width="1100" border="1" align="center">
+	
+<table width="1000" border="1" align="center">
   <tbody>
     <tr>
-      <th width="152" align="right" scope="col">Fecha:</th>
-      <th width="356" scope="col">&nbsp;</th>
-      <th width="71" rowspan="3" scope="col"><h1><strong>X</strong></h1></th>
-      <th width="182" align="right" scope="col">Sucursal:</th>
-      <th width="305" scope="col">&nbsp;</th>
+      <td width="450"> 
+        <label for="date">Fecha:</label>
+      <input name="date" type="date" id="date" value="<?php echo date('Y-m-d');?>" readonly="readonly"></td>
+      <td width="78" rowspan="3"><img src="img/X.png" width="79" height="79" alt=""/></td>
+      <td width="450">Sucursal: 
+      <input name="id_sucu" type="text" id="id_sucu" value="001" size="10" maxlength="10" readonly="readonly"> 
+      - 
+      <input name="nomb_sucu" type="text" id="nomb_sucu" value="Casa Central" size="30" maxlength="30" readonly="readonly"></td>
     </tr>
     <tr>
-      <th align="right">ID.Cliente:</th>
-      <td>&nbsp;</td>
-      <th align="right">Punto Vta. / Nro Comp.:</th>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <th align="right">Nombre:</th>
-      <td>&nbsp;</td>
-      <th align="right">Lista de Presio:</th>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <th align="right">Direccion:</th>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <th align="right">Condicion de Venta: </th>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <th align="right">CUIT:</th>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <th align="right">Vendedor:</th>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <th align="right">&nbsp;</th>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <th align="right">&nbsp;</th>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <th colspan="3" align="left">
-        <label for="agre_articulo">Articulo:</label>
-        <input type="text" name="agre_articulo" id="agre_articulo">
-
-<label for="agre_canti">Cantidad:</label>
-<input name="agre_canti" type="number" id="agre_canti" max="100" min="1" value="1"><input type="submit" value="Agregar Articulo"></th>
-      <th align="right">&nbsp;</th>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <th colspan="5" align="left">&nbsp;</th>
-      </tr>
-    <tr>
-      <th height="68" colspan="5" align="left"><table width="1000" border="1" align="center">
+      <td rowspan="3"><table width="450" border="0">
         <tbody>
           <tr>
-            <th width="74" scope="col">ID</th>
-            <th width="382" scope="col">Detalle</th>
-            <th width="80" scope="col">Cant.</th>
-            <th width="150" scope="col">P. Unit.</th>
-            <th width="150" scope="col">Sub. Total</th>
-            <th width="124" scope="col">Eliminar</th>
-            </tr>
+            <td><input type="button" name="button" id="button" value="Buscar Cliente">
+               <label for="id_cli">Nro:</label>
+              <input name="id_cli" type="text" id="id_cli" value="1" size="10" maxlength="10" readonly="readonly"></td>
+          </tr>
           <tr>
-            <td colspan="6">&nbsp;</td>
-            </tr>
-        </tbody>
-      </table></th>
+            <td><label for="Nomb_cli">R.Social:</label>
+              <input name="Nomb_cli" type="text" id="Nomb_cli" value="Consumidor Final" size="30" maxlength="30" readonly="readonly"> 
+              - 
+              <input name="cuit_cli" type="text" id="cuit_cli" value="11-11111111-1" size="15" maxlength="15" readonly="readonly"></td>
+          </tr>
+          <tr>
+            <td><label for="dire_cli">Dirección:</label>
+              <input name="dire_cli" type="text" id="dire_cli" value="Sin Domicilio" size="30" maxlength="30" readonly="readonly"></td>
+          </tr>
+          </tbody>
+      </table></td>
+      <td>Nro. Compr:
+      <input name="nro_comp1" type="text" id="nro_comp1" value="00001" size="10" maxlength="10" readonly="readonly"> 
+      - 
+      <input name="nro_comp2" type="text" id="nro_comp2" value="00000003" size="30" maxlength="30" readonly="readonly"></td>
     </tr>
     <tr>
-      <th height="28" colspan="2" align="left">&nbsp;</th>
-      <th height="28" align="left">&nbsp;</th>
-      <th height="28" align="left">&nbsp;</th>
-      <th height="28" align="left">&nbsp;</th>
+      <td>Lista de Precio : 
+      <input name="list_pre" type="text" id="list_pre" value="Lista 1" size="20" maxlength="20" readonly="readonly"></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>Vendedor: 
+      <input name="id_vend" type="text" id="id_vend" value="000001" size="10" maxlength="10" readonly="readonly">
+      - 
+      <input name="nomb_vend" type="text" id="nomb_vend" value="Carranza Victor" size="30" maxlength="30" readonly="readonly"></td>
+    </tr>
+    <tr>
+      <td colspan="3"><table width="990" border="0">
+        <tbody>
+          <tr>
+            <td>Codigo: 
+              <input name="buscar_art" type="text" id="buscar_art" size="30" maxlength="30"> 
+              - 
+              <input type="button" name="btn_buscar" id="btn_buscar" value="Buscar"> 
+              - Cantidad: 
+              <input name="id_cli2" type="text" id="id_cli2" value="1" size="10" maxlength="10" readonly="readonly"></td>
+          </tr>
+          <tr>
+            <td>Detalle: <?PHP echo 'Bujia Marca desconocida'; ?> - Precio: <?PHP echo '$ 1.050,00'; ?> - Stock: <?PHP echo '560.00'; ?> - 
+              <input type="button" name="btn_agregar" id="btn_agregar" value="Agregar"></td>
+          </tr>
+        </tbody>
+      </table></td>
     </tr>
   </tbody>
 </table>
-
-    
-    
-    
-</form>
 </body>
 </html>
     
