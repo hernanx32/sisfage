@@ -67,7 +67,7 @@
               - 
               <input type="button" name="btn_buscar" id="btn_buscar" value="Buscar"> 
               - Cantidad: 
-              <input name="id_cli2" type="text" id="id_cli2" tabindex="2" value="1" size="10" maxlength="10" readonly="readonly"></td>
+              <input name="canti" type="number" id="canti" max="1000" min="1" tabindex="2" value="1"></td>
           </tr>
           <tr>
             <td>Detalle: <?PHP echo 'Bujia Marca desconocida'; ?> - Precio: <?PHP echo '$ 1.050,00'; ?> - Stock: <?PHP echo '560.00'; ?> - 
@@ -96,8 +96,13 @@
                   <td align="right">$6,544.42</td>
                   <td align="center">X</td>
                 </tr>
+				<tr>
+                  <td colspan="6">554</td>
+                
+                </tr>  
               </tbody>
-      </table></td>
+      </table>
+	</td>
     </tr>
     <tr>
       <td colspan="3" align="right"> 
