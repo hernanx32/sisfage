@@ -51,12 +51,8 @@
       <span class="close-btn" onclick="cerrarPopup()">&times;</span>
       <h2>Buscar Articulo</h2>
 
-
-		
-		
-		
-		
-		<table width="790" border="1" align="center">
+<!--		 -->		
+	<table width="790" border="1" align="center">
 	  <tbody>
 	    <tr>
 	      <td><input name="bus_art_modal" type="text" id="bus_art_modal" size="30" maxlength="30"> <label for="filtro_campo">Campos:</label>
@@ -72,17 +68,20 @@
         </tr>
   </tbody>
 </table>
-		
-
-
-    </div>
   </div>
+</div>
+
+<div id="Resutado"></div>
 
 <script>
     function mostrarPopup() {
-	//	OBTENEMOS EL VALOR DE CAMPO DE BUSQUEDA
+//	OBTENEMOS EL VALOR DE CAMPO DE BUSQUEDA
 	const nombre = document.getElementById('buscar').value;	
 	document.getElementById('bus_art_modal').value = nombre;	
+	
+	
+		
+		
 		
     document.getElementById('popup').style.display = 'block';
 
@@ -90,17 +89,15 @@
 		document.addEventListener("keydown", function(event) {
 			if (event.key === "Escape") {
     		cerrarPopup();
+				
   			}
 		});	
-		}
-
+	}
 	
     function cerrarPopup() {
       document.getElementById('popup').style.display = 'none';
 	}
-	
-	
-	
+
 	
 //AL PRESIONAR ENTER EN EL CAMPO DE BUSQUEDA ME MUESTRE LA VENTANA 	
 document.getElementById("buscar").addEventListener("keydown", function(event) {
@@ -110,7 +107,6 @@ document.getElementById("buscar").addEventListener("keydown", function(event) {
   }
 });	
 
-</script>
-
+  </script>
 </body>
 </html>
