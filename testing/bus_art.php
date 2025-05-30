@@ -107,6 +107,10 @@ document.getElementById("buscar").addEventListener("keydown", function(event) {
   }
 });	
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> parent of 4ec845c (asdasdasdasdasd)
   </script>
 </body>
 </html>
