@@ -64,7 +64,7 @@
           <input type="button" name="btn_buscar_modal" id="btn_buscar_modal" value="Buscar"></td>
         </tr>
 	    <tr>
-	      <td>Resultados</td>
+	      <td>Resultados <?php echo $bus_art_modal; ?></td>
         </tr>
   </tbody>
 </table>
@@ -78,8 +78,11 @@
 //	OBTENEMOS EL VALOR DE CAMPO DE BUSQUEDA
 	const nombre = document.getElementById('buscar').value;	
 	document.getElementById('bus_art_modal').value = nombre;	
-	
-	
+	//PONE EL FOCO EN EL CAMPO DE BUSQUEDA DEL MODAL
+	setTimeout(function () {
+      document.getElementById("bus_art_modal").focus();
+    }, 100); // Da tiempo a que el modal se renderice
+  
 		
 		
 		
@@ -96,6 +99,11 @@
 	
     function cerrarPopup() {
       document.getElementById('popup').style.display = 'none';
+	//PONE EL FOCO EN EL CAMPO DE BUSQUEDA INICIAL	
+	setTimeout(function () {
+      document.getElementById("buscar").focus();
+    }, 100); // Da tiempo a que el modal se renderice
+	
 	}
 
 	
@@ -107,10 +115,7 @@ document.getElementById("buscar").addEventListener("keydown", function(event) {
   }
 });	
 
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 4ec845c (asdasdasdasdasd)
   </script>
 </body>
 </html>
