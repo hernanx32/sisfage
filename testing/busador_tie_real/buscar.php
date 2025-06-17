@@ -36,7 +36,7 @@ if ($resultado->num_rows > 0) {
       		<td width='94'><strong>Fec. Actual.</strong></td>
     	</tr>";
     while($row = $resultado->fetch_assoc()) {
-		echo "<tr>
+		echo "<tr class='MarcaFila'>
 			<td>" . htmlspecialchars($row["id_articulo"]) ."</td>
       		<td>" . htmlspecialchars($row["cod_bar"]) ."</td>
       		<td>" . htmlspecialchars($row["desc_larga"]) ."</td>

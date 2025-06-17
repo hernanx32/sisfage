@@ -4,6 +4,29 @@
   <meta charset="UTF-8">
   <title>Buscar en tiempo real</title>
   
+	
+	<style>
+    /* Estilo general para toda la fila */
+    .MarcaFila {
+      cursor: pointer;
+      transition: background-color 0.5s;
+    }
+
+    /* Efecto al pasar el mouse */
+    .MarcaFila:hover {
+      /*background-color:   #f0f0f0;*/
+		background-color: #B5B5B5;
+    }
+  </style>
+	
+  <script>
+    // Hace que al hacer clic en una fila se redirija a una URL
+    function goTo(url) {
+      window.location.href = url;
+    }
+  </script>
+	
+	
 </head>
 <body>
   <h2>Buscar Articulo</h2>

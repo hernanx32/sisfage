@@ -6,13 +6,13 @@
  
 <style>
     /* Estilo general para toda la fila */
-    .clickable-row {
+    .MarcaFila {
       cursor: pointer;
       transition: background-color 0.5s;
     }
 
     /* Efecto al pasar el mouse */
-    .clickable-row:hover {
+    .MarcaFila:hover {
       /*background-color:   #f0f0f0;*/
 		background-color: #B5B5B5;
     }
@@ -36,13 +36,13 @@
       <td width="90"><strong>Precio 2</strong></td>
       <td width="94"><strong>Fec. Actual.</strong></td>
     </tr>
-    <tr class="clickable-row" onclick="goTo('detalle.php?id=a')">
+    <tr class="MarcaFila" onclick="goTo('detalle.php?id=a')">
       <td>a</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td>
     </tr>
-    <tr class="clickable-row" onclick="goTo('detalle.php?id=b')">
+    <tr class="MarcaFila" onclick="goTo('detalle.php?id=b')">
       <td>b</td><td>b</td><td>b</td><td>b</td><td>b</td><td>b</td>
     </tr>
-    <tr class="clickable-row" onclick="goTo('detalle.php?id=c')">
+    <tr class="MarcaFila" onclick="goTo('detalle.php?id=c')">
       <td>c</td><td>c</td><td>c</td><td>c</td><td>c</td><td>c</td>
     </tr>
   </tbody>
