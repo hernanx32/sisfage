@@ -19,14 +19,6 @@
     }
   </style>
 	
-  <script>
-    // Hace que al hacer clic en una fila se redirija a una URL
-    function goTo(url) {
-      window.location.href = url;
-    }
-  </script>
-	
-	
 </head>
 <body>
   <h2>Buscar Articulo</h2>

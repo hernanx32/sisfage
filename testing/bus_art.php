@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Popup Modal</title>
+<?php $bus_art_modal=''; ?>	
   <style>
     /* Estilos del fondo del modal */
     .popup-overlay {
@@ -50,8 +51,7 @@
     <div class="popup-content">
       <span class="close-btn" onclick="cerrarPopup()">&times;</span>
       <h2>Buscar Articulo</h2>
-
-<!--		 -->		
+	
 	<table width="790" border="1" align="center">
 	  <tbody>
 	    <tr>
