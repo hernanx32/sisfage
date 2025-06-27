@@ -56,7 +56,7 @@
 	  <tbody>
 	    <tr>
 	      <td><input name="bus_art_modal" type="text" id="bus_art_modal" size="30" maxlength="30"> <label for="filtro_campo">Campos:</label>
-            <select name="filtro_campo" id="filtro_campo">
+          <select name="filtro_campo" id="filtro_campo">
               <option value="id">Cod. Interno</option>
               <option value="cod_bar">Codigo de Barra</option>
               <option value="desc_larga" selected="selected">Descripción</option>

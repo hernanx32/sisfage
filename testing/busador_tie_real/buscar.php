@@ -1,4 +1,6 @@
 <?php
+$fecha="2025-06-27";
+echo $fecha;
 $conexion = new mysqli("localhost", "root", "LauLukLulu477!", "bases");
 if ($conexion->connect_error) {
     die("Conexión fallida: " . $conexion->connect_error);
@@ -40,9 +42,21 @@ if ($resultado->num_rows > 0) {
 			<td>" . htmlspecialchars($row["id_articulo"]) ."</td>
       		<td>" . htmlspecialchars($row["cod_bar"]) ."</td>
       		<td>" . htmlspecialchars($row["desc_larga"]) ."</td>
-      		<td>" . htmlspecialchars($row["precio1"]) ."</td>
-      		<td>" . htmlspecialchars($row["precio2"]) ."</td>
-      		<td>" . htmlspecialchars($row["fec_act"]) ."</td>
+      		<td align='right'>$ " . htmlspecialchars(number_format($row["precio1"], 2))."</td>
+      		<td align='right'>$	" . htmlspecialchars(number_format($row["precio2"], 2))."</td>";
+      		
+		$fec_modifica =$row['fec_act'];
+        
+		if($fecha==$fec_modifica){
+        echo "<td bgcolor='#09D320'>";    
+        }else{
+        echo "<td>";    
+        }		
+			
+		$fechaOriginal = $fec_modifica; // Fecha en formato ISO
+        $timestamp = strtotime($fechaOriginal);
+        echo date("d/m/Y", $timestamp) ."</td>
+        	
 		</tr>";	 
 	}
 	

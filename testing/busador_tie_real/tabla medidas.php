@@ -37,7 +37,7 @@
       <td width="94"><strong>Fec. Actual.</strong></td>
     </tr>
     <tr class="MarcaFila" onclick="goTo('detalle.php?id=a')">
-      <td>a</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td>
+      <td align="right">a</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td>
     </tr>
     <tr class="MarcaFila" onclick="goTo('detalle.php?id=b')">
       <td>b</td><td>b</td><td>b</td><td>b</td><td>b</td><td>b</td>
