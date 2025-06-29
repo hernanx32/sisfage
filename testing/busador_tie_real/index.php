@@ -49,7 +49,7 @@
       fetch("buscar.php?q=" + encodeURIComponent(q) + "&campo=" + campo)
         .then(res => res.text())
         .then(data => {
-          document.getElementById("resultados").innerHTML = data;
+          document.getElementById("resultados").innerHTML = data; 
         });
     }
 
