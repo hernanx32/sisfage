@@ -259,6 +259,7 @@ if ($resultado->num_rows > 0) {
         var PrecVtaFinal1=costoneto + ((PorcVta1 * costoneto) /100);
         PrecVtaFinal1=Number((parseFloat(PrecVtaFinal1).toFixed(2)).toString().split(". "));           
         document.getElementById("PV1").value = PrecVtaFinal1;
+			
         }
             
         //CALCULAMOS EL PRECIO DE VENTA 2

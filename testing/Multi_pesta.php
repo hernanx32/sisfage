@@ -123,12 +123,8 @@ function showTab(num) {
   document.querySelectorAll('.tab-button')[num - 1].classList.add('active');
 }
 
-function CALCULAR{
-var Valor1= '1';	
-document.getElementById("PV1").value = Valor1;    
-	
-	
-}
+
+
 	
 	</script>
 
