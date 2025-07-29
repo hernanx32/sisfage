@@ -114,8 +114,8 @@ if ($resultado->num_rows > 0) {
                       </td>
 		          </tr>
 			      <tr>
-			        <td width="205" align="center" bgcolor="#A1A1A1">Costo Neto + IVA</td>
-			        <td width="205" align="center" bgcolor="#A1A1A1">Costo Neto</td>
+			        <td width="205" align="center" bgcolor="#A1A1A1">Costo+IVA+Imp Int.</td>
+			        <td width="205" align="center" bgcolor="#A1A1A1">Total Cargos </td>
 			        <td align="right">Fletes o Gastos:</td>
 			        <td>%
 			          <input name="porc_flete" type="number" id="porc_flete" onBlur="ponerCeroSiVacio(this,2), calcular()"id="porc_bonif" tabindex="3" max="1000" min="0"  value="<?PHP echo $VAL10; ?>">
@@ -124,8 +124,8 @@ if ($resultado->num_rows > 0) {
                       </td>
 		          </tr>
 			      <tr>
-			        <td align="center" bgcolor="#A1A1A1"><input name="costoneto" type="text" readonly id="costoneto"></td>
-			        <td align="center" bgcolor="#A1A1A1"><input name="costociva" type="text" readonly id="costociva"></td>
+			        <td align="center" bgcolor="#A1A1A1"><input name="CostocIva" type="text" readonly id="CostocIva"></td>
+			        <td align="center" bgcolor="#A1A1A1"><input name="CargosTotal" type="text" readonly id="CargosTotal"></td>
 			        <td align="right">Cargos Financ.:</td>
 			        <td>%
 			          <input name="porc_cfin" type="number" id="porc_cfin" onBlur="ponerCeroSiVacio(this,2), calcular()" id="porc_bonif" tabindex="4" max="1000" min="0" value="<?PHP echo $VAL11; ?>">
@@ -230,16 +230,17 @@ if ($resultado->num_rows > 0) {
         document.getElementById("imp_cfin").value = imp_cfin;
         
         //CALCULAR COSTO 
-		var costociva = costo - imp_bonif + imp_flete + imp_cfin;
-        var costoneto = (((iva + imp_int) / 100)+1) * costociva;
-       
+		var costociva = ((iva + imp_int)*costo)/ 100 + costo;
+        var cargoTotal = imp_flete + imp_cfin - imp_bonif;
+		var costoneto = costociva + cargoTotal;
+		
 		//TRANSFORMAMOS EN VALORES NUMERICO CON 4 DECIMALES
-		costoneto=Number((parseFloat(costoneto).toFixed(4)).toString().split(". "));
-       	costociva =(parseFloat(costociva).toFixed(4)).toString().split(". ");
+		costociva =(parseFloat(costociva).toFixed(2)).toString().split(". ");
+		cargoTotal =(parseFloat(cargoTotal).toFixed(2)).toString().split(". ");
 		
 		//COLOCAMOS LOS VALORES
-		document.getElementById("costociva").value = costociva;
-		document.getElementById("costoneto").value = costoneto;
+		document.getElementById("CostocIva").value = costociva;
+		document.getElementById("CargosTotal").value = cargoTotal;
         
         
         //CALCULAMOS EL PRECIO DE VENTA 1
