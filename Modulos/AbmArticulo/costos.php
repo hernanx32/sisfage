@@ -114,7 +114,7 @@ if ($resultado->num_rows > 0) {
                       </td>
 		          </tr>
 			      <tr>
-			        <td width="205" align="center" bgcolor="#A1A1A1">Costo+IVA+Imp Int.</td>
+			        <td width="205" align="center" bgcolor="#A1A1A1">IVA+Imp Int.</td>
 			        <td width="205" align="center" bgcolor="#A1A1A1">Total Cargos </td>
 			        <td align="right">Fletes o Gastos:</td>
 			        <td>%
@@ -230,19 +230,19 @@ if ($resultado->num_rows > 0) {
         document.getElementById("imp_cfin").value = imp_cfin;
         
         //CALCULAR COSTO 
-		var costociva = ((iva + imp_int)*costo)/ 100 + costo;
+		var impTotal = ((iva + imp_int)*costo)/ 100 ;
         var cargoTotal = imp_flete + imp_cfin - imp_bonif;
-		var costoneto = costociva + cargoTotal;
+		var costoneto = costo + impTotal + cargoTotal;
 		
 		//TRANSFORMAMOS EN VALORES NUMERICO CON 4 DECIMALES
-		costociva =(parseFloat(costociva).toFixed(2)).toString().split(". ");
+		impTotal =(parseFloat(impTotal).toFixed(2)).toString().split(". ");
 		cargoTotal =(parseFloat(cargoTotal).toFixed(2)).toString().split(". ");
+		costoneto=(parseFloat(costoneto).toFixed(2)).toString().split(". ");
 		
 		//COLOCAMOS LOS VALORES
-		document.getElementById("CostocIva").value = costociva;
+		document.getElementById("CostocIva").value = impTotal;
 		document.getElementById("CargosTotal").value = cargoTotal;
-        
-        
+                
         //CALCULAMOS EL PRECIO DE VENTA 1
         var PorcVta1 = Number(document.getElementById('PA1').value);
         var PreVta1 = Number(document.getElementById('PV1').value);
@@ -252,56 +252,60 @@ if ($resultado->num_rows > 0) {
         var PreVta3 = Number(document.getElementById('PV3').value);
         var PorcVta4 = Number(document.getElementById('PA4').value);
         var PreVta4 = Number(document.getElementById('PV4').value);
-        
-        
+                
+		//CALCULAMOS EL PRECIO DE VENTA 1
         if (PorcVta1 <= 1) {
             document.getElementById("PV1").value = costoneto;
         } else  {
-        var PrecVtaFinal1=costoneto + ((PorcVta1 * costoneto) /100);
-        PrecVtaFinal1=Number((parseFloat(PrecVtaFinal1).toFixed(2)).toString().split(". "));           
-        document.getElementById("PV1").value = PrecVtaFinal1;
+		var PrecVtaFinal1 = (costo + ((costo * PorcVta1)/100));
+		PrecVtaFinal1=Number((parseFloat(PrecVtaFinal1).toFixed(2)).toString().split(". "));           
+		var PVF1 =  Number(PrecVtaFinal1) + Number(impTotal) + Number(cargoTotal);
+		document.getElementById("PV1").value = PVF1;
         }
             
-        //CALCULAMOS EL PRECIO DE VENTA 2
+       //CALCULAMOS EL PRECIO DE VENTA 2
         if (PorcVta2 <= 1) {
         document.getElementById("PV2").value = costoneto;
         } else  {
-        var PrecVtaFinal2=costoneto + ((PorcVta2 * costoneto) /100);
-        PrecVtaFinal2=Number((parseFloat(PrecVtaFinal2).toFixed(2)).toString().split(". "));           
-        document.getElementById("PV2").value = PrecVtaFinal2;    
+		var PrecVtaFinal2 = (costo + ((costo * PorcVta1)/100));
+		PrecVtaFinal2=Number((parseFloat(PrecVtaFinal2).toFixed(2)).toString().split(". "));           
+		var PVF2 =  Number(PrecVtaFinal2) + Number(impTotal) + Number(cargoTotal);
+		document.getElementById("PV2").value = PVF1;
         }
         //CALCULAMOS EL PRECIO DE VENTA 3
         if (PorcVta3 <= 1) {
         document.getElementById("PV3").value = costoneto;
         } else  {
-        var PrecVtaFinal3=costoneto + ((PorcVta3 * costoneto) /100);
-        PrecVtaFinal3=Number((parseFloat(PrecVtaFinal3).toFixed(2)).toString().split(". "));           
-        document.getElementById("PV3").value = PrecVtaFinal3;    
+  		var PrecVtaFinal3 = (costo + ((costo * PorcVta1)/100));
+		PrecVtaFinal3=Number((parseFloat(PrecVtaFinal3).toFixed(2)).toString().split(". "));           
+		var PVF3 =  Number(PrecVtaFinal3) + Number(impTotal) + Number(cargoTotal);
+		document.getElementById("PV3").value = PVF3;
         }
         //CALCULAMOS EL PRECIO DE VENTA 4
         if (PorcVta4 <= 1) {
         document.getElementById("PV4").value = costoneto;
         } else  {
-        var PrecVtaFinal4=costoneto + ((PorcVta4 * costoneto) /100);
-        PrecVtaFinal4=Number((parseFloat(PrecVtaFinal4).toFixed(2)).toString().split(". "));           
-        document.getElementById("PV4").value = PrecVtaFinal4;    
+		var PrecVtaFinal4 = (costo + ((costo * PorcVta1)/100));
+		PrecVtaFinal4=Number((parseFloat(PrecVtaFinal4).toFixed(2)).toString().split(". "));           
+		var PVF4 =  Number(PrecVtaFinal4) + Number(impTotal) + Number(cargoTotal);
+		document.getElementById("PV4").value = PVF4;
         }
         
         
         //CALCULAMOS Importe de Aumento 
-        var ImporAumento1 = PrecVtaFinal1 - costoneto; 
+        var ImporAumento1 = PrecVtaFinal1 - costo; 
         ImporAumento1=Number((parseFloat(ImporAumento1).toFixed(2)).toString().split(". "));  
         document.getElementById("IA1").value = ImporAumento1;
 
-        var ImporAumento2 = PrecVtaFinal2 - costoneto; 
+        var ImporAumento2 = PrecVtaFinal2 - costo; 
         ImporAumento2=Number((parseFloat(ImporAumento2).toFixed(2)).toString().split(". "));  
         document.getElementById("IA2").value = ImporAumento2;
         
-        var ImporAumento3 = PrecVtaFinal3 - costoneto; 
+        var ImporAumento3 = PrecVtaFinal3 - costo; 
         ImporAumento3=Number((parseFloat(ImporAumento3).toFixed(2)).toString().split(". "));  
         document.getElementById("IA3").value = ImporAumento3;
         
-        var ImporAumento4 = PrecVtaFinal4 - costoneto; 
+        var ImporAumento4 = PrecVtaFinal4 - costo; 
         ImporAumento4=Number((parseFloat(ImporAumento4).toFixed(2)).toString().split(". "));  
         document.getElementById("IA4").value = ImporAumento4;
         
@@ -325,32 +329,38 @@ if ($resultado->num_rows > 0) {
         
     }
     function calcular2(){
-        var CosNeto = Number(document.getElementById('costoneto').value); //PORCENTAJE
-        var PorcVta1 = Number(document.getElementById('PA1').value); //PORCENTAJE
-        var PreVta1 = Number(document.getElementById('PV1').value);  //PRE VTA
+		
+				
+		  
+		var CarTotal = Number(document.getElementById('CargosTotal').value) + Number(document.getElementById('CostocIva').value); //CARGOS DE IMPUESTO Y CARGOS 
+		var costo = Number(document.getElementById('costo').value); //COSTO
+		
+        	
+		var PorcVta1 = Number(document.getElementById('PA1').value); //PORCENTAJE
+        var PreVta1 = Number(document.getElementById('PV1').value) - Number(CarTotal);  //PRE VTA
         var PorcVta2 = Number(document.getElementById('PA2').value); //PORCENTAJE
-        var PreVta2 = Number(document.getElementById('PV2').value);  //PRE VTA
+        var PreVta2 = Number(document.getElementById('PV2').value) - Number(CarTotal);  //PRE VTA
         var PorcVta3 = Number(document.getElementById('PA3').value); //PORCENTAJE
-        var PreVta3 = Number(document.getElementById('PV3').value);  //PRE VTA
+        var PreVta3 = Number(document.getElementById('PV3').value) - Number(CarTotal);  //PRE VTA
         var PorcVta4 = Number(document.getElementById('PA4').value); //PORCENTAJE
-        var PreVta4 = Number(document.getElementById('PV4').value);  //PRE VTA
+        var PreVta4 = Number(document.getElementById('PV4').value) - Number(CarTotal);  //PRE VTA
         
         
         
-        var PorcVtaFinal1=((PreVta1 - CosNeto) / CosNeto) * 100;
-        PorcVtaFinal1=Number((parseFloat(PorcVtaFinal1).toFixed(6)).toString().split(". "));           
+        var PorcVtaFinal1=((PreVta1 - costo) / costo) * 100;
+		PorcVtaFinal1=Number((parseFloat(PorcVtaFinal1).toFixed(4)).toString().split(". "));           
         document.getElementById("PA1").value = PorcVtaFinal1;
 
         var PorcVtaFinal2=((PreVta2 - CosNeto) / CosNeto) * 100;
-        PorcVtaFinal2=Number((parseFloat(PorcVtaFinal2).toFixed(6)).toString().split(". "));           
+        PorcVtaFinal2=Number((parseFloat(PorcVtaFinal2).toFixed(4)).toString().split(". "));           
         document.getElementById("PA2").value = PorcVtaFinal2;
         
         var PorcVtaFinal3=((PreVta3 - CosNeto) / CosNeto) * 100;
-        PorcVtaFinal3=Number((parseFloat(PorcVtaFinal3).toFixed(6)).toString().split(". "));           
+        PorcVtaFinal3=Number((parseFloat(PorcVtaFinal3).toFixed(4)).toString().split(". "));           
         document.getElementById("PA3").value = PorcVtaFinal3;
         
         var PorcVtaFinal4=((PreVta4 - CosNeto) / CosNeto) * 100;
-        PorcVtaFinal4=Number((parseFloat(PorcVtaFinal4).toFixed(6)).toString().split(". "));           
+        PorcVtaFinal4=Number((parseFloat(PorcVtaFinal4).toFixed(4)).toString().split(". "));           
         document.getElementById("PA4").value = PorcVtaFinal4;
         
         calcular();
