@@ -258,8 +258,8 @@ if ($resultado->num_rows > 0) {
             document.getElementById("PV1").value = costoneto;
         } else  {
 		var PrecVtaFinal1 = (costo + ((costo * PorcVta1)/100));
-		PrecVtaFinal1=Number((parseFloat(PrecVtaFinal1).toFixed(2)).toString().split(". "));           
 		var PVF1 =  Number(PrecVtaFinal1) + Number(impTotal) + Number(cargoTotal);
+		PVF1 =Number((parseFloat(PVF1).toFixed(2)).toString().split(". "));           
 		document.getElementById("PV1").value = PVF1;
         }
             
@@ -268,8 +268,8 @@ if ($resultado->num_rows > 0) {
         document.getElementById("PV2").value = costoneto;
         } else  {
 		var PrecVtaFinal2 = (costo + ((costo * PorcVta1)/100));
-		PrecVtaFinal2=Number((parseFloat(PrecVtaFinal2).toFixed(2)).toString().split(". "));           
 		var PVF2 =  Number(PrecVtaFinal2) + Number(impTotal) + Number(cargoTotal);
+		PVF2 =Number((parseFloat(PVF2).toFixed(2)).toString().split(". "));           
 		document.getElementById("PV2").value = PVF1;
         }
         //CALCULAMOS EL PRECIO DE VENTA 3
@@ -277,8 +277,8 @@ if ($resultado->num_rows > 0) {
         document.getElementById("PV3").value = costoneto;
         } else  {
   		var PrecVtaFinal3 = (costo + ((costo * PorcVta1)/100));
-		PrecVtaFinal3=Number((parseFloat(PrecVtaFinal3).toFixed(2)).toString().split(". "));           
 		var PVF3 =  Number(PrecVtaFinal3) + Number(impTotal) + Number(cargoTotal);
+		PVF3 =Number((parseFloat(PVF3).toFixed(2)).toString().split(". "));           
 		document.getElementById("PV3").value = PVF3;
         }
         //CALCULAMOS EL PRECIO DE VENTA 4
@@ -286,8 +286,9 @@ if ($resultado->num_rows > 0) {
         document.getElementById("PV4").value = costoneto;
         } else  {
 		var PrecVtaFinal4 = (costo + ((costo * PorcVta1)/100));
-		PrecVtaFinal4=Number((parseFloat(PrecVtaFinal4).toFixed(2)).toString().split(". "));           
+		
 		var PVF4 =  Number(PrecVtaFinal4) + Number(impTotal) + Number(cargoTotal);
+		PVF4 =Number((parseFloat(PVF4).toFixed(2)).toString().split(". "));           
 		document.getElementById("PV4").value = PVF4;
         }
         
