@@ -1,5 +1,5 @@
 <?php
-include("conexion.php");
+include("Modulos/conex.php");
 
 if ($_POST['accion'] == 'agregar') {
     $nombre = $_POST['nombre'];

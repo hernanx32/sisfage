@@ -119,8 +119,8 @@ document.addEventListener('keypress', function(evt) {
 });
 	
 	
+document.getElementById("<?php echo $focus;?>").focus();
 
-document.form1.<?php echo $focus;?>.focus();
 /*
 function bajarEnter (field, event) {
 	var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
