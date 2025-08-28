@@ -6,7 +6,7 @@ $usuario=$_SESSION['usuario'];
 $nro_cat=$_SESSION['id_acceso'];
 $nom_completo=$_SESSION['nombre'];
 
-$titulo='Sistema - Ventas';
+$titulo='Sistema - Activar Articulos';
 $path='';
 
 include("Modulos/html.php");
@@ -16,9 +16,6 @@ include("Modulos/menu.php");
 
 cabeza($titulo,$path);
 menu($nro_cat, $nom_completo);
-
-
-
 
 $focus='Buscar';
 $conn->close();
