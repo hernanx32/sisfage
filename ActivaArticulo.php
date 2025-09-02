@@ -22,6 +22,26 @@ $mensaje ='';
 $valorCampo=''; 
 
 if (!empty($_GET['scr'])){
+	
+	if($_GET['scr']=='activar'){
+		
+		
+		$id_art_act=$_GET['idart'];
+		
+		$sql=$conn->query("UPDATE `articulo` SET `estado` = '1', `id_usuario` = '$id_us', `fec_act` ='$fecha'  WHERE `articulo`.`id_articulo` = '$id_art_act' ");
+				
+		if ($sql) {
+    		echo "<div class='alert alert-success' role='alert'>Articulo Habilitado Correctamente..</div>";
+			//	sisfage/abmArticulo.php?Buscar=32499297
+			
+			
+			
+			} else {
+    		echo "<div class='alert alert-danger' role='alert'> Error. No se actualizo:</div>" . $conn->error;
+			}
+				
+	}else{
+	
 	$codBar=$_GET['buscar'];	
 	
 	// $consulta="SELECT id_articulo, cod_bar, desc_larga, id_usuario, fec_act FROM articulo WHERE `cod_bar` = '$codBar' and estado = '0' ";    
@@ -56,6 +76,7 @@ if (!empty($_GET['scr'])){
 			$mensaje ="<div class='alert alert-danger' role='alert'>ERROR No se encontro el codigo o se encuentra Habilitado</div>";	
 			$valorCampo="value='$codBar'";
 	}
+	}	
 	}
 
 

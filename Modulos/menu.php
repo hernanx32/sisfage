@@ -45,7 +45,7 @@ if ($nro_cat=='1'){
 		<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Precios</a>
 			<ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <li><a href="/sisfage/abmArticulo.php" class="dropdown-item">Centro de Costos</a></li>
-              <li><a href="#" class="dropdown-item">Actualizacion Masiva</a></li>
+              <li><a href="/sisfage/ActivaArticulo.php" class="dropdown-item">Habilitar Articulo</a></li>
 			</ul>
 		</li><!-- Fin Menu2  -->
         <!-- Inicio Menu3 -->	
